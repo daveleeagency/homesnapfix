@@ -5,18 +5,8 @@ const corsHeaders = {
 };
 
 // ============================
-// Weight tables
+// Risk helpers
 // ============================
-
-const SEVERITY_WEIGHTS: Record<string, number> = {
-  Low: 20, Moderate: 50, High: 75, Critical: 100,
-};
-const CAUSE_WEIGHTS: Record<string, number> = {
-  sudden_accidental: 80, weather: 90, gradual_wear: 20, maintenance_neglect: 10, manufacturer_defect: 50, unknown: 40,
-};
-const DAMAGE_WEIGHTS: Record<string, number> = {
-  fire: 90, structural: 85, water: 80, electrical: 75, mechanical: 40, cosmetic: 15,
-};
 
 function scoreToLevel(s: number) { return s >= 80 ? "Critical" : s >= 60 ? "High" : s >= 35 ? "Moderate" : "Low"; }
 function scoreToUrgency(s: number) { return s >= 80 ? "Immediate action required — safety risk" : s >= 60 ? "Address within 24–48 hours" : s >= 35 ? "Schedule repair within 1–2 weeks" : "Non-urgent — repair at convenience"; }
@@ -40,7 +30,7 @@ function checkWarranty(cat: string) {
 }
 
 const REGULATED = ["CA","TX","FL","NY","IL","PA","OH","GA"];
-function geoNotice(st: string|null) {
+function geoNotice(st: string | null) {
   if (!st) return null;
   return REGULATED.includes(st.toUpperCase())
     ? "Insurance coverage varies significantly by state. Consult a licensed agent in your state."
@@ -48,10 +38,76 @@ function geoNotice(st: string|null) {
 }
 
 // ============================
-// Full 30-Issue Database
+// AI Gateway
 // ============================
 
-interface IssueEntry {
+const AI_GATEWAY_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
+
+// Step 1: Classify image — is it home-related? What does it show?
+async function classifyImage(
+  imageBase64: string,
+  mimeType: string,
+  apiKey: string,
+): Promise<{ is_home_issue: boolean; image_label: string; detected_categories: string[]; confidence: number; details: string }> {
+  const res = await fetch(AI_GATEWAY_URL, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "google/gemini-2.5-flash",
+      messages: [
+        {
+          role: "system",
+          content: `You are a strict home-issue image classifier. Respond with ONLY valid JSON — no markdown, no code fences, no explanation.
+
+{
+  "is_home_issue": boolean,
+  "image_label": "concise description of what the photo shows",
+  "detected_categories": ["roofing","plumbing","hvac","electrical","exterior","interior","appliance"],
+  "confidence": 0.0-1.0,
+  "details": "brief description of visible damage, material, location"
+}
+
+Rules:
+- is_home_issue = true ONLY if the image clearly shows part of a home, building interior/exterior, home systems, appliances, or damage to a residential structure.
+- is_home_issue = false for: vehicles (cars, motorcycles, boats), people, pets, food, landscapes without buildings, screenshots, documents, random objects not related to home maintenance.
+- detected_categories should list applicable home categories from this set: roofing, plumbing, hvac, electrical, exterior, interior, appliance, structural, fire, water_damage.
+- Be specific in image_label — e.g. "water stain on drywall ceiling", "rusted pipe joint under sink", "cracked vinyl siding panel".`,
+        },
+        {
+          role: "user",
+          content: [
+            { type: "image_url", image_url: { url: `data:${mimeType};base64,${imageBase64}` } },
+            { type: "text", text: "Classify this image. Is it a home issue?" },
+          ],
+        },
+      ],
+      max_tokens: 400,
+      temperature: 0.1,
+    }),
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    console.error("Classification gateway error:", res.status, errText);
+    throw new Error("Image classification failed");
+  }
+
+  const data = await res.json();
+  let content = (data.choices?.[0]?.message?.content || "").trim();
+  if (content.startsWith("```")) content = content.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");
+  return JSON.parse(content);
+}
+
+// Step 2: Generate full diagnosis from the photo
+async function generateDiagnosis(
+  imageBase64: string,
+  mimeType: string,
+  imageLabel: string,
+  detectedCategories: string[],
+  selectedIssueHint: string | null,
+  description: string,
+  apiKey: string,
+): Promise<{
   issue_detected: string;
   probable_causes: string[];
   summary: string;
@@ -63,569 +119,173 @@ interface IssueEntry {
   cause_type: string;
   damage_type: string;
   category: string;
-  warranty_flag: boolean;
-}
-
-const DB: Record<string, IssueEntry> = {
-  // ── Storm & Exterior ──
-  "storm-roof": {
-    issue_detected: "Roof Leak (Post-Storm)",
-    probable_causes: ["High winds lifted shingles", "Debris impact on roofing", "Pre-existing flashing failure exposed by storm"],
-    summary: "Storm-related roof damage has exposed the deck to water intrusion. This type of sudden weather damage is commonly covered by homeowners insurance.",
-    diy_steps: [
-      { step: 1, title: "Inspect safely from ground", description: "Use binoculars to assess visible damage. Do not climb onto a damaged roof." },
-      { step: 2, title: "Tarp exposed areas", description: "If accessible, secure a weighted tarp over exposed sections." },
-      { step: 3, title: "Document all damage", description: "Photograph damage from multiple angles for insurance documentation." },
-    ],
-    when_to_call_pro: ["Multiple shingles missing", "Visible deck or felt exposure", "Active leak into living space"],
-    product_links: [{ name: "Heavy-Duty Roof Tarp", url: "#", price: "$30" }],
-    safety_warnings: ["Do not climb onto a wet or damaged roof", "Watch for downed power lines"],
-    risk_score: 85, cause_type: "weather", damage_type: "structural", category: "roofing", warranty_flag: false,
-  },
-  "roof-gradual": {
-    issue_detected: "Roof Leak (Gradual)",
-    probable_causes: ["Aged shingles past service life", "Deteriorated flashing around penetrations", "Poor attic ventilation causing ice dams"],
-    summary: "This slow-developing leak indicates aging roofing materials. Gradual deterioration is generally not covered by homeowners insurance.",
-    diy_steps: [
-      { step: 1, title: "Locate the entry point", description: "Trace water stains in attic to find where water enters the roof deck." },
-      { step: 2, title: "Apply roofing sealant", description: "Use roofing cement on small cracks or gaps as a temporary measure." },
-      { step: 3, title: "Schedule professional inspection", description: "A roofer can assess remaining service life and recommend repair vs replacement." },
-    ],
-    when_to_call_pro: ["Leak affects multiple rooms", "Shingles are curling or crumbling", "Attic shows mold growth"],
-    product_links: [{ name: "Roof Sealant", url: "#", price: "$8" }],
-    safety_warnings: [],
-    risk_score: 60, cause_type: "gradual_wear", damage_type: "water", category: "roofing", warranty_flag: false,
-  },
-  "storm-hail": {
-    issue_detected: "Hail Damage",
-    probable_causes: ["Hailstones impacting roof and siding", "Granule loss on shingles", "Dented gutters and downspouts"],
-    summary: "Hail impact causes granule loss, cracks, and dents that weaken protective surfaces. Document all damage promptly for insurance claims.",
-    diy_steps: [
-      { step: 1, title: "Inspect from ground level", description: "Look for dented gutters, cracked siding, and damaged window screens." },
-      { step: 2, title: "Check vehicles and outdoor units", description: "Hail damage to AC condensers and vehicles supports claim documentation." },
-      { step: 3, title: "File insurance claim", description: "Contact your insurer within the policy's reporting window with photo evidence." },
-    ],
-    when_to_call_pro: ["Shingles show visible granule loss", "Siding has cracks or punctures", "Multiple surfaces affected"],
-    product_links: [],
-    safety_warnings: [],
-    risk_score: 75, cause_type: "weather", damage_type: "structural", category: "roofing", warranty_flag: false,
-  },
-  "storm-siding": {
-    issue_detected: "Siding Damage",
-    probable_causes: ["Wind-driven debris impact", "Hail strikes", "Age-related brittleness"],
-    summary: "Damaged siding reduces weather protection and can allow moisture behind the wall assembly. Cause determines insurance eligibility.",
-    diy_steps: [
-      { step: 1, title: "Assess extent of damage", description: "Count affected panels and photograph each for documentation." },
-      { step: 2, title: "Secure loose sections", description: "Re-nail or temporarily tape loose siding to prevent further water entry." },
-    ],
-    when_to_call_pro: ["Multiple panels cracked or missing", "Moisture visible behind siding", "Structural sheathing exposed"],
-    product_links: [],
-    safety_warnings: [],
-    risk_score: 55, cause_type: "weather", damage_type: "structural", category: "exterior", warranty_flag: false,
-  },
-  "storm-gutter": {
-    issue_detected: "Gutter Overflow",
-    probable_causes: ["Debris accumulation blocking flow", "Insufficient downspout capacity", "Sagging gutters from weight"],
-    summary: "Overflowing gutters direct water toward the foundation rather than away, increasing erosion and basement leak risk. This is a maintenance issue.",
-    diy_steps: [
-      { step: 1, title: "Clear debris from gutters", description: "Remove leaves, twigs, and sediment from all gutter runs." },
-      { step: 2, title: "Check downspout flow", description: "Run water through each downspout to verify unobstructed drainage." },
-      { step: 3, title: "Install gutter guards", description: "Mesh or solid guards reduce future debris accumulation." },
-    ],
-    when_to_call_pro: ["Gutters pulling away from fascia", "Foundation erosion visible", "Water entering basement"],
-    product_links: [{ name: "Gutter Guard Kit", url: "#", price: "$20" }],
-    safety_warnings: ["Use a stable ladder on level ground", "Do not lean over the roof edge"],
-    risk_score: 40, cause_type: "maintenance_neglect", damage_type: "water", category: "exterior", warranty_flag: false,
-  },
-
-  // ── Water & Plumbing ──
-  "water-burst": {
-    issue_detected: "Burst Pipe (Sudden)",
-    probable_causes: ["Freezing temperatures expanding pipe", "Corrosion weakening pipe wall", "Water hammer pressure surge"],
-    summary: "A sudden pipe failure is a critical emergency. Shut off the main water valve immediately. This type of sudden accidental damage is typically covered by homeowners insurance.",
-    diy_steps: [
-      { step: 1, title: "Shut off main water valve", description: "Locate and close the main shutoff to stop water flow immediately." },
-      { step: 2, title: "Open faucets to drain", description: "Open lowest faucets to drain remaining water from pipes." },
-      { step: 3, title: "Begin water removal", description: "Use a wet/dry vacuum or towels to remove standing water and minimize damage." },
-    ],
-    when_to_call_pro: ["Any burst pipe situation", "Water near electrical panels", "Structural saturation"],
-    product_links: [{ name: "Pipe Repair Clamp", url: "#", price: "$15" }],
-    safety_warnings: ["Turn off electricity in affected areas", "Do not use electrical appliances near standing water"],
-    risk_score: 95, cause_type: "sudden_accidental", damage_type: "water", category: "plumbing", warranty_flag: false,
-  },
-  "water-slab": {
-    issue_detected: "Slab Leak",
-    probable_causes: ["Copper pipe corrosion under slab", "Shifting soil causing pipe stress", "Poor original plumbing installation"],
-    summary: "Leaks beneath the concrete slab cause unexplained water bills, warm floor spots, and potential foundation movement. Detection requires specialized equipment.",
-    diy_steps: [
-      { step: 1, title: "Monitor water meter", description: "Turn off all water and check if the meter continues to move." },
-      { step: 2, title: "Check for warm floor spots", description: "Walk barefoot on tile/hard floors to detect unusual warmth from hot water line leaks." },
-    ],
-    when_to_call_pro: ["Meter confirms leak", "Foundation cracking visible", "Mold smell present"],
-    product_links: [],
-    safety_warnings: [],
-    risk_score: 90, cause_type: "unknown", damage_type: "structural", category: "plumbing", warranty_flag: false,
-  },
-  "water-heater": {
-    issue_detected: "Water Heater Failure",
-    probable_causes: ["Failed heating element or thermostat", "Sediment buildup reducing efficiency", "Tank corrosion from anode rod depletion"],
-    summary: "A failing water heater may produce lukewarm water, strange noises, or visible rust at the base. Sudden ruptures may be covered by insurance; gradual failure typically is not.",
-    diy_steps: [
-      { step: 1, title: "Check the pilot light or breaker", description: "For gas units, verify the pilot. For electric, check the dedicated breaker." },
-      { step: 2, title: "Flush sediment", description: "Attach a hose to the drain valve and flush until water runs clear." },
-      { step: 3, title: "Test the T&P valve", description: "Lift the temperature/pressure relief valve briefly to ensure it operates." },
-    ],
-    when_to_call_pro: ["No hot water after basic checks", "Rust-colored water from tank", "Pooling water at base"],
-    product_links: [{ name: "Anode Rod", url: "#", price: "$25" }],
-    safety_warnings: ["Turn off gas or electricity before any maintenance"],
-    risk_score: 70, cause_type: "gradual_wear", damage_type: "water", category: "plumbing", warranty_flag: true,
-  },
-  "water-sewer": {
-    issue_detected: "Sewer Backup",
-    probable_causes: ["Tree root intrusion into main line", "Grease or debris blockage", "Collapsed or offset sewer pipe"],
-    summary: "Sewage backing up into drains is a health hazard requiring immediate attention. Standard policies typically exclude sewer backup unless a specific rider is present.",
-    diy_steps: [
-      { step: 1, title: "Stop using water", description: "Cease all water usage to prevent further backup into the home." },
-      { step: 2, title: "Check cleanout access", description: "If you have an exterior cleanout, check for standing water in the pipe." },
-    ],
-    when_to_call_pro: ["Any sewer backup situation", "Multiple drains affected simultaneously", "Sewage odor in the home"],
-    product_links: [],
-    safety_warnings: ["Sewage contains pathogens — wear gloves and a mask", "Do not use chemical drain cleaners on main line blockages"],
-    risk_score: 80, cause_type: "unknown", damage_type: "water", category: "plumbing", warranty_flag: false,
-  },
-  "water-pressure": {
-    issue_detected: "Low Water Pressure",
-    probable_causes: ["Corroded galvanized pipes restricting flow", "Failing pressure regulator", "Municipal supply issue"],
-    summary: "Reduced water pressure across multiple fixtures suggests a systemic issue rather than a single fixture problem.",
-    diy_steps: [
-      { step: 1, title: "Check all fixtures", description: "Test pressure at multiple locations to determine if it's isolated or whole-house." },
-      { step: 2, title: "Clean aerators", description: "Remove and clean faucet aerators — mineral buildup is a common simple cause." },
-      { step: 3, title: "Check the pressure regulator", description: "If equipped, the regulator near the main shutoff may need adjustment or replacement." },
-    ],
-    when_to_call_pro: ["Pressure consistently below 40 PSI", "Galvanized pipes present", "Sudden pressure drop"],
-    product_links: [{ name: "Water Pressure Gauge", url: "#", price: "$10" }],
-    safety_warnings: [],
-    risk_score: 30, cause_type: "gradual_wear", damage_type: "mechanical", category: "plumbing", warranty_flag: false,
-  },
-
-  // ── HVAC & Mechanical ──
-  "hvac-ac": {
-    issue_detected: "AC Not Cooling",
-    probable_causes: ["Dirty air filter restricting airflow", "Low refrigerant from slow leak", "Failing compressor or capacitor"],
-    summary: "An AC blowing warm air often has a simple cause. Check the filter and thermostat settings before calling for service.",
-    diy_steps: [
-      { step: 1, title: "Replace the air filter", description: "A clogged filter is the #1 cause of poor cooling. Replace it with the correct size." },
-      { step: 2, title: "Check thermostat settings", description: "Ensure it's set to COOL mode and the set temperature is below room temperature." },
-      { step: 3, title: "Inspect the outdoor unit", description: "Clear debris, leaves, and vegetation from around the condenser unit." },
-    ],
-    when_to_call_pro: ["Ice forming on the unit", "Refrigerant hissing sound", "Unit not turning on at all"],
-    product_links: [{ name: "HVAC Filter Multi-Pack", url: "#", price: "$18" }],
-    safety_warnings: [],
-    risk_score: 40, cause_type: "gradual_wear", damage_type: "mechanical", category: "hvac", warranty_flag: true,
-  },
-  "hvac-furnace": {
-    issue_detected: "Furnace Not Heating",
-    probable_causes: ["Failed ignitor or flame sensor", "Gas valve malfunction", "Dirty filter causing limit switch trip"],
-    summary: "A furnace that clicks but doesn't fire typically has an ignition system issue. Gas furnace repairs should generally be handled by a licensed technician.",
-    diy_steps: [
-      { step: 1, title: "Check the air filter", description: "A severely clogged filter can cause the high-limit switch to shut down the furnace." },
-      { step: 2, title: "Verify thermostat", description: "Set to HEAT mode, raise temperature 5° above room temp, and wait." },
-      { step: 3, title: "Check the circuit breaker", description: "Ensure the furnace breaker hasn't tripped." },
-    ],
-    when_to_call_pro: ["Gas smell detected", "Furnace cycles on/off rapidly", "No heat after filter replacement"],
-    product_links: [],
-    safety_warnings: ["If you smell gas, leave the home and call your gas company immediately"],
-    risk_score: 60, cause_type: "gradual_wear", damage_type: "mechanical", category: "hvac", warranty_flag: true,
-  },
-  "hvac-refrigerant": {
-    issue_detected: "Refrigerant Leak",
-    probable_causes: ["Corroded evaporator coil", "Vibration-loosened fittings", "Manufacturing defect in line set"],
-    summary: "Refrigerant leaks reduce cooling capacity and can damage the compressor if run low. EPA regulations require licensed technicians to handle refrigerants.",
-    diy_steps: [
-      { step: 1, title: "Observe symptoms", description: "Ice on the indoor coil, warm air, or hissing sounds suggest a leak." },
-      { step: 2, title: "Turn off the system", description: "Running with low refrigerant can permanently damage the compressor." },
-    ],
-    when_to_call_pro: ["Any suspected refrigerant leak — EPA-regulated repair"],
-    product_links: [],
-    safety_warnings: ["Do not attempt to add refrigerant yourself — it requires EPA certification"],
-    risk_score: 50, cause_type: "gradual_wear", damage_type: "mechanical", category: "hvac", warranty_flag: true,
-  },
-  "hvac-thermostat": {
-    issue_detected: "Thermostat Failure",
-    probable_causes: ["Dead batteries", "Wiring connection failure", "Device malfunction"],
-    summary: "An unresponsive thermostat is often a simple fix. Check batteries and wiring before replacing the unit.",
-    diy_steps: [
-      { step: 1, title: "Replace batteries", description: "Most thermostats use AA or AAA batteries. Replace and test." },
-      { step: 2, title: "Check wiring connections", description: "Remove the faceplate and verify all wires are securely connected to terminals." },
-    ],
-    when_to_call_pro: ["Wiring appears damaged or corroded", "Replacement thermostat also fails"],
-    product_links: [{ name: "Programmable Thermostat", url: "#", price: "$35" }],
-    safety_warnings: ["Turn off HVAC breaker before touching any wiring"],
-    risk_score: 20, cause_type: "manufacturer_defect", damage_type: "mechanical", category: "hvac", warranty_flag: true,
-  },
-  "hvac-energy": {
-    issue_detected: "Energy Bill Spike",
-    probable_causes: ["HVAC running inefficiently", "Duct leaks in unconditioned spaces", "Insulation gaps or degradation"],
-    summary: "Sudden utility cost increases often point to HVAC system inefficiency or building envelope issues rather than rate changes.",
-    diy_steps: [
-      { step: 1, title: "Replace HVAC filter", description: "A dirty filter forces the system to work harder, increasing energy consumption." },
-      { step: 2, title: "Seal visible duct joints", description: "Use mastic sealant or metal tape on accessible duct connections in attic or crawlspace." },
-      { step: 3, title: "Check for drafts", description: "Hold a candle near windows and doors to detect air leaks." },
-    ],
-    when_to_call_pro: ["Bill increase exceeds 30%", "System running continuously", "Professional energy audit recommended"],
-    product_links: [{ name: "HVAC Duct Tape (Metal)", url: "#", price: "$12" }],
-    safety_warnings: [],
-    risk_score: 35, cause_type: "gradual_wear", damage_type: "mechanical", category: "hvac", warranty_flag: false,
-  },
-
-  // ── Electrical & Fire ──
-  "elec-breaker": {
-    issue_detected: "Breaker Tripping",
-    probable_causes: ["Circuit overloaded with too many devices", "Short circuit in wiring or appliance", "Ground fault in outlet or circuit"],
-    summary: "A repeatedly tripping breaker is a protective mechanism. Identify what's overloading the circuit before resetting.",
-    diy_steps: [
-      { step: 1, title: "Identify the circuit", description: "Note which outlets/lights are on the tripping breaker." },
-      { step: 2, title: "Reduce load", description: "Unplug devices from the circuit and reset. Add devices back one at a time." },
-      { step: 3, title: "Check for damaged cords", description: "Inspect power cords on the circuit for fraying or damage." },
-    ],
-    when_to_call_pro: ["Breaker trips with minimal load", "Burning smell from panel", "Breaker feels hot to touch"],
-    product_links: [],
-    safety_warnings: ["Never replace a breaker with a higher-amperage one", "A warm breaker or panel is an emergency sign"],
-    risk_score: 70, cause_type: "gradual_wear", damage_type: "electrical", category: "electrical", warranty_flag: false,
-  },
-  "elec-burn": {
-    issue_detected: "Burning Smell Near Electrical",
-    probable_causes: ["Arcing at loose wire connections", "Overheated wire insulation", "Failing breaker or bus bar"],
-    summary: "A burning smell near any electrical component is an emergency. Shut off the main breaker and call an electrician immediately. Do not attempt DIY repair.",
-    diy_steps: [
-      { step: 1, title: "Shut off main breaker", description: "Turn off the main breaker at the electrical panel immediately." },
-      { step: 2, title: "Evacuate if necessary", description: "If smoke is visible, evacuate and call 911." },
-    ],
-    when_to_call_pro: ["Any burning smell near electrical — always call a pro"],
-    product_links: [],
-    safety_warnings: ["This is an emergency — do not delay", "Do not open the electrical panel", "Have a fire extinguisher accessible"],
-    risk_score: 100, cause_type: "unknown", damage_type: "fire", category: "electrical", warranty_flag: false,
-  },
-  "elec-flicker": {
-    issue_detected: "Flickering Lights",
-    probable_causes: ["Loose bulb or fixture connection", "Degrading wiring in circuit", "Utility-side voltage fluctuation"],
-    summary: "Persistent flickering across multiple fixtures may indicate a wiring issue that should be evaluated by a licensed electrician.",
-    diy_steps: [
-      { step: 1, title: "Tighten bulbs", description: "Ensure all flickering bulbs are securely seated in their sockets." },
-      { step: 2, title: "Test with different bulbs", description: "Replace with known-good bulbs to rule out defective ones." },
-      { step: 3, title: "Check for patterns", description: "Note if flickering correlates with specific appliance use (e.g., AC cycling)." },
-    ],
-    when_to_call_pro: ["Flickering affects multiple circuits", "Accompanied by buzzing sounds", "Outlet discoloration visible"],
-    product_links: [],
-    safety_warnings: [],
-    risk_score: 65, cause_type: "gradual_wear", damage_type: "electrical", category: "electrical", warranty_flag: false,
-  },
-  "elec-outlet": {
-    issue_detected: "Dead Outlets",
-    probable_causes: ["Tripped GFCI upstream on the circuit", "Loose wire connection at outlet", "Tripped breaker"],
-    summary: "A dead outlet often has a simple fix — check for a tripped GFCI or breaker before assuming a wiring failure.",
-    diy_steps: [
-      { step: 1, title: "Check nearby GFCIs", description: "Press the RESET button on all GFCI outlets in the room and adjacent rooms." },
-      { step: 2, title: "Check the breaker panel", description: "Look for a tripped breaker (handle in the middle position) and reset it." },
-      { step: 3, title: "Test with a voltage tester", description: "Use a non-contact voltage tester to check if power is present." },
-    ],
-    when_to_call_pro: ["Multiple outlets dead on different circuits", "Outlet shows burn marks", "GFCI won't reset"],
-    product_links: [{ name: "Non-Contact Voltage Tester", url: "#", price: "$15" }],
-    safety_warnings: ["Never stick objects into an outlet to test it"],
-    risk_score: 45, cause_type: "gradual_wear", damage_type: "electrical", category: "electrical", warranty_flag: false,
-  },
-  "elec-co": {
-    issue_detected: "Carbon Monoxide Alarm",
-    probable_causes: ["Cracked heat exchanger in furnace", "Blocked flue or chimney", "Malfunctioning gas appliance"],
-    summary: "A triggered CO alarm is a life safety emergency. Carbon monoxide is odorless and lethal. Evacuate immediately and call 911.",
-    diy_steps: [
-      { step: 1, title: "Evacuate immediately", description: "Get all people and pets out of the home. Do not re-enter." },
-      { step: 2, title: "Call 911", description: "Fire departments have CO detection equipment to assess the situation." },
-    ],
-    when_to_call_pro: ["Any CO alarm activation — always call emergency services first"],
-    product_links: [],
-    safety_warnings: ["EVACUATE IMMEDIATELY", "Do not re-enter the home until cleared by fire department", "Seek medical attention if experiencing headache, dizziness, or nausea"],
-    risk_score: 100, cause_type: "unknown", damage_type: "fire", category: "electrical", warranty_flag: false,
-  },
-
-  // ── Structural ──
-  "struct-hairline": {
-    issue_detected: "Foundation Cracks (Hairline)",
-    probable_causes: ["Normal concrete curing shrinkage", "Minor thermal expansion/contraction", "Initial settling"],
-    summary: "Hairline cracks (under 1/16\") in poured concrete are extremely common and usually cosmetic. Monitor for widening over time.",
-    diy_steps: [
-      { step: 1, title: "Measure and mark", description: "Place pencil marks at each end of the crack and date them for monitoring." },
-      { step: 2, title: "Seal with epoxy", description: "Apply concrete crack filler or epoxy injection to prevent moisture entry." },
-      { step: 3, title: "Recheck in 6 months", description: "Measure again to determine if the crack has grown beyond your marks." },
-    ],
-    when_to_call_pro: ["Crack wider than 1/4\"", "Crack is horizontal or stair-stepped", "Crack is actively leaking water"],
-    product_links: [{ name: "Concrete Crack Filler", url: "#", price: "$8" }],
-    safety_warnings: [],
-    risk_score: 40, cause_type: "gradual_wear", damage_type: "cosmetic", category: "exterior", warranty_flag: false,
-  },
-  "struct-major": {
-    issue_detected: "Major Foundation Shift",
-    probable_causes: ["Expansive soil movement", "Hydrostatic pressure from poor drainage", "Structural overloading"],
-    summary: "Visible foundation displacement is a serious structural issue requiring professional engineering evaluation. Do not delay assessment.",
-    diy_steps: [
-      { step: 1, title: "Document the damage", description: "Photograph all cracks, displacement, and related symptoms (sticking doors, sloping floors)." },
-      { step: 2, title: "Monitor for progression", description: "Install crack monitors or mark crack endpoints with dates." },
-    ],
-    when_to_call_pro: ["Any suspected major foundation movement — structural engineer required"],
-    product_links: [],
-    safety_warnings: ["Do not enter crawlspaces if foundation stability is in question"],
-    risk_score: 95, cause_type: "gradual_wear", damage_type: "structural", category: "exterior", warranty_flag: false,
-  },
-  "struct-crawl": {
-    issue_detected: "Crawlspace Moisture",
-    probable_causes: ["Ground moisture evaporation without vapor barrier", "Exterior drainage directing water to crawlspace", "Plumbing leak above or below"],
-    summary: "Excessive crawlspace moisture promotes wood rot, mold, and pest activity. Proper vapor barriers and ventilation are key controls.",
-    diy_steps: [
-      { step: 1, title: "Inspect for standing water", description: "Enter (with proper PPE) and look for pooling water or saturated soil." },
-      { step: 2, title: "Install or repair vapor barrier", description: "6-mil polyethylene sheeting on the ground blocks soil moisture evaporation." },
-      { step: 3, title: "Improve exterior drainage", description: "Ensure gutters and grading direct water away from the foundation." },
-    ],
-    when_to_call_pro: ["Active water intrusion", "Mold visible on floor joists", "Wood rot present"],
-    product_links: [{ name: "6-Mil Vapor Barrier", url: "#", price: "$35" }],
-    safety_warnings: ["Wear a respirator in damp crawlspaces", "Watch for pest activity"],
-    risk_score: 60, cause_type: "gradual_wear", damage_type: "water", category: "exterior", warranty_flag: false,
-  },
-  "struct-termite": {
-    issue_detected: "Termite Damage",
-    probable_causes: ["Subterranean termite colony accessing wood through soil", "Wood-to-ground contact at foundation", "Moisture conditions attracting colonies"],
-    summary: "Termite damage weakens structural wood members. Insurance typically does not cover pest damage, but treatment is essential to prevent progression.",
-    diy_steps: [
-      { step: 1, title: "Identify signs", description: "Look for mud tubes on foundation walls, hollow-sounding wood, and discarded wings." },
-      { step: 2, title: "Reduce wood-soil contact", description: "Remove wood mulch, firewood, and debris from foundation perimeter." },
-    ],
-    when_to_call_pro: ["Any confirmed termite activity — professional treatment required"],
-    product_links: [],
-    safety_warnings: [],
-    risk_score: 80, cause_type: "gradual_wear", damage_type: "structural", category: "exterior", warranty_flag: false,
-  },
-  "struct-mold": {
-    issue_detected: "Mold Growth",
-    probable_causes: ["Sustained moisture from leak or condensation", "Poor ventilation in bathrooms or basements", "Previous water damage not fully dried"],
-    summary: "Visible mold indicates a persistent moisture problem. Fix the source before remediating the mold. Coverage depends on whether the moisture source was sudden or gradual.",
-    diy_steps: [
-      { step: 1, title: "Identify moisture source", description: "Trace the moisture to a leak, condensation, or ventilation issue." },
-      { step: 2, title: "Small area cleanup", description: "For areas under 10 sq ft, clean with detergent and water while wearing an N95 mask." },
-      { step: 3, title: "Improve ventilation", description: "Add exhaust fans, dehumidifiers, or open windows to reduce moisture." },
-    ],
-    when_to_call_pro: ["Mold area exceeds 10 square feet", "Mold is behind walls", "Occupants have respiratory symptoms"],
-    product_links: [{ name: "N95 Respirator (10-pack)", url: "#", price: "$15" }],
-    safety_warnings: ["Wear N95 mask and gloves when handling mold", "Do not disturb large mold colonies without professional containment"],
-    risk_score: 75, cause_type: "gradual_wear", damage_type: "water", category: "interior", warranty_flag: false,
-  },
-
-  // ── Appliances ──
-  "appl-fridge": {
-    issue_detected: "Refrigerator Not Cooling",
-    probable_causes: ["Dirty condenser coils", "Failed compressor or start relay", "Thermostat set incorrectly"],
-    summary: "Before assuming a major failure, check simple causes like dirty coils and thermostat settings. Home warranty plans typically cover refrigerator repairs.",
-    diy_steps: [
-      { step: 1, title: "Check thermostat setting", description: "Ensure temperature is set between 35–38°F for the fridge." },
-      { step: 2, title: "Clean condenser coils", description: "Vacuum the coils (usually behind or underneath) to restore heat dissipation." },
-      { step: 3, title: "Verify door seal", description: "Close the door on a dollar bill — if it slides out easily, the seal needs replacement." },
-    ],
-    when_to_call_pro: ["Compressor not running", "Loud clicking or buzzing", "No improvement after coil cleaning"],
-    product_links: [{ name: "Coil Cleaning Brush", url: "#", price: "$8" }],
-    safety_warnings: ["Unplug refrigerator before cleaning coils"],
-    risk_score: 30, cause_type: "gradual_wear", damage_type: "mechanical", category: "hvac", warranty_flag: true,
-  },
-  "appl-dishwasher": {
-    issue_detected: "Dishwasher Leak",
-    probable_causes: ["Worn door gasket", "Loose supply line connection", "Cracked tub or spray arm"],
-    summary: "Dishwasher leaks can cause significant floor and cabinet damage. The appliance itself isn't covered by insurance, but resulting water damage to the home may be.",
-    diy_steps: [
-      { step: 1, title: "Identify leak source", description: "Run a cycle and observe where water appears — door, bottom, or supply line." },
-      { step: 2, title: "Check door gasket", description: "Inspect the rubber seal around the door for tears, gaps, or debris." },
-      { step: 3, title: "Tighten connections", description: "Check supply line and drain hose connections under the unit." },
-    ],
-    when_to_call_pro: ["Leak from bottom of unit", "Flooring damage visible", "Electrical components wet"],
-    product_links: [],
-    safety_warnings: ["Turn off power and water supply before inspecting underneath"],
-    risk_score: 60, cause_type: "sudden_accidental", damage_type: "water", category: "plumbing", warranty_flag: true,
-  },
-  "appl-washer": {
-    issue_detected: "Washer Overflow",
-    probable_causes: ["Failed water inlet valve", "Clogged drain pump", "Burst supply hose"],
-    summary: "A washing machine overflow can cause extensive water damage to flooring and walls. Sudden supply hose failure is commonly covered by homeowners insurance.",
-    diy_steps: [
-      { step: 1, title: "Shut off water supply", description: "Turn off both hot and cold supply valves behind the washer immediately." },
-      { step: 2, title: "Remove standing water", description: "Use towels and a wet/dry vacuum to extract water from the floor." },
-      { step: 3, title: "Inspect supply hoses", description: "Check for bulging, cracking, or corrosion at hose connections." },
-    ],
-    when_to_call_pro: ["Water reached adjacent rooms", "Flooring is buckling", "Water near electrical outlets"],
-    product_links: [{ name: "Braided Steel Supply Hoses", url: "#", price: "$20" }],
-    safety_warnings: ["Turn off electricity to the laundry area if water is near outlets"],
-    risk_score: 85, cause_type: "sudden_accidental", damage_type: "water", category: "plumbing", warranty_flag: true,
-  },
-  "appl-dryer": {
-    issue_detected: "Dryer Overheating",
-    probable_causes: ["Clogged lint vent or exhaust duct", "Failed thermostat or thermal fuse", "Restricted airflow from crushed duct"],
-    summary: "An overheating dryer is a fire hazard — clogged dryer vents are a leading cause of house fires. Clean the vent system immediately.",
-    diy_steps: [
-      { step: 1, title: "Clean the lint trap", description: "Remove and clean the lint screen after every load." },
-      { step: 2, title: "Disconnect and clean exhaust duct", description: "Pull the dryer out, disconnect the duct, and clean the full length to the exterior vent." },
-      { step: 3, title: "Check exterior vent flap", description: "Ensure the outdoor vent flap opens freely and isn't blocked by lint or debris." },
-    ],
-    when_to_call_pro: ["Burning smell persists after cleaning", "Duct run exceeds 25 feet", "Dryer shuts off during cycles"],
-    product_links: [{ name: "Dryer Vent Cleaning Kit", url: "#", price: "$22" }],
-    safety_warnings: ["Unplug the dryer before any maintenance", "A burning smell is an immediate fire risk — stop using the dryer"],
-    risk_score: 80, cause_type: "maintenance_neglect", damage_type: "fire", category: "electrical", warranty_flag: true,
-  },
-  "appl-garage": {
-    issue_detected: "Garage Door Failure",
-    probable_causes: ["Broken torsion or extension spring", "Misaligned safety sensors", "Worn gear in opener motor"],
-    summary: "Garage door springs are under extreme tension and are dangerous to repair. Sensor realignment is a safe DIY task, but spring replacement requires a professional.",
-    diy_steps: [
-      { step: 1, title: "Check safety sensors", description: "Clean and realign the photo-eye sensors at the bottom of the door tracks." },
-      { step: 2, title: "Test the remote and wall button", description: "Replace remote batteries and try the hardwired wall button to isolate the issue." },
-      { step: 3, title: "Lubricate moving parts", description: "Apply silicone spray to hinges, rollers, and tracks." },
-    ],
-    when_to_call_pro: ["Broken spring visible", "Door off-track", "Opener motor not responding"],
-    product_links: [{ name: "Garage Door Lubricant", url: "#", price: "$8" }],
-    safety_warnings: ["NEVER attempt to repair or adjust garage door springs — lethal tension"],
-    risk_score: 35, cause_type: "gradual_wear", damage_type: "mechanical", category: "exterior", warranty_flag: true,
-  },
-};
-
-// Default fallback
-const DEFAULT_ENTRY = DB["struct-hairline"];
-
-// ============================
-// AI Image Analysis
-// ============================
-
-const AI_GATEWAY_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
-
-// Category keywords for matching
-const CATEGORY_KEYWORDS: Record<string, string[]> = {
-  roofing: ["roof", "shingle", "gutter", "flashing", "soffit", "fascia", "chimney", "attic"],
-  plumbing: ["pipe", "faucet", "drain", "water", "toilet", "sink", "valve", "heater", "sewer", "leak"],
-  hvac: ["ac", "furnace", "thermostat", "duct", "vent", "condenser", "coil", "filter", "refrigerant", "hvac"],
-  electrical: ["outlet", "breaker", "wire", "panel", "switch", "light", "socket", "electrical"],
-  exterior: ["siding", "foundation", "crack", "wall", "gutter", "door", "garage", "crawlspace"],
-  interior: ["ceiling", "wall", "floor", "drywall", "mold", "stain", "paint"],
-};
-
-async function analyzeImageWithAI(imageBase64: string, mimeType: string, selectedIssue: string): Promise<{
-  image_valid: boolean;
-  image_label: string;
-  mismatch: boolean;
-  mismatch_reason: string;
-  suggested_issue_id: string | null;
 }> {
-  const apiKey = Deno.env.get("LOVABLE_API_KEY");
-  if (!apiKey) {
-    // Fallback: skip AI validation
-    return { image_valid: true, image_label: selectedIssue, mismatch: false, mismatch_reason: "", suggested_issue_id: null };
-  }
+  const hintInstruction = selectedIssueHint && selectedIssueHint !== "default"
+    ? `The user pre-selected the issue "${selectedIssueHint}" — use this as a hint but trust the photo more. If the photo clearly shows something different, diagnose what the photo shows.`
+    : "The user did not pre-select an issue. Diagnose based entirely on the photo.";
 
-  try {
-    const res = await fetch(AI_GATEWAY_URL, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
-          {
-            role: "system",
-            content: `You are a home inspection image analyzer. Analyze the uploaded photo and respond with ONLY valid JSON (no markdown, no code fences):
+  const descriptionNote = description ? `The user also described: "${description}"` : "";
+
+  const res = await fetch(AI_GATEWAY_URL, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "google/gemini-2.5-flash",
+      messages: [
+        {
+          role: "system",
+          content: `You are a professional home inspector AI. You analyze photos of home issues and provide actionable diagnostic guidance.
+
+Given a photo that has been classified as: "${imageLabel}" with categories: [${detectedCategories.join(", ")}].
+${hintInstruction}
+${descriptionNote}
+
+Respond with ONLY valid JSON (no markdown, no code fences):
 {
-  "is_home_issue": boolean,
-  "image_label": "short description of what the photo shows",
-  "detected_categories": ["array of categories like: roofing, plumbing, hvac, electrical, exterior, interior, appliance"],
-  "confidence": number between 0 and 1,
-  "details": "brief description of visible damage or issue"
+  "issue_detected": "specific issue name, e.g. 'Ceiling Water Stain from Roof Leak'",
+  "probable_causes": ["cause 1 specific to THIS photo", "cause 2", "cause 3"],
+  "summary": "2-3 sentence assessment specific to what is visible in this photo. Reference specific visual indicators you see.",
+  "diy_steps": [
+    {"step":1,"title":"action title","description":"detailed instruction"},
+    {"step":2,"title":"action title","description":"detailed instruction"},
+    {"step":3,"title":"action title","description":"detailed instruction"}
+  ],
+  "when_to_call_pro": ["specific condition 1", "specific condition 2", "specific condition 3"],
+  "product_links": [{"name":"product name","url":"#","price":"$XX"}],
+  "safety_warnings": ["warning if applicable"],
+  "risk_score": 0-100,
+  "cause_type": "sudden_accidental|gradual_wear|maintenance_neglect|manufacturer_defect|weather|unknown",
+  "damage_type": "water|fire|structural|mechanical|electrical|cosmetic",
+  "category": "roofing|plumbing|hvac|electrical|exterior|interior"
 }
 
-A home issue photo shows things like: water stains, cracks, leaks, damaged surfaces, broken equipment, mold, electrical problems, HVAC units, plumbing fixtures, structural damage, appliance issues, etc.
+CRITICAL RULES:
+- Your diagnosis MUST be specific to what you see in the photo. Never give generic advice.
+- risk_score: 0-30 cosmetic/minor, 30-60 moderate needs attention, 60-80 urgent, 80-100 emergency/safety hazard.
+- cause_type must be one of the exact enum values listed above.
+- diy_steps should have 3-5 steps, each with specific actionable instructions.
+- product_links: suggest 1-3 relevant products with realistic prices.
+- Be concise but specific. Reference visible damage characteristics.`,
+        },
+        {
+          role: "user",
+          content: [
+            { type: "image_url", image_url: { url: `data:${mimeType};base64,${imageBase64}` } },
+            { type: "text", text: "Generate a complete home diagnosis for this photo." },
+          ],
+        },
+      ],
+      max_tokens: 1500,
+      temperature: 0.4,
+    }),
+  });
 
-NOT a home issue: selfies, pets, food, landscapes, random objects, screenshots, documents.`
-          },
-          {
-            role: "user",
-            content: [
-              {
-                type: "image_url",
-                image_url: {
-                  url: `data:${mimeType};base64,${imageBase64}`,
-                },
-              },
-              {
-                type: "text",
-                text: `The user selected issue: "${selectedIssue}". Analyze this photo.`,
-              },
-            ],
-          },
-        ],
-        max_tokens: 500,
-        temperature: 0.3,
-      }),
-    });
-
-    if (!res.ok) {
-      console.error("AI Gateway error:", res.status, await res.text());
-      return { image_valid: true, image_label: selectedIssue, mismatch: false, mismatch_reason: "", suggested_issue_id: null };
-    }
-
-    const data = await res.json();
-    const content = data.choices?.[0]?.message?.content || "";
-    
-    // Parse JSON from response, handling potential markdown fences
-    let cleaned = content.trim();
-    if (cleaned.startsWith("```")) {
-      cleaned = cleaned.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");
-    }
-    
-    const parsed = JSON.parse(cleaned);
-
-    const isHomeIssue = parsed.is_home_issue === true;
-    const imageLabel = parsed.image_label || "unknown";
-    const detectedCategories: string[] = parsed.detected_categories || [];
-
-    // Determine mismatch: check if the selected issue's category matches detected categories
-    let mismatch = false;
-    let mismatchReason = "";
-
-    if (isHomeIssue && selectedIssue && selectedIssue !== "default") {
-      // Find the issue in DB to get its category
-      const issueEntry = DB[selectedIssue];
-      if (issueEntry) {
-        const issueCategory = issueEntry.category.toLowerCase();
-        const detectedLower = detectedCategories.map((c: string) => c.toLowerCase());
-        
-        // Check if any detected category overlaps with the issue's category
-        const categoryMatch = detectedLower.some((dc: string) => {
-          if (dc === issueCategory) return true;
-          // Check keyword overlap
-          const keywords = CATEGORY_KEYWORDS[issueCategory] || [];
-          return keywords.some(kw => dc.includes(kw) || kw.includes(dc));
-        });
-
-        if (!categoryMatch && detectedLower.length > 0) {
-          mismatch = true;
-          mismatchReason = `The photo appears to show ${imageLabel} (categories: ${detectedCategories.join(", ")}), which doesn't match the selected issue category (${issueEntry.category}).`;
-        }
-      }
-    }
-
-    return {
-      image_valid: isHomeIssue,
-      image_label: imageLabel,
-      mismatch,
-      mismatch_reason: mismatchReason,
-      suggested_issue_id: null,
-    };
-  } catch (err) {
-    console.error("AI analysis error:", err);
-    return { image_valid: true, image_label: selectedIssue, mismatch: false, mismatch_reason: "", suggested_issue_id: null };
+  if (!res.ok) {
+    const errText = await res.text();
+    console.error("Diagnosis gateway error:", res.status, errText);
+    throw new Error("Diagnosis generation failed");
   }
+
+  const data = await res.json();
+  let content = (data.choices?.[0]?.message?.content || "").trim();
+  if (content.startsWith("```")) content = content.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");
+  return JSON.parse(content);
+}
+
+// ============================
+// Mismatch detection
+// ============================
+
+const CATEGORY_MAP: Record<string, string[]> = {
+  "storm-roof": ["roofing", "exterior"],
+  "roof-gradual": ["roofing", "exterior", "water_damage"],
+  "storm-hail": ["roofing", "exterior"],
+  "storm-siding": ["exterior"],
+  "storm-gutter": ["exterior"],
+  "water-burst": ["plumbing", "water_damage"],
+  "water-slab": ["plumbing", "structural"],
+  "water-heater": ["plumbing", "appliance"],
+  "water-sewer": ["plumbing"],
+  "water-pressure": ["plumbing"],
+  "hvac-ac": ["hvac", "appliance"],
+  "hvac-furnace": ["hvac", "appliance"],
+  "hvac-refrigerant": ["hvac"],
+  "hvac-thermostat": ["hvac", "electrical"],
+  "hvac-energy": ["hvac"],
+  "elec-breaker": ["electrical"],
+  "elec-burn": ["electrical", "fire"],
+  "elec-flicker": ["electrical"],
+  "elec-outlet": ["electrical"],
+  "elec-co": ["electrical", "fire"],
+  "struct-hairline": ["structural", "exterior"],
+  "struct-major": ["structural", "exterior"],
+  "struct-crawl": ["structural", "water_damage"],
+  "struct-termite": ["structural", "exterior"],
+  "struct-mold": ["interior", "water_damage"],
+  "appl-fridge": ["appliance", "hvac"],
+  "appl-dishwasher": ["appliance", "plumbing"],
+  "appl-washer": ["appliance", "plumbing", "water_damage"],
+  "appl-dryer": ["appliance", "fire"],
+  "appl-garage": ["appliance", "exterior"],
+};
+
+const ISSUE_LABELS: Record<string, string> = {
+  "storm-roof": "Roof Leak (Post-Storm)",
+  "roof-gradual": "Roof Leak (Gradual)",
+  "storm-hail": "Hail Damage",
+  "storm-siding": "Siding Damage",
+  "storm-gutter": "Gutter Overflow",
+  "water-burst": "Burst Pipe",
+  "water-slab": "Slab Leak",
+  "water-heater": "Water Heater Failure",
+  "water-sewer": "Sewer Backup",
+  "water-pressure": "Low Water Pressure",
+  "hvac-ac": "AC Not Cooling",
+  "hvac-furnace": "Furnace Not Heating",
+  "hvac-refrigerant": "Refrigerant Leak",
+  "hvac-thermostat": "Thermostat Failure",
+  "hvac-energy": "Energy Bill Spike",
+  "elec-breaker": "Breaker Tripping",
+  "elec-burn": "Burning Smell",
+  "elec-flicker": "Flickering Lights",
+  "elec-outlet": "Dead Outlets",
+  "elec-co": "Carbon Monoxide Alarm",
+  "struct-hairline": "Foundation Cracks (Hairline)",
+  "struct-major": "Major Foundation Shift",
+  "struct-crawl": "Crawlspace Moisture",
+  "struct-termite": "Termite Damage",
+  "struct-mold": "Mold Growth",
+  "appl-fridge": "Refrigerator Not Cooling",
+  "appl-dishwasher": "Dishwasher Leak",
+  "appl-washer": "Washer Overflow",
+  "appl-dryer": "Dryer Overheating",
+  "appl-garage": "Garage Door Failure",
+};
+
+function detectMismatch(
+  selectedIssue: string,
+  detectedCategories: string[],
+  imageLabel: string,
+): { mismatch: boolean; mismatch_reason: string } {
+  if (!selectedIssue || selectedIssue === "default") {
+    return { mismatch: false, mismatch_reason: "" };
+  }
+
+  const expectedCats = CATEGORY_MAP[selectedIssue] || [];
+  if (expectedCats.length === 0) return { mismatch: false, mismatch_reason: "" };
+
+  const detectedLower = detectedCategories.map(c => c.toLowerCase());
+  const hasOverlap = expectedCats.some(ec => detectedLower.some(dc => dc.includes(ec) || ec.includes(dc)));
+
+  if (!hasOverlap && detectedLower.length > 0) {
+    const issueLabel = ISSUE_LABELS[selectedIssue] || selectedIssue;
+    return {
+      mismatch: true,
+      mismatch_reason: `You selected "${issueLabel}" but the photo appears to show: ${imageLabel} (detected categories: ${detectedCategories.join(", ")}). The photo doesn't match the selected issue.`,
+    };
+  }
+
+  return { mismatch: false, mismatch_reason: "" };
 }
 
 // ============================
@@ -637,27 +297,30 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const requestId = crypto.randomUUID().slice(0, 12);
+  const timestamp = new Date().toISOString();
+
   try {
-    let issueId = "default";
+    let selectedIssue = "default";
     let stateCode: string | null = null;
     let description = "";
     let photoBase64: string | null = null;
     let photoMimeType = "image/jpeg";
+    let mode = "select"; // "select" or "ai_detect"
 
     const contentType = req.headers.get("content-type") || "";
 
     if (contentType.includes("multipart/form-data")) {
-      // Handle FormData with photo
       const formData = await req.formData();
-      issueId = (formData.get("selected_issue") as string) || "default";
+      selectedIssue = (formData.get("selected_issue") as string) || "default";
       const zip = (formData.get("zip") as string) || "";
       description = (formData.get("description") as string) || "";
+      mode = (formData.get("mode") as string) || "select";
       stateCode = zip ? zip.substring(0, 2) : null;
 
       const photo = formData.get("photo") as File | null;
-      if (photo) {
+      if (photo && photo.size > 0) {
         const arrayBuffer = await photo.arrayBuffer();
-        // Convert to base64
         const bytes = new Uint8Array(arrayBuffer);
         let binary = "";
         for (let i = 0; i < bytes.length; i++) {
@@ -667,89 +330,161 @@ Deno.serve(async (req) => {
         photoMimeType = photo.type || "image/jpeg";
       }
     } else {
-      // Legacy JSON body support
       const body = await req.json();
-      issueId = body.issue_id || body.selected_issue || "default";
+      selectedIssue = body.issue_id || body.selected_issue || "default";
       stateCode = body.state_code || null;
       description = body.description || "";
+      mode = body.mode || "select";
     }
 
-    // AI image pre-check
-    let imageCheck = {
-      image_valid: true,
-      image_label: "",
-      mismatch: false,
-      mismatch_reason: "",
-      suggested_issue_id: null as string | null,
-    };
+    const apiKey = Deno.env.get("LOVABLE_API_KEY");
 
-    if (photoBase64) {
-      imageCheck = await analyzeImageWithAI(photoBase64, photoMimeType, issueId);
-    }
-
-    // If image is invalid, return early with validation result
-    if (!imageCheck.image_valid) {
+    // If no photo or no API key, return an error
+    if (!photoBase64) {
       return new Response(JSON.stringify({
+        request_id: requestId,
+        timestamp,
         image_valid: false,
-        image_label: imageCheck.image_label,
+        image_label: "no photo provided",
         mismatch: false,
         mismatch_reason: "",
-        error: "invalid_image",
+        error: "no_photo",
+        message: "Please upload a photo of the home issue.",
+      }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (!apiKey) {
+      return new Response(JSON.stringify({
+        request_id: requestId,
+        timestamp,
+        error: "configuration_error",
+        message: "AI analysis is not configured.",
+      }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // ── Step 1: Classify the image ──
+    console.log(`[${requestId}] Classifying image...`);
+    let classification;
+    try {
+      classification = await classifyImage(photoBase64, photoMimeType, apiKey);
+    } catch (err) {
+      console.error(`[${requestId}] Classification failed:`, err);
+      return new Response(JSON.stringify({
+        request_id: requestId,
+        timestamp,
+        image_valid: false,
+        image_label: "classification failed",
+        mismatch: false,
+        mismatch_reason: "",
+        error: "classification_failed",
+        message: "Could not analyze the image. Please try again with a clearer photo.",
+      }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    console.log(`[${requestId}] Classification result:`, JSON.stringify(classification));
+
+    // ── Step 2: Home relevance gate ──
+    if (!classification.is_home_issue) {
+      return new Response(JSON.stringify({
+        request_id: requestId,
+        timestamp,
+        image_valid: false,
+        image_label: classification.image_label,
+        mismatch: false,
+        mismatch_reason: "",
+        error: "not_home_issue",
+        message: `This photo doesn't appear to be a home issue. It looks like: ${classification.image_label}. Please upload a photo of the affected home area.`,
       }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // Get the diagnosis from DB
-    const issue = DB[issueId] || DEFAULT_ENTRY;
+    // ── Step 3: Mismatch detection ──
+    const issueHint = mode === "ai_detect" ? null : selectedIssue;
+    const mismatchResult = detectMismatch(
+      mode === "ai_detect" ? "" : selectedIssue,
+      classification.detected_categories,
+      classification.image_label,
+    );
 
-    const riskScore = issue.risk_score;
-    const riskLevel = scoreToLevel(riskScore);
-    const insurance = evaluateInsurance(issue.cause_type, issue.damage_type);
-    const warranty = issue.warranty_flag
-      ? { warranty_likely: true, explanation: "Mechanical breakdowns are commonly covered by home warranty plans, not homeowners insurance." }
-      : checkWarranty(issue.category);
-
-    // Add photo-based variation to summary if AI provided details
-    let summary = issue.summary;
-    if (photoBase64 && imageCheck.image_label && imageCheck.image_label !== issueId) {
-      summary = `Based on your photo showing ${imageCheck.image_label}: ${issue.summary}`;
+    // ── Step 4: Generate real AI diagnosis ──
+    console.log(`[${requestId}] Generating diagnosis...`);
+    let diagnosis;
+    try {
+      diagnosis = await generateDiagnosis(
+        photoBase64,
+        photoMimeType,
+        classification.image_label,
+        classification.detected_categories,
+        issueHint,
+        description,
+        apiKey,
+      );
+    } catch (err) {
+      console.error(`[${requestId}] Diagnosis generation failed:`, err);
+      return new Response(JSON.stringify({
+        request_id: requestId,
+        timestamp,
+        error: "diagnosis_failed",
+        message: "Could not generate diagnosis. Please try again.",
+      }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
+    console.log(`[${requestId}] Diagnosis generated: ${diagnosis.issue_detected}`);
+
+    // ── Build full response ──
+    const riskScore = Math.max(0, Math.min(100, diagnosis.risk_score || 30));
+    const riskLevel = scoreToLevel(riskScore);
+    const insurance = evaluateInsurance(diagnosis.cause_type || "unknown", diagnosis.damage_type || "cosmetic");
+    const warranty = checkWarranty(diagnosis.category || "general");
+
     const response = {
-      analysis_id: crypto.randomUUID().slice(0, 12),
-      issue_detected: issue.issue_detected,
-      probable_causes: issue.probable_causes,
-      summary,
-      diy_steps: issue.diy_steps,
-      when_to_call_pro: issue.when_to_call_pro,
-      product_links: issue.product_links,
+      request_id: requestId,
+      timestamp,
+      analysis_id: requestId,
+      image_valid: true,
+      image_label: classification.image_label,
+      mismatch: mismatchResult.mismatch,
+      mismatch_reason: mismatchResult.mismatch_reason,
+      issue_detected: diagnosis.issue_detected,
+      probable_causes: diagnosis.probable_causes || [],
+      summary: diagnosis.summary || "",
+      diy_steps: diagnosis.diy_steps || [],
+      when_to_call_pro: diagnosis.when_to_call_pro || [],
+      product_links: diagnosis.product_links || [],
       risk: {
         risk_score: riskScore,
         risk_level: riskLevel,
         urgency: scoreToUrgency(riskScore),
-        safety_warnings: issue.safety_warnings,
+        safety_warnings: diagnosis.safety_warnings || [],
       },
       insurance,
       warranty,
       geo_notice: geoNotice(stateCode),
-      cause_type: issue.cause_type,
-      damage_type: issue.damage_type,
+      cause_type: diagnosis.cause_type || "unknown",
+      damage_type: diagnosis.damage_type || "cosmetic",
       global_disclaimer: "This AI tool provides informational guidance only and does not replace licensed professional evaluation.",
-      // Image validation fields
-      image_valid: true,
-      image_label: imageCheck.image_label,
-      mismatch: imageCheck.mismatch,
-      mismatch_reason: imageCheck.mismatch_reason,
     };
 
     return new Response(JSON.stringify(response), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
-  } catch (_error) {
-    console.error("Analysis error:", _error);
+  } catch (err) {
+    console.error(`[${requestId}] Unhandled error:`, err);
     return new Response(
-      JSON.stringify({ error: "Analysis failed" }),
+      JSON.stringify({ request_id: requestId, timestamp, error: "Analysis failed", message: String(err) }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
