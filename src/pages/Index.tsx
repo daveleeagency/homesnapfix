@@ -49,7 +49,7 @@ const Index = () => {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg">
-              <Link to="/app">
+              <Link to="/diagnose">
                 <Camera className="mr-2 h-4 w-4" />
                 Upload a Photo
               </Link>

@@ -40,7 +40,7 @@ export default function HowItWorksPage() {
 
           <div className="mt-10 text-center">
             <Button asChild size="lg">
-              <Link to="/app">Start Diagnosing <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              <Link to="/diagnose">Start Diagnosing <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
         </div>

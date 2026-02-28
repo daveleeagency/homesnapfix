@@ -99,7 +99,7 @@ export default function DIYHub() {
           <div className="mt-12 text-center">
             <p className="text-muted-foreground">Can't find your issue?</p>
             <Button asChild className="mt-3">
-              <Link to="/app"><Camera className="mr-2 h-4 w-4" /> Try AI Photo Diagnosis</Link>
+              <Link to="/diagnose"><Camera className="mr-2 h-4 w-4" /> Try AI Photo Diagnosis</Link>
             </Button>
           </div>
         </div>

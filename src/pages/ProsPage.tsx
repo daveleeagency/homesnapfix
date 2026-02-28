@@ -69,7 +69,7 @@ export default function ProsPage() {
                 <Link to="/diy"><Wrench className="mr-2 h-4 w-4" /> Try DIY First</Link>
               </Button>
               <Button asChild>
-                <Link to="/app">Try AI Diagnosis <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/diagnose">Try AI Diagnosis <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </div>
           </div>

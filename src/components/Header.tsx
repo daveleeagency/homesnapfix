@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 const navLinks = [
-  { label: "Diagnose", to: "/app" },
-  { label: "DIY", to: "/diy" },
-  { label: "Maintenance", to: "/maintenance-calendar" },
-  { label: "Pros", to: "/pros" },
-  { label: "Newsletter", to: "/newsletter" },
+  { label: "Home", to: "/" },
+  { label: "Diagnose", to: "/diagnose" },
+  { label: "DIY Hub", to: "/diy" },
+  { label: "Find a Pro", to: "/pros" },
 ];
 
 export function Header() {
@@ -24,7 +23,6 @@ export function Header() {
           HomeSnapFix
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <Link
@@ -39,14 +37,13 @@ export function Header() {
 
         <div className="hidden md:block">
           <Button asChild>
-            <Link to="/app">
+            <Link to="/diagnose">
               <Camera className="mr-2 h-4 w-4" />
               Snap &amp; Diagnose
             </Link>
           </Button>
         </div>
 
-        {/* Mobile menu toggle */}
         <button
           className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -56,7 +53,6 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile nav */}
       {mobileOpen && (
         <div className="border-t bg-background p-4 md:hidden">
           <nav className="flex flex-col gap-3">
@@ -71,7 +67,7 @@ export function Header() {
               </Link>
             ))}
             <Button asChild className="mt-2 w-full">
-              <Link to="/app" onClick={() => setMobileOpen(false)}>
+              <Link to="/diagnose" onClick={() => setMobileOpen(false)}>
                 <Camera className="mr-2 h-4 w-4" />
                 Snap &amp; Diagnose
               </Link>
