@@ -1,20 +1,30 @@
-import { issueClusters } from "@/data/issueClusters";
+interface ResultsJsonLdProps {
+  issueTitle: string;
+  summary: string;
+  diySteps: { step: number; title: string; description: string }[];
+  productLinks: { name: string; price?: string }[];
+}
 
-export function DiagnoseJsonLd() {
-  const allIssues = issueClusters.flatMap((c) => c.issues);
-
+export function ResultsJsonLd({ issueTitle, summary, diySteps, productLinks }: ResultsJsonLdProps) {
   const itemList = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Common U.S. Home Repair Issues 2026",
-    description: "A comprehensive list of common residential home repair issues categorized by type, risk level, and recommended action.",
-    numberOfItems: allIssues.length,
-    itemListElement: allIssues.map((issue, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: issue.title,
-      description: issue.snippet,
-    })),
+    name: `Diagnosis: ${issueTitle}`,
+    description: summary,
+    numberOfItems: diySteps.length + productLinks.length,
+    itemListElement: [
+      ...diySteps.map((s, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `Step ${s.step}: ${s.title}`,
+        description: s.description,
+      })),
+      ...productLinks.map((p, i) => ({
+        "@type": "ListItem",
+        position: diySteps.length + i + 1,
+        name: p.name,
+      })),
+    ],
   };
 
   const faqPage = {
@@ -48,15 +58,7 @@ export function DiagnoseJsonLd() {
     ],
   };
 
-  const localBusiness = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "HomeSnapFix",
-    description: "AI-powered home diagnosis and DIY guidance platform.",
-    url: "https://homesnapfix.com",
-  };
-
-  const schemas = [itemList, faqPage, localBusiness];
+  const schemas = [itemList, faqPage];
 
   return (
     <>

@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle, AlertTriangle, FileDown, ArrowRight } from "lucide-react";
+import { CheckCircle, AlertTriangle, FileDown, ArrowRight, ShieldCheck } from "lucide-react";
+import { ResultsJsonLd } from "@/components/ResultsJsonLd";
 
 const mockResult = {
   issueTitle: "Hairline Drywall Crack",
@@ -47,6 +48,12 @@ export default function ResultsPage() {
 
   return (
     <Layout>
+      <ResultsJsonLd
+        issueTitle={result.issueTitle}
+        summary={result.summary}
+        diySteps={result.diySteps}
+        productLinks={result.productLinks}
+      />
       <section className="py-12 md:py-20">
         <div className="container max-w-3xl">
           <p className="mb-2 text-center text-sm text-muted-foreground">Analysis #{analysisId}</p>
@@ -118,9 +125,36 @@ export default function ResultsPage() {
               </CardContent>
             </Card>
 
+            {/* Insurance Cross-Sell Block */}
+            <Card className="border-border/50 bg-muted/30">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <ShieldCheck className="h-5 w-5 text-primary" /> Unexpected Repair Costs?
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground">
+                  If the issue was caused by storm, sudden pipe failure, or accidental damage, homeowners insurance may help offset costs depending on your policy.
+                </p>
+                <div className="flex flex-col gap-2 sm:flex-row">
+                  <Button asChild variant="outline" size="sm" className="flex-1">
+                    <Link to="/insurance/home-coverage-guide">Learn What's Typically Covered</Link>
+                  </Button>
+                  <Button asChild variant="outline" size="sm" className="flex-1">
+                    <Link to="/insurance/home-coverage-guide">Compare Home &amp; Auto Bundling Options</Link>
+                  </Button>
+                </div>
+                <div className="space-y-1 text-xs text-muted-foreground/70 italic">
+                  <p>We are not an insurance provider.</p>
+                  <p>Coverage depends on individual policy.</p>
+                  <p>This tool provides informational guidance only.</p>
+                </div>
+              </CardContent>
+            </Card>
+
             {result.productLinks.length > 0 && (
               <Card>
-                <CardHeader><CardTitle className="text-lg">Tools & Materials</CardTitle></CardHeader>
+                <CardHeader><CardTitle className="text-lg">Tools &amp; Materials</CardTitle></CardHeader>
                 <CardContent>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {result.productLinks.map((p, i) => (
