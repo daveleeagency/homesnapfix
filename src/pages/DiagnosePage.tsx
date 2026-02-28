@@ -9,6 +9,7 @@ import { Camera, Upload, Loader2, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { IssueClusters } from "@/components/IssueClusters";
 import { DiagnoseJsonLd } from "@/components/DiagnoseJsonLd";
+import { supabase } from "@/integrations/supabase/client";
 import type { IssueCard } from "@/data/issueClusters";
 
 const riskColors: Record<IssueCard["riskLevel"], string> = {
@@ -50,18 +51,19 @@ export default function DiagnosePage() {
     if (!file) return;
     setLoading(true);
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      if (API_BASE) {
-        const formData = new FormData();
-        formData.append("photo", file);
-        if (selectedIssue) formData.append("category", selectedIssue.category);
-        if (zip) formData.append("zip", zip);
-        const res = await fetch(`${API_BASE}/api/analyze`, { method: "POST", body: formData });
-        if (!res.ok) throw new Error("Analysis failed");
-      }
-      await new Promise((r) => setTimeout(r, 1500));
-      const analysisId = Date.now().toString(36);
-      navigate(`/results/${analysisId}`);
+      const { data, error } = await supabase.functions.invoke("analyze", {
+        body: {
+          issue_id: selectedIssue?.id || "default",
+          category: selectedIssue?.category || "general",
+          cause_type: selectedIssue?.causeType || "unknown",
+          damage_type: selectedIssue?.damageType || "cosmetic",
+          zip: zip || undefined,
+        },
+      });
+
+      if (error) throw error;
+
+      navigate(`/results/${data.analysis_id}`, { state: data });
     } catch {
       toast({ title: "Analysis Error", description: "Could not analyze the photo. Please try again.", variant: "destructive" });
       setLoading(false);

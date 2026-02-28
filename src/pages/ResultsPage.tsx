@@ -1,58 +1,70 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle, AlertTriangle, FileDown, ArrowRight, ShieldCheck } from "lucide-react";
+import { CheckCircle, AlertTriangle, FileDown, ArrowRight, ShieldCheck, Gauge, Wrench, AlertOctagon } from "lucide-react";
 import { ResultsJsonLd } from "@/components/ResultsJsonLd";
+import type { DiagnosisResponse } from "@/types";
 
-const mockResult = {
-  issueTitle: "Hairline Drywall Crack",
-  severity: "low" as const,
-  confidence: 0.87,
-  summary: "This appears to be a common hairline crack in drywall, likely caused by normal house settling. It is cosmetic and can be repaired with basic tools and joint compound.",
-  quickTips: [
-    "This is likely cosmetic — no immediate danger.",
-    "Monitor the crack for changes over the next few weeks.",
-    "A simple patch should hold if the crack isn't growing.",
-  ],
-  diySteps: [
+const fallbackResult: DiagnosisResponse = {
+  analysis_id: "demo",
+  issue_detected: "Hairline Drywall Crack",
+  probable_causes: ["Normal house settling", "Temperature fluctuation"],
+  summary: "This appears to be a common hairline crack in drywall, likely caused by normal house settling. It is cosmetic and can be repaired with basic tools.",
+  diy_steps: [
     { step: 1, title: "Clean the crack", description: "Use a utility knife to widen the crack slightly, then brush away dust." },
     { step: 2, title: "Apply mesh tape", description: "Place self-adhesive fiberglass mesh tape over the crack." },
     { step: 3, title: "Apply joint compound", description: "Spread a thin layer of joint compound over the tape. Let dry 24 hours." },
     { step: 4, title: "Sand and paint", description: "Sand smooth, prime, and paint to match." },
   ],
-  whenToCallAPro: [
-    "Crack is wider than 1/4 inch",
-    "Crack is diagonal from door/window corners",
-    "Crack returns after repair",
+  when_to_call_pro: ["Crack is wider than 1/4 inch", "Crack is diagonal from door/window corners", "Crack returns after repair"],
+  product_links: [
+    { name: "Drywall Knife Set", url: "#", price: "$12" },
+    { name: "Joint Compound", url: "#", price: "$10" },
+    { name: "Mesh Tape", url: "#", price: "$5" },
   ],
-  productLinks: [
-    { name: "Drywall Knife Set", url: "#affiliate", price: "$12" },
-    { name: "Joint Compound", url: "#affiliate", price: "$10" },
-    { name: "Mesh Tape", url: "#affiliate", price: "$5" },
-  ],
+  risk: { risk_score: 26, risk_level: "Low", urgency: "Non-urgent — repair at convenience", safety_warnings: [] },
+  insurance: { insurance_flag: false, likelihood_tier: "Maintenance", reason: "Gradual wear and tear is typically excluded.", disclaimer_required: true },
+  warranty: { warranty_likely: false, explanation: "" },
+  geo_notice: null,
+  global_disclaimer: "This AI tool provides informational guidance only and does not replace licensed professional evaluation.",
 };
 
-const severityColors: Record<string, string> = {
-  low: "bg-green-100 text-green-800",
-  medium: "bg-yellow-100 text-yellow-800",
-  high: "bg-orange-100 text-orange-800",
-  critical: "bg-red-100 text-red-800",
+const riskScoreColor = (score: number) => {
+  if (score >= 80) return "text-destructive";
+  if (score >= 60) return "text-orange-600";
+  if (score >= 35) return "text-yellow-600";
+  return "text-green-600";
+};
+
+const riskLevelBadge: Record<string, string> = {
+  Low: "bg-green-100 text-green-800",
+  Moderate: "bg-yellow-100 text-yellow-800",
+  High: "bg-orange-100 text-orange-800",
+  Critical: "bg-red-100 text-red-800",
+};
+
+const insuranceTierBadge: Record<string, string> = {
+  "Likely Covered": "bg-green-100 text-green-800",
+  "Possibly Covered": "bg-yellow-100 text-yellow-800",
+  "Unlikely": "bg-orange-100 text-orange-800",
+  "Maintenance": "bg-muted text-muted-foreground",
 };
 
 export default function ResultsPage() {
   const { analysisId } = useParams();
-  const result = mockResult;
+  const location = useLocation();
+  const result: DiagnosisResponse = (location.state as DiagnosisResponse) || fallbackResult;
 
   return (
     <Layout>
       <ResultsJsonLd
-        issueTitle={result.issueTitle}
+        issueTitle={result.issue_detected}
         summary={result.summary}
-        diySteps={result.diySteps}
-        productLinks={result.productLinks}
+        diySteps={result.diy_steps}
+        productLinks={result.product_links}
       />
       <section className="py-12 md:py-20">
         <div className="container max-w-3xl">
@@ -62,42 +74,69 @@ export default function ResultsPage() {
           </h1>
 
           <div className="mt-8 space-y-6">
+
+            {/* Issue + Risk Score Card */}
             <Card>
               <CardHeader>
                 <div className="flex flex-wrap items-center gap-3">
-                  <CardTitle className="font-serif text-2xl">{result.issueTitle}</CardTitle>
-                  <Badge className={severityColors[result.severity]}>{result.severity} severity</Badge>
-                  <Badge variant="outline">{Math.round(result.confidence * 100)}% confidence</Badge>
+                  <CardTitle className="font-serif text-2xl">{result.issue_detected}</CardTitle>
+                  <Badge className={riskLevelBadge[result.risk.risk_level]}>{result.risk.risk_level} Risk</Badge>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-4">
                 <p className="text-muted-foreground">{result.summary}</p>
+
+                {/* Risk Score Gauge */}
+                <div className="flex items-center gap-4 rounded-lg border bg-muted/20 p-4">
+                  <Gauge className={`h-8 w-8 shrink-0 ${riskScoreColor(result.risk.risk_score)}`} />
+                  <div className="flex-1">
+                    <div className="flex items-baseline gap-2">
+                      <span className={`text-2xl font-bold ${riskScoreColor(result.risk.risk_score)}`}>
+                        {result.risk.risk_score}
+                      </span>
+                      <span className="text-sm text-muted-foreground">/ 100 risk score</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{result.risk.urgency}</p>
+                  </div>
+                </div>
+
+                {/* Probable Causes */}
+                {result.probable_causes.length > 0 && (
+                  <div>
+                    <p className="mb-1 text-sm font-medium text-foreground">Probable Causes</p>
+                    <ul className="space-y-1">
+                      {result.probable_causes.map((c, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <span className="mt-1 block h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground/50" />
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Safety Warnings */}
+                {result.risk.safety_warnings.length > 0 && (
+                  <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-3">
+                    <p className="mb-1 flex items-center gap-2 text-sm font-semibold text-destructive">
+                      <AlertOctagon className="h-4 w-4" /> Safety Warnings
+                    </p>
+                    <ul className="space-y-1">
+                      {result.risk.safety_warnings.map((w, i) => (
+                        <li key={i} className="text-sm text-destructive/80">• {w}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <CheckCircle className="h-5 w-5 text-primary" /> Instant Guidance
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {result.quickTips.map((tip, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <span className="mt-1 block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      {tip}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
+            {/* DIY Repair Steps */}
             <Card>
               <CardHeader><CardTitle className="text-lg">DIY Repair Steps</CardTitle></CardHeader>
               <CardContent>
                 <Accordion type="single" collapsible className="w-full">
-                  {result.diySteps.map((s) => (
+                  {result.diy_steps.map((s) => (
                     <AccordionItem key={s.step} value={`step-${s.step}`}>
                       <AccordionTrigger>Step {s.step}: {s.title}</AccordionTrigger>
                       <AccordionContent className="text-muted-foreground">{s.description}</AccordionContent>
@@ -107,6 +146,7 @@ export default function ResultsPage() {
               </CardContent>
             </Card>
 
+            {/* When to Call a Pro */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
@@ -115,7 +155,7 @@ export default function ResultsPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
-                  {result.whenToCallAPro.map((item, i) => (
+                  {result.when_to_call_pro.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="mt-1 block h-1.5 w-1.5 shrink-0 rounded-full bg-destructive" />
                       {item}
@@ -125,39 +165,78 @@ export default function ResultsPage() {
               </CardContent>
             </Card>
 
-            {/* Insurance Cross-Sell Block */}
+            {/* Insurance Awareness — Conditional */}
             <Card className="border-border/50 bg-muted/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
-                  <ShieldCheck className="h-5 w-5 text-primary" /> Unexpected Repair Costs?
+                  <ShieldCheck className="h-5 w-5 text-primary" />
+                  {result.insurance.likelihood_tier === "Maintenance"
+                    ? "Routine Maintenance"
+                    : "Insurance Coverage Insight"}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground">
-                  If the issue was caused by storm, sudden pipe failure, or accidental damage, homeowners insurance may help offset costs depending on your policy.
-                </p>
-                <div className="flex flex-col gap-2 sm:flex-row">
-                  <Button asChild variant="outline" size="sm" className="flex-1">
-                    <Link to="/insurance/home-coverage-guide">Learn What's Typically Covered</Link>
-                  </Button>
-                  <Button asChild variant="outline" size="sm" className="flex-1">
-                    <Link to="/insurance/home-coverage-guide">Compare Home &amp; Auto Bundling Options</Link>
-                  </Button>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Badge className={insuranceTierBadge[result.insurance.likelihood_tier]}>
+                    {result.insurance.likelihood_tier}
+                  </Badge>
                 </div>
-                <div className="space-y-1 text-xs text-muted-foreground/70 italic">
-                  <p>We are not an insurance provider.</p>
-                  <p>Coverage depends on individual policy.</p>
-                  <p>This tool provides informational guidance only.</p>
+
+                {result.insurance.likelihood_tier === "Likely Covered" && (
+                  <p className="text-sm text-muted-foreground">
+                    This appears consistent with sudden accidental damage. Depending on your policy, homeowners insurance may apply.
+                  </p>
+                )}
+                {result.insurance.likelihood_tier === "Possibly Covered" && (
+                  <p className="text-sm text-muted-foreground">
+                    {result.insurance.reason}
+                  </p>
+                )}
+                {result.insurance.likelihood_tier === "Maintenance" && (
+                  <p className="text-sm text-muted-foreground">
+                    This type of issue is typically considered routine maintenance and is generally not covered by homeowners insurance.
+                  </p>
+                )}
+                {result.insurance.likelihood_tier === "Unlikely" && (
+                  <p className="text-sm text-muted-foreground">
+                    Based on the cause type, this issue is unlikely to be covered by standard homeowners insurance policies.
+                  </p>
+                )}
+
+                {/* Geo Notice */}
+                {result.geo_notice && result.insurance.insurance_flag && (
+                  <p className="text-xs text-muted-foreground italic">{result.geo_notice}</p>
+                )}
+
+                {/* 4-Level Disclaimer Framework */}
+                <div className="space-y-1 border-t pt-3 text-xs text-muted-foreground/70">
+                  <p>We are not an insurance carrier.</p>
+                  <p>Coverage determinations depend on individual policy language, exclusions, and state regulations.</p>
                 </div>
               </CardContent>
             </Card>
 
-            {result.productLinks.length > 0 && (
+            {/* Warranty Insight — Conditional */}
+            {result.warranty.warranty_likely && (
+              <Card className="border-border/50 bg-muted/20">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Wrench className="h-5 w-5 text-primary" /> Home Warranty Insight
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{result.warranty.explanation}</p>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Tools & Materials */}
+            {result.product_links.length > 0 && (
               <Card>
                 <CardHeader><CardTitle className="text-lg">Tools &amp; Materials</CardTitle></CardHeader>
                 <CardContent>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    {result.productLinks.map((p, i) => (
+                    {result.product_links.map((p, i) => (
                       <a key={i} href={p.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between rounded-lg border p-3 transition-colors hover:bg-muted/50">
                         <span className="text-sm font-medium text-foreground">{p.name}</span>
                         {p.price && <span className="text-sm text-muted-foreground">{p.price}</span>}
@@ -171,6 +250,13 @@ export default function ResultsPage() {
               </Card>
             )}
 
+            {/* Global Disclaimer */}
+            <div className="rounded-lg border bg-muted/10 p-4 space-y-1 text-xs text-muted-foreground/70">
+              <p className="font-medium text-muted-foreground">{result.global_disclaimer}</p>
+              <p>We may refer to licensed professionals. We do not guarantee work quality.</p>
+            </div>
+
+            {/* Action Buttons */}
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="outline" className="flex-1">
                 <Link to={`/report/${analysisId}`}>
