@@ -495,6 +495,140 @@ const DB: Record<string, IssueEntry> = {
 const DEFAULT_ENTRY = DB["struct-hairline"];
 
 // ============================
+// AI Image Analysis
+// ============================
+
+const AI_GATEWAY_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
+
+// Category keywords for matching
+const CATEGORY_KEYWORDS: Record<string, string[]> = {
+  roofing: ["roof", "shingle", "gutter", "flashing", "soffit", "fascia", "chimney", "attic"],
+  plumbing: ["pipe", "faucet", "drain", "water", "toilet", "sink", "valve", "heater", "sewer", "leak"],
+  hvac: ["ac", "furnace", "thermostat", "duct", "vent", "condenser", "coil", "filter", "refrigerant", "hvac"],
+  electrical: ["outlet", "breaker", "wire", "panel", "switch", "light", "socket", "electrical"],
+  exterior: ["siding", "foundation", "crack", "wall", "gutter", "door", "garage", "crawlspace"],
+  interior: ["ceiling", "wall", "floor", "drywall", "mold", "stain", "paint"],
+};
+
+async function analyzeImageWithAI(imageBase64: string, mimeType: string, selectedIssue: string): Promise<{
+  image_valid: boolean;
+  image_label: string;
+  mismatch: boolean;
+  mismatch_reason: string;
+  suggested_issue_id: string | null;
+}> {
+  const apiKey = Deno.env.get("LOVABLE_API_KEY");
+  if (!apiKey) {
+    // Fallback: skip AI validation
+    return { image_valid: true, image_label: selectedIssue, mismatch: false, mismatch_reason: "", suggested_issue_id: null };
+  }
+
+  try {
+    const res = await fetch(AI_GATEWAY_URL, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "google/gemini-2.5-flash",
+        messages: [
+          {
+            role: "system",
+            content: `You are a home inspection image analyzer. Analyze the uploaded photo and respond with ONLY valid JSON (no markdown, no code fences):
+{
+  "is_home_issue": boolean,
+  "image_label": "short description of what the photo shows",
+  "detected_categories": ["array of categories like: roofing, plumbing, hvac, electrical, exterior, interior, appliance"],
+  "confidence": number between 0 and 1,
+  "details": "brief description of visible damage or issue"
+}
+
+A home issue photo shows things like: water stains, cracks, leaks, damaged surfaces, broken equipment, mold, electrical problems, HVAC units, plumbing fixtures, structural damage, appliance issues, etc.
+
+NOT a home issue: selfies, pets, food, landscapes, random objects, screenshots, documents.`
+          },
+          {
+            role: "user",
+            content: [
+              {
+                type: "image_url",
+                image_url: {
+                  url: `data:${mimeType};base64,${imageBase64}`,
+                },
+              },
+              {
+                type: "text",
+                text: `The user selected issue: "${selectedIssue}". Analyze this photo.`,
+              },
+            ],
+          },
+        ],
+        max_tokens: 500,
+        temperature: 0.3,
+      }),
+    });
+
+    if (!res.ok) {
+      console.error("AI Gateway error:", res.status, await res.text());
+      return { image_valid: true, image_label: selectedIssue, mismatch: false, mismatch_reason: "", suggested_issue_id: null };
+    }
+
+    const data = await res.json();
+    const content = data.choices?.[0]?.message?.content || "";
+    
+    // Parse JSON from response, handling potential markdown fences
+    let cleaned = content.trim();
+    if (cleaned.startsWith("```")) {
+      cleaned = cleaned.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");
+    }
+    
+    const parsed = JSON.parse(cleaned);
+
+    const isHomeIssue = parsed.is_home_issue === true;
+    const imageLabel = parsed.image_label || "unknown";
+    const detectedCategories: string[] = parsed.detected_categories || [];
+
+    // Determine mismatch: check if the selected issue's category matches detected categories
+    let mismatch = false;
+    let mismatchReason = "";
+
+    if (isHomeIssue && selectedIssue && selectedIssue !== "default") {
+      // Find the issue in DB to get its category
+      const issueEntry = DB[selectedIssue];
+      if (issueEntry) {
+        const issueCategory = issueEntry.category.toLowerCase();
+        const detectedLower = detectedCategories.map((c: string) => c.toLowerCase());
+        
+        // Check if any detected category overlaps with the issue's category
+        const categoryMatch = detectedLower.some((dc: string) => {
+          if (dc === issueCategory) return true;
+          // Check keyword overlap
+          const keywords = CATEGORY_KEYWORDS[issueCategory] || [];
+          return keywords.some(kw => dc.includes(kw) || kw.includes(dc));
+        });
+
+        if (!categoryMatch && detectedLower.length > 0) {
+          mismatch = true;
+          mismatchReason = `The photo appears to show ${imageLabel} (categories: ${detectedCategories.join(", ")}), which doesn't match the selected issue category (${issueEntry.category}).`;
+        }
+      }
+    }
+
+    return {
+      image_valid: isHomeIssue,
+      image_label: imageLabel,
+      mismatch,
+      mismatch_reason: mismatchReason,
+      suggested_issue_id: null,
+    };
+  } catch (err) {
+    console.error("AI analysis error:", err);
+    return { image_valid: true, image_label: selectedIssue, mismatch: false, mismatch_reason: "", suggested_issue_id: null };
+  }
+}
+
+// ============================
 // Handler
 // ============================
 
@@ -504,10 +638,69 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const body = await req.json();
-    const issueId: string = body.issue_id || "default";
-    const stateCode: string | null = body.state_code || null;
+    let issueId = "default";
+    let stateCode: string | null = null;
+    let description = "";
+    let photoBase64: string | null = null;
+    let photoMimeType = "image/jpeg";
 
+    const contentType = req.headers.get("content-type") || "";
+
+    if (contentType.includes("multipart/form-data")) {
+      // Handle FormData with photo
+      const formData = await req.formData();
+      issueId = (formData.get("selected_issue") as string) || "default";
+      const zip = (formData.get("zip") as string) || "";
+      description = (formData.get("description") as string) || "";
+      stateCode = zip ? zip.substring(0, 2) : null;
+
+      const photo = formData.get("photo") as File | null;
+      if (photo) {
+        const arrayBuffer = await photo.arrayBuffer();
+        // Convert to base64
+        const bytes = new Uint8Array(arrayBuffer);
+        let binary = "";
+        for (let i = 0; i < bytes.length; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        photoBase64 = btoa(binary);
+        photoMimeType = photo.type || "image/jpeg";
+      }
+    } else {
+      // Legacy JSON body support
+      const body = await req.json();
+      issueId = body.issue_id || body.selected_issue || "default";
+      stateCode = body.state_code || null;
+      description = body.description || "";
+    }
+
+    // AI image pre-check
+    let imageCheck = {
+      image_valid: true,
+      image_label: "",
+      mismatch: false,
+      mismatch_reason: "",
+      suggested_issue_id: null as string | null,
+    };
+
+    if (photoBase64) {
+      imageCheck = await analyzeImageWithAI(photoBase64, photoMimeType, issueId);
+    }
+
+    // If image is invalid, return early with validation result
+    if (!imageCheck.image_valid) {
+      return new Response(JSON.stringify({
+        image_valid: false,
+        image_label: imageCheck.image_label,
+        mismatch: false,
+        mismatch_reason: "",
+        error: "invalid_image",
+      }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Get the diagnosis from DB
     const issue = DB[issueId] || DEFAULT_ENTRY;
 
     const riskScore = issue.risk_score;
@@ -517,11 +710,17 @@ Deno.serve(async (req) => {
       ? { warranty_likely: true, explanation: "Mechanical breakdowns are commonly covered by home warranty plans, not homeowners insurance." }
       : checkWarranty(issue.category);
 
+    // Add photo-based variation to summary if AI provided details
+    let summary = issue.summary;
+    if (photoBase64 && imageCheck.image_label && imageCheck.image_label !== issueId) {
+      summary = `Based on your photo showing ${imageCheck.image_label}: ${issue.summary}`;
+    }
+
     const response = {
       analysis_id: crypto.randomUUID().slice(0, 12),
       issue_detected: issue.issue_detected,
       probable_causes: issue.probable_causes,
-      summary: issue.summary,
+      summary,
       diy_steps: issue.diy_steps,
       when_to_call_pro: issue.when_to_call_pro,
       product_links: issue.product_links,
@@ -537,12 +736,18 @@ Deno.serve(async (req) => {
       cause_type: issue.cause_type,
       damage_type: issue.damage_type,
       global_disclaimer: "This AI tool provides informational guidance only and does not replace licensed professional evaluation.",
+      // Image validation fields
+      image_valid: true,
+      image_label: imageCheck.image_label,
+      mismatch: imageCheck.mismatch,
+      mismatch_reason: imageCheck.mismatch_reason,
     };
 
     return new Response(JSON.stringify(response), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (_error) {
+    console.error("Analysis error:", _error);
     return new Response(
       JSON.stringify({ error: "Analysis failed" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
