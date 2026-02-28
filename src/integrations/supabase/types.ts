@@ -14,7 +14,210 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contractors: {
+        Row: {
+          active: boolean
+          bio: string | null
+          business_name: string
+          contact_name: string
+          created_at: string
+          email: string | null
+          id: string
+          insured: boolean
+          license_number: string | null
+          license_verified: boolean
+          phone: string | null
+          rating: number
+          response_speed_hours: number
+          specialties: string[]
+          updated_at: string
+          user_id: string | null
+          zip_codes: string[]
+        }
+        Insert: {
+          active?: boolean
+          bio?: string | null
+          business_name: string
+          contact_name: string
+          created_at?: string
+          email?: string | null
+          id?: string
+          insured?: boolean
+          license_number?: string | null
+          license_verified?: boolean
+          phone?: string | null
+          rating?: number
+          response_speed_hours?: number
+          specialties?: string[]
+          updated_at?: string
+          user_id?: string | null
+          zip_codes?: string[]
+        }
+        Update: {
+          active?: boolean
+          bio?: string | null
+          business_name?: string
+          contact_name?: string
+          created_at?: string
+          email?: string | null
+          id?: string
+          insured?: boolean
+          license_number?: string | null
+          license_verified?: boolean
+          phone?: string | null
+          rating?: number
+          response_speed_hours?: number
+          specialties?: string[]
+          updated_at?: string
+          user_id?: string | null
+          zip_codes?: string[]
+        }
+        Relationships: []
+      }
+      diagnoses: {
+        Row: {
+          analysis_id: string
+          cause_type: string | null
+          created_at: string
+          damage_type: string | null
+          id: string
+          insurance_tier: string | null
+          issue_detected: string
+          result_data: Json
+          risk_level: string
+          risk_score: number
+          user_id: string | null
+        }
+        Insert: {
+          analysis_id: string
+          cause_type?: string | null
+          created_at?: string
+          damage_type?: string | null
+          id?: string
+          insurance_tier?: string | null
+          issue_detected: string
+          result_data?: Json
+          risk_level?: string
+          risk_score?: number
+          user_id?: string | null
+        }
+        Update: {
+          analysis_id?: string
+          cause_type?: string | null
+          created_at?: string
+          damage_type?: string | null
+          id?: string
+          insurance_tier?: string | null
+          issue_detected?: string
+          result_data?: Json
+          risk_level?: string
+          risk_score?: number
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          budget_range: string | null
+          contractor_id: string | null
+          created_at: string
+          diagnosis_id: string | null
+          email: string
+          id: string
+          issue_type: string
+          name: string
+          notes: string | null
+          phone: string | null
+          preferred_contact: string | null
+          status: string
+          updated_at: string
+          user_id: string | null
+          zip: string
+        }
+        Insert: {
+          budget_range?: string | null
+          contractor_id?: string | null
+          created_at?: string
+          diagnosis_id?: string | null
+          email: string
+          id?: string
+          issue_type: string
+          name: string
+          notes?: string | null
+          phone?: string | null
+          preferred_contact?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+          zip: string
+        }
+        Update: {
+          budget_range?: string | null
+          contractor_id?: string | null
+          created_at?: string
+          diagnosis_id?: string | null
+          email?: string
+          id?: string
+          issue_type?: string
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          preferred_contact?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+          zip?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "leads_contractor_id_fkey"
+            columns: ["contractor_id"]
+            isOneToOne: false
+            referencedRelation: "contractors"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "leads_diagnosis_id_fkey"
+            columns: ["diagnosis_id"]
+            isOneToOne: false
+            referencedRelation: "diagnoses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          email: string | null
+          id: string
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id?: string
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id?: string
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
