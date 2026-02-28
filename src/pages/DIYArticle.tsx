@@ -152,7 +152,7 @@ export default function DIYArticle() {
           {/* CTA */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild className="flex-1">
-              <Link to="/app"><Camera className="mr-2 h-4 w-4" /> Try AI Photo Diagnosis</Link>
+              <Link to="/diagnose"><Camera className="mr-2 h-4 w-4" /> Try AI Photo Diagnosis</Link>
             </Button>
             <Button asChild variant="outline" className="flex-1">
               <Link to="/pros">Find a Local Pro</Link>

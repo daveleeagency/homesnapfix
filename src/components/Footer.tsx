@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const footerLinks = {
   Product: [
-    { label: "AI Diagnosis", to: "/app" },
+    { label: "AI Diagnosis", to: "/diagnose" },
     { label: "DIY Guides", to: "/diy" },
     { label: "Find a Pro", to: "/pros" },
     { label: "Maintenance Calendar", to: "/maintenance-calendar" },
@@ -14,8 +14,9 @@ const footerLinks = {
     { label: "Newsletter", to: "/newsletter" },
   ],
   Legal: [
-    { label: "Privacy Policy", to: "/privacy" },
-    { label: "Terms of Service", to: "/terms" },
+    { label: "Disclaimer", to: "/legal/disclaimer" },
+    { label: "Privacy Policy", to: "/legal/privacy" },
+    { label: "Terms of Service", to: "/legal/terms" },
   ],
 };
 
@@ -24,7 +25,6 @@ export function Footer() {
     <footer className="border-t bg-secondary/50">
       <div className="container py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
           <div>
             <h3 className="font-serif text-lg font-bold text-foreground">HomeSnapFix</h3>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -32,7 +32,6 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Link columns */}
           {Object.entries(footerLinks).map(([heading, links]) => (
             <div key={heading}>
               <h4 className="mb-3 text-sm font-semibold text-foreground">{heading}</h4>
@@ -52,7 +51,6 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Disclaimers */}
         <div className="mt-10 space-y-3 border-t pt-6">
           <p className="text-xs text-muted-foreground">
             <strong>Disclaimer:</strong> Educational information only. Not professional engineering,
