@@ -104,3 +104,67 @@
     font-family: 'Fraunces', serif;
   }
 }
+
+/* ── Print styles for /report pages ── */
+@media print {
+  /* Hide chrome */
+  header, footer, nav,
+  .print\\:hidden, [class*="print:hidden"] {
+    display: none !important;
+  }
+
+  /* Reset layout */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  #root {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* A4 page setup */
+  @page {
+    size: A4;
+    margin: 18mm 15mm 20mm 15mm;
+  }
+
+  /* Page break utilities */
+  .print\\:break-after-page {
+    break-after: page;
+  }
+  .print\\:break-before-page {
+    break-before: page;
+  }
+
+  /* Prevent orphaned headings */
+  h1, h2, h3, h4 {
+    break-after: avoid;
+  }
+  section {
+    break-inside: avoid;
+  }
+
+  /* Clean borders & shadows */
+  .border, [class*="border"] {
+    border-color: #d1d5db !important;
+  }
+  .shadow-sm, .shadow {
+    box-shadow: none !important;
+  }
+
+  /* Ensure links show URL */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #6b7280;
+  }
+  a[href^="/"]::after,
+  a[href^="#"]::after {
+    content: none;
+  }
+}
