@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Camera, Upload, Loader2, X } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Camera, Upload, Loader2, X, AlertTriangle, AlertOctagon } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { IssueClusters } from "@/components/IssueClusters";
 import { DiagnoseJsonLd } from "@/components/DiagnoseJsonLd";
@@ -18,13 +19,23 @@ const riskColors: Record<IssueCard["riskLevel"], string> = {
   High: "bg-red-100 text-red-800 border-red-200",
 };
 
+interface ImagePreCheck {
+  image_valid: boolean;
+  image_label: string;
+  mismatch: boolean;
+  mismatch_reason: string;
+}
+
 export default function DiagnosePage() {
   const navigate = useNavigate();
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [selectedIssue, setSelectedIssue] = useState<IssueCard | null>(null);
   const [zip, setZip] = useState("");
+  const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
+  const [imageError, setImageError] = useState<string | null>(null);
+  const [mismatchWarning, setMismatchWarning] = useState<ImagePreCheck | null>(null);
 
   useEffect(() => {
     const meta = document.createElement("meta");
@@ -36,6 +47,8 @@ export default function DiagnosePage() {
 
   const handleFile = useCallback((f: File) => {
     setFile(f);
+    setImageError(null);
+    setMismatchWarning(null);
     const reader = new FileReader();
     reader.onload = (e) => setPreview(e.target?.result as string);
     reader.readAsDataURL(f);
@@ -47,21 +60,56 @@ export default function DiagnosePage() {
     if (f && f.type.startsWith("image/")) handleFile(f);
   }, [handleFile]);
 
-  const handleAnalyze = async () => {
+  const sendAnalysis = async (forceContine = false) => {
     if (!file) return;
     setLoading(true);
+    setImageError(null);
+    if (!forceContine) setMismatchWarning(null);
+
     try {
-      const { data, error } = await supabase.functions.invoke("analyze", {
-        body: {
-          issue_id: selectedIssue?.id || "default",
-          category: selectedIssue?.category || "general",
-          cause_type: selectedIssue?.causeType || "unknown",
-          damage_type: selectedIssue?.damageType || "cosmetic",
-          zip: zip || undefined,
+      // Build FormData
+      const formData = new FormData();
+      formData.append("photo", file);
+      formData.append("selected_issue", selectedIssue?.id || "default");
+      if (zip) formData.append("zip", zip);
+      if (description) formData.append("description", description);
+
+      // Call edge function with FormData via fetch (supabase.functions.invoke doesn't support FormData natively)
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
+      const res = await fetch(`${supabaseUrl}/functions/v1/analyze`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${supabaseKey}`,
+          "apikey": supabaseKey,
         },
+        body: formData,
       });
 
-      if (error) throw error;
+      if (!res.ok) throw new Error("Analysis failed");
+      const data = await res.json();
+
+      // Pre-check: image_valid
+      if (data.image_valid === false) {
+        setImageError(
+          "This photo doesn't appear to be a home issue. Please upload a photo of the affected area (ceiling stain, leak, outlet, HVAC unit, etc.)."
+        );
+        setLoading(false);
+        return;
+      }
+
+      // Pre-check: mismatch (only show if not forcing continue)
+      if (data.mismatch === true && !forceContine) {
+        setMismatchWarning({
+          image_valid: true,
+          image_label: data.image_label,
+          mismatch: true,
+          mismatch_reason: data.mismatch_reason,
+        });
+        setLoading(false);
+        return;
+      }
 
       // Save to diagnosis history if logged in
       const { data: { session } } = await supabase.auth.getSession();
@@ -86,6 +134,14 @@ export default function DiagnosePage() {
     }
   };
 
+  const handleAnalyze = () => sendAnalysis(false);
+  const handleContinueAnyway = () => sendAnalysis(true);
+
+  const handleChangeIssue = () => {
+    setSelectedIssue(null);
+    setMismatchWarning(null);
+  };
+
   return (
     <Layout>
       <DiagnoseJsonLd />
@@ -97,6 +153,38 @@ export default function DiagnosePage() {
           <p className="mt-2 text-center text-muted-foreground">
             Select an issue, upload a photo, and get instant guidance.
           </p>
+
+          {/* Image Error Banner */}
+          {imageError && (
+            <Alert variant="destructive" className="mt-6">
+              <AlertOctagon className="h-4 w-4" />
+              <AlertTitle>Invalid Photo</AlertTitle>
+              <AlertDescription>{imageError}</AlertDescription>
+            </Alert>
+          )}
+
+          {/* Mismatch Warning Banner */}
+          {mismatchWarning && (
+            <Alert className="mt-6 border-yellow-300 bg-yellow-50">
+              <AlertTriangle className="h-4 w-4 text-yellow-700" />
+              <AlertTitle className="text-yellow-800">Photo Mismatch</AlertTitle>
+              <AlertDescription className="text-yellow-700">
+                <p className="mb-3">
+                  Your selected issue is <strong>{selectedIssue?.title}</strong>, but the photo looks like{" "}
+                  <strong>{mismatchWarning.image_label}</strong>.
+                </p>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline" onClick={handleChangeIssue}>
+                    Change Issue
+                  </Button>
+                  <Button size="sm" onClick={handleContinueAnyway} disabled={loading}>
+                    {loading ? <Loader2 className="mr-1 h-3 w-3 animate-spin" /> : null}
+                    Continue Anyway
+                  </Button>
+                </div>
+              </AlertDescription>
+            </Alert>
+          )}
 
           {/* Step 1: Issue Selection */}
           <div className="mt-8">
@@ -150,8 +238,9 @@ export default function DiagnosePage() {
                 />
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 space-y-3">
                 <Input placeholder="ZIP code (optional)" value={zip} onChange={(e) => setZip(e.target.value)} />
+                <Input placeholder="Describe the issue (optional)" value={description} onChange={(e) => setDescription(e.target.value)} />
               </div>
 
               <Button className="mt-4 w-full" size="lg" onClick={handleAnalyze} disabled={!file || loading}>
