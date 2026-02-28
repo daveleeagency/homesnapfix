@@ -25,7 +25,7 @@ const commonIssues = [
   { title: "Deck Rot", slug: "deck-rot", icon: Bug, desc: "Wood decay and soft spots" },
   { title: "HVAC Issues", slug: "hvac-issues", icon: Wind, desc: "Heating and cooling problems" },
   { title: "Foundation Cracks", slug: "foundation-cracks", icon: Shield, desc: "Settling and structural shifts" },
-  { title: "Electrical Outlets", slug: "electrical-outlet-issues", icon: Zap, desc: "Faulty or dead outlets" },
+  { title: "Electrical Outlets", slug: "electrical-outlets", icon: Zap, desc: "Faulty or dead outlets" },
   { title: "Mold Spots", slug: "mold-spots", icon: Flame, desc: "Visible mold and mildew growth" },
 ];
 
