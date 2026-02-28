@@ -1,36 +1,70 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { subscribeNewsletter } from "@/lib/api";
 import { toast } from "@/hooks/use-toast";
-import { Mail } from "lucide-react";
+import { Mail, Loader2, CheckCircle } from "lucide-react";
+
+const WEBHOOK = import.meta.env.VITE_LEAD_WEBHOOK_URL || "";
 
 interface NewsletterCaptureProps {
   variant?: "inline" | "banner";
+  sourcePage?: string;
 }
 
-export function NewsletterCapture({ variant = "inline" }: NewsletterCaptureProps) {
+export function NewsletterCapture({ variant = "inline", sourcePage = "unknown" }: NewsletterCaptureProps) {
   const [email, setEmail] = useState("");
   const [zip, setZip] = useState("");
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     setLoading(true);
     try {
-      await subscribeNewsletter({ email, zip });
+      const payload = {
+        type: "newsletter",
+        email,
+        zip,
+        sourcePage,
+        createdAt: new Date().toISOString(),
+      };
+      if (WEBHOOK) {
+        const res = await fetch(WEBHOOK, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error("Subscription failed");
+      }
+      setSuccess(true);
       toast({ title: "Subscribed!", description: "You'll receive monthly home maintenance alerts." });
       setEmail("");
       setZip("");
     } catch {
-      toast({ title: "Subscribed!", description: "You'll receive monthly home maintenance alerts." });
-      setEmail("");
-      setZip("");
+      toast({ title: "Error", description: "Could not subscribe. Please try again.", variant: "destructive" });
     } finally {
       setLoading(false);
     }
   };
+
+  if (success) {
+    const successContent = (
+      <div className="flex items-center gap-2 text-sm text-primary">
+        <CheckCircle className="h-4 w-4" />
+        <span>You're subscribed! Check your inbox.</span>
+      </div>
+    );
+
+    if (variant === "banner") {
+      return (
+        <section className="bg-primary/5 py-16">
+          <div className="container text-center">{successContent}</div>
+        </section>
+      );
+    }
+    return successContent;
+  }
 
   if (variant === "banner") {
     return (
@@ -44,23 +78,10 @@ export function NewsletterCapture({ variant = "inline" }: NewsletterCaptureProps
             Seasonal tips, hidden repair warnings, and cost-saving advice delivered to your inbox.
           </p>
           <form onSubmit={handleSubmit} className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row">
-            <Input
-              type="email"
-              placeholder="Your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1"
-            />
-            <Input
-              type="text"
-              placeholder="ZIP code"
-              value={zip}
-              onChange={(e) => setZip(e.target.value)}
-              className="w-full sm:w-28"
-            />
+            <Input type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} required className="flex-1" />
+            <Input type="text" placeholder="ZIP code" value={zip} onChange={(e) => setZip(e.target.value)} className="w-full sm:w-28" />
             <Button type="submit" disabled={loading}>
-              {loading ? "Joining..." : "Subscribe"}
+              {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Joining...</> : "Subscribe"}
             </Button>
           </form>
         </div>
@@ -70,23 +91,10 @@ export function NewsletterCapture({ variant = "inline" }: NewsletterCaptureProps
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
-      <Input
-        type="email"
-        placeholder="Your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-        className="flex-1"
-      />
-      <Input
-        type="text"
-        placeholder="ZIP"
-        value={zip}
-        onChange={(e) => setZip(e.target.value)}
-        className="w-full sm:w-24"
-      />
+      <Input type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} required className="flex-1" />
+      <Input type="text" placeholder="ZIP" value={zip} onChange={(e) => setZip(e.target.value)} className="w-full sm:w-24" />
       <Button type="submit" disabled={loading} size="sm">
-        {loading ? "..." : "Subscribe"}
+        {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Subscribe"}
       </Button>
     </form>
   );
