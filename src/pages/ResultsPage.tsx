@@ -339,13 +339,13 @@ export default function ResultsPage() {
             {/* ── Action Buttons ── */}
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="outline" className="flex-1">
-                <Link to={`/report/${analysisId}`}>
+                <Link to={`/report/${analysisId}`} state={result}>
                   <FileDown className="mr-2 h-4 w-4" />
-                  Download Report (PDF)
+                  Print Report
                 </Link>
               </Button>
               <Button asChild className="flex-1">
-                <Link to="/pros">
+                <Link to="/pros" state={result}>
                   Get Matched with a Pro
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

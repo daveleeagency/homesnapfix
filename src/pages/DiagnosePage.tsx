@@ -63,6 +63,22 @@ export default function DiagnosePage() {
 
       if (error) throw error;
 
+      // Save to diagnosis history if logged in
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        await supabase.from("diagnoses").insert({
+          user_id: session.user.id,
+          analysis_id: data.analysis_id,
+          issue_detected: data.issue_detected,
+          risk_score: data.risk?.risk_score || 0,
+          risk_level: data.risk?.risk_level || "Low",
+          insurance_tier: data.insurance?.likelihood_tier,
+          cause_type: data.cause_type,
+          damage_type: data.damage_type,
+          result_data: data,
+        });
+      }
+
       navigate(`/results/${data.analysis_id}`, { state: data });
     } catch {
       toast({ title: "Analysis Error", description: "Could not analyze the photo. Please try again.", variant: "destructive" });
