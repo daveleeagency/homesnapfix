@@ -136,7 +136,7 @@ export default function DiagnosePage() {
       // Gate 1: Invalid image
       if (data.image_valid === false) {
         setImageError(
-          `Our AI detected: "${data.image_label}." This doesn't appear to be a home-related issue — HomeSnapFix only diagnoses problems inside or around your home (plumbing, roofing, electrical, HVAC, etc.). Please upload a photo of the affected area.`
+          `It looks like this photo shows a ${data.image_label}. Unfortunately, this falls outside the scope of our home diagnostic service. We specialize in issues related to plumbing, roofing, electrical, HVAC, and other home systems. Please try uploading a photo of the area in your home that needs attention.`
         );
         setLoading(false);
         // Scroll to error banner
