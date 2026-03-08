@@ -254,7 +254,7 @@ export default function DiagnosePage() {
 
           {/* Image Error Banner */}
           {imageError && (
-            <Alert variant="destructive" className="mt-6">
+            <Alert id="image-error-banner" variant="destructive" className="mt-6 animate-in fade-in slide-in-from-top-2 border-2 border-destructive shadow-lg">
               <AlertOctagon className="h-4 w-4" />
               <AlertTitle>Invalid Photo</AlertTitle>
               <AlertDescription>
