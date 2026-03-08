@@ -2,37 +2,88 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { NewsletterCapture } from "@/components/NewsletterCapture";
 import {
   Camera,
   Search,
   Wrench,
   ArrowRight,
+  ShieldCheck,
+  FileText,
+  History,
+  HelpCircle,
   Droplets,
-  Flame,
-  Zap,
-  Bug,
   Home,
-  Layers,
+  Zap,
   Wind,
-  Shield,
+  Layers,
+  Bug,
 } from "lucide-react";
 
-const commonIssues = [
-  { title: "Drywall Cracks", slug: "drywall-cracks", icon: Layers, desc: "Hairline to structural cracks" },
-  { title: "Water Stains", slug: "water-stains", icon: Droplets, desc: "Ceiling and wall discoloration" },
-  { title: "Roof Leaks", slug: "roof-leaks", icon: Home, desc: "Missing shingles and leaks" },
-  { title: "Deck Rot", slug: "deck-rot", icon: Bug, desc: "Wood decay and soft spots" },
-  { title: "HVAC Issues", slug: "hvac-issues", icon: Wind, desc: "Heating and cooling problems" },
-  { title: "Foundation Cracks", slug: "foundation-cracks", icon: Shield, desc: "Settling and structural shifts" },
-  { title: "Electrical Outlets", slug: "electrical-outlets", icon: Zap, desc: "Faulty or dead outlets" },
-  { title: "Mold Spots", slug: "mold-spots", icon: Flame, desc: "Visible mold and mildew growth" },
+const steps = [
+  {
+    num: "1",
+    title: "Upload a Photo",
+    desc: "Take a picture of the crack, stain, leak, or damage you're concerned about.",
+    icon: Camera,
+  },
+  {
+    num: "2",
+    title: "Get an AI Assessment",
+    desc: "Our AI analyzes the image and estimates what the issue is, how serious it looks, and what to do next.",
+    icon: Search,
+  },
+  {
+    num: "3",
+    title: "DIY or Hire a Pro",
+    desc: "Get actionable guidance — handle it yourself with a repair guide, or connect with a local professional.",
+    icon: Wrench,
+  },
 ];
 
-const steps = [
-  { num: "1", title: "Upload a Photo", desc: "Snap or upload a picture of the issue.", icon: Camera },
-  { num: "2", title: "Get a Diagnosis", desc: "AI analyzes the image and identifies the problem.", icon: Search },
-  { num: "3", title: "Fix or Find a Pro", desc: "Follow DIY steps or get matched with a professional.", icon: Wrench },
+const trustPoints = [
+  { icon: ShieldCheck, label: "AI-assisted visual assessment" },
+  { icon: FileText, label: "Printable repair reports" },
+  { icon: History, label: "Save your diagnosis history" },
+  { icon: HelpCircle, label: "Guidance before calling a contractor" },
+];
+
+const useCases = [
+  {
+    title: "Water Stains on Ceiling",
+    desc: "Is it a roof leak or condensation? Find out before paying for a visit.",
+    icon: Droplets,
+    slug: "water-stains",
+  },
+  {
+    title: "Cracks in Drywall or Foundation",
+    desc: "Cosmetic settling or structural concern? Get a severity estimate.",
+    icon: Layers,
+    slug: "drywall-cracks",
+  },
+  {
+    title: "Electrical or HVAC Problems",
+    desc: "Know whether it's safe to troubleshoot or time to call a licensed pro.",
+    icon: Zap,
+    slug: "electrical-outlets",
+  },
+  {
+    title: "Roof & Exterior Damage",
+    desc: "Assess storm damage, missing shingles, or gutter issues from a photo.",
+    icon: Home,
+    slug: "roof-leaks",
+  },
+  {
+    title: "Deck Rot & Wood Decay",
+    desc: "Surface wear or structural risk? Upload a photo to find out.",
+    icon: Bug,
+    slug: "deck-rot",
+  },
+  {
+    title: "HVAC & Airflow Issues",
+    desc: "Unusual sounds, weak airflow, or ice buildup — get a first assessment.",
+    icon: Wind,
+    slug: "hvac-issues",
+  },
 ];
 
 const Index = () => {
@@ -42,31 +93,52 @@ const Index = () => {
       <section className="py-20 md:py-28">
         <div className="container text-center">
           <h1 className="mx-auto max-w-3xl font-serif text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
-            Snap a photo. Get clear home repair guidance.
+            Not sure how serious that home issue is?
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-            Instant DIY steps + optional pro help. No guesswork, no panic.
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Upload a photo of a crack, leak, stain, or damage. Get an AI-powered repair assessment in
+            seconds — then decide whether to fix it yourself or call a pro.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg">
               <Link to="/diagnose">
                 <Camera className="mr-2 h-4 w-4" />
-                Upload a Photo
+                Start Free Diagnosis
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link to="/diy">Browse DIY Fixes</Link>
+              <Link to="/how-it-works">
+                See How It Works
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
+      {/* Trust / Value Strip */}
+      <section className="border-y bg-secondary/30 py-6">
+        <div className="container">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            {trustPoints.map((t) => (
+              <div key={t.label} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <t.icon className="h-4 w-4 text-primary" />
+                <span>{t.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* How It Works */}
-      <section className="border-t bg-secondary/30 py-16">
+      <section className="py-16 md:py-20">
         <div className="container">
           <h2 className="text-center font-serif text-2xl font-bold text-foreground md:text-3xl">
             How It Works
           </h2>
+          <p className="mx-auto mt-2 max-w-lg text-center text-muted-foreground">
+            Three steps from "what is that?" to a clear plan of action.
+          </p>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {steps.map((s) => (
               <div key={s.num} className="text-center">
@@ -74,34 +146,76 @@ const Index = () => {
                   <s.icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">{s.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Button asChild size="lg">
+              <Link to="/diagnose">
+                <Camera className="mr-2 h-4 w-4" />
+                Try It Now — It's Free
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Benefits / Value Proposition */}
+      <section className="border-t bg-accent/30 py-16">
+        <div className="container max-w-3xl text-center">
+          <h2 className="font-serif text-2xl font-bold text-foreground md:text-3xl">
+            Why Homeowners Use HomeSnapFix
+          </h2>
+          <div className="mt-8 space-y-6 text-left">
+            {[
+              {
+                q: "You notice a crack, stain, or leak — but you don't know how bad it is.",
+                a: "Our AI gives you a severity estimate so you know whether to act now or monitor it.",
+              },
+              {
+                q: "You're not sure if it's a DIY fix or something that needs a licensed pro.",
+                a: "Every diagnosis includes a clear DIY-or-pro recommendation with reasoning.",
+              },
+              {
+                q: "You want a faster first step before paying $150+ for a contractor visit.",
+                a: "Get an initial assessment in seconds — for free — so you can make an informed call.",
+              },
+            ].map((item) => (
+              <Card key={item.q}>
+                <CardContent className="p-5">
+                  <p className="text-sm font-medium text-foreground">{item.q}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{item.a}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Common Issues */}
+      {/* Sample Use Cases */}
       <section className="py-16">
         <div className="container">
           <h2 className="text-center font-serif text-2xl font-bold text-foreground md:text-3xl">
-            Common Home Issues
+            What You Can Diagnose
           </h2>
           <p className="mx-auto mt-2 max-w-lg text-center text-muted-foreground">
-            Browse guides for the most frequent problems homeowners face.
+            Common home issues our AI can help you assess.
           </p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {commonIssues.map((issue) => (
-              <Link key={issue.slug} to={`/diy/${issue.slug}`}>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {useCases.map((uc) => (
+              <Link key={uc.slug} to={`/diy/${uc.slug}`}>
                 <Card className="group h-full transition-shadow hover:shadow-md">
-                  <CardContent className="flex flex-col items-center p-6 text-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent">
-                      <issue.icon className="h-5 w-5 text-accent-foreground" />
+                  <CardContent className="p-5">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                        <uc.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-sm font-semibold text-foreground">{uc.title}</h3>
+                        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{uc.desc}</p>
+                      </div>
                     </div>
-                    <h3 className="mt-3 font-serif text-base font-semibold text-foreground">
-                      {issue.title}
-                    </h3>
-                    <p className="mt-1 text-xs text-muted-foreground">{issue.desc}</p>
                   </CardContent>
                 </Card>
               </Link>
@@ -110,51 +224,32 @@ const Index = () => {
         </div>
       </section>
 
-      {/* AI Intelligence Teaser */}
-      <section className="border-t bg-accent/30 py-16">
+      {/* Bottom CTA */}
+      <section className="border-t bg-secondary/30 py-16">
         <div className="container text-center">
           <h2 className="font-serif text-2xl font-bold text-foreground md:text-3xl">
-            Your Home Intelligence Hub
+            Ready to find out what's going on?
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
-            Personalized maintenance alerts, seasonal checklists, and proactive risk awareness — all
-            powered by AI that learns about your home.
+          <p className="mx-auto mt-3 max-w-md text-muted-foreground">
+            Upload a photo and get your AI repair assessment — free, fast, and no contractor required
+            to start.
           </p>
-          <Button asChild className="mt-6" size="lg">
-            <Link to="/maintenance-calendar">
-              Get Your Home Intelligence
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button asChild size="lg">
+              <Link to="/diagnose">
+                <Camera className="mr-2 h-4 w-4" />
+                Start Free Diagnosis
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link to="/pros">
+                Find a Local Pro
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
-
-      {/* Pro Matching Banner */}
-      <section className="py-16">
-        <div className="container">
-          <Card className="overflow-hidden border-primary/20 bg-primary/5">
-            <CardContent className="flex flex-col items-center gap-4 p-8 text-center md:flex-row md:text-left">
-              <div className="flex-1">
-                <h2 className="font-serif text-2xl font-bold text-foreground">
-                  Need a vetted professional?
-                </h2>
-                <p className="mt-1 text-muted-foreground">
-                  Get matched with trusted local pros — fast and free.
-                </p>
-              </div>
-              <Button asChild size="lg">
-                <Link to="/pros">
-                  Get Matched
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <NewsletterCapture variant="banner" />
     </Layout>
   );
 };
