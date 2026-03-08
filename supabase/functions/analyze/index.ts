@@ -57,7 +57,7 @@ async function classifyImage(
       messages: [
         {
           role: "system",
-          content: `You are a strict home-issue image classifier. Respond with ONLY valid JSON — no markdown, no code fences, no explanation.
+          content: `You are a home-issue image classifier. Respond with ONLY valid JSON — no markdown, no code fences, no explanation.
 
 {
   "is_home_issue": boolean,
@@ -68,10 +68,12 @@ async function classifyImage(
 }
 
 Rules:
-- is_home_issue = true ONLY if the image clearly shows part of a home, building interior/exterior, home systems, appliances, or damage to a residential structure.
-- is_home_issue = false for: vehicles (cars, motorcycles, boats), people, pets, food, landscapes without buildings, screenshots, documents, random objects not related to home maintenance.
+- is_home_issue = true if the image shows ANY of the following: parts of a home or building (interior or exterior), home systems, plumbing fixtures (faucets, pipes, toilets, bidet sprayers, showerheads, water heaters, drains, valves, hoses), HVAC equipment, electrical panels/outlets/wiring, appliances, roofing, siding, foundation, flooring, walls, ceilings, windows, doors, insulation, gutters, or ANY damage/wear to a residential structure or its components.
+- is_home_issue = true for bathroom fixtures, kitchen fixtures, laundry equipment, garage doors, crawlspaces, attics, basements — anything found IN or ON a home.
+- is_home_issue = false ONLY for things completely unrelated to homes: vehicles (cars, motorcycles, boats), people posing, pets, food, nature landscapes without buildings, screenshots of apps, documents, artwork, clothing.
+- When in doubt, lean toward is_home_issue = true.
 - detected_categories should list applicable home categories from this set: roofing, plumbing, hvac, electrical, exterior, interior, appliance, structural, fire, water_damage.
-- Be specific in image_label — e.g. "water stain on drywall ceiling", "rusted pipe joint under sink", "cracked vinyl siding panel".`,
+- Be specific in image_label — e.g. "water stain on drywall ceiling", "rusted pipe joint under sink", "bidet sprayer with hose".`,
         },
         {
           role: "user",
