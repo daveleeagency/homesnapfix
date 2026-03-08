@@ -10,28 +10,8 @@ import { CheckCircle, AlertTriangle, FileDown, ArrowRight, ShieldCheck, Gauge, W
 import { ResultsJsonLd } from "@/components/ResultsJsonLd";
 import type { DiagnosisResponse } from "@/types";
 
-const fallbackResult: DiagnosisResponse = {
-  analysis_id: "demo",
-  issue_detected: "Hairline Drywall Crack",
-  probable_causes: ["Normal house settling", "Temperature fluctuation"],
-  summary: "This appears to be a common hairline crack in drywall, likely caused by normal house settling.",
-  diy_steps: [
-    { step: 1, title: "Clean the crack", description: "Use a utility knife to widen the crack slightly, then brush away dust." },
-    { step: 2, title: "Apply mesh tape", description: "Place self-adhesive fiberglass mesh tape over the crack." },
-    { step: 3, title: "Apply joint compound", description: "Spread a thin layer of joint compound over the tape. Let dry 24 hours." },
-    { step: 4, title: "Sand and paint", description: "Sand smooth, prime, and paint to match." },
-  ],
-  when_to_call_pro: ["Crack is wider than 1/4 inch", "Crack is diagonal from door/window corners", "Crack returns after repair"],
-  product_links: [
-    { name: "Drywall Knife Set", url: "#", price: "$12" },
-    { name: "Joint Compound", url: "#", price: "$10" },
-  ],
-  risk: { risk_score: 26, risk_level: "Low", urgency: "Non-urgent — repair at convenience", safety_warnings: [] },
-  insurance: { insurance_flag: false, likelihood_tier: "Maintenance", reason: "Gradual wear and tear is typically excluded.", disclaimer_required: true },
-  warranty: { warranty_likely: false, explanation: "" },
-  geo_notice: null,
-  global_disclaimer: "This AI tool provides informational guidance only and does not replace licensed professional evaluation.",
-};
+// Used only when navigating directly to /results without state (e.g. bookmark or refresh)
+const fallbackResult: DiagnosisResponse | null = null;
 
 // ── Cause / Damage labels ──
 const causeLabels: Record<string, string> = {
@@ -83,9 +63,28 @@ const riskScoreColor = (score: number) => {
 export default function ResultsPage() {
   const { analysisId } = useParams();
   const location = useLocation();
-  const result: DiagnosisResponse & { cause_type?: string; damage_type?: string } =
+  const result: (DiagnosisResponse & { cause_type?: string; damage_type?: string }) | null =
     (location.state as any) || fallbackResult;
   const [riskOpen, setRiskOpen] = useState(false);
+
+  if (!result) {
+    return (
+      <Layout>
+        <section className="py-20 text-center">
+          <div className="container max-w-lg">
+            <AlertTriangle className="mx-auto h-12 w-12 text-muted-foreground" />
+            <h1 className="mt-4 font-serif text-2xl font-bold text-foreground">Results Not Available</h1>
+            <p className="mt-2 text-muted-foreground">
+              This diagnosis report is no longer available. Please run a new diagnosis to get fresh results.
+            </p>
+            <Button asChild className="mt-6">
+              <Link to="/diagnose">Start New Diagnosis</Link>
+            </Button>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
 
   const banner = getRiskBanner(result.risk.risk_score);
 
@@ -311,18 +310,26 @@ export default function ResultsPage() {
             {/* ── Tools & Materials ── */}
             {result.product_links.length > 0 && (
               <Card>
-                <CardHeader><CardTitle className="text-lg">Tools &amp; Materials</CardTitle></CardHeader>
+                <CardHeader><CardTitle className="text-lg">Recommended Tools &amp; Materials</CardTitle></CardHeader>
                 <CardContent>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    {result.product_links.map((p, i) => (
-                      <a key={i} href={p.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between rounded-lg border p-3 transition-colors hover:bg-muted/50">
-                        <span className="text-sm font-medium text-foreground">{p.name}</span>
-                        {p.price && <span className="text-sm text-muted-foreground">{p.price}</span>}
-                      </a>
-                    ))}
+                    {result.product_links.map((p, i) => {
+                      const hasRealLink = p.url && !p.url.startsWith("#") && p.url !== "";
+                      return hasRealLink ? (
+                        <a key={i} href={p.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between rounded-lg border p-3 transition-colors hover:bg-muted/50">
+                          <span className="text-sm font-medium text-foreground">{p.name}</span>
+                          {p.price && <span className="text-sm text-muted-foreground">{p.price}</span>}
+                        </a>
+                      ) : (
+                        <div key={i} className="flex items-center justify-between rounded-lg border p-3 bg-muted/10">
+                          <span className="text-sm font-medium text-foreground">{p.name}</span>
+                          {p.price && <span className="text-sm text-muted-foreground">{p.price}</span>}
+                        </div>
+                      );
+                    })}
                   </div>
                   <p className="mt-3 text-xs text-muted-foreground italic">
-                    Some links may be affiliate links. We may earn a commission at no extra cost to you.
+                    Product suggestions are for reference only. Search your preferred retailer for best prices.
                   </p>
                 </CardContent>
               </Card>

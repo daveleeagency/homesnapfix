@@ -20,6 +20,10 @@ export function NewsletterCapture({ variant = "inline", sourcePage = "unknown" }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
+    if (!WEBHOOK) {
+      toast({ title: "Temporarily Unavailable", description: "Subscription is temporarily unavailable. Please try again later.", variant: "destructive" });
+      return;
+    }
     setLoading(true);
     try {
       const payload = {
@@ -29,14 +33,12 @@ export function NewsletterCapture({ variant = "inline", sourcePage = "unknown" }
         sourcePage,
         createdAt: new Date().toISOString(),
       };
-      if (WEBHOOK) {
-        const res = await fetch(WEBHOOK, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) throw new Error("Subscription failed");
-      }
+      const res = await fetch(WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Subscription failed");
       setSuccess(true);
       toast({ title: "Subscribed!", description: "You'll receive monthly home maintenance alerts." });
       setEmail("");

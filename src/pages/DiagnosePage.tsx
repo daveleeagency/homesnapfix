@@ -117,6 +117,9 @@ export default function DiagnosePage() {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
       const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 60000);
+
       const res = await fetch(`${supabaseUrl}/functions/v1/analyze`, {
         method: "POST",
         headers: {
@@ -124,7 +127,9 @@ export default function DiagnosePage() {
           apikey: supabaseKey,
         },
         body: formData,
+        signal: controller.signal,
       });
+      clearTimeout(timeout);
 
       if (!res.ok) {
         const errBody = await res.json().catch(() => null);
@@ -161,9 +166,15 @@ export default function DiagnosePage() {
       // Gate 3: All clear
       await navigateToResults(data);
     } catch (err: any) {
+      const isAbort = err?.name === "AbortError";
+      const isNetwork = err?.message === "Failed to fetch";
       toast({
-        title: "Analysis Error",
-        description: err?.message || "Could not analyze the photo. Please try again.",
+        title: isAbort ? "Request Timed Out" : "Analysis Error",
+        description: isAbort
+          ? "The analysis took too long. Please try again with a clearer photo."
+          : isNetwork
+          ? "Could not connect to the analysis service. Please check your internet connection and try again."
+          : err?.message || "Could not analyze the photo. Please try again.",
         variant: "destructive",
       });
     } finally {

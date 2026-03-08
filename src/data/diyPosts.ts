@@ -25,7 +25,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Hairline to structural cracks — learn when to patch and when to call a pro.",
     readingTime: "6 min",
     difficulty: "Easy",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Hairline cracks along seams or corners",
       "Diagonal cracks near windows or doors",
@@ -45,10 +45,10 @@ export const diyPosts: DIYPost[] = [
       { step: 5, title: "Prime and paint", description: "Apply primer over the repair, then paint to match the surrounding wall." },
     ],
     toolsNeeded: [
-      { name: "6-inch Drywall Knife", affiliateLink: "#affiliate-drywall-knife", price: "$8" },
-      { name: "Joint Compound", affiliateLink: "#affiliate-joint-compound", price: "$12" },
-      { name: "Fiberglass Mesh Tape", affiliateLink: "#affiliate-mesh-tape", price: "$5" },
-      { name: "120-grit Sandpaper", affiliateLink: "#affiliate-sandpaper", price: "$4" },
+      { name: "6-inch Drywall Knife", affiliateLink: "", price: "$8" },
+      { name: "Joint Compound", affiliateLink: "", price: "$12" },
+      { name: "Fiberglass Mesh Tape", affiliateLink: "", price: "$5" },
+      { name: "120-grit Sandpaper", affiliateLink: "", price: "$4" },
     ],
     safetyNotes: [
       "Wear a dust mask when sanding.",
@@ -72,7 +72,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Identify the source, stop the leak, and restore your ceiling or wall.",
     readingTime: "7 min",
     difficulty: "Medium",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Yellow or brown discoloration on ceiling or walls",
       "Peeling or bubbling paint",
@@ -93,9 +93,9 @@ export const diyPosts: DIYPost[] = [
       { step: 5, title: "Repaint", description: "Once primer is dry, repaint with matching ceiling or wall paint." },
     ],
     toolsNeeded: [
-      { name: "Stain-blocking Primer", affiliateLink: "#affiliate-primer", price: "$14" },
-      { name: "Paint Roller", affiliateLink: "#affiliate-roller", price: "$9" },
-      { name: "Drop Cloth", affiliateLink: "#affiliate-drop-cloth", price: "$6" },
+      { name: "Stain-blocking Primer", affiliateLink: "", price: "$14" },
+      { name: "Paint Roller", affiliateLink: "", price: "$9" },
+      { name: "Drop Cloth", affiliateLink: "", price: "$6" },
     ],
     safetyNotes: [
       "Check for mold before painting — if present, treat mold first.",
@@ -119,7 +119,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Trace the leak, apply temporary repairs, and know when you need professional help.",
     readingTime: "8 min",
     difficulty: "Hard",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Water dripping from ceiling during rain",
       "Water stains on attic rafters",
@@ -139,10 +139,10 @@ export const diyPosts: DIYPost[] = [
       { step: 4, title: "Replace damaged shingles", description: "Lift surrounding shingles, remove nails, slide out damaged shingle, and install replacement." },
     ],
     toolsNeeded: [
-      { name: "Roofing Cement", affiliateLink: "#affiliate-roof-cement", price: "$8" },
-      { name: "Replacement Shingles", affiliateLink: "#affiliate-shingles", price: "$25" },
-      { name: "Pry Bar", affiliateLink: "#affiliate-pry-bar", price: "$10" },
-      { name: "Roofing Nails", affiliateLink: "#affiliate-roofing-nails", price: "$6" },
+      { name: "Roofing Cement", affiliateLink: "", price: "$8" },
+      { name: "Replacement Shingles", affiliateLink: "", price: "$25" },
+      { name: "Pry Bar", affiliateLink: "", price: "$10" },
+      { name: "Roofing Nails", affiliateLink: "", price: "$6" },
     ],
     safetyNotes: [
       "Never walk on a wet roof.",
@@ -167,7 +167,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Spot the early signs of wood decay and learn when boards need replacing.",
     readingTime: "7 min",
     difficulty: "Medium",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Soft or spongy spots in deck boards",
       "Discolored or darkened wood",
@@ -188,10 +188,10 @@ export const diyPosts: DIYPost[] = [
       { step: 5, title: "Seal the deck", description: "Apply a waterproof deck sealant or stain to all surfaces to prevent future rot." },
     ],
     toolsNeeded: [
-      { name: "Deck Screws", affiliateLink: "#affiliate-deck-screws", price: "$12" },
-      { name: "Wood Hardener", affiliateLink: "#affiliate-wood-hardener", price: "$15" },
-      { name: "Deck Sealant", affiliateLink: "#affiliate-deck-sealant", price: "$28" },
-      { name: "Circular Saw", affiliateLink: "#affiliate-circular-saw", price: "$60" },
+      { name: "Deck Screws", affiliateLink: "", price: "$12" },
+      { name: "Wood Hardener", affiliateLink: "", price: "$15" },
+      { name: "Deck Sealant", affiliateLink: "", price: "$28" },
+      { name: "Circular Saw", affiliateLink: "", price: "$60" },
     ],
     safetyNotes: [
       "Wear gloves when handling treated lumber.",
@@ -215,7 +215,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Diagnose airflow, thermostat, and efficiency issues before calling a technician.",
     readingTime: "8 min",
     difficulty: "Medium",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Uneven heating or cooling in rooms",
       "System runs constantly but house stays uncomfortable",
@@ -235,9 +235,9 @@ export const diyPosts: DIYPost[] = [
       { step: 4, title: "Clean outdoor unit", description: "Remove debris, leaves, and dirt from around the outdoor condenser unit. Keep 2 feet of clearance." },
     ],
     toolsNeeded: [
-      { name: "Replacement Air Filter", affiliateLink: "#affiliate-air-filter", price: "$12" },
-      { name: "Thermostat", affiliateLink: "#affiliate-thermostat", price: "$25" },
-      { name: "Coil Cleaner Spray", affiliateLink: "#affiliate-coil-cleaner", price: "$10" },
+      { name: "Replacement Air Filter", affiliateLink: "", price: "$12" },
+      { name: "Thermostat", affiliateLink: "", price: "$25" },
+      { name: "Coil Cleaner Spray", affiliateLink: "", price: "$10" },
     ],
     safetyNotes: [
       "Always turn off the system before inspecting internal components.",
@@ -261,7 +261,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Learn which cracks are cosmetic and which need structural attention.",
     readingTime: "7 min",
     difficulty: "Hard",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Visible cracks in foundation walls",
       "Doors or windows that stick or won't close",
@@ -281,9 +281,9 @@ export const diyPosts: DIYPost[] = [
       { step: 4, title: "Manage landscaping", description: "Keep large trees and shrubs at least 10 feet from the foundation." },
     ],
     toolsNeeded: [
-      { name: "Epoxy Injection Kit", affiliateLink: "#affiliate-epoxy-kit", price: "$30" },
-      { name: "Caulk Gun", affiliateLink: "#affiliate-caulk-gun", price: "$8" },
-      { name: "Gutter Extensions", affiliateLink: "#affiliate-gutter-ext", price: "$12" },
+      { name: "Epoxy Injection Kit", affiliateLink: "", price: "$30" },
+      { name: "Caulk Gun", affiliateLink: "", price: "$8" },
+      { name: "Gutter Extensions", affiliateLink: "", price: "$12" },
     ],
     safetyNotes: [
       "Foundation repair can affect structural integrity — proceed with caution.",
@@ -308,7 +308,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Safely diagnose common outlet problems and know when to call an electrician.",
     readingTime: "6 min",
     difficulty: "Easy",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Outlet has no power",
       "Outlet sparks when plugging in devices",
@@ -328,10 +328,10 @@ export const diyPosts: DIYPost[] = [
       { step: 4, title: "Replace the outlet", description: "Turn off breaker. Remove cover plate and outlet. Disconnect wires. Connect new outlet and reassemble." },
     ],
     toolsNeeded: [
-      { name: "Outlet Tester", affiliateLink: "#affiliate-outlet-tester", price: "$12" },
-      { name: "Screwdriver Set", affiliateLink: "#affiliate-screwdrivers", price: "$10" },
-      { name: "Replacement Outlet", affiliateLink: "#affiliate-outlet", price: "$3" },
-      { name: "Voltage Detector", affiliateLink: "#affiliate-voltage-detector", price: "$18" },
+      { name: "Outlet Tester", affiliateLink: "", price: "$12" },
+      { name: "Screwdriver Set", affiliateLink: "", price: "$10" },
+      { name: "Replacement Outlet", affiliateLink: "", price: "$3" },
+      { name: "Voltage Detector", affiliateLink: "", price: "$18" },
     ],
     safetyNotes: [
       "ALWAYS turn off the breaker before working on any outlet.",
@@ -357,7 +357,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Recognize mold types, safely remove small patches, and prevent recurrence.",
     readingTime: "8 min",
     difficulty: "Medium",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Visible black, green, or white fuzzy patches",
       "Musty odor in room",
@@ -378,10 +378,10 @@ export const diyPosts: DIYPost[] = [
       { step: 5, title: "Prevent recurrence", description: "Fix the moisture source, improve ventilation, and consider mold-resistant paint." },
     ],
     toolsNeeded: [
-      { name: "N95 Respirator Mask", affiliateLink: "#affiliate-n95", price: "$8" },
-      { name: "White Vinegar (gallon)", affiliateLink: "#affiliate-vinegar", price: "$4" },
-      { name: "Scrub Brush", affiliateLink: "#affiliate-scrub-brush", price: "$6" },
-      { name: "Dehumidifier", affiliateLink: "#affiliate-dehumidifier", price: "$180" },
+      { name: "N95 Respirator Mask", affiliateLink: "", price: "$8" },
+      { name: "White Vinegar (gallon)", affiliateLink: "", price: "$4" },
+      { name: "Scrub Brush", affiliateLink: "", price: "$6" },
+      { name: "Dehumidifier", affiliateLink: "", price: "$180" },
     ],
     safetyNotes: [
       "Never mix bleach with ammonia-based cleaners.",
@@ -407,7 +407,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Stop the drip and save water with a simple washer or cartridge replacement.",
     readingTime: "5 min",
     difficulty: "Easy",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Constant dripping from faucet spout",
       "Water pooling around the faucet base",
@@ -425,9 +425,9 @@ export const diyPosts: DIYPost[] = [
       { step: 4, title: "Reassemble and test", description: "Install new parts, reassemble in reverse order, turn water back on, and check for leaks." },
     ],
     toolsNeeded: [
-      { name: "Adjustable Wrench", affiliateLink: "#affiliate-wrench", price: "$10" },
-      { name: "Faucet Repair Kit", affiliateLink: "#affiliate-faucet-kit", price: "$8" },
-      { name: "Plumber's Grease", affiliateLink: "#affiliate-plumber-grease", price: "$5" },
+      { name: "Adjustable Wrench", affiliateLink: "", price: "$10" },
+      { name: "Faucet Repair Kit", affiliateLink: "", price: "$8" },
+      { name: "Plumber's Grease", affiliateLink: "", price: "$5" },
     ],
     safetyNotes: [
       "Always turn off the water supply before disassembly.",
@@ -450,7 +450,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "A running toilet can waste 200+ gallons a day. Fix it in under 30 minutes.",
     readingTime: "5 min",
     difficulty: "Easy",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Toilet runs continuously after flushing",
       "Toilet turns on and off randomly (phantom flush)",
@@ -469,9 +469,9 @@ export const diyPosts: DIYPost[] = [
       { step: 4, title: "Replace the flapper", description: "Turn off water, flush to empty tank, unhook old flapper, install new one. Turn water back on." },
     ],
     toolsNeeded: [
-      { name: "Universal Flapper", affiliateLink: "#affiliate-flapper", price: "$5" },
-      { name: "Fill Valve Kit", affiliateLink: "#affiliate-fill-valve", price: "$10" },
-      { name: "Adjustable Pliers", affiliateLink: "#affiliate-pliers", price: "$9" },
+      { name: "Universal Flapper", affiliateLink: "", price: "$5" },
+      { name: "Fill Valve Kit", affiliateLink: "", price: "$10" },
+      { name: "Adjustable Pliers", affiliateLink: "", price: "$9" },
     ],
     safetyNotes: [
       "Turn off the water supply valve before replacing parts.",
@@ -494,7 +494,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Prevent water damage, foundation issues, and roof leaks with regular gutter maintenance.",
     readingTime: "6 min",
     difficulty: "Medium",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Water overflowing from gutters during rain",
       "Sagging or pulling-away gutters",
@@ -515,10 +515,10 @@ export const diyPosts: DIYPost[] = [
       { step: 5, title: "Inspect and repair", description: "Look for loose brackets, holes, or rust. Re-secure brackets and patch small holes with gutter sealant." },
     ],
     toolsNeeded: [
-      { name: "Gutter Scoop", affiliateLink: "#affiliate-gutter-scoop", price: "$7" },
-      { name: "Extension Ladder", affiliateLink: "#affiliate-ladder", price: "$150" },
-      { name: "Gutter Sealant", affiliateLink: "#affiliate-gutter-sealant", price: "$6" },
-      { name: "Work Gloves", affiliateLink: "#affiliate-gloves", price: "$10" },
+      { name: "Gutter Scoop", affiliateLink: "", price: "$7" },
+      { name: "Extension Ladder", affiliateLink: "", price: "$150" },
+      { name: "Gutter Sealant", affiliateLink: "", price: "$6" },
+      { name: "Work Gloves", affiliateLink: "", price: "$10" },
     ],
     safetyNotes: [
       "Never lean a ladder against the gutter — it can bend or break.",
@@ -543,7 +543,7 @@ export const diyPosts: DIYPost[] = [
     excerpt: "Seal air leaks, reduce energy bills, and keep moisture out with proper caulking.",
     readingTime: "5 min",
     difficulty: "Easy",
-    heroImage: "/placeholder.svg",
+    heroImage: "",
     symptoms: [
       "Drafts felt near windows or doors",
       "Visible gaps or cracked caulk around frames",
@@ -563,10 +563,10 @@ export const diyPosts: DIYPost[] = [
       { step: 4, title: "Let it cure", description: "Allow 24 hours for full cure. Do not paint or disturb during this time." },
     ],
     toolsNeeded: [
-      { name: "Silicone Caulk", affiliateLink: "#affiliate-caulk", price: "$6" },
-      { name: "Caulk Gun", affiliateLink: "#affiliate-caulk-gun-2", price: "$8" },
-      { name: "Caulk Removal Tool", affiliateLink: "#affiliate-caulk-remover", price: "$5" },
-      { name: "Rubbing Alcohol", affiliateLink: "#affiliate-alcohol", price: "$3" },
+      { name: "Silicone Caulk", affiliateLink: "", price: "$6" },
+      { name: "Caulk Gun", affiliateLink: "", price: "$8" },
+      { name: "Caulk Removal Tool", affiliateLink: "", price: "$5" },
+      { name: "Rubbing Alcohol", affiliateLink: "", price: "$3" },
     ],
     safetyNotes: [
       "Use caulk in well-ventilated areas.",

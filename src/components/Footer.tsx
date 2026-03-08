@@ -58,8 +58,8 @@ export function Footer() {
             electrical hazards, contact a licensed professional immediately.
           </p>
           <p className="text-xs text-muted-foreground">
-            <strong>Affiliate Disclosure:</strong> Some links may be affiliate links. We may earn a
-            commission at no extra cost to you.
+            <strong>Product Links:</strong> Product suggestions are for reference only. We do not
+            currently earn commissions on product links.
           </p>
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} HomeSnapFix. All rights reserved.

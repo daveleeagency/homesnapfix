@@ -91,16 +91,27 @@ export default function DIYArticle() {
 
           {/* Tools */}
           <Card className="mt-4">
-            <CardHeader><CardTitle className="text-lg">Tools & Materials</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="text-lg">Tools &amp; Materials</CardTitle></CardHeader>
             <CardContent>
               <div className="grid gap-3 sm:grid-cols-2">
-                {post.toolsNeeded.map((t, i) => (
-                  <a key={i} href={t.affiliateLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between rounded-lg border p-3 transition-colors hover:bg-muted/50">
-                    <span className="flex items-center gap-2 text-sm font-medium text-foreground">{t.name} <ExternalLink className="h-3 w-3 text-muted-foreground" /></span>
-                    <span className="text-sm text-muted-foreground">{t.price}</span>
-                  </a>
-                ))}
+                {post.toolsNeeded.map((t, i) => {
+                  const hasRealLink = t.affiliateLink && !t.affiliateLink.startsWith("#") && t.affiliateLink !== "";
+                  return hasRealLink ? (
+                    <a key={i} href={t.affiliateLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between rounded-lg border p-3 transition-colors hover:bg-muted/50">
+                      <span className="flex items-center gap-2 text-sm font-medium text-foreground">{t.name} <ExternalLink className="h-3 w-3 text-muted-foreground" /></span>
+                      <span className="text-sm text-muted-foreground">{t.price}</span>
+                    </a>
+                  ) : (
+                    <div key={i} className="flex items-center justify-between rounded-lg border p-3 bg-muted/10">
+                      <span className="text-sm font-medium text-foreground">{t.name}</span>
+                      <span className="text-sm text-muted-foreground">{t.price}</span>
+                    </div>
+                  );
+                })}
               </div>
+              <p className="mt-3 text-xs text-muted-foreground italic">
+                Product suggestions are for reference. Search your preferred retailer for best prices.
+              </p>
             </CardContent>
           </Card>
 
