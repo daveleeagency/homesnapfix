@@ -136,7 +136,7 @@ export default function DiagnosePage() {
       // Gate 1: Invalid image
       if (data.image_valid === false) {
         setImageError(
-          `This photo doesn't appear to be a home issue (it looks like: ${data.image_label}). Please upload a photo of the affected home area (ceiling stain, leak, outlet, HVAC unit, pipe, roof, etc.).`
+          `Our AI detected: "${data.image_label}." This doesn't appear to be a home-related issue — HomeSnapFix only diagnoses problems inside or around your home (plumbing, roofing, electrical, HVAC, etc.). Please upload a photo of the affected area.`
         );
         setLoading(false);
         // Scroll to error banner
