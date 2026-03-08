@@ -139,6 +139,10 @@ export default function DiagnosePage() {
           `This photo doesn't appear to be a home issue (it looks like: ${data.image_label}). Please upload a photo of the affected home area (ceiling stain, leak, outlet, HVAC unit, pipe, roof, etc.).`
         );
         setLoading(false);
+        // Scroll to error banner
+        setTimeout(() => {
+          document.getElementById("image-error-banner")?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
         return;
       }
 
@@ -250,7 +254,7 @@ export default function DiagnosePage() {
 
           {/* Image Error Banner */}
           {imageError && (
-            <Alert variant="destructive" className="mt-6">
+            <Alert id="image-error-banner" variant="destructive" className="mt-6 animate-in fade-in slide-in-from-top-2 border-2 border-destructive shadow-lg">
               <AlertOctagon className="h-4 w-4" />
               <AlertTitle>Invalid Photo</AlertTitle>
               <AlertDescription>
