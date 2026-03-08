@@ -374,7 +374,25 @@ export default function DiagnosePage() {
                 )}
               </Button>
 
-              {mode === "select" && !selectedIssue && file && (
+              {imageError && (
+                <Alert variant="destructive" className="mt-4">
+                  <AlertOctagon className="h-4 w-4" />
+                  <AlertTitle>Photo not serviceable</AlertTitle>
+                  <AlertDescription>
+                    <p className="mb-3">{imageError}</p>
+                    <div className="flex flex-wrap gap-2">
+                      <Button size="sm" variant="outline" onClick={clearPhoto}>
+                        Upload a Different Photo
+                      </Button>
+                      <Button size="sm" variant="ghost" onClick={() => navigate(-1)}>
+                        Back
+                      </Button>
+                    </div>
+                  </AlertDescription>
+                </Alert>
+              )}
+
+              {mode === "select" && !selectedIssue && file && !imageError && (
                 <p className="mt-2 text-center text-xs text-muted-foreground">
                   Select an issue above to continue, or{" "}
                   <button onClick={() => setMode("ai_detect")} className="text-primary underline">
