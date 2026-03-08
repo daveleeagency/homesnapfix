@@ -17,20 +17,7 @@ const damageLabels: Record<string, string> = {
   mechanical: "Mechanical", electrical: "Electrical", cosmetic: "Cosmetic",
 };
 
-const fallback: DiagnosisResponse = {
-  analysis_id: "demo",
-  issue_detected: "Sample Issue",
-  probable_causes: ["Sample cause"],
-  summary: "This is a sample report.",
-  diy_steps: [{ step: 1, title: "Step 1", description: "Do the thing." }],
-  when_to_call_pro: ["Call a pro if needed"],
-  product_links: [],
-  risk: { risk_score: 50, risk_level: "Moderate", urgency: "Schedule repair within 1–2 weeks", safety_warnings: [] },
-  insurance: { insurance_flag: false, likelihood_tier: "Maintenance", reason: "Not covered.", disclaimer_required: true },
-  warranty: { warranty_likely: false, explanation: "" },
-  geo_notice: null,
-  global_disclaimer: "This AI tool provides informational guidance only.",
-};
+// No fallback — require real data
 
 function RiskGauge({ score }: { score: number }) {
   const color = score >= 80 ? "#ef4444" : score >= 60 ? "#f97316" : score >= 35 ? "#eab308" : "#22c55e";
@@ -59,8 +46,26 @@ function RiskGauge({ score }: { score: number }) {
 export default function ReportPage() {
   const { analysisId } = useParams();
   const location = useLocation();
-  const data: DiagnosisResponse & { cause_type?: string; damage_type?: string } =
-    (location.state as any) || fallback;
+  const data: (DiagnosisResponse & { cause_type?: string; damage_type?: string }) | null =
+    (location.state as any) || null;
+
+  if (!data) {
+    return (
+      <Layout>
+        <section className="py-20 text-center">
+          <div className="container max-w-lg">
+            <h1 className="font-serif text-2xl font-bold text-foreground">Report Not Available</h1>
+            <p className="mt-2 text-muted-foreground">
+              This report is no longer available. Please run a new diagnosis to generate a fresh report.
+            </p>
+            <Button asChild className="mt-6">
+              <Link to="/diagnose">Start New Diagnosis</Link>
+            </Button>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
 
   const handlePrint = () => window.print();
 

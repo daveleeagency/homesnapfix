@@ -20,16 +20,18 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!WEBHOOK) {
+      toast({ title: "Temporarily Unavailable", description: "Contact form is temporarily unavailable. Please try again later.", variant: "destructive" });
+      return;
+    }
     setLoading(true);
     try {
-      if (WEBHOOK) {
-        const res = await fetch(WEBHOOK, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ type: "contact", ...form, createdAt: new Date().toISOString() }),
-        });
-        if (!res.ok) throw new Error("Failed");
-      }
+      const res = await fetch(WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "contact", ...form, createdAt: new Date().toISOString() }),
+      });
+      if (!res.ok) throw new Error("Failed");
       setSubmitted(true);
     } catch {
       toast({ title: "Error", description: "Could not send message. Please try again.", variant: "destructive" });
