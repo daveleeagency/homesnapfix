@@ -325,12 +325,12 @@ export default function BlogArticle() {
                         {blogCategories[related.category].label}
                       </Badge>
                       <CardTitle className="line-clamp-2 font-serif text-lg">
-                        <Link
-                          to={`/blog/${related.slug}`}
+                        <a
+                          href={`/blog/${related.slug}`}
                           className="hover:text-primary transition-colors"
                         >
                           {related.title}
-                        </Link>
+                        </a>
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
