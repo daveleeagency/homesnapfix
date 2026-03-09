@@ -204,7 +204,7 @@ export default function DiagnosePage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-yellow-600" />
+              <AlertTriangle className="h-5 w-5 text-destructive" />
               Photo Mismatch Detected
             </DialogTitle>
             <DialogDescription className="pt-2 text-sm leading-relaxed">
