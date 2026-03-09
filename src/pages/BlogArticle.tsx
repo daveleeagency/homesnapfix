@@ -287,24 +287,24 @@ export default function BlogArticle() {
             {/* Navigation */}
             <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:justify-between">
               {prevPost ? (
-                <Link
-                  to={`/blog/${prevPost.slug}`}
+                <a
+                  href={`/blog/${prevPost.slug}`}
                   className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
                 >
                   <ChevronLeft className="h-4 w-4" />
                   <span className="line-clamp-1">{prevPost.title}</span>
-                </Link>
+                </a>
               ) : (
                 <div />
               )}
               {nextPost && (
-                <Link
-                  to={`/blog/${nextPost.slug}`}
+                <a
+                  href={`/blog/${nextPost.slug}`}
                   className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground sm:text-right"
                 >
                   <span className="line-clamp-1">{nextPost.title}</span>
                   <ChevronRight className="h-4 w-4" />
-                </Link>
+                </a>
               )}
             </div>
           </div>
@@ -325,12 +325,12 @@ export default function BlogArticle() {
                         {blogCategories[related.category].label}
                       </Badge>
                       <CardTitle className="line-clamp-2 font-serif text-lg">
-                        <Link
-                          to={`/blog/${related.slug}`}
+                        <a
+                          href={`/blog/${related.slug}`}
                           className="hover:text-primary transition-colors"
                         >
                           {related.title}
-                        </Link>
+                        </a>
                       </CardTitle>
                     </CardHeader>
                     <CardContent>

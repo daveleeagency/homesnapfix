@@ -101,8 +101,7 @@ export default function BlogIndex() {
           {/* Featured Article */}
           {featuredPost && selectedCategory === "all" && searchQuery === "" && (
             <Card className="mb-12 overflow-hidden border-primary/20 bg-gradient-to-br from-primary/5 to-background">
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="p-6 md:p-8">
+              <div className="p-6 md:p-8 lg:p-10">
                   <div className="mb-4 flex items-center gap-2">
                     <Badge className="bg-primary/90">
                       <Star className="mr-1 h-3 w-3" />
@@ -117,7 +116,7 @@ export default function BlogIndex() {
                       {featuredPost.title}
                     </Link>
                   </h2>
-                  <p className="mb-4 text-muted-foreground">{featuredPost.excerpt}</p>
+                  <p className="mb-4 max-w-2xl text-muted-foreground">{featuredPost.excerpt}</p>
                   <div className="mb-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
@@ -137,15 +136,6 @@ export default function BlogIndex() {
                       <ChevronRight className="ml-1 h-4 w-4" />
                     </Link>
                   </Button>
-                </div>
-                <div className="hidden items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5 p-8 md:flex">
-                  <div className="text-center">
-                    <div className="mb-2 text-5xl font-bold text-primary/20">🏠</div>
-                    <div className="text-lg font-medium text-muted-foreground">
-                      Spot Damage Early, Save Thousands
-                    </div>
-                  </div>
-                </div>
               </div>
             </Card>
           )}
