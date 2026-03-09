@@ -50,6 +50,24 @@ const data: IssueDetailData = {
   ],
   safety: "Always turn off the water supply before working on pressurized connections. Mold behind cabinets can be a health concern — if you see widespread mold, wear a mask and gloves and consider professional remediation.",
   insurance: "Most homeowner policies do not cover gradual plumbing leaks or the cost of fixing the leaking pipe itself. However, resulting water damage to floors, walls, or ceilings from a sudden failure may be covered. Document the damage with photos before starting cleanup.",
+  faqs: [
+    {
+      q: "Is a drip under the sink an emergency?",
+      a: "Usually not, but don't let it sit. Even a slow drip can cause mold inside the cabinet, rot the cabinet bottom, and damage subfloor material over time. Address it within a few days.",
+    },
+    {
+      q: "How do I find exactly where the drip is coming from?",
+      a: "Dry everything under the sink with a towel, then run water for a minute and watch carefully. You can also place dry paper towels under the pipes — wherever they get wet points to the source. A drip that only appears when water is running is drain-side; one that drips constantly is supply-side.",
+    },
+    {
+      q: "Can I fix a dripping P-trap myself?",
+      a: "Usually yes. P-traps are held by slip-joint nuts that can be loosened by hand or with pliers. If the gasket inside is worn, replacement P-trap kits cost under $15 at any hardware store. Just have a bucket ready — there will be water in the trap.",
+    },
+    {
+      q: "What does it mean if the area under my sink always smells musty?",
+      a: "A persistent musty smell usually means moisture has been present long enough for mold or mildew to grow — on the cabinet interior, in the drain connections, or behind the cabinet wall. Clean visible mold with a mold-killing product, fix the drip, and leave the cabinet doors open to dry out.",
+    },
+  ],
   relatedIssues: [
     { label: "Plumbing Leaks", href: "/issues/plumbing" },
     { label: "Water Around Water Heater", href: "/issues/water-around-water-heater" },

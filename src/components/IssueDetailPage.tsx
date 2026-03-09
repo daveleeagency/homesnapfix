@@ -4,6 +4,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
   Camera,
   ArrowRight,
@@ -27,6 +28,7 @@ export interface IssueDetailData {
   callPro: string[];
   safety?: string;
   insurance?: string;
+  faqs?: { q: string; a: string }[];
   relatedIssues: { label: string; href: string }[];
   parentCategory: { label: string; href: string };
 }
@@ -42,6 +44,16 @@ export function IssueDetailPage({ data }: { data: IssueDetailData }) {
     ],
   };
 
+  const faqSchema = data.faqs && data.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: data.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: { "@type": "Answer", text: faq.a },
+    })),
+  } : null;
+
   return (
     <Layout>
       <SEOHead title={data.seoTitle} description={data.seoDescription} />
@@ -49,6 +61,12 @@ export function IssueDetailPage({ data }: { data: IssueDetailData }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <section className="py-12 md:py-20">
         <div className="container max-w-4xl">
@@ -182,6 +200,27 @@ export function IssueDetailPage({ data }: { data: IssueDetailData }) {
                 <span><strong className="text-foreground">Insurance Relevance:</strong> {data.insurance}</span>
               </p>
             </div>
+          )}
+
+          {/* FAQs */}
+          {data.faqs && data.faqs.length > 0 && (
+            <section className="mt-10">
+              <h2 className="font-serif text-xl font-bold text-foreground md:text-2xl">
+                Frequently Asked Questions
+              </h2>
+              <Accordion type="single" collapsible className="mt-4 w-full">
+                {data.faqs.map((faq, i) => (
+                  <AccordionItem key={i} value={`faq-${i}`}>
+                    <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </section>
           )}
 
           {/* Related Issues */}

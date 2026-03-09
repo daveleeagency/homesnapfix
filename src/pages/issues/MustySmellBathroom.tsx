@@ -23,7 +23,7 @@ const data: IssueDetailData = {
     "Failed caulk or grout — gaps around the tub, shower, or floor allow water to seep behind surfaces",
     "Condensation — poor insulation in exterior bathroom walls trapping moisture",
     "Wet materials — towels, bath mats, or damp clothing stored in a poorly ventilated space",
-    "P-trap evaporation — in rarely used bathrooms, the P-trap can dry out allowing sewer gas (a different but sometimes similar smell) into the room",
+    "P-trap evaporation — in rarely used bathrooms, the P-trap can dry out allowing sewer gas into the room",
   ],
   urgency: {
     text: "A musty smell is not an emergency, but persistent mold exposure can aggravate allergies and respiratory conditions. Address it within days to weeks, not months.",
@@ -50,6 +50,24 @@ const data: IssueDetailData = {
   ],
   safety: "When cleaning mold, wear gloves and a mask (N95 or better). Do not mix bleach with ammonia-based cleaners. If mold covers a large area or is behind walls, professional remediation is recommended — disturbing large mold colonies can release spores into the air.",
   insurance: "Homeowners insurance typically does not cover mold caused by ongoing moisture or deferred maintenance. If the mold resulted from a sudden covered event — like a burst pipe — the resulting mold remediation may be partially covered. Check your policy for mold exclusions and coverage limits.",
+  faqs: [
+    {
+      q: "What causes a musty bathroom smell even when it looks clean?",
+      a: "The most common culprits are mold growing inside the exhaust fan housing, on the back of drywall, inside grout or caulk, or under bathroom flooring. You don't always need to see mold to have it. If cleaning visible surfaces doesn't resolve the smell, the source is likely hidden.",
+    },
+    {
+      q: "How long should I run the bathroom exhaust fan?",
+      a: "Run it during your shower and for at least 30 minutes afterward. A timer switch — which automatically runs the fan for a set period after you leave — is a simple, inexpensive upgrade that significantly reduces bathroom moisture and mold risk.",
+    },
+    {
+      q: "Can I fix a musty bathroom smell myself?",
+      a: "Often yes. Clean visible mold on tile, grout, and caulk with a mold-killing product. Re-caulk around the tub and shower. Ensure the exhaust fan is working and vented outside. If the smell persists after all visible surfaces are clean and ventilation is improved, the source may be inside the walls and worth a professional look.",
+    },
+    {
+      q: "Could a musty bathroom smell be sewer gas instead of mold?",
+      a: "It could. Sewer gas from a dried-out P-trap (common in rarely used sinks or floor drains) has a distinct rotten-egg or sulfur smell, while mold smells earthy and musty. Run water down any rarely used drain for a minute to refill the trap. If the smell disappears, that was the culprit.",
+    },
+  ],
   relatedIssues: [
     { label: "Mold & Moisture", href: "/issues/mold-moisture" },
     { label: "Peeling Paint from Moisture", href: "/issues/peeling-paint-moisture" },

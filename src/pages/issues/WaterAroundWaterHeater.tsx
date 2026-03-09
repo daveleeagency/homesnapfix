@@ -50,6 +50,24 @@ const data: IssueDetailData = {
   ],
   safety: "If your water heater is gas-fired and you smell gas, leave the area immediately and call your gas utility's emergency line. Do not flip switches, light matches, or use your phone near the unit. For electric water heaters, turn off the breaker before investigating a leak to avoid electrocution risk from standing water.",
   insurance: "A burst water heater that causes sudden flooding may be covered by homeowners insurance for the resulting water damage (not the unit itself). Gradual leaks from deferred maintenance are typically excluded. If your tank shows signs of failure, replacing it proactively avoids both the flood risk and potential claim complications.",
+  faqs: [
+    {
+      q: "Is water around my water heater always a serious problem?",
+      a: "Not always. A small amount of condensation on the outside of the tank or cold-water pipes is normal in humid conditions. But a puddle forming under the unit, or water visibly dripping from the tank or fittings, should be investigated — it usually signals a real leak that won't resolve on its own.",
+    },
+    {
+      q: "My water heater is leaking from the bottom. Do I need to replace it?",
+      a: "Usually yes, if the leak is from the tank seam itself — not the drain valve. A leak at the base of the tank typically means the internal lining has corroded through. These leaks worsen quickly and cannot be repaired. Turn off the cold water supply to the heater and call a plumber promptly.",
+    },
+    {
+      q: "Should I turn off my water heater if it's leaking?",
+      a: "If there's an active leak, shut off the cold water supply to the heater — the shutoff valve is usually on the pipe entering the top of the unit. For a gas heater, turn the dial to 'Pilot.' For an electric heater, turn off the breaker. This limits the water that can enter the tank and reduces flooding risk.",
+    },
+    {
+      q: "What is the T&P relief valve and why is it leaking?",
+      a: "The temperature and pressure (T&P) relief valve is a safety device that opens to release pressure if the tank overheats or over-pressurizes. Occasional dripping can be normal. Frequent or continuous discharge indicates the tank pressure or temperature is too high — a potentially dangerous condition that should be inspected by a plumber.",
+    },
+  ],
   relatedIssues: [
     { label: "Plumbing Leaks", href: "/issues/plumbing" },
     { label: "Dripping Under Sink", href: "/issues/dripping-under-sink" },

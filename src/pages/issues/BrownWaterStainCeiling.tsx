@@ -51,6 +51,24 @@ const data: IssueDetailData = {
   ],
   safety: "If the ceiling is sagging or bulging, stay clear of the area — water-logged drywall can collapse suddenly. If water is near electrical fixtures, turn off the circuit at the breaker before investigating. Never ignore a ceiling stain near a light fixture or ceiling fan.",
   insurance: "Homeowners insurance may cover ceiling damage from sudden events like a burst pipe or storm-related roof leak. Gradual leaks from deferred maintenance or long-term wear are typically not covered. Document the stain with photos and timestamps before making repairs, and contact your insurer promptly if you believe the cause was sudden or accidental.",
+  faqs: [
+    {
+      q: "Is a brown ceiling stain dangerous?",
+      a: "The stain itself isn't dangerous, but what caused it may be. An ongoing or unresolved leak can promote mold growth, weaken drywall, and rot structural wood. A stain that is dry, stable, and hasn't grown in weeks is low priority. A stain that's wet, growing, or near electrical fixtures needs prompt investigation.",
+    },
+    {
+      q: "Can I just paint over a ceiling water stain?",
+      a: "Only after confirming the leak is completely resolved. Painting over an active or unresolved stain will bleed through within days. Use a shellac-based or oil-based stain-blocking primer, let it dry fully, then repaint. Latex primer alone rarely holds.",
+    },
+    {
+      q: "How do I tell if a ceiling leak is still active?",
+      a: "Mark the edge of the stain with pencil and date it. Check back in a few days — if it's grown, water is still entering. You can also press gently on the drywall: a soft or spongy texture means moisture is present. A dry, firm surface suggests the leak may have stopped.",
+    },
+    {
+      q: "Will homeowners insurance cover a water-stained ceiling?",
+      a: "It depends on the cause. Sudden events — burst pipe, storm-related roof damage — are often covered. Gradual leaks from deferred maintenance typically are not. Document with dated photos before making repairs and call your insurer before starting any work if you think it may be a covered loss.",
+    },
+  ],
   relatedIssues: [
     { label: "Roof Leak", href: "/issues/roofing" },
     { label: "Soft Spot on Ceiling", href: "/issues/soft-spot-ceiling" },

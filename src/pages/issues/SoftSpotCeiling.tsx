@@ -7,7 +7,7 @@ const data: IssueDetailData = {
   seoDescription: "A soft or spongy spot on your ceiling means water damage is weakening the drywall. Learn how serious it is, what causes it, and when to call a professional.",
   heading: "Soft Spot on Your Ceiling",
   bluf: "If your ceiling feels soft, spongy, or gives when you press on it, water has saturated the drywall and weakened it structurally. This is more serious than a stain — saturated drywall can sag and eventually collapse. Stop pressing on it, identify the water source from above, and call a professional if the affected area is large, growing, or near electrical fixtures. The soft area will need to be cut out and replaced after the leak is resolved.",
-  meaning: "Drywall is made of gypite core with paper faces. When water saturates it, the gypsum dissolves and the paper delaminates, losing all structural rigidity. A soft spot means the saturation has been ongoing or the volume of water was significant. Unlike a dry stain — which indicates a past leak — a soft spot means the damage is active or very recent.",
+  meaning: "Drywall is made of gypsum core with paper faces. When water saturates it, the gypsum dissolves and the paper delaminates, losing all structural rigidity. A soft spot means the saturation has been ongoing or the volume of water was significant. Unlike a dry stain — which indicates a past leak — a soft spot means the damage is active or very recent.",
   symptoms: [
     "Ceiling gives or flexes when pressed gently with a finger",
     "Visible sagging or bulging in the ceiling surface",
@@ -47,8 +47,26 @@ const data: IssueDetailData = {
     "The damage covers a large area or spans multiple rooms",
     "You suspect the water source is a roof leak or a plumbing line inside the wall or floor",
   ],
-  safety: "Do not stand directly under a sagging or bulging ceiling — waterlogged drywall weighing 30+ pounds can collapse without warning. If water is near any electrical fixture, turn off the circuit at the breaker panel before entering the room. Do not attempt to drain a bulging ceiling yourself unless you can safely control where the water falls.",
+  safety: "Do not stand directly under a sagging or bulging ceiling — waterlogged drywall can collapse without warning. If water is near any electrical fixture, turn off the circuit at the breaker panel before entering the room. Do not attempt to drain a bulging ceiling yourself unless you can safely control where the water falls.",
   insurance: "Sudden water damage from a burst pipe or storm is often covered by homeowners insurance. The key factor is whether the damage was sudden versus gradual. A roof leak that has been dripping for months may not be covered, but a pipe that failed suddenly usually is. Document everything with photos and video before cleanup begins.",
+  faqs: [
+    {
+      q: "What does a soft or spongy ceiling mean?",
+      a: "It means the drywall has been saturated with water. Wet drywall loses its structural integrity and can sag or collapse if enough water accumulates. A soft spot is more serious than a stain — it indicates active or very recent water intrusion, and the source needs to be found and fixed before any repair.",
+    },
+    {
+      q: "Is a soft spot in the ceiling dangerous?",
+      a: "It can be. A heavily waterlogged ceiling section can collapse without much warning, especially if pooled water has accumulated above it. Avoid standing directly under a sagging or noticeably soft area. If there's a large visible bulge, you can carefully puncture it with a screwdriver to drain it in a controlled way before it collapses on its own.",
+    },
+    {
+      q: "Do I need to replace the whole ceiling?",
+      a: "Not necessarily. If the affected area is small and the surrounding drywall is dry and undamaged, you can cut out and replace only the damaged section after the leak is resolved. Larger areas or damage that has caused mold growth typically require more extensive repairs by a contractor.",
+    },
+    {
+      q: "How long does it take for wet ceiling drywall to dry?",
+      a: "Standard 1/2-inch drywall takes 3–5 days to dry under good conditions (airflow, dehumidifier running). Drywall that's been wet for more than 24–48 hours in warm conditions may already have mold developing and should usually be replaced rather than dried in place.",
+    },
+  ],
   relatedIssues: [
     { label: "Brown Water Stain on Ceiling", href: "/issues/brown-water-stain-ceiling" },
     { label: "Roofing Issues", href: "/issues/roofing" },
