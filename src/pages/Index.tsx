@@ -26,6 +26,40 @@ import {
   DollarSign,
 } from "lucide-react";
 
+/* ── FAQ Data ── */
+const homepageFaqs = [
+  {
+    q: "What is HomeSnapFix?",
+    a: "HomeSnapFix is a free tool that lets homeowners upload a photo of a home problem — like a crack, leak, water stain, or HVAC symptom — and receive an AI-assisted assessment. It estimates severity, explains likely causes, and helps you decide whether to fix it yourself or hire a professional. It is not a licensed home inspection.",
+  },
+  {
+    q: "How accurate is the AI photo assessment?",
+    a: "The AI assessment is designed to help you understand what you're likely dealing with and what questions to ask — not to replace a professional inspection. It works best on visible, surface-level damage shown in a clear, well-lit photo. Treat the results as an informed starting point, not a final diagnosis.",
+  },
+  {
+    q: "Is HomeSnapFix free to use?",
+    a: "Yes. The photo assessment tool is completely free. You can upload a photo, receive a severity estimate, and download a basic report — no account required.",
+  },
+  {
+    q: "What types of home issues can HomeSnapFix assess?",
+    a: "The tool can assess a wide range of visible home problems: water stains, drywall or foundation cracks, mold and moisture signs, roof damage, electrical warning signs, HVAC symptoms, and exterior damage. It works best on clear, well-lit photos of the affected area.",
+  },
+  {
+    q: "When should I use HomeSnapFix before calling a contractor?",
+    a: "Any time you're unsure whether an issue is urgent, DIY-fixable, or worth a service call. The assessment helps you understand what you may be dealing with before spending money on a professional visit — and helps you ask better questions when you do.",
+  },
+];
+
+const homepageFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homepageFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
+
 /* ── Data ── */
 
 const trustPoints = [

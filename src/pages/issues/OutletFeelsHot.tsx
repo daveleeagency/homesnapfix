@@ -51,6 +51,24 @@ const data: IssueDetailData = {
   ],
   safety: "Electrical fires are a leading cause of house fires. If you see sparks, smell burning, or notice scorch marks, turn off the breaker for that circuit immediately and do not reset it until a licensed electrician has inspected it. If you are unsure which breaker controls the outlet, turn off the main breaker.",
   insurance: "Homeowners insurance typically covers fire damage, including damage caused by electrical faults. However, insurers may deny claims if the fire resulted from known but unrepaired electrical hazards. Document any outlet issues and repair them promptly.",
+  faqs: [
+    {
+      q: "Is it normal for an outlet to feel slightly warm?",
+      a: "A faint warmth during heavy use — like a space heater or vacuum running — is borderline acceptable. An outlet that feels noticeably hot, or that is warm when nothing demanding is plugged in, is not normal. Unplug devices and investigate.",
+    },
+    {
+      q: "Can a hot outlet cause a fire?",
+      a: "Yes. Heat building up in outlet wiring is a leading cause of residential electrical fires — many of which start inside walls and go undetected until significant damage has occurred. A hot outlet is a symptom that should be investigated, not ignored or worked around.",
+    },
+    {
+      q: "What should I do right now if my outlet feels hot?",
+      a: "Unplug everything from that outlet. If it feels very hot, smells burnt, or the surrounding wall is warm, turn off the circuit at the breaker. Do not use that outlet again until a licensed electrician has inspected it — even if it seems to 'work fine.'",
+    },
+    {
+      q: "Could the device I'm plugging in be causing the heat, not the outlet?",
+      a: "Sometimes. A faulty appliance can heat up the plug and make the outlet face feel warm. Unplug the device and check if the outlet cools down within a few minutes. If the outlet still feels warm with nothing plugged in, the issue is in the wiring or the outlet itself.",
+    },
+  ],
   relatedIssues: [
     { label: "Electrical Warning Signs", href: "/issues/electrical" },
     { label: "HVAC Blowing Warm Air", href: "/issues/hvac-blowing-warm-air" },

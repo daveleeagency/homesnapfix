@@ -51,6 +51,24 @@ const data: IssueDetailData = {
   ],
   safety: "Hairline foundation cracks are not a safety hazard on their own. However, significant foundation movement can compromise the structure of the house over time. If you see signs of active movement — bowing walls, sloping floors, multiple new cracks — get a structural engineer's evaluation, not just a foundation repair company's sales assessment.",
   insurance: "Homeowners insurance almost never covers foundation cracks from settling, shrinkage, or normal soil movement. Some policies may cover sudden foundation damage from a plumbing failure that washes out soil beneath the footing, but this is uncommon. Read your policy's 'earth movement' and 'settling' exclusions carefully.",
+  faqs: [
+    {
+      q: "How do I know if a foundation crack is serious?",
+      a: "Width and direction are the key indicators. Cracks under 1/16 inch (thinner than a credit card edge) are usually cosmetic. Cracks wider than 1/4 inch, horizontal cracks, stair-step cracks in block walls, or any crack that's visibly growing deserve professional evaluation. A crack that has been unchanged for years is almost always stable.",
+    },
+    {
+      q: "Should I seal a foundation crack myself?",
+      a: "A dry, stable hairline crack can be sealed with hydraulic cement or a polyurethane crack filler to prevent water infiltration and radon entry. But sealing a crack that's still moving or has an underlying structural cause won't fix the problem — it may just hide it. Monitor new cracks for 2–3 months before sealing to confirm they're stable.",
+    },
+    {
+      q: "Can foundation cracks let water into my basement?",
+      a: "Yes. Even hairline cracks in poured concrete can allow water to seep through, especially under hydrostatic pressure after heavy rain or snowmelt. Efflorescence (white chalky mineral deposits) near a crack indicates past water movement. Sealants help, but significant water intrusion may require drainage improvements outside the foundation.",
+    },
+    {
+      q: "How fast do foundation cracks grow?",
+      a: "It varies greatly. A crack from normal settling may stay stable for years or even decades. A crack caused by expanding clay soil, tree root pressure, or drainage problems may grow noticeably over months. Mark the ends of any crack you're monitoring with pencil and a date, and measure width. Check monthly.",
+    },
+  ],
   relatedIssues: [
     { label: "Foundation & Cracks", href: "/issues/foundation-cracks" },
     { label: "Cracked Drywall Above Door", href: "/issues/cracked-drywall-above-door" },

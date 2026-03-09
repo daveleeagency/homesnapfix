@@ -51,6 +51,24 @@ const data: IssueDetailData = {
   ],
   safety: "Never attempt to recharge refrigerant yourself — it requires EPA certification and specialized equipment. If you smell burning near the HVAC system, turn it off at the breaker and call a technician.",
   insurance: "HVAC repairs and refrigerant recharges are maintenance costs and not covered by homeowners insurance. Some home warranty plans cover HVAC mechanical failures — check your warranty if you have one.",
+  faqs: [
+    {
+      q: "What's the first thing to check if my AC is blowing warm air?",
+      a: "Check the thermostat — confirm it's set to 'cool' (not 'fan only' or 'heat') and the target temperature is below the current room temperature. Then check the air filter and the breaker for the outdoor condenser unit. These three checks resolve the issue a surprising percentage of the time.",
+    },
+    {
+      q: "Can a dirty air filter really cause the AC to blow warm air?",
+      a: "Yes. A severely clogged filter restricts airflow so much that the evaporator coil can freeze over. Once frozen, it cannot absorb heat, so air comes out warm or room temperature. Replace the filter, switch the system to 'fan only' to let the coil thaw (a few hours), then restart in 'cool' mode.",
+    },
+    {
+      q: "How do I know if I'm low on refrigerant?",
+      a: "Signs of low refrigerant: the AC runs constantly but barely cools, ice forms on the refrigerant lines or indoor coil, or you hear a faint hissing near the unit. Refrigerant doesn't 'run out' — if it's low, there's a leak. You cannot add refrigerant yourself; it requires EPA certification.",
+    },
+    {
+      q: "My AC worked fine yesterday. Why is it blowing warm air today?",
+      a: "Sudden failures are often a tripped breaker on the outdoor unit, a thermostat that changed modes, or a failed capacitor — the most common single-component failure in an AC unit. A capacitor replacement is a quick, inexpensive repair that a technician can usually complete in under an hour.",
+    },
+  ],
   relatedIssues: [
     { label: "HVAC Problems", href: "/issues/hvac" },
     { label: "Electrical Warning Signs", href: "/issues/electrical" },

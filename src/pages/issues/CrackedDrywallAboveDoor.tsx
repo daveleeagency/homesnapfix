@@ -51,6 +51,24 @@ const data: IssueDetailData = {
   ],
   safety: "Drywall cracks themselves are not a safety hazard. However, if you suspect foundation movement, avoid ignoring it — progressive structural shifting can become a major safety and financial issue over time.",
   insurance: "Homeowners insurance generally does not cover foundation settling or cosmetic drywall cracks. Some policies cover sudden structural damage caused by events like plumbing failures that wash out soil under the foundation. Check your policy for exclusions related to 'earth movement' or 'settling.'",
+  faqs: [
+    {
+      q: "Why do cracks appear specifically above doors and windows?",
+      a: "Door and window openings are breaks in the wall structure. The concentrated stress of normal house movement — settling, seasonal expansion — tends to appear at the corners of these openings first. A diagonal crack from an upper corner is very common and usually cosmetic.",
+    },
+    {
+      q: "Are diagonal cracks above doors a sign of foundation problems?",
+      a: "They can be, but usually aren't. A single diagonal crack that hasn't changed over months is most likely settling or wood movement. Warning signs of something more serious: the crack is wider than 1/4 inch, multiple cracks are appearing simultaneously, doors or windows are now sticking, or the floor near the crack feels uneven.",
+    },
+    {
+      q: "How do I know if the crack is getting worse?",
+      a: "Mark the ends of the crack with pencil lines and write the date. Check monthly. A static crack isn't growing; an active crack is. You can also stick a small piece of tape across the crack — if the tape tears over the following weeks, the crack is still moving.",
+    },
+    {
+      q: "Can I fix this crack myself?",
+      a: "For a stable hairline settling crack, yes. Widen slightly with a utility knife, apply fiberglass mesh tape, apply two thin coats of joint compound, sand smooth, prime, and paint. If the crack is wide, actively growing, or associated with a sticking door, get a professional assessment before patching.",
+    },
+  ],
   relatedIssues: [
     { label: "Foundation Cracks", href: "/issues/foundation-cracks" },
     { label: "Hairline Foundation Crack", href: "/issues/hairline-foundation-crack" },
