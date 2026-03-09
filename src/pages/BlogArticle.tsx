@@ -273,15 +273,14 @@ export default function BlogArticle() {
             <div className="mt-12 rounded-lg border bg-secondary/30 p-6">
               <h3 className="mb-2 font-semibold text-foreground">About This Article</h3>
               <p className="text-sm text-muted-foreground">
-                This article is part of HomeSnapFix's educational resource library. Our content is
-                researched and written to help homeowners and home service businesses understand
-                organic search, AI visibility, and content strategy. We focus on practical guidance
-                without hype or jargon.
+                This article is part of HomeSnapFix's homeowner resource library. Our content is
+                researched and written to help homeowners identify issues, understand repair options,
+                and make informed decisions. We focus on practical, honest guidance.
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
-                <strong>Disclaimer:</strong> This is educational content, not professional marketing
-                or SEO consulting advice. Results vary based on implementation, competition, and
-                many other factors.
+                <strong>Disclaimer:</strong> This is educational content, not a substitute for
+                professional inspection or repair advice. Every home situation is different —
+                when in doubt, consult a licensed professional.
               </p>
             </div>
 

@@ -13,3280 +13,1896 @@ export interface BlogPost {
 }
 
 export type BlogCategory =
-  | "search-discovery"
-  | "content-quality-trust"
-  | "technical-seo-schema"
-  | "ai-search-llm"
-  | "ux-cwv-formatting"
-  | "video-media";
+  | "water-damage-leaks"
+  | "roof-ceiling"
+  | "hvac-air"
+  | "cracks-walls-foundation"
+  | "mold-moisture"
+  | "electrical"
+  | "diy-vs-pro"
+  | "home-maintenance"
+  | "repair-guides";
 
 export const blogCategories: Record<BlogCategory, { label: string; description: string }> = {
-  "search-discovery": {
-    label: "Search Discovery",
-    description: "How users and AI systems find home service content",
+  "water-damage-leaks": {
+    label: "Water Damage & Leaks",
+    description: "Identifying, assessing, and addressing water damage in your home",
   },
-  "content-quality-trust": {
-    label: "Content Quality & Trust",
-    description: "Building E-E-A-T and topical authority for home repair sites",
+  "roof-ceiling": {
+    label: "Roof & Ceiling Issues",
+    description: "Spotting roof leaks, ceiling stains, and structural ceiling problems",
   },
-  "technical-seo-schema": {
-    label: "Technical SEO & Schema",
-    description: "Structured data, entities, and technical foundations",
+  "hvac-air": {
+    label: "HVAC & Air Problems",
+    description: "Troubleshooting heating, cooling, and air quality issues",
   },
-  "ai-search-llm": {
-    label: "AI Search & LLM Visibility",
-    description: "Positioning for AI-powered search and retrieval systems",
+  "cracks-walls-foundation": {
+    label: "Cracks, Walls & Foundation",
+    description: "Understanding wall cracks, foundation issues, and structural concerns",
   },
-  "ux-cwv-formatting": {
-    label: "UX, CWV & Formatting",
-    description: "Core Web Vitals, content formatting, and user experience",
+  "mold-moisture": {
+    label: "Mold & Moisture",
+    description: "Dealing with mold, mildew, and excess moisture in your home",
   },
-  "video-media": {
-    label: "Video & Media",
-    description: "Video SEO and media optimization for home service brands",
+  "electrical": {
+    label: "Electrical Warning Signs",
+    description: "Recognizing electrical hazards and knowing when to call an electrician",
+  },
+  "diy-vs-pro": {
+    label: "DIY vs Call a Pro",
+    description: "Knowing when you can handle it yourself and when to hire help",
+  },
+  "home-maintenance": {
+    label: "Home Maintenance",
+    description: "Preventive care, seasonal checklists, and keeping your home in good shape",
+  },
+  "repair-guides": {
+    label: "Repair Guides",
+    description: "Step-by-step guidance for common home repairs",
   },
 };
 
 export const blogPosts: BlogPost[] = [
   // PILLAR ARTICLE
   {
-    slug: "2026-organic-search-playbook-home-service-websites",
-    title: "The 2026 Organic Search Playbook for Home Service Websites: SEO, AEO, GEO, E-E-A-T, Schema, CWV, and AI Search",
-    metaDescription: "A comprehensive guide to organic search visibility for home service websites in 2026. Covers SEO, AEO, GEO, E-E-A-T, schema markup, Core Web Vitals, and AI search optimization.",
-    category: "search-discovery",
-    publishDate: "2026-03-01",
-    updatedDate: "2026-03-09",
-    readingTime: 18,
+    slug: "homeowner-guide-to-spotting-home-damage-early",
+    title: "The Homeowner's Guide to Spotting Home Damage Early — Before Small Problems Become Expensive Repairs",
+    metaDescription: "Learn how to identify early warning signs of water damage, foundation issues, roof leaks, mold, and HVAC problems before they become costly repairs. Practical advice for every homeowner.",
+    category: "home-maintenance",
+    publishDate: "2026-02-15",
+    updatedDate: "2026-03-08",
+    readingTime: 16,
     featured: true,
     isPillar: true,
-    excerpt: "Everything home service websites need to know about organic search in 2026—from traditional SEO to AI-powered discovery, structured data, and building genuine trust.",
+    excerpt: "Most expensive home repairs start as small, easy-to-miss warning signs. This guide walks you through what to look for in every part of your home — ceilings, walls, floors, plumbing, roofing, and HVAC — so you can catch problems early and save thousands.",
     content: `
 ## The Short Answer
 
-If you run a home service website in 2026, organic search is still your most valuable traffic source—but the game has changed. You now need to optimize for traditional search engines, AI-powered answer engines, generative search experiences, and large language models that might cite your content in conversational responses.
+Most major home repairs — the kind that cost thousands — start as something small. A faint stain on the ceiling. A hairline crack near a door frame. A musty smell that comes and goes. The homeowners who catch these signs early spend far less on repairs than those who wait until something fails visibly.
 
-This playbook covers everything: SEO fundamentals, Answer Engine Optimization (AEO), Generative Engine Optimization (GEO), E-E-A-T signals, schema markup, Core Web Vitals, and positioning for AI search. We'll keep it practical and focused on what actually matters for home repair and home service businesses.
-
----
-
-## Why Organic Search Still Matters for Home Services
-
-Home repair decisions are high-stakes. When a homeowner discovers a water stain on their ceiling or notices their HVAC isn't cooling properly, they search online. They want answers fast, and they want to trust the source.
-
-Paid advertising works, but organic traffic has three advantages:
-
-1. **Lower cost per acquisition over time** — Once you rank, you don't pay per click.
-2. **Higher trust signals** — Users often trust organic results more than ads.
-3. **Compound returns** — Good content keeps working for years.
-
-The challenge is that "ranking" now means appearing in traditional search results, AI-generated summaries, featured snippets, knowledge panels, and LLM-powered assistants. Your content needs to work across all of these surfaces.
+This guide covers the most common early warning signs organized by area of the house, what each sign usually means, when you can handle it yourself, and when it's time to call a professional.
 
 ---
 
-## Understanding the Alphabet Soup: SEO, AEO, GEO, LLMO
+## Why Early Detection Matters
 
-Let's demystify the acronyms.
+Here's a pattern we see repeatedly: a homeowner notices a small water stain on the ceiling, assumes it's cosmetic, and paints over it. Six months later, the drywall is sagging and there's mold growing behind it. What could have been a $200 repair is now a $3,000 problem.
 
-### SEO (Search Engine Optimization)
-
-Traditional SEO focuses on ranking in search engine results pages (SERPs). For home service sites, this means:
-
-- Optimizing page titles, meta descriptions, and headings
-- Building relevant backlinks
-- Creating useful, comprehensive content
-- Ensuring technical health (fast load times, mobile-friendly design, crawlable structure)
-
-SEO isn't dead—it's foundational. Everything else builds on it.
-
-### AEO (Answer Engine Optimization)
-
-AEO focuses on getting your content featured in answer boxes, featured snippets, and voice search results. The key is formatting content so search engines can extract direct answers.
-
-For a home repair site, this might mean:
-
-- Starting sections with a clear, concise answer
-- Using structured lists for step-by-step instructions
-- Including FAQ sections with specific questions and brief answers
-
-### GEO (Generative Engine Optimization)
-
-GEO is about appearing in AI-generated search summaries—like Google's AI Overviews or Bing's Copilot responses. These systems synthesize information from multiple sources.
-
-To position for GEO:
-
-- Write content that's factually clear and easy to quote
-- Include specific, verifiable details
-- Structure content with clear topic segments
-- Avoid fluffy introductions that waste the AI's context window
-
-### LLMO (Large Language Model Optimization)
-
-LLMO is the newest frontier. LLMs like ChatGPT, Claude, and Gemini are increasingly used for research. While they don't always cite sources, they can—and when they do, you want to be cited.
-
-LLMO strategies include:
-
-- Creating comprehensive, authoritative content on specific topics
-- Using clear entity definitions (what exactly is the topic about?)
-- Being quotable—write sentences that work as standalone facts
-- Building topical authority across multiple related articles
+Early detection isn't about being paranoid — it's about knowing what to look for so you can make informed decisions. Most of the warning signs in this guide take less than a minute to check.
 
 ---
 
-## E-E-A-T: The Trust Framework That Actually Matters
+## Water Damage Warning Signs
 
-E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness. Google uses it to evaluate content quality, especially for "Your Money or Your Life" (YMYL) topics—which includes home repair advice that could affect safety.
+Water is the single most destructive force in residential homes. It's also one of the sneakiest — water damage often hides behind walls, under floors, and above ceilings for weeks before you notice.
 
-### Experience
+### What to Watch For
 
-Do you have firsthand experience with the topic? For a home repair site, this might mean:
+- **Brown or yellowish stains on ceilings** — This almost always means water is reaching the drywall from above, whether from a roof leak, a burst pipe, or condensation from HVAC equipment. The stain shape often tells you something: a ring pattern suggests an intermittent leak; a spreading stain suggests an active one. [Learn more about ceiling stains](/issues/brown-water-stain-ceiling).
 
-- Photos from actual repair jobs (with permission)
-- Descriptions that reflect real-world conditions, not just textbook definitions
-- Acknowledgment of common complications homeowners encounter
+- **Warped or buckled flooring** — When hardwood or laminate flooring starts to cup, crown, or buckle, moisture is almost always the cause. Check for leaks from nearby plumbing fixtures, appliances, or foundation seepage.
 
-You don't need to fake credentials. Being honest about what you've actually dealt with builds more trust than claiming expertise you don't have.
+- **Peeling paint or bubbling wallpaper** — Paint doesn't peel on its own in a dry environment. If you see peeling, especially in bathrooms, kitchens, or along exterior walls, moisture is getting behind the surface. [Read about peeling paint and moisture](/issues/peeling-paint-moisture).
 
-### Expertise
+- **Dripping or pooling under sinks** — Open your under-sink cabinets and look. Dampness, warped cabinet floors, or a musty smell are signs of a slow leak that may have been dripping for a while. [Dripping under sink: what to check first](/issues/dripping-under-sink).
 
-Expertise means knowing your subject deeply. For home service content:
+- **Water around the base of your water heater** — Any pooling or dampness around a water heater is a warning sign. It may be a minor valve issue or an early sign of tank failure. [What to check if you see water near your water heater](/issues/water-around-water-heater).
 
-- Explain why certain repairs work, not just what to do
-- Address edge cases and when advice might not apply
-- Reference industry standards or manufacturer guidelines where relevant
+### When to Act
 
-### Authoritativeness
-
-Authority comes from external recognition:
-
-- Other reputable sites linking to your content
-- Mentions in industry publications
-- Consistent, high-quality content over time
-
-You can't manufacture authority overnight, but you can build it by being genuinely useful.
-
-### Trustworthiness
-
-Trust is the foundation. For home service sites:
-
-- Be transparent about limitations (you're providing information, not a licensed inspection)
-- Don't make safety claims you can't back up
-- Include clear contact information and business details
-- Don't hide behind fake author personas
+Small, isolated stains from a known event (like a one-time overflow) can often be monitored. But if a stain is growing, if you can't identify the source, or if you see water actively dripping, address it within days — not weeks.
 
 ---
 
-## Schema Markup: Speaking the Language of Search Engines
+## Roof and Ceiling Warning Signs
 
-Schema markup (structured data) helps search engines understand your content's meaning, not just its words. For home service sites, relevant schema types include:
+Your roof protects everything underneath it. When it starts to fail, the damage cascades downward through insulation, drywall, wiring, and framing.
 
-### HowTo Schema
+### What to Watch For
 
-For step-by-step repair guides:
+- **Missing, cracked, or curling shingles** — You can often spot these from the ground with binoculars. Missing shingles after a storm are obvious, but curling or cracking shingles indicate aging that will lead to leaks eventually. [More about roof issues](/issues/roofing).
 
-\`\`\`json
-{
-  "@type": "HowTo",
-  "name": "How to Check for Active Roof Leaks",
-  "step": [
-    {
-      "@type": "HowToStep",
-      "text": "Look for water stains on ceiling drywall, especially near roof penetrations."
-    }
-  ]
-}
-\`\`\`
+- **Granules in your gutters** — Asphalt shingles shed granules as they age. If you're finding significant amounts of granule buildup in gutters or at downspouts, the shingles are deteriorating and may need replacement within a few years.
 
-### FAQPage Schema
+- **Soft spots on the ceiling** — Press gently on any ceiling stain. If the drywall feels soft or spongy, water has been sitting there long enough to weaken the material. This needs attention soon. [Read about soft spots on ceilings](/issues/soft-spot-ceiling).
 
-For frequently asked questions:
+- **Daylight visible in the attic** — If you can see daylight coming through your roof boards when you're in the attic, water can get in too. Check for signs of moisture around those spots.
 
-\`\`\`json
-{
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Should I fix a small roof leak myself?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Small leaks from minor flashing issues may be DIY-appropriate..."
-      }
-    }
-  ]
-}
-\`\`\`
+- **Ice dams in winter** — If ice builds up along your roof edges and icicles form, it usually means warm air from the house is melting snow on the roof, which then refreezes at the eaves. This can force water under shingles.
 
-### LocalBusiness Schema
+### When to Act
 
-If you serve specific areas:
-
-\`\`\`json
-{
-  "@type": "LocalBusiness",
-  "name": "Your Business Name",
-  "areaServed": ["Austin, TX", "Round Rock, TX"]
-}
-\`\`\`
-
-### Article Schema
-
-For blog posts and educational content, helping search engines understand publication dates, authors, and topics.
-
-**Important**: Only use schema for information that's actually on the page. Don't add fake reviews, fake credentials, or structured data that doesn't match visible content.
+Active leaks during rain are urgent — [use a tarp if needed and call a roofer](/issues/roofing). Aging shingles and minor wear can usually wait for a scheduled inspection and repair, but don't wait more than a season.
 
 ---
 
-## Core Web Vitals: Speed and Stability
+## Foundation and Structural Warning Signs
 
-Core Web Vitals (CWV) are Google's metrics for page experience:
+Foundation issues cause more anxiety than almost any other home problem, partly because repairs can be expensive. The good news is that most cracks homeowners find are cosmetic or minor. Knowing the difference matters.
 
-- **Largest Contentful Paint (LCP)**: How fast the main content loads. Aim for under 2.5 seconds.
-- **Interaction to Next Paint (INP)**: How responsive the page is to user input. Aim for under 200 milliseconds.
-- **Cumulative Layout Shift (CLS)**: How stable the layout is during loading. Aim for under 0.1.
+### What to Watch For
 
-For content-heavy home service sites:
+- **Hairline cracks in basement walls or foundation** — Thin, vertical cracks (less than 1/16 inch wide) are extremely common and usually result from normal concrete curing and settling. They're worth monitoring but rarely serious. [Learn about hairline foundation cracks](/issues/hairline-foundation-crack).
 
-### Image Optimization
+- **Diagonal cracks at door and window corners** — These often appear above doors and windows, running at roughly 45 degrees. They usually indicate settling. If they're narrow and stable, they're typically cosmetic. If they're widening, get a structural opinion. [Read about cracked drywall above doors](/issues/cracked-drywall-above-door).
 
-- Use modern formats (WebP, AVIF)
-- Specify width and height to prevent layout shifts
-- Lazy-load images below the fold
-- Compress without destroying quality
+- **Sticking doors or windows** — A door that suddenly won't close properly could indicate shifting in the structure. One sticky door might just be seasonal humidity. Multiple doors and windows becoming difficult to operate suggests something structural may be moving.
 
-### Font Loading
+- **Gaps between walls and ceiling or floor** — Visible gaps opening between the wall surface and the ceiling or floor line can indicate settling or structural movement. Document the size and check again in a few months.
 
-- Use font-display: swap to prevent invisible text
-- Limit custom font weights and styles
-- Consider system fonts for body text
+- **Sloping or uneven floors** — All houses have some minor unevenness. But if you can feel a noticeable slope, or if a ball rolls consistently in one direction, it's worth investigating.
 
-### JavaScript Management
+### When to Act
 
-- Defer non-critical scripts
-- Avoid layout-blocking JavaScript
-- Test pages with JavaScript disabled to ensure content is accessible
-
-### Server Response
-
-- Use a CDN for static assets
-- Enable compression (Brotli or gzip)
-- Consider server-side rendering for critical content
+Hairline cracks in concrete can be monitored. Cracks wider than 1/4 inch, horizontal cracks in basement walls, or cracks that are visibly growing should be evaluated by a structural professional. [Visit our foundation guide](/issues/foundation-cracks).
 
 ---
 
-## Content Formatting: BLUF and SXO
+## Mold and Moisture Warning Signs
 
-### BLUF (Bottom Line Up Front)
+Mold is both a health concern and a sign of an underlying moisture problem. Getting rid of visible mold without fixing the moisture source means it will come back.
 
-Military communication style that puts the key point first. For web content:
+### What to Watch For
 
-**Instead of:**
-"There are many factors that can cause a ceiling to develop water stains, including roof leaks, plumbing issues, and condensation problems. In this article, we'll explore each of these causes and help you understand what might be happening in your home..."
+- **Musty smell in bathrooms or basements** — That distinctive "old house" smell is usually mold or mildew growing somewhere you can't see — behind walls, under flooring, or inside HVAC ducts. [Common causes of musty bathroom smells](/issues/musty-smell-bathroom).
 
-**Write:**
-"A brown water stain on your ceiling usually indicates an active or recent leak—most commonly from roof damage, plumbing failure, or HVAC condensation. Here's how to identify the source and what to do next."
+- **Visible mold on grout, caulk, or drywall** — Small patches of mold on bathroom grout or caulk are common and manageable. Mold on drywall is more concerning because it suggests moisture has penetrated the wall surface. [Visit our mold & moisture guide](/issues/mold-moisture).
 
-BLUF helps both users and AI systems. Users get their answer fast. AI systems can extract clear information for summaries.
+- **Condensation on windows** — Some condensation on cold mornings is normal. Persistent condensation, especially between double-pane windows, indicates a humidity problem or a failed window seal.
 
-### SXO (Search Experience Optimization)
+- **Peeling paint in wet areas** — When paint peels in bathrooms, laundry rooms, or kitchens, it's a sign that moisture is reaching the wall surface faster than it can dry. Ventilation is usually part of the solution. [Read about peeling paint and moisture](/issues/peeling-paint-moisture).
 
-SXO combines SEO with UX. The goal is satisfying user intent, not just ranking:
+### When to Act
 
-- Make content scannable with clear headings
-- Use bullet points for lists
-- Include visual breaks (images, callouts)
-- Provide clear next steps
-- Answer follow-up questions before users ask them
+Small surface mold on grout can be cleaned and prevented with better ventilation. Mold on drywall, persistent musty smells, or mold covering more than about 10 square feet should be addressed by a professional. [Learn more about mold and moisture](/issues/mold-moisture).
 
 ---
 
-## Zero-Click Search: When Users Don't Visit Your Site
+## HVAC Warning Signs
 
-Many searches now get answered directly in the SERP—through featured snippets, knowledge panels, or AI summaries. Users get their answer without clicking.
+Heating and cooling systems don't usually fail without warning. Catching early signs of trouble can prevent breakdowns during the worst possible weather.
 
-This seems bad for traffic, but there's a strategic response:
+### What to Watch For
 
-### Optimize for the Click-Worthy Queries
+- **HVAC blowing warm air when it should be cooling** — This could be as simple as a dirty filter or a tripped breaker, or as serious as a refrigerant leak or compressor failure. [Start with these first steps](/issues/hvac-blowing-warm-air).
 
-Some queries deserve direct answers ("What temperature should I set my thermostat?"). Others require deeper engagement ("How do I know if my foundation crack is serious?"). Focus your ranking efforts on queries where users need more than a snippet.
+- **Unusual noises** — Banging, squealing, or grinding sounds from your furnace or AC unit are not normal. They usually indicate a mechanical problem that will get worse if ignored.
 
-### Use Zero-Click as Brand Exposure
+- **Higher-than-usual energy bills** — If your energy usage spikes without a change in weather or habits, your HVAC system may be working harder than it should due to a failing component, duct leak, or dirty system.
 
-If your content appears in a featured snippet, users see your domain. Even without a click, you've built awareness. Structure content to win these positions for brand visibility.
+- **Rooms that won't heat or cool evenly** — One room that's always too hot or too cold often points to ductwork issues, an improperly sized system, or blocked vents. [Learn more about HVAC issues](/issues/hvac).
 
-### Create Content That Requires the Full Read
+### When to Act
 
-Comprehensive guides, diagnostic tools, and nuanced advice can't be fully summarized. Users need to visit to get the complete picture.
-
----
-
-## AI Search and RAG Positioning
-
-Retrieval-Augmented Generation (RAG) is how many AI systems incorporate external information. The AI retrieves relevant content, then generates a response based on it.
-
-### How to Position for RAG
-
-1. **Be the authoritative source** — RAG systems prioritize credible content
-2. **Use clear entity definitions** — Start articles by clearly defining what you're discussing
-3. **Include specific facts** — Numbers, measurements, and concrete details are more likely to be retrieved
-4. **Avoid ambiguity** — Write sentences that stand alone as clear statements
-5. **Update regularly** — Fresh content with recent dates may be prioritized
-
-### Managing Liability
-
-For home service content, RAG positioning comes with responsibility. If an AI quotes your advice, you want that advice to be sound:
-
-- Include appropriate disclaimers
-- Don't overstate DIY capabilities
-- Be clear about when professional help is needed
-- Avoid specific claims that could cause harm if taken out of context
+A complete failure to heat or cool is obviously urgent in extreme weather. Strange noises, short-cycling (turning on and off frequently), and rising energy bills should be investigated within a week or two.
 
 ---
 
-## Building Topical Authority
+## Electrical Warning Signs
 
-Topical authority means being recognized as a go-to source on a specific subject. For a home repair site, this might mean comprehensive coverage of:
+Electrical problems are the one category where caution is always the right approach. Electrical issues can cause fires, and most electrical work should be done by a licensed electrician.
 
-- Roofing issues (causes, diagnosis, repair, when to call a pro)
-- Plumbing problems (common leaks, water heater issues, drain problems)
-- HVAC troubleshooting (heating, cooling, air quality)
-- Electrical safety (warning signs, what's safe to DIY, when to call an electrician)
+### What to Watch For
 
-### The Cluster Model
+- **Outlets that feel warm to the touch** — An outlet that feels warm when nothing is plugged in, or unusually hot when something is, could indicate a wiring problem. [Read about hot outlets](/issues/outlet-feels-hot).
 
-Create pillar content (comprehensive guides) supported by cluster content (specific subtopics). Link them together:
+- **Frequent breaker trips** — A breaker that trips occasionally when you're running multiple high-draw appliances might just be overloaded. A breaker that trips repeatedly or without an obvious cause needs investigation.
 
-- **Pillar**: "Complete Guide to Roof Leak Diagnosis"
-- **Clusters**: "Brown Ceiling Stains: Causes and Solutions," "How to Find a Roof Leak from Inside the Attic," "Ice Dam Prevention and Repair"
+- **Flickering lights** — Occasional flickers during a storm are normal. Persistent flickering, especially in multiple rooms, can indicate loose wiring or an overloaded circuit. [Visit our electrical guide](/issues/electrical).
 
-Each cluster article links to the pillar, and the pillar links to clusters. This creates topical depth that search engines recognize.
+- **Burning smell near outlets or switches** — This is a serious warning sign. If you smell something burning near an outlet, switch, or electrical panel, stop using it immediately and call an electrician.
 
-### Information Gain
+- **Two-prong outlets throughout the house** — While not an immediate hazard, two-prong outlets indicate older wiring that may not be grounded. If the house was built before the 1960s and hasn't been rewired, a professional evaluation is worthwhile.
 
-Google values content that adds new information to a topic. Don't just rewrite what's already ranking. Add:
+### When to Act
 
-- Original observations from real experience
-- Specific details not covered elsewhere
-- Practical tips that go beyond the obvious
-- Honest assessments of what works and what doesn't
+Burning smells, sparking outlets, and outlets that feel hot are urgent — address them the same day. Flickering lights and frequent breaker trips should be investigated within a week. [Learn more about electrical warning signs](/issues/electrical).
 
 ---
 
-## Internal Linking Strategy
+## Plumbing Warning Signs
 
-Internal links serve three purposes:
+Plumbing problems have a way of starting small and escalating quickly. A drip today can be a flood next month.
 
-1. **Help users find related content**
-2. **Distribute page authority across your site**
-3. **Signal topic relationships to search engines**
+### What to Watch For
 
-### Best Practices
+- **Slow drains** — A single slow drain is usually a localized clog. Multiple slow drains at the same time could indicate a main sewer line issue.
 
-- Link from high-authority pages to important target pages
-- Use descriptive anchor text (not "click here")
-- Link contextually, where it helps the reader
-- Create logical navigation paths through related content
-- Update old content to link to new relevant articles
+- **Running toilet** — A toilet that runs intermittently or continuously is wasting water and usually needs a flapper or fill valve replacement — a straightforward DIY repair.
 
-### For Home Service Sites
+- **Low water pressure** — Sudden loss of water pressure could be a supply issue, a leak, or mineral buildup in pipes. Gradual loss over months often indicates pipe corrosion.
 
-- Link from blog posts to service pages where relevant
-- Link from diagnosis content to related repair guides
-- Cross-link between related issues (roof leaks → water damage → mold concerns)
-- Link to your diagnostic tools where they'd help users
+- **Water spots on the ceiling below a bathroom** — If you see a water stain on a ceiling and there's a bathroom directly above, the likely culprit is a failed wax ring, a supply line leak, or a drain connection issue. [Learn more about plumbing issues](/issues/plumbing).
+
+### When to Act
+
+Active leaks need immediate attention — turn off the water supply to the affected fixture if possible. Slow drains and running toilets can usually wait a few days but shouldn't be ignored for weeks.
 
 ---
 
-## Local SEO Considerations
+## How to Do a Quick Home Walk-Through
 
-If you serve specific geographic areas:
+You don't need to be an expert to catch most of these warning signs. A 15-minute walk-through once a season covers the basics:
 
-### Google Business Profile
+1. **Walk the perimeter outside** — Look for foundation cracks, gaps around windows, damaged siding, and gutters pulling away from the roofline.
 
-- Keep information accurate and complete
-- Add relevant categories
-- Post updates regularly
-- Respond to reviews professionally
+2. **Check the roof from the ground** — Use binoculars if needed. Look for missing shingles, sagging areas, or damaged flashing around chimneys and vents.
 
-### Local Content
+3. **Open every under-sink cabinet** — Look for dampness, warping, or musty smells.
 
-- Create location-specific service pages if you serve multiple areas
-- Include relevant local details in content where natural
-- Build local backlinks through community involvement
+4. **Look at every ceiling** — Scan for stains, cracks, or soft spots, especially below bathrooms and near exterior walls.
 
-### NAP Consistency
+5. **Test all doors and windows** — Note any that stick, won't latch, or have new gaps.
 
-Ensure your business Name, Address, and Phone are consistent across all directories and citations.
+6. **Check your water heater** — Look for pooling, rust, or dampness at the base.
 
----
+7. **Listen to your HVAC** — Turn it on and listen for unusual sounds. Check that all vents are blowing.
 
-## Measuring Success
-
-Track metrics that matter:
-
-### Traffic Metrics
-
-- Organic sessions and users
-- Pages per session
-- Time on page (for content quality)
-- Bounce rate (with context—high bounce isn't always bad)
-
-### Ranking Metrics
-
-- Keyword positions for target terms
-- Featured snippet appearances
-- SERP feature presence
-
-### Conversion Metrics
-
-- Contact form submissions
-- Tool usage (diagnosis completions)
-- Newsletter signups
-- Content downloads
-
-### AI Visibility (Emerging)
-
-- Brand mentions in AI responses (harder to track)
-- Citation appearances in AI-generated summaries
-- Referral traffic from AI platforms
+8. **Inspect your attic** — If accessible, look for daylight coming through the roof, signs of moisture, or pest activity.
 
 ---
 
-## Common Mistakes to Avoid
+## DIY vs Call a Pro: General Guidelines
 
-### Fake Expertise
+Not every problem needs a professional. Here's a general framework:
 
-Don't claim credentials you don't have. "Reviewed by a licensed contractor" requires an actual licensed contractor review. "Written by industry experts" requires actual experts.
+**Usually DIY-safe:**
+- Replacing caulk around tubs and sinks
+- Tightening a dripping supply line connection
+- Replacing a toilet flapper
+- Cleaning surface mold from grout
+- Replacing HVAC filters
+- Patching small drywall cracks
 
-### Keyword Stuffing
+**Usually needs a professional:**
+- Anything involving the electrical panel or wiring
+- Roof repairs (fall risk + waterproofing skill)
+- Foundation cracks wider than 1/4 inch
+- Mold covering more than 10 square feet
+- HVAC refrigerant issues
+- Main sewer line problems
 
-Natural language works better than forced keyword repetition. Write for humans; search engines will understand.
-
-### Neglecting Updates
-
-Outdated content loses ranking power. Review and update important pages at least annually.
-
-### Ignoring Technical Health
-
-Even great content won't rank if your site is slow, broken, or hard to crawl. Monitor Core Web Vitals and fix issues.
-
-### Chasing Algorithms Over Users
-
-Algorithm updates happen constantly. Sites that focus on genuinely helping users tend to weather changes better than sites chasing the latest ranking factor.
-
----
-
-## Implementation Checklist
-
-### Foundation
-
-- [ ] Technical SEO audit (crawlability, indexation, site structure)
-- [ ] Core Web Vitals optimization
-- [ ] Mobile usability verification
-- [ ] Schema markup implementation
-
-### Content
-
-- [ ] Pillar content for main topic areas
-- [ ] Supporting cluster articles
-- [ ] FAQ sections for common questions
-- [ ] Regular content calendar for updates
-
-### Trust Signals
-
-- [ ] Clear author/business information
-- [ ] Transparent disclaimers where appropriate
-- [ ] Accurate schema (no fake data)
-- [ ] Professional, consistent branding
-
-### AI Readiness
-
-- [ ] BLUF formatting for key answers
-- [ ] Clear entity definitions
-- [ ] Quotable, factual statements
-- [ ] Comprehensive topic coverage
+[Read more about when to DIY and when to call a pro](/blog/diy-or-call-a-pro-how-to-decide).
 
 ---
 
 ## Frequently Asked Questions
 
-### How long does it take to see results from organic search optimization?
+### How often should I inspect my home for damage?
 
-Expect 3-6 months for meaningful changes, longer for competitive terms. Some technical fixes show faster results; content authority builds over years.
+A thorough walk-through once per season (four times a year) is a good baseline. You should also do a targeted check after any major storm, heavy rain, or freeze/thaw cycle. Some items — like checking under sinks and testing smoke detectors — are worth doing monthly.
 
-### Should I focus on SEO or AI search optimization?
+### What's the most commonly missed warning sign?
 
-Both. Traditional SEO remains the foundation. AI search optimization builds on good SEO practices. You're not choosing between them.
+Under-sink leaks. Because the cabinet doors hide the plumbing, slow drips can go unnoticed for months. By the time the cabinet floor warps or you notice a smell, mold may have already started. Make it a habit to open those cabinet doors and look.
 
-### How do I know if my home service content qualifies as YMYL?
+### Should I worry about every small crack I find?
 
-If your advice could affect someone's safety, health, or finances if followed incorrectly, treat it as YMYL. Most home repair content falls into this category. Be careful about electrical, structural, and safety-related claims.
+No. Hairline cracks in drywall and concrete are extremely common and usually result from normal settling. The cracks to watch are ones that are wider than 1/8 inch, growing over time, horizontal (in foundation walls), or accompanied by other signs like sticking doors or uneven floors.
 
-### Do I need to hire an SEO agency?
+### How do I know if water damage is urgent?
 
-Not necessarily. Many home service businesses handle SEO internally with education and good tools. Agencies make sense for competitive markets or if you lack internal capacity.
+Active dripping or flowing water is always urgent — find the source and shut off the water supply if possible. Stains that are dry and not growing can usually be investigated at your own pace, but don't wait more than a week or two. If drywall feels soft or you see active mold growth, move quickly.
 
-### How often should I update my content?
+### Is it worth getting a professional home inspection even if nothing seems wrong?
 
-Review important pages at least once a year. Update when information changes, when you can add valuable new details, or when rankings decline.
-
-### Is link building still important?
-
-Yes, but focus on earning links through quality content rather than manipulative tactics. Guest posting on relevant industry sites, creating linkable resources, and being cited as a source all help.
+Yes, especially for homes older than 15 years. A professional inspector can catch issues in places you can't easily access — inside walls, on the roof surface, and in the HVAC system. Many problems that are expensive to fix at an advanced stage are cheap to address when caught early.
 
 ---
 
-## The Bottom Line
+## What to Do If You Find Something
 
-Organic search in 2026 requires a multi-surface approach. You need to rank in traditional results, appear in AI summaries, win featured snippets, and position for LLM citations—all while maintaining genuine trustworthiness.
-
-The good news: the fundamentals haven't changed. Create genuinely useful content. Be honest about your expertise. Help users solve real problems. Keep your site technically healthy. The specific tactics evolve, but sites that focus on value tend to win.
-
-For home service websites, the opportunity is significant. Homeowners need trustworthy information. If you provide it—clearly, honestly, and comprehensively—organic search will reward you.
-
----
-
-## Related Resources
-
-- [SEO vs AEO vs GEO vs LLMO: What Matters for Home Service Sites](/blog/seo-vs-aeo-vs-geo-vs-llmo-home-service-sites)
-- [How to Build E-E-A-T for a Home Repair Website](/blog/build-eeat-home-repair-website)
-- [Schema, Entities, and Knowledge Graph Basics](/blog/schema-entities-knowledge-graph-local-home-service)
-- [Core Web Vitals for Content-Rich Service Websites](/blog/core-web-vitals-service-websites)
-
-Start with the foundation: technical health, clear content, honest expertise. Build from there. The sites that win in 2026 will be the ones that genuinely help people—and make it easy for both humans and machines to understand that help.
-    `.trim(),
+1. **Don't panic.** Most of what homeowners find during inspections is minor or cosmetic.
+2. **Document it.** Take a photo with something for scale (a coin or ruler works). Note the date.
+3. **Identify the category.** Is it water, structural, electrical, or HVAC-related?
+4. **Check our issue guides.** HomeSnapFix has detailed guides for [plumbing issues](/issues/plumbing), [foundation concerns](/issues/foundation-cracks), [mold and moisture](/issues/mold-moisture), [electrical problems](/issues/electrical), [HVAC troubles](/issues/hvac), and [roof damage](/issues/roofing).
+5. **Use our diagnosis tool.** If you're not sure what you're looking at, [upload a photo for a free AI-assisted assessment](/diagnose).
+6. **Decide: DIY or pro?** Use our guides to help you decide, and if you need a contractor, [we can help you find one](/pros).
+`
   },
 
-  // SUPPORTING ARTICLE 1
+  // SUPPORTING ARTICLES
+
   {
-    slug: "seo-vs-aeo-vs-geo-vs-llmo-home-service-sites",
-    title: "SEO vs AEO vs GEO vs LLMO: What Matters for Home Service Sites in 2026",
-    metaDescription: "Understand the differences between SEO, AEO, GEO, and LLMO for home service websites. Learn which optimization strategies matter most and how to prioritize your efforts.",
-    category: "search-discovery",
-    publishDate: "2026-03-02",
-    readingTime: 10,
-    excerpt: "Four acronyms, one goal: getting found. Here's what SEO, AEO, GEO, and LLMO actually mean for home repair and home service websites—and how to prioritize your efforts.",
-    content: `
-## The Short Answer
-
-SEO, AEO, GEO, and LLMO all describe different ways people find content online. For home service sites in 2026, **you need all of them**—but they're not separate strategies. They're layers built on the same foundation: useful, well-structured content that answers real questions.
-
-Here's the breakdown:
-
-- **SEO** (Search Engine Optimization): Ranking in traditional search results
-- **AEO** (Answer Engine Optimization): Getting featured in answer boxes and voice search
-- **GEO** (Generative Engine Optimization): Appearing in AI-generated search summaries
-- **LLMO** (Large Language Model Optimization): Being cited by AI assistants like ChatGPT
-
-Let's get specific about what each means for your home service website.
-
----
-
-## SEO: The Foundation You Can't Skip
-
-Traditional SEO isn't going anywhere. When a homeowner searches "why is my ceiling leaking," Google still shows a list of web pages. Ranking well in that list still drives traffic.
-
-### What SEO Means for Home Service Sites
-
-**Technical basics:**
-- Fast-loading pages (Core Web Vitals matter)
-- Mobile-friendly design
-- Clean URL structure
-- Proper indexing and crawlability
-
-**Content fundamentals:**
-- Clear page titles and meta descriptions
-- Logical heading structure (H1, H2, H3)
-- Comprehensive coverage of your topic
-- Internal links between related content
-
-**Authority building:**
-- Quality backlinks from relevant sites
-- Consistent, helpful content over time
-- Clear business information and trust signals
-
-### The Home Service Angle
-
-For a home repair site, strong SEO means:
-- Ranking for problem queries ("water stain on ceiling causes")
-- Ranking for solution queries ("how to fix a small roof leak")
-- Ranking for decision queries ("should I call a plumber or fix it myself")
-
-You're competing with DIY sites, big publishers, and other local services. Good SEO gets you in the game.
-
----
-
-## AEO: Winning the Answer Box
-
-Answer Engine Optimization focuses on a specific SERP feature: the answer box (also called featured snippets). When Google directly answers a question at the top of results, that answer came from somewhere. AEO helps it come from you.
-
-### How Answer Boxes Work
-
-Google extracts content that directly answers the query. For "what causes brown ceiling stains," an answer box might show:
-
-> Brown ceiling stains are typically caused by water leaks from roof damage, plumbing failures, or HVAC condensation. Active leaks require immediate attention to prevent structural damage and mold growth.
-
-That answer appears above all other results. Massive visibility.
-
-### AEO Tactics for Home Service Content
-
-**Use BLUF formatting:**
-Start sections with the direct answer, then elaborate. Don't bury the key point under three paragraphs of context.
-
-**Answer specific questions clearly:**
-"How long does it take to fix a leaking faucet?"
-"Most faucet repairs take 30-60 minutes with basic tools. Cartridge replacements are fastest; valve seat repairs may take longer."
-
-**Format for extraction:**
-- Numbered lists for steps
-- Bullet points for multiple items
-- Concise paragraphs (40-60 words work well for extraction)
-
-**Include FAQ sections:**
-Dedicated Q&A sections are answer box magnets. Make questions specific and answers direct.
-
-### Voice Search Consideration
-
-Voice assistants use the same answer extraction. When someone asks Alexa "how do I know if my water heater is failing," the answer comes from featured-snippet-style content. AEO covers voice search automatically.
-
----
-
-## GEO: Appearing in AI Search Summaries
-
-Generative Engine Optimization targets AI-generated search experiences—like Google's AI Overviews. Instead of showing a list of links, the search engine generates a summary answer, citing sources within it.
-
-### How Generative Search Works
-
-The AI reads multiple pages, synthesizes the information, and presents a combined answer. Your content might be:
-- Directly quoted
-- Paraphrased with a citation
-- Used as background without explicit mention
-
-### GEO Tactics for Home Service Sites
-
-**Be quotable:**
-Write sentences that work as standalone facts. "Foundation cracks wider than 1/4 inch typically require professional evaluation" is more quotable than "foundation cracks can be concerning."
-
-**Include specific details:**
-Numbers, measurements, timeframes, and concrete examples are more likely to be pulled into summaries than vague guidance.
-
-**Cover topics comprehensively:**
-AI summaries draw from thorough sources. A 500-word overview loses to a 2000-word guide that covers edge cases.
-
-**Structure clearly:**
-Use descriptive headings that signal what each section covers. AI systems navigate content structure.
-
-**Stay accurate:**
-GEO rewards correct information. Getting cited for wrong information damages trust (and could get you demoted in future rankings).
-
-### The Citation Game
-
-Getting cited in an AI summary is valuable even if users don't click through. Your brand appears in the answer. Users who want more depth may click. And citation frequency likely influences future AI visibility.
-
----
-
-## LLMO: Being Cited by AI Assistants
-
-Large Language Model Optimization is the newest layer. ChatGPT, Claude, Gemini, and other AI assistants are increasingly used for research. When users ask "how do I diagnose a roof leak," these systems generate answers—sometimes citing sources.
-
-### How LLMs Use Web Content
-
-LLMs can:
-- Retrieve current information through web search
-- Reference content from their training data
-- Cite sources when instructed or when confident in the reference
-
-For home service sites, LLMO means positioning your content to be:
-1. Included in training data (by being widely linked and referenced)
-2. Retrieved in real-time searches (by ranking well conventionally)
-3. Cited when the AI generates answers (by being authoritative and clear)
-
-### LLMO Tactics
-
-**Build genuine authority:**
-LLMs prioritize credible sources. Authority comes from:
-- Quality backlinks from reputable sites
-- Consistent, accurate content over time
-- Being cited by others in your space
-
-**Use clear entity definitions:**
-Start articles by defining the topic explicitly. "This guide covers roof leak diagnosis—identifying where water enters your home and determining whether repair is DIY-appropriate or requires professional help."
-
-**Be comprehensive:**
-LLMs draw from sources that fully cover a topic. Surface-level content gets passed over.
-
-**Write quotable statements:**
-Clear, factual sentences are more likely to appear in AI responses. "Most roof leaks show first as ceiling stains near exterior walls, roof penetrations, or in attic spaces" is quotable.
-
-**Maintain accuracy:**
-LLMs are increasingly trained to fact-check and prefer accurate sources. Wrong information may get you filtered out.
-
----
-
-## How They Work Together
-
-These aren't competing strategies—they're complementary:
-
-| Strategy | What It Optimizes | How They Connect |
-|----------|-------------------|------------------|
-| SEO | Traditional rankings | Foundation for all others |
-| AEO | Featured snippets, voice | Requires good SEO + clear formatting |
-| GEO | AI summaries in search | Requires good SEO + quotable content |
-| LLMO | AI assistant citations | Requires authority + accuracy |
-
-### The Priority Order
-
-For most home service sites:
-
-1. **SEO first.** Without technical health and content fundamentals, nothing else works.
-
-2. **AEO second.** Featured snippets drive immediate visibility and traffic. The tactics (clear formatting, direct answers) also help GEO and LLMO.
-
-3. **GEO third.** AI summaries are growing but still emerging. Good SEO and AEO practices get you most of the way there.
-
-4. **LLMO ongoing.** Authority builds over time. You can't shortcut it, but every quality article and earned link contributes.
-
----
-
-## Practical Implementation for Home Service Sites
-
-### Content Structure Example
-
-Here's how to structure a repair guide that works across all four:
-
-**Title:** How to Diagnose a Dripping Faucet
-
-**Opening (BLUF for AEO/GEO):**
-"A dripping faucet usually indicates a worn washer, O-ring, or cartridge. Most single-handle faucets need cartridge replacement; two-handle faucets typically need washer replacement. Here's how to identify the problem and fix it."
-
-**Clear sections (SEO structure):**
-- What Causes Faucet Drips
-- How to Identify Your Faucet Type
-- Diagnosing Single-Handle Faucets
-- Diagnosing Two-Handle Faucets
-- When to Call a Plumber
-
-**Specific details (GEO/LLMO quotability):**
-"Compression faucets have rubber washers that typically last 3-5 years under normal use."
-"Cartridge replacement costs $15-40 for parts; professional repair runs $125-250."
-
-**FAQ section (AEO optimization):**
-Q: How much water does a dripping faucet waste?
-A: A faucet dripping once per second wastes approximately 5 gallons per day—about 1,800 gallons per year.
-
-**Internal links (SEO value distribution):**
-Link to related content on water heater issues, bathroom plumbing, and your diagnosis tool.
-
----
-
-## What Doesn't Work Anymore
-
-### Keyword Stuffing
-Repeating keywords unnaturally hurts readability and may trigger quality filters. Write naturally.
-
-### Thin Content
-500-word overviews can't compete with comprehensive guides. Go deep on topics that matter.
-
-### Fake Authority
-"Reviewed by certified experts" without actual expert review damages trust. Be honest about your credentials.
-
-### Ignoring Technical SEO
-Great content on a slow, broken site won't rank. Technical health is non-negotiable.
-
-### Chasing One Channel
-Optimizing only for AI while ignoring traditional search leaves traffic on the table. All channels matter.
-
----
-
-## Frequently Asked Questions
-
-### Which is most important for a new home service site?
-
-Start with SEO. Without technical fundamentals and basic content, other optimizations won't help. Once you're ranking at all, layer in AEO tactics.
-
-### Do I need different content for each optimization type?
-
-No. Well-structured, comprehensive content works across all four. The tactics overlap significantly.
-
-### How do I track LLMO success?
-
-This is still emerging. Monitor:
-- Brand mentions in AI tools (search manually)
-- Referral traffic from AI platforms
-- Citation appearances in AI-generated summaries (where visible)
-
-### Will traditional SEO become obsolete?
-
-Unlikely. Even if AI summaries grow, people still click through for details, verification, and engagement. SEO remains foundational.
-
-### Should I hire specialists for each?
-
-For most home service sites, one SEO-focused approach covers all four. Specialists make sense for enterprise sites or highly competitive markets.
-
----
-
-## The Bottom Line
-
-SEO, AEO, GEO, and LLMO aren't four different strategies—they're four ways of describing visibility in an evolving search landscape. For home service websites:
-
-1. Build on SEO fundamentals
-2. Format content for answer extraction (AEO)
-3. Make content quotable and comprehensive (GEO)
-4. Build genuine authority over time (LLMO)
-
-The tactics overlap. Useful, well-structured, accurate content wins across all surfaces. Start there, and the acronyms take care of themselves.
-
----
-
-## Related Articles
-
-- [The 2026 Organic Search Playbook for Home Service Websites](/blog/2026-organic-search-playbook-home-service-websites)
-- [How to Build E-E-A-T for a Home Repair Website](/blog/build-eeat-home-repair-website)
-- [BLUF, SXO, and Zero-Click Search](/blog/bluf-sxo-zero-click-search-formatting)
-    `.trim(),
-  },
-
-  // SUPPORTING ARTICLE 2
-  {
-    slug: "build-eeat-home-repair-website",
-    title: "How to Build E-E-A-T for a Home Repair Website Without Faking Authority",
-    metaDescription: "Learn how to build genuine Experience, Expertise, Authoritativeness, and Trustworthiness for home repair content. No fake credentials or manufactured authority required.",
-    category: "content-quality-trust",
-    publishDate: "2026-03-03",
-    readingTime: 9,
-    excerpt: "E-E-A-T matters for home repair content, but you don't need to fake expert credentials. Here's how to build genuine trust signals that search engines and users recognize.",
-    content: `
-## The Short Answer
-
-E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) is Google's framework for evaluating content quality. For home repair websites, it's critical—your content falls into "Your Money or Your Life" (YMYL) territory where bad advice could cause harm.
-
-But here's the key insight: **E-E-A-T doesn't require fake credentials**. You can build genuine trust signals without claiming expertise you don't have. This guide shows you how.
-
----
-
-## Why E-E-A-T Matters for Home Repair Content
-
-Home repair advice has real consequences:
-
-- Wrong electrical advice could cause fires
-- Bad structural guidance could lead to collapse
-- Incorrect plumbing instructions could cause water damage
-- Misguided DIY attempts could turn small problems into expensive disasters
-
-Google knows this. They evaluate home repair content more carefully because mistakes matter. Sites that demonstrate genuine competence rank better and stay ranked longer.
-
-The alternative—faking expertise—creates liability, damages user trust, and eventually gets caught.
-
----
-
-## Experience: What You've Actually Seen and Done
-
-"Experience" was added to Google's quality framework recently. It asks: has the content creator actually encountered this topic firsthand?
-
-### What Real Experience Looks Like
-
-For a home repair site, genuine experience signals include:
-
-**Specific observations:**
-"When diagnosing ceiling leaks, the stain pattern matters. Circular stains usually indicate a point source—a single drip from above. Irregular stains spreading from a corner often point to roof edge or flashing failure."
-
-This level of detail comes from actually looking at ceiling leaks, not just reading about them.
-
-**Acknowledgment of complications:**
-"The textbook fix for a running toilet is replacing the flapper. In practice, mineral buildup on the flush valve seat often prevents new flappers from sealing. You may need to clean or replace the valve seat too."
-
-Real experience includes what goes wrong, not just the ideal scenario.
-
-**Practical limitations:**
-"This repair requires removing the shower valve cartridge. On older fixtures, cartridges often seize in place. Budget extra time for this step, and have penetrating oil ready."
-
-### What to Avoid
-
-**Fake case studies:** "Our client John in Tampa had this exact problem and we fixed it in 2 hours." Unless John is real and gave permission, this is fabrication.
-
-**Manufactured before/after scenarios:** Stock photos with invented narratives aren't experience.
-
-**Claiming to have done repairs you haven't:** If your site is educational content (not a contractor site), don't claim contractor experience. Frame appropriately: "Based on common repair patterns..." rather than "In my 20 years as a contractor..."
-
-### Building Real Experience Signals
-
-If you run a home repair content site (not a contractor business):
-
-- Research thoroughly and cite sources
-- Interview actual professionals and quote them
-- Acknowledge what you're reporting vs. what you've done
-- Use reader/user feedback to inform content
-- Update content based on real-world questions you receive
-
----
-
-## Expertise: Knowing Your Subject Deeply
-
-Expertise means understanding a topic beyond surface level. For home repair content, this shows in the details.
-
-### Demonstrating Real Expertise
-
-**Explain why, not just what:**
-Instead of "Turn off the water supply before working on your faucet," write "Turn off the water supply before disassembling the faucet. Even a small amount of line pressure can spray water when you remove the valve, and searching for shutoffs while water flows wastes time and creates mess."
-
-**Address edge cases:**
-"Most bathroom faucets use standard 1/2-inch supply connections. Older homes may have 3/8-inch lines, and some European fixtures use metric fittings. Check your supply tube size before buying replacement parts."
-
-**Know when advice doesn't apply:**
-"These instructions cover standard tank-style water heaters. Tankless units have different maintenance requirements—check your manufacturer's guide or see our tankless water heater article."
-
-**Reference industry standards:**
-"The International Residential Code specifies GFCI protection for bathroom outlets. If your older home lacks GFCI protection in bathrooms, upgrading is recommended regardless of local requirements."
-
-### What to Avoid
-
-**Overstepping credentials:**
-If you're not a licensed electrician, don't position yourself as one. "This guide covers basic troubleshooting. Electrical work beyond replacing outlets and switches requires a licensed electrician" is honest and appropriate.
-
-**Pretending omniscience:**
-"The best water heater brand is..." invites skepticism unless you've actually tested them all. "Based on reliability data and owner reports, these brands consistently perform well..." is more credible.
-
-**Jargon without explanation:**
-Technical terms impress no one if readers don't understand them. Demonstrate expertise by explaining clearly, not by showing off vocabulary.
-
-### Building Real Expertise
-
-- Research thoroughly using multiple authoritative sources
-- Understand the reasoning behind repair procedures
-- Stay current on code changes and best practices
-- Acknowledge knowledge limits honestly
-- Learn from reader questions—they reveal gaps
-
----
-
-## Authoritativeness: Being Recognized as a Source
-
-Authority comes from external recognition. Other credible sources link to you, cite you, and reference your content.
-
-### What Real Authority Looks Like
-
-**Quality backlinks:**
-Links from industry publications, contractor associations, home improvement magazines, and other authoritative sources signal that your content is worth referencing.
-
-**Citations and mentions:**
-When other content creators mention your site as a resource, that's authority.
-
-**Consistent quality over time:**
-Authority builds through sustained, reliable output. A few good articles don't make you authoritative; a library of consistently helpful content does.
-
-### What to Avoid
-
-**Buying links:**
-Purchased links from irrelevant sites can harm rankings. Authority must be earned.
-
-**Fake press coverage:**
-"As featured in [major publication]" when you weren't actually featured damages trust severely.
-
-**Claiming industry awards you didn't win:**
-This seems obvious, but it happens. Don't.
-
-### Building Real Authority
-
-**Create linkable resources:**
-Comprehensive guides, original data, useful tools, and definitive references earn links naturally.
-
-**Guest post on relevant sites:**
-Write for legitimate home improvement publications. Use your real name, link to your site appropriately.
-
-**Participate in your space:**
-Answer questions in relevant forums. Contribute to industry discussions. Be helpful without being self-promotional.
-
-**Get cited:**
-When journalists or content creators cover home repair topics, being a quotable source earns mentions and links.
-
-**Time:**
-Authority takes years to build. There's no shortcut. Start now and keep contributing.
-
----
-
-## Trustworthiness: The Foundation
-
-Trustworthiness underlies everything. Without trust, experience, expertise, and authority don't matter.
-
-### What Real Trustworthiness Looks Like
-
-**Transparency about who you are:**
-Clear about page, contact information, business address (if applicable). Users should be able to identify who's behind the content.
-
-**Honest limitations:**
-"This guide provides educational information only. We're not licensed inspectors, and this content doesn't substitute for professional evaluation."
-
-**No fake proof:**
-No invented testimonials, no fabricated reviews, no false credentials.
-
-**Appropriate disclaimers:**
-"If you suspect structural damage, gas leaks, or electrical hazards, contact a licensed professional immediately."
-
-**Privacy respect:**
-Clear privacy policy. No dark patterns. Honest about data collection.
-
-**Accurate information:**
-Content is factually correct, updated when things change, corrected when errors are found.
-
-### What to Avoid
-
-**Fake author bios:**
-"Written by a licensed contractor with 25 years of experience" when the author isn't. If your content is written by a content team, say so.
-
-**Invented expert review:**
-"Reviewed by our panel of certified home inspectors" when no such panel exists.
-
-**False local presence:**
-"Serving the greater Austin area" when you're a national content site with no Austin connection.
-
-**Hidden affiliate relationships:**
-Disclose when you earn from product recommendations. Users expect honesty.
-
-**Outdated code references:**
-Building codes change. Content referencing old codes becomes untrustworthy.
-
-### Building Real Trustworthiness
-
-**Be who you say you are:**
-If you're a content site, be a content site. If you're a contractor, be a contractor. Misrepresentation eventually surfaces.
-
-**Handle mistakes well:**
-When content errors are found, correct them promptly and note the correction. This builds trust.
-
-**Make contact easy:**
-Real contact information, responsive communication.
-
-**Cite sources:**
-Link to manufacturer specifications, code documents, and authoritative references. Show where information comes from.
-
-**Update regularly:**
-Review important content annually. Update when information changes.
-
----
-
-## The YMYL Consideration
-
-Home repair content is YMYL—"Your Money or Your Life." Bad advice here can:
-
-- Cause physical injury
-- Create property damage
-- Lead to expensive secondary problems
-- Create legal liability
-
-Google evaluates YMYL content more stringently. E-E-A-T signals matter more in these categories.
-
-### YMYL-Safe Content Practices
-
-**Conservative guidance:**
-When in doubt, recommend professional help. "If you're uncertain, consult a licensed electrician" is safer than pushing DIY on complex issues.
-
-**Clear scope limits:**
-Define what your content covers and what it doesn't. "This guide covers basic faucet repairs. Major plumbing modifications require permits and professional installation."
-
-**Safety emphasis:**
-Lead with safety considerations. Turn off power before electrical work. Turn off water before plumbing work. Wear appropriate protection.
-
-**No medical/safety claims:**
-"This insulation is completely safe" is a claim you can't make. "This insulation type is commonly used in residential applications" is factual.
-
----
-
-## Practical Implementation
-
-### Author Pages
-
-If you use author names, create legitimate author pages:
-
-- Real name (or consistent pen name with honest framing)
-- Actual background and qualifications
-- No invented credentials
-- Links to other work
-- Updated contact information
-
-### About Page
-
-- Who runs the site
-- What the site's purpose is
-- How content is created and reviewed
-- Contact information
-- Business details if applicable
-
-### Content Standards
-
-- All factual claims should be verifiable
-- Sources should be cited where relevant
-- Content should be reviewed before publication
-- Updates should be made when information changes
-- Reader feedback should be incorporated
-
-### Trust Badges (Only Real Ones)
-
-- BBB accreditation (if you actually have it)
-- Trade association memberships (if you're actually a member)
-- Relevant certifications (that you actually hold)
-
-Never add trust badges for organizations you're not affiliated with.
-
----
-
-## Frequently Asked Questions
-
-### Can a content site have E-E-A-T without being contractors?
-
-Yes. Educational content sites demonstrate E-E-A-T through research quality, accurate information, transparent authorship, and appropriate scope limits. You don't need to be a contractor to explain how home repairs work—but you should be honest about your role.
-
-### What if I'm just starting out with no authority?
-
-Everyone starts somewhere. Focus on creating genuinely useful content, being accurate, and being transparent about who you are. Authority builds over time through consistent quality.
-
-### Does E-E-A-T affect rankings directly?
-
-Google's quality raters evaluate E-E-A-T, and their feedback informs algorithm development. While E-E-A-T isn't a direct ranking factor, content demonstrating these qualities tends to rank better.
-
-### How do I compete with established sites?
-
-Go deeper on specific topics. Cover details the big sites miss. Be more helpful on specific problems. Niche authority can compete with broad authority on specific queries.
-
-### Can I use AI to write E-E-A-T content?
-
-AI can assist with drafting and research, but E-E-A-T requires genuine human judgment, real experience, and actual expertise. AI-generated content without human oversight typically lacks these qualities.
-
----
-
-## The Bottom Line
-
-E-E-A-T for home repair websites comes down to honesty:
-
-- **Experience:** Share what you've actually seen, or be clear about what you're reporting from others
-- **Expertise:** Know your subject deeply, acknowledge limits, explain clearly
-- **Authoritativeness:** Earn recognition through consistent quality over time
-- **Trustworthiness:** Be who you claim to be, handle information responsibly
-
-You don't need fake credentials, invented experts, or manufactured authority. Genuine helpfulness, accurate information, and honest transparency build real E-E-A-T that serves users and satisfies search engines.
-
----
-
-## Related Articles
-
-- [The 2026 Organic Search Playbook for Home Service Websites](/blog/2026-organic-search-playbook-home-service-websites)
-- [Helpful Content, Information Gain, and Topical Authority](/blog/helpful-content-information-gain-topical-authority)
-- [How RAG Can Support a Home Service Knowledge Base](/blog/rag-home-service-knowledge-base)
-    `.trim(),
-  },
-
-  // SUPPORTING ARTICLE 3
-  {
-    slug: "helpful-content-information-gain-topical-authority",
-    title: "Helpful Content, Information Gain, and Topical Authority for Home Service Blogs",
-    metaDescription: "How to create home service content that actually helps users, adds new information to topics, and builds genuine topical authority over time.",
-    category: "content-quality-trust",
-    publishDate: "2026-03-04",
-    readingTime: 10,
-    excerpt: "Google rewards content that genuinely helps users and adds new information. Here's how to create home service content that demonstrates real value.",
-    content: `
-## The Short Answer
-
-"Helpful content" isn't a vague aspiration—it's a measurable quality signal. Google's systems evaluate whether content satisfies user intent, adds value beyond existing resources, and demonstrates genuine expertise. For home service blogs, this means going beyond generic advice to provide specific, actionable, experience-based guidance.
-
----
-
-## What "Helpful Content" Actually Means
-
-Google's helpful content system asks simple questions:
-
-- Does this content satisfy the person who searched for it?
-- Would someone who read this feel they learned something useful?
-- Does this content demonstrate firsthand expertise or knowledge?
-- Does this content have a clear primary purpose beyond ranking in search?
-
-For home repair content, helpful means:
-
-**Specific:** "Replace the fill valve if the tank runs constantly" beats "check various components."
-
-**Actionable:** "Turn the supply valve clockwise until it stops" beats "shut off the water."
-
-**Honest about limits:** "This fix works for standard tank toilets; console and wall-mounted units differ" beats overgeneralized advice.
-
-**Based on real knowledge:** Details that only come from actually doing repairs or thoroughly researching them.
-
----
-
-## Information Gain: Adding Value
-
-"Information gain" measures whether your content adds something beyond what's already available. If your article says the same thing as 50 other articles, it provides no information gain.
-
-### How to Create Information Gain
-
-**Go deeper on specifics:**
-
-Generic: "Roof leaks can cause ceiling stains."
-
-Information gain: "Fresh ceiling stains from active leaks typically show darker edges and may feel damp to touch. Older stains from past leaks appear more uniform in color and remain dry. This distinction matters for diagnosing whether you have an ongoing problem or a historical one."
-
-**Address what others skip:**
-
-Generic: "Hire a licensed electrician for electrical work."
-
-Information gain: "Licensing requirements vary by state. In Texas, all electrical work requires a licensed electrician. In some states, homeowners can perform basic electrical repairs on their own property. Check your local jurisdiction before assuming DIY isn't allowed—or before assuming it is."
-
-**Include practical complications:**
-
-Generic: "Replace worn washers to fix a dripping faucet."
-
-Information gain: "Replacing washers sounds simple, but compression faucets from the 1970s-80s often have corroded valve seats that prevent new washers from sealing. If a fresh washer still leaks, the seat needs regrinding or replacement—a step most basic guides skip."
-
-**Add context from real patterns:**
-
-Generic: "Water heaters last 8-12 years."
-
-Information gain: "Water heater lifespan depends heavily on water hardness and maintenance. In areas with hard water and no softener, tank corrosion accelerates—8 years is optimistic. With soft water and annual flushing, 15+ years is common. The '8-12 years' figure is a national average that may not apply to your situation."
-
-### What Doesn't Create Information Gain
-
-- Rewording existing content
-- Adding length without substance
-- Including tangential information for "comprehensiveness"
-- Repeating common advice in different formatting
-
----
-
-## Topical Authority: Depth Over Breadth
-
-Topical authority means being recognized as a comprehensive resource on a specific subject area. For home service sites, this usually means picking focus areas and covering them thoroughly.
-
-### The Cluster Model
-
-**Pillar content:** Comprehensive guides on major topics
-**Cluster content:** Specific articles on subtopics linking to and from the pillar
-
-**Example for roofing:**
-
-Pillar: "Complete Guide to Residential Roof Maintenance and Repair"
-
-Clusters:
-- "How to Find and Fix Roof Leaks"
-- "Understanding Different Roofing Materials"
-- "When to Repair vs Replace Your Roof"
-- "Ice Dam Prevention and Remediation"
-- "Attic Ventilation and Roof Longevity"
-
-Each cluster article links to the pillar. The pillar links to all clusters. This creates a network of related content that demonstrates comprehensive coverage.
-
-### Building Authority Over Time
-
-Topical authority isn't built overnight. It requires:
-
-**Consistent publishing:** Regular new content on your focus topics
-
-**Content depth:** Going beyond surface-level on each subtopic
-
-**Updates:** Keeping existing content accurate and current
-
-**Internal linking:** Connecting related content logically
-
-**External recognition:** Other sites linking to your content as a resource
-
-### Choosing Your Focus Areas
-
-For a home repair site, you might focus on:
-
-- Plumbing diagnostics and simple repairs
-- Roofing issues homeowners can identify
-- HVAC troubleshooting
-- Electrical safety and basic repairs
-- Water damage and moisture problems
-- Foundation and structural concerns
-
-Don't try to cover everything. Go deep on fewer topics rather than shallow on many.
-
----
-
-## The Helpful Content System in Practice
-
-Google's helpful content system demotes entire sites that have too much unhelpful content. This means:
-
-**One bad article can't sink a good site**—but a pattern of thin content can.
-
-**Recovery is possible**—but requires systematically improving or removing unhelpful content.
-
-**New content is evaluated in site context**—a site known for quality content gets more initial trust for new articles.
-
-### Self-Assessment Questions
-
-For each piece of content, ask:
-
-1. Would someone reading this feel satisfied or need to search again?
-2. Does this answer the question completely, or just partially?
-3. Is there something here that readers won't find elsewhere?
-4. Did we include information based on real knowledge, or just research?
-5. Would a reader trust this information enough to act on it?
-
-If answers aren't confident yes, revise before publishing.
-
----
-
-## User Intent and Content Matching
-
-Content must match what users actually want. Mismatched intent = unhelpful content.
-
-### Intent Types
-
-**Informational:** User wants to learn something
-"What causes ceiling stains?" → Explain causes clearly
-
-**Diagnostic:** User wants to identify a problem
-"Why is my toilet running?" → Help them diagnose the specific issue
-
-**Instructional:** User wants to do something
-"How to replace a toilet flapper" → Step-by-step instructions
-
-**Decisional:** User needs to make a choice
-"Should I repair or replace my water heater?" → Help them evaluate factors
-
-### Matching Content to Intent
-
-**Wrong:** User searches "how to fix a dripping faucet" and lands on a page about faucet brands (commercial intent mismatch)
-
-**Right:** User searches "how to fix a dripping faucet" and lands on step-by-step repair instructions
-
-**Wrong:** User searches "is my foundation crack serious" and gets a sales page for foundation repair services
-
-**Right:** User searches "is my foundation crack serious" and gets diagnostic criteria for evaluating crack severity
-
-When creating content, identify the intent behind target queries. Match content to that intent precisely.
-
----
-
-## Quality Signals That Matter
-
-### Positive Signals
-
-- Content fully addresses the topic
-- Clear, logical organization
-- Specific, actionable information
-- Author/site expertise is evident
-- Content is well-maintained and current
-- Users engage deeply (time on page, low bounce to SERP)
-
-### Negative Signals
-
-- Thin content that doesn't satisfy intent
-- Information already available everywhere
-- No evidence of expertise or effort
-- Outdated information
-- High pogo-sticking (users quickly return to search)
-- Content seems auto-generated without real insight
-
----
-
-## Practical Content Creation Process
-
-### Before Writing
-
-1. **Research the query landscape:** What are people actually searching? What do top results cover?
-
-2. **Identify gaps:** What do existing results miss? Where can you add value?
-
-3. **Define intent:** What does the searcher actually want? Match your angle to their need.
-
-4. **Gather expertise:** What specific knowledge or experience can you include?
-
-### While Writing
-
-1. **Lead with value:** Put the key answer first, then elaborate.
-
-2. **Be specific:** Concrete details over vague generalizations.
-
-3. **Acknowledge limits:** Be clear about what advice applies to and what it doesn't.
-
-4. **Link strategically:** Connect to related content where it helps readers.
-
-5. **Format for scanning:** Headers, bullets, clear paragraphs.
-
-### After Publishing
-
-1. **Monitor performance:** Are users satisfied? Check engagement metrics.
-
-2. **Gather feedback:** What questions do readers have? What did you miss?
-
-3. **Update regularly:** Keep information current. Note update dates.
-
-4. **Build links:** Connect new content into your existing topic clusters.
-
----
-
-## Common Mistakes to Avoid
-
-### "Comprehensive" Without Substance
-
-Adding sections and length doesn't create value. A 3,000-word article that says the same thing as a 1,000-word article isn't better—it's worse.
-
-### Generic Advice
-
-"Maintain your HVAC system regularly" appears in thousands of articles. What filter should they buy? How exactly should they clean coils? What are specific warning signs? Generic advice isn't helpful.
-
-### Keyword-Driven Without User Focus
-
-Writing for search engines instead of users creates hollow content. Target relevant queries, but write for the human who searched.
-
-### Copying Competitors
-
-Rewriting what's already ranking adds nothing. Use competitor content as research, then create something better or different.
-
-### Neglecting Updates
-
-Content that was accurate two years ago may not be now. Codes change, best practices evolve, products update. Regular review is essential.
-
----
-
-## Measuring Helpfulness
-
-### Engagement Metrics
-
-- Time on page (longer usually means more engagement)
-- Scroll depth (are users reading the full content?)
-- Internal navigation (do they explore related content?)
-- Bounce rate to SERP (did they need to search again?)
-
-### Search Performance
-
-- Ranking stability (helpful content tends to maintain rankings)
-- Featured snippet capture (search engines feature helpful answers)
-- Query breadth (good content ranks for related queries)
-
-### User Feedback
-
-- Comments and questions
-- Contact form inquiries
-- Social shares
-- Backlinks from others citing you
-
----
-
-## Frequently Asked Questions
-
-### How long should helpful content be?
-
-As long as needed to fully address the topic, not longer. Some questions need 500 words; others need 3,000. Length should match depth required.
-
-### Can I use AI to write helpful content?
-
-AI can assist with drafting and research, but helpful content requires genuine expertise, real experience, and human judgment. AI-assisted content needs substantial human review and enhancement.
-
-### How do I compete with big sites that have more authority?
-
-Go deeper on specific topics. Cover details the big sites skip. Demonstrate genuine expertise. Niche depth can outrank broad authority on specific queries.
-
-### How often should I update existing content?
-
-Review important pages annually at minimum. Update whenever information changes, when you learn something new, or when you see engagement dropping.
-
-### What's the relationship between helpful content and E-E-A-T?
-
-They're complementary. E-E-A-T describes the qualities search engines look for (experience, expertise, authority, trust). Helpful content is what demonstrating those qualities produces.
-
----
-
-## The Bottom Line
-
-Helpful content for home service sites isn't complicated:
-
-- Answer the user's actual question
-- Add specific, actionable information
-- Include details from real knowledge
-- Be honest about limits
-- Keep information accurate and current
-
-Information gain comes from going deeper than others. Topical authority builds from consistent depth over time. Both require genuine effort to understand and address user needs.
-
-There's no shortcut. But sites that consistently create genuinely helpful content build sustainable visibility that algorithm changes can't easily disrupt.
-
----
-
-## Related Articles
-
-- [How to Build E-E-A-T for a Home Repair Website](/blog/build-eeat-home-repair-website)
-- [BLUF, SXO, and Zero-Click Search](/blog/bluf-sxo-zero-click-search-formatting)
-- [The 2026 Organic Search Playbook for Home Service Websites](/blog/2026-organic-search-playbook-home-service-websites)
-    `.trim(),
-  },
-
-  // SUPPORTING ARTICLE 4
-  {
-    slug: "schema-entities-knowledge-graph-local-home-service",
-    title: "Schema, Entities, and Knowledge Graph Basics for Local and Home Service Websites",
-    metaDescription: "Understanding structured data, entities, and knowledge graph optimization for home service websites. Learn which schema types matter and how to implement them correctly.",
-    category: "technical-seo-schema",
-    publishDate: "2026-03-05",
-    readingTime: 9,
-    excerpt: "Schema markup helps search engines understand your content's meaning. Here's what home service sites need to know about structured data, entities, and knowledge graph optimization.",
-    content: `
-## The Short Answer
-
-Schema markup is structured data that tells search engines what your content means, not just what words it contains. For home service websites, relevant schema types include LocalBusiness, HowTo, FAQPage, Article, and Service. When implemented correctly, schema can earn rich snippets, improve AI search visibility, and help search engines connect your content to broader knowledge structures.
-
-The key rule: **only mark up what's actually on the page**. Fake or misleading schema creates problems.
-
----
-
-## What Schema Markup Does
-
-Search engines parse text well, but they can still misunderstand context. Schema provides explicit signals:
-
-**Without schema:**
-"Joe's Plumbing serves Austin. Call 512-555-0123."
-Search engines must infer this is a business, serving Austin, with that phone number.
-
-**With schema:**
-LocalBusiness schema explicitly declares: this is a plumbing business, serving these zip codes, with this phone number, these hours, this address.
-
-This explicit declaration helps search engines:
-- Display rich snippets in results
-- Answer specific queries ("plumbers open on Sunday")
-- Connect your business to relevant searches
-- Understand your content for AI-generated summaries
-
----
-
-## Essential Schema Types for Home Service Sites
-
-### LocalBusiness (or More Specific Types)
-
-For businesses serving geographic areas:
-
-\`\`\`json
-{
-  "@context": "https://schema.org",
-  "@type": "Plumber",
-  "name": "Joe's Plumbing Services",
-  "telephone": "+1-512-555-0123",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "123 Main Street",
-    "addressLocality": "Austin",
-    "addressRegion": "TX",
-    "postalCode": "78701"
-  },
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Austin"
-    }
-  ],
-  "openingHours": "Mo-Fr 08:00-18:00",
-  "priceRange": "$$"
-}
-\`\`\`
-
-Use specific types where available: Plumber, Electrician, RoofingContractor, HVACBusiness, HomeAndConstructionBusiness.
-
-**Important:** Only use this if you're actually a local business. Content sites providing information aren't LocalBusiness entities.
-
-### HowTo Schema
-
-For step-by-step guides:
-
-\`\`\`json
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Replace a Toilet Flapper",
-  "description": "Step-by-step instructions for replacing a worn toilet flapper valve to stop running water.",
-  "totalTime": "PT15M",
-  "supply": [
-    { "@type": "HowToSupply", "name": "Replacement flapper" }
-  ],
-  "tool": [
-    { "@type": "HowToTool", "name": "Adjustable wrench" }
-  ],
-  "step": [
-    {
-      "@type": "HowToStep",
-      "name": "Turn off water supply",
-      "text": "Locate the shutoff valve behind the toilet and turn it clockwise until it stops."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Flush and drain",
-      "text": "Flush the toilet to drain most water from the tank."
-    }
-  ]
-}
-\`\`\`
-
-HowTo schema can earn rich snippets showing steps directly in search results.
-
-### FAQPage Schema
-
-For FAQ sections:
-
-\`\`\`json
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does it cost to repair a leaking faucet?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "DIY faucet repairs typically cost $10-40 for parts. Professional repairs range from $100-300 depending on faucet type and your location."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I fix a leaking faucet myself?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most faucet leaks are DIY-appropriate. You'll need basic tools and about 30-60 minutes. Cartridge and washer replacements are the most common fixes."
-      }
-    }
-  ]
-}
-\`\`\`
-
-FAQPage schema can earn FAQ rich snippets, showing Q&A directly in results.
-
-### Article Schema
-
-For blog posts and educational content:
-
-\`\`\`json
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How to Diagnose a Roof Leak",
-  "description": "Step-by-step guide to finding the source of roof leaks...",
-  "author": {
-    "@type": "Organization",
-    "name": "HomeSnapFix"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "HomeSnapFix",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://example.com/logo.png"
-    }
-  },
-  "datePublished": "2026-03-01",
-  "dateModified": "2026-03-05"
-}
-\`\`\`
-
-Article schema helps search engines understand publication metadata.
-
-### Service Schema
-
-For describing services offered:
-
-\`\`\`json
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Water Heater Repair",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "Joe's Plumbing"
-  },
-  "areaServed": {
-    "@type": "City",
-    "name": "Austin"
-  },
-  "description": "Repair and maintenance for tank and tankless water heaters."
-}
-\`\`\`
-
----
-
-## Entities and the Knowledge Graph
-
-### What Are Entities?
-
-In search context, entities are distinct, well-defined things: people, places, businesses, concepts. The Knowledge Graph is Google's database of entities and their relationships.
-
-**Examples:**
-- "Austin, TX" is an entity (a city with specific attributes)
-- "Water heater" is an entity (a type of appliance)
-- "Joe's Plumbing" could be an entity (if established in Google's database)
-
-### Why Entities Matter
-
-When search engines understand entities in your content:
-
-- They connect your content to related topics
-- They can answer entity-specific queries
-- They may feature your content in knowledge panels
-- AI systems can retrieve your content more accurately
-
-### Entity Optimization for Home Service Sites
-
-**Use clear entity references:**
-Instead of "the unit," write "the water heater." Clear entity names help search engines understand what you're discussing.
-
-**Define entities explicitly:**
-"A GFCI outlet (Ground Fault Circuit Interrupter) is a safety device that..." helps search engines understand the entity.
-
-**Link to authoritative sources:**
-Linking to Wikipedia, manufacturer sites, or industry associations helps establish entity connections.
-
-**Be consistent:**
-Use the same terminology throughout your site. If you call it a "water heater" on one page, don't call it a "hot water tank" on another without explanation.
-
-### Getting Into the Knowledge Graph
-
-For local businesses, the main path is Google Business Profile:
-
-- Complete, accurate profile
-- Consistent NAP (Name, Address, Phone) across the web
-- Reviews and engagement
-- Linked website with matching information
-
-For content sites, Knowledge Graph presence is less common but possible through:
-
-- Being widely cited and linked
-- Wikipedia mentions (if notable enough)
-- Consistent, authoritative presence over time
-
----
-
-## Implementation Best Practices
-
-### Use JSON-LD Format
-
-Google recommends JSON-LD over microdata or RDFa:
-
-\`\`\`html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  ...
-}
-</script>
-\`\`\`
-
-JSON-LD is easier to implement and maintain, especially for dynamic content.
-
-### One Topic Per Schema Block
-
-Don't try to cram everything into one schema object. If a page has an article, FAQs, and HowTo instructions, use separate schema blocks for each.
-
-### Match Schema to Visible Content
-
-This is critical: **schema must reflect what's actually on the page**.
-
-**Correct:** FAQPage schema for questions and answers visible in the content.
-
-**Incorrect:** FAQPage schema with questions not shown on the page (adding them only in schema).
-
-Google has penalized sites for misleading schema. Only mark up what users see.
-
-### Test Your Implementation
-
-Use Google's Rich Results Test (search.google.com/test/rich-results) to validate schema:
-
-- Check for errors
-- Verify all required properties are present
-- Preview how rich results might appear
-
-### Monitor Rich Results in Search Console
-
-Google Search Console shows:
-
-- Which pages have valid structured data
-- Errors in your schema implementation
-- Rich result impressions and clicks
-
----
-
-## Common Schema Mistakes
-
-### Fake Reviews
-
-Adding review schema with made-up reviews is a policy violation. Google can remove all rich results and potentially penalize your site.
-
-### Schema for Hidden Content
-
-If content isn't visible to users, don't mark it up. Schema is for describing visible content, not adding invisible information.
-
-### Overusing Schema
-
-Not every page needs every schema type. Use what's relevant:
-
-- Service pages → Service, LocalBusiness
-- How-to guides → HowTo, FAQPage
-- Blog posts → Article
-- Contact page → LocalBusiness
-
-### Inconsistent Data
-
-Schema data should match page content and match across your site. If your address is different in schema vs. page text vs. footer, that's a problem.
-
-### Outdated Schema
-
-Review schema periodically. If you change business hours, update the schema. If you update a how-to guide, update the dateModified.
-
----
-
-## Schema for AI Search Visibility
-
-Structured data helps AI systems understand your content:
-
-**Clear categorization:** Article, HowTo, FAQPage tell AI what type of content this is.
-
-**Explicit metadata:** Dates, authors, and topics help AI evaluate content relevance and freshness.
-
-**Entity relationships:** Schema helps AI connect your content to relevant queries.
-
-**Quotable answers:** FAQ schema specifically formats Q&A for easy extraction.
-
-While we can't know exactly how AI search systems use schema, providing clear structured data likely improves your content's chances of being correctly understood and cited.
-
----
-
-## Frequently Asked Questions
-
-### Does schema directly improve rankings?
-
-Schema doesn't boost rankings directly. But rich snippets from schema can improve click-through rates, which indirectly helps. And schema helps search engines understand content correctly, which matters for relevance.
-
-### Which schema types earn rich snippets?
-
-Common rich-result-eligible types include FAQPage, HowTo, LocalBusiness (for local panels), Article (for news carousels), and Review (when reviews are genuine).
-
-### How do I know if my schema is working?
-
-Google Search Console's "Enhancements" section shows valid and invalid structured data. Rich Results Test lets you check specific pages.
-
-### Can I use schema if I'm not a local business?
-
-Yes. Article, HowTo, and FAQPage schema are relevant for content sites regardless of local business status. Just don't use LocalBusiness schema if you're not actually a local business.
-
-### What if I make a schema error?
-
-Fix it promptly. Google recrawls pages regularly. Errors that persist may lose rich result eligibility. Major policy violations (fake reviews, misleading data) can have broader consequences.
-
----
-
-## The Bottom Line
-
-Schema markup for home service sites is straightforward when you follow the rules:
-
-1. **Use relevant schema types** for your content (HowTo for guides, FAQPage for Q&A, LocalBusiness for local services)
-
-2. **Only mark up visible content** — no hidden information or fake data
-
-3. **Keep schema accurate and updated** as content changes
-
-4. **Test implementation** with Google's tools
-
-5. **Monitor in Search Console** for errors and opportunities
-
-Schema won't transform your rankings overnight, but it helps search engines and AI systems understand your content correctly—which matters increasingly for visibility.
-
----
-
-## Related Articles
-
-- [The 2026 Organic Search Playbook for Home Service Websites](/blog/2026-organic-search-playbook-home-service-websites)
-- [Core Web Vitals for Content-Rich Service Websites](/blog/core-web-vitals-service-websites)
-- [BLUF, SXO, and Zero-Click Search](/blog/bluf-sxo-zero-click-search-formatting)
-    `.trim(),
-  },
-
-  // SUPPORTING ARTICLE 5
-  {
-    slug: "bluf-sxo-zero-click-search-formatting",
-    title: "BLUF, SXO, and Zero-Click Search: How to Format Content So Users and AI Can Understand It Fast",
-    metaDescription: "Learn content formatting techniques for modern search: BLUF (Bottom Line Up Front), SXO (Search Experience Optimization), and zero-click search optimization.",
-    category: "ux-cwv-formatting",
-    publishDate: "2026-03-06",
-    readingTime: 8,
-    excerpt: "Modern search rewards content that gets to the point. Here's how to format home service content for featured snippets, AI summaries, and immediate user satisfaction.",
-    content: `
-## The Short Answer
-
-BLUF (Bottom Line Up Front) means leading with your key point, not building to it. SXO (Search Experience Optimization) combines SEO with UX to satisfy user intent. Zero-click search optimization positions your content to be featured directly in search results. Together, these approaches format content so users get value fast—and so search engines can extract and feature your answers.
-
-For home service sites: answer first, explain second, structure clearly.
-
----
-
-## BLUF: Lead With the Answer
-
-BLUF comes from military communication. When time matters, you don't bury the critical information in paragraph three.
-
-### Traditional Writing
-
-"There are many factors that can cause a ceiling to develop water stains. These include roof leaks from damaged shingles or flashing, plumbing failures from pipes above the ceiling, HVAC condensation issues, and occasionally even condensation from temperature differentials. In order to properly address the issue, you first need to identify which of these causes applies to your situation..."
-
-### BLUF Writing
-
-"Brown ceiling stains typically indicate water intrusion from roof damage, plumbing leaks, or HVAC condensation. Here's how to identify the source:
-
-**Roof leaks:** Stains near exterior walls or under roof penetrations. Often worse after rain.
-
-**Plumbing:** Stains directly under bathrooms or kitchens. May show without rain.
-
-**HVAC:** Stains near vents or air handlers. Often accompanied by musty smell."
-
-### Why BLUF Works for Search
-
-**Featured snippets:** Search engines extract clear, upfront answers. BLUF content is quotable.
-
-**AI summaries:** Generative AI can accurately represent your key point without misinterpreting buried conclusions.
-
-**User satisfaction:** Users scanning for answers find them immediately. Lower bounce rates signal quality.
-
-**Mobile readers:** Small screens reward scannable content. Scrolling through fluff frustrates users.
-
-### BLUF Implementation
-
-**For question-based content:**
-Start each section with a direct answer to the question the section addresses.
-
-**For instructional content:**
-State what the reader will accomplish before listing steps.
-
-**For diagnostic content:**
-Lead with the most likely answer, then explain how to confirm it.
-
----
-
-## SXO: Search Experience Optimization
-
-SXO treats SEO and UX as inseparable. Ranking means nothing if users bounce immediately. User satisfaction without visibility means no traffic.
-
-### SXO Principles
-
-**Match intent precisely:**
-What does the searcher actually want? Give them that—not what you want to tell them.
-
-**Reduce friction:**
-Clear navigation, fast loading, obvious next steps.
-
-**Answer completely:**
-Don't make users click back to search for the rest of the answer.
-
-**Guide further engagement:**
-After answering, offer related resources for those who want depth.
-
-### SXO for Home Service Content
-
-**Query:** "Why is my toilet running constantly?"
-
-**Poor experience:**
-Landing page about toilet brands. User bounces.
-
-**Good experience:**
-Clear explanation of running toilet causes (flapper, fill valve, overflow tube) with diagnostic steps and repair links. User stays, explores, bookmarks.
-
-**Query:** "Should I call a plumber for a leaking faucet?"
-
-**Poor experience:**
-Sales page pushing your plumbing service. User bounces.
-
-**Good experience:**
-Honest assessment of DIY-appropriate situations vs. when to call a pro, with clear criteria. User trusts the resource.
-
-### Formatting for SXO
-
-**Clear headers:**
-Users scan headers to find relevant sections. Descriptive headers work better than clever ones.
-
-**Bullet points and numbered lists:**
-Break up walls of text. Make information scannable.
-
-**Visual hierarchy:**
-Important information should look important. Use bold for key points.
-
-**Table of contents:**
-For longer content, navigation helps users find relevant sections.
-
-**Logical flow:**
-Organize from common to rare, simple to complex, or most important to supporting details.
-
----
-
-## Zero-Click Search: When Google Answers Directly
-
-Many searches now get answered directly in the SERP through:
-
-- Featured snippets
-- Knowledge panels
-- "People also ask" boxes
-- AI-generated summaries
-
-Users get their answer without clicking. This seems bad for traffic—but it's more nuanced.
-
-### The Zero-Click Reality
-
-**Some queries deserve zero-click answers:**
-"What temperature should I set my thermostat for summer?" → 78°F for efficiency
-Users don't need a full article. A direct answer serves them better.
-
-**Some queries require more:**
-"How do I know if my foundation crack is serious?" → Complex assessment needed
-Users need context, criteria, and judgment calls. They'll click through.
-
-### Zero-Click Strategy
-
-**For simple queries:**
-Win the featured snippet. Get brand visibility even without clicks. Write clear, quotable answers.
-
-**For complex queries:**
-Provide enough in the snippet to earn interest, but the full answer requires clicking through.
-
-**Example:**
-Query: "How much does roof repair cost?"
-
-Featured snippet answer: "Most roof repairs cost $300-$1,100, depending on damage extent, roofing material, and location. Minor shingle replacement runs $150-$400; major repairs involving decking or flashing range from $500-$3,000+."
-
-The snippet answers the basic question. Users who need specifics (their roof type, their damage, their area) click through.
-
-### Formatting for Featured Snippets
-
-**Paragraph snippets:**
-40-60 words directly answering the question. Start with the answer, not context.
-
-**List snippets:**
-Numbered or bulleted lists of clear items. Start each item with the key word.
-
-**Table snippets:**
-Comparison information with clear headers and concise cell content.
-
-**For how-to queries:**
-Numbered steps with concise descriptions. HowTo schema helps.
-
----
-
-## Practical Formatting Patterns
-
-### The Inverted Pyramid
-
-**Lead:** The most important information
-**Body:** Supporting details
-**Background:** Context and elaboration
-
-Traditional journalism structure—works perfectly for web content.
-
-### The FAQ Block
-
-**Question as header:**
-"How long does it take to replace a water heater?"
-
-**Answer immediately below:**
-"Professional water heater replacement typically takes 2-4 hours..."
-
-Question-answer format is featured-snippet-friendly and highly scannable.
-
-### The Comparison Table
-
-| Factor | DIY | Professional |
-|--------|-----|--------------|
-| Cost | $50-200 (parts) | $200-500 (total) |
-| Time | 2-4 hours | 1-2 hours |
-| Warranty | Parts only | Labor + parts |
-
-Tables communicate comparison information efficiently.
-
-### The Decision Framework
-
-**Question:** Should you DIY or call a pro?
-
-**DIY if:**
-- Problem is clearly identifiable
-- Required tools are basic
-- No permits required
-- Risk of serious damage is low
-
-**Call a pro if:**
-- Problem requires diagnosis
-- Specialized equipment needed
-- Code compliance is involved
-- Safety risks exist
-
-Clear criteria help users make decisions.
-
----
-
-## Writing for Both Humans and Machines
-
-Modern search means writing for two audiences:
-
-### For Humans
-
-- Clear, natural language
-- Logical organization
-- Visual variety (not walls of text)
-- Practical, actionable advice
-- Honest limitations
-
-### For Machines
-
-- Clear entity references (say "water heater" not "it")
-- Structured content (headers, lists, tables)
-- Quotable statements (sentences that work standalone)
-- Schema markup for meaning
-- Consistent terminology
-
-The good news: these overlap. Clear, well-organized content serves both audiences.
-
----
-
-## Mobile-First Formatting
-
-Most searches happen on mobile. Mobile screens demand:
-
-**Concise paragraphs:**
-3-4 sentences maximum per paragraph.
-
-**Frequent headers:**
-Break content into scannable chunks.
-
-**Bullets over prose:**
-Lists are easier to read on small screens.
-
-**Tap-friendly:**
-Links and buttons with adequate spacing.
-
-**Progressive depth:**
-Essential info first, details for those who scroll.
-
----
-
-## Common Formatting Mistakes
-
-### Walls of Text
-
-Long paragraphs without breaks exhaust readers. If you can't add a header or bullet, add a line break.
-
-### Clever Over Clear
-
-"Dive Into the Deep End of Drain Dynamics" vs. "How to Clear a Clogged Drain"
-
-Clear wins. Always.
-
-### Keyword-Stuffed Headers
-
-"Best Affordable Quality Expert Professional Plumber Austin TX"
-
-Write headers for users. Search engines are smart enough to understand natural language.
-
-### Burying the Answer
-
-Introduction → Context → Background → History → Finally, the answer
-
-Move the answer up. Context can follow.
-
-### Inconsistent Structure
-
-If similar pages have different structures, users can't predict where to find information. Establish patterns.
-
----
-
-## Frequently Asked Questions
-
-### Does BLUF formatting hurt engagement or time on page?
-
-Usually no. Users who find their answer quickly often explore related content. Users who can't find answers leave immediately. BLUF reduces bounces.
-
-### How do I balance completeness with brevity?
-
-Lead with the essential answer. Offer depth for those who want it. "Here's the quick answer [brief]. For full details, read on [comprehensive section]."
-
-### Will featured snippets reduce my traffic?
-
-Some queries, yes. But featured snippet visibility builds brand awareness, and complex topics still drive clicks. Optimize for snippets strategically, not universally.
-
-### How do I format content for voice search?
-
-Same principles: clear, direct answers to specific questions. Voice assistants read from featured-snippet-style content. Write conversationally but precisely.
-
-### Should every page have an FAQ section?
-
-Not necessarily. FAQs are useful when there are genuine frequently asked questions. Forced FAQs with obvious questions look thin. Use when appropriate.
-
----
-
-## The Bottom Line
-
-Content formatting for modern search is straightforward:
-
-- **Lead with the answer** (BLUF)
-- **Match user intent completely** (SXO)
-- **Format for extraction** (zero-click readiness)
-- **Structure for scanning** (headers, lists, tables)
-- **Write clearly for both humans and AI**
-
-These principles work together. Clear, well-organized, answer-first content serves users, earns search features, and positions well for AI visibility.
-
-The best test: would someone reading this feel they got value fast?
-
----
-
-## Related Articles
-
-- [The 2026 Organic Search Playbook for Home Service Websites](/blog/2026-organic-search-playbook-home-service-websites)
-- [Core Web Vitals for Content-Rich Service Websites](/blog/core-web-vitals-service-websites)
-- [Helpful Content, Information Gain, and Topical Authority](/blog/helpful-content-information-gain-topical-authority)
-    `.trim(),
-  },
-
-  // SUPPORTING ARTICLE 6
-  {
-    slug: "core-web-vitals-service-websites",
-    title: "Core Web Vitals for Content-Rich Service Websites: What Actually Matters",
-    metaDescription: "A practical guide to Core Web Vitals for service websites. Learn which metrics matter most, how to diagnose issues, and what fixes have the biggest impact.",
-    category: "ux-cwv-formatting",
-    publishDate: "2026-03-07",
-    readingTime: 8,
-    excerpt: "Core Web Vitals are Google's page experience metrics. Here's what content-rich home service sites need to know about LCP, INP, and CLS—and which fixes actually matter.",
-    content: `
-## The Short Answer
-
-Core Web Vitals (CWV) measure three things: loading speed (LCP), interactivity (INP), and visual stability (CLS). For content-rich service websites, the biggest issues are usually slow-loading images, heavy JavaScript, and layout shifts from ads or late-loading fonts. Fix those first.
-
-CWV aren't the dominant ranking factor some claim, but they matter for user experience—and user experience affects everything else.
-
----
-
-## The Three Core Web Vitals
-
-### LCP: Largest Contentful Paint
-
-**What it measures:** How long until the main content is visible.
-
-**Target:** Under 2.5 seconds
-
-**Common largest elements:**
-- Hero images
-- Featured images
-- Large text blocks (if no images above fold)
-
-**Why it matters:** Users wait for main content to load. Slow LCP = users leave before engaging.
-
-### INP: Interaction to Next Paint
-
-**What it measures:** How responsive the page is to user input (clicks, taps, key presses).
-
-**Target:** Under 200 milliseconds
-
-**What affects INP:**
-- Heavy JavaScript execution
-- Main thread blocking
-- Complex event handlers
-
-**Why it matters:** Users expect instant response. Laggy interactions feel broken.
-
-### CLS: Cumulative Layout Shift
-
-**What it measures:** How much the page layout shifts unexpectedly during loading.
-
-**Target:** Under 0.1
-
-**Common causes:**
-- Images without dimensions
-- Ads that load late
-- Fonts that swap in
-- Dynamic content insertion
-
-**Why it matters:** Layout shifts make users click wrong things. Frustrating and unprofessional.
-
----
-
-## Diagnosing Your CWV
-
-### Use PageSpeed Insights
-
-Google's PageSpeed Insights (pagespeed.web.dev) shows:
-
-- Field data (real user measurements if available)
-- Lab data (simulated testing)
-- Specific recommendations
-- Element-level attribution
-
-Start here for any page with issues.
-
-### Use Chrome DevTools
-
-Developer Tools > Performance panel:
-
-- Record a page load
-- See exactly what loads when
-- Identify blocking resources
-- Find long tasks causing INP issues
-
-### Use Search Console
-
-Core Web Vitals report shows:
-
-- Site-wide CWV status
-- URLs grouped by similar issues
-- Trends over time
-- Mobile vs. desktop breakdown
-
-Monitor here for ongoing issues.
-
----
-
-## Fixing LCP Issues
-
-LCP problems are usually image problems.
-
-### Image Optimization
-
-**Use modern formats:**
-WebP and AVIF are smaller than JPEG/PNG. Most browsers support them now.
-
-**Compress appropriately:**
-Tools like Squoosh or ImageOptim reduce file size without visible quality loss.
-
-**Size correctly:**
-Don't serve a 2400px image for a 600px display slot. Use responsive images.
-
-**Lazy load below-fold images:**
-Only the above-fold hero needs to load immediately. Everything else can wait.
-
-### Server Response
-
-**Use a CDN:**
-Content delivery networks serve assets from locations closer to users.
-
-**Enable compression:**
-Brotli or gzip compression reduces transfer sizes significantly.
-
-**Optimize server-side rendering:**
-If using SSR, minimize server response time.
-
-### Font Optimization
-
-**Use font-display: swap:**
-Shows fallback font immediately, swaps in custom font when ready.
-
-**Limit font weights:**
-Each weight/style is a separate file. Only load what you need.
-
-**Consider system fonts:**
-For body text, system fonts eliminate font loading entirely.
-
----
-
-## Fixing INP Issues
-
-INP problems are usually JavaScript problems.
-
-### Reduce JavaScript
-
-**Audit third-party scripts:**
-Analytics, chat widgets, and advertising scripts often block the main thread. Are all necessary?
-
-**Code-split:**
-Don't load the entire app bundle upfront. Split by route or component.
-
-**Defer non-critical scripts:**
-\`defer\` and \`async\` attributes load scripts without blocking.
-
-### Optimize Event Handlers
-
-**Break up long tasks:**
-Use \`requestIdleCallback\` or \`setTimeout\` to split heavy operations.
-
-**Debounce input handlers:**
-Don't fire on every keystroke if you don't need to.
-
-**Use Web Workers:**
-Heavy computation can run off the main thread.
-
-### Framework Considerations
-
-**React:**
-Use \`useMemo\` and \`useCallback\` to prevent unnecessary re-renders. Consider React.lazy for code-splitting.
-
-**General:**
-Keep component trees shallow. Minimize state updates that trigger large re-renders.
-
----
-
-## Fixing CLS Issues
-
-CLS problems are usually dimension problems.
-
-### Set Image Dimensions
-
-**Always specify width and height:**
-\`\`\`html
-<img src="photo.webp" width="800" height="600" alt="...">
-\`\`\`
-
-Browsers reserve space before the image loads, preventing shift.
-
-**Use aspect-ratio:**
-\`\`\`css
-.hero-image {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-}
-\`\`\`
-
-### Reserve Space for Dynamic Content
-
-**Ads:**
-Reserve the exact dimensions where ads will appear.
-
-**Embeds:**
-Use container divs with appropriate dimensions for video embeds, maps, etc.
-
-**Lazy-loaded content:**
-Skeleton loaders with correct dimensions prevent shifts when content loads.
-
-### Font Loading
-
-**Use font-display: swap with size-adjust:**
-Minimize the difference between fallback and web font metrics.
-
-**Preload key fonts:**
-\`\`\`html
-<link rel="preload" href="font.woff2" as="font" crossorigin>
-\`\`\`
-
----
-
-## Priority Order for Fixes
-
-### High Impact, Usually Easy
-
-1. **Compress and properly size images** — Often the single biggest improvement
-2. **Add image dimensions** — Eliminates many CLS issues
-3. **Enable text compression** — Simple server/CDN config
-4. **Use font-display: swap** — Quick CSS change
-
-### High Impact, Moderate Effort
-
-5. **Convert to modern image formats** — WebP/AVIF
-6. **Implement lazy loading** — For below-fold images
-7. **Audit and reduce third-party scripts** — May require business decisions
-8. **Code-split JavaScript** — Framework-dependent
-
-### Lower Priority (Unless Specific Problems)
-
-9. **Font subsetting** — Useful for heavy font files
-10. **Server-side rendering** — Major architecture decision
-11. **Web Workers** — For specific heavy computations
-
----
-
-## CWV and Rankings: The Real Impact
-
-### What Google Says
-
-CWV are a ranking factor, but content relevance is far more important. A slow page with great content will outrank a fast page with thin content.
-
-### What This Means Practically
-
-- Terrible CWV can hold you back
-- Perfect CWV won't save poor content
-- Focus on user experience, not just metrics
-- Fix obvious issues; don't over-optimize
-
-### The User Experience Angle
-
-Even if CWV had zero ranking impact, slow, shifting pages frustrate users. Frustrated users don't:
-
-- Stay and read
-- Return later
-- Recommend you
-- Convert to customers
-
-CWV matter for business reasons beyond SEO.
-
----
-
-## Content-Rich Site Specifics
-
-### Long-Form Articles
-
-**Challenge:** Many images, complex layouts
-
-**Solutions:**
-- Lazy load aggressively below fold
-- Use progressive image loading
-- Keep hero image optimized above all
-- Test on mobile, where images are often full-width
-
-### Image Galleries
-
-**Challenge:** Many large images
-
-**Solutions:**
-- Thumbnail grids with lazy-loaded full images
-- Blur-up loading for better perceived performance
-- Explicit dimensions on all gallery items
-
-### Interactive Tools (Calculators, Quizzes)
-
-**Challenge:** JavaScript-heavy features
-
-**Solutions:**
-- Load tool JS only when user interacts
-- Show static preview before full initialization
-- Keep interactions responsive during loading
-
-### Third-Party Content (Ads, Embeds)
-
-**Challenge:** Uncontrolled external resources
-
-**Solutions:**
-- Reserve exact dimensions for ad slots
-- Use lazy loading for ads below fold
-- Wrap embeds in sized containers
-
----
-
-## Monitoring Over Time
-
-### Set Up Alerts
-
-Search Console sends CWV reports. Enable email notifications for issues.
-
-### Regular Audits
-
-Monthly PageSpeed Insights checks on key pages catch regressions before they spread.
-
-### Real User Monitoring
-
-If you have enough traffic, field data (real user measurements) matters more than lab tests. CrUX data in PageSpeed Insights shows this.
-
----
-
-## Frequently Asked Questions
-
-### Do I need perfect CWV scores?
-
-No. "Good" status (green) is the goal. The difference between 95 and 100 performance score doesn't affect rankings or meaningfully affect users.
-
-### My CWV are good on desktop but bad on mobile. What do I focus on?
-
-Mobile. Most traffic is mobile, and Google uses mobile-first indexing.
-
-### Will a CDN fix my LCP issues?
-
-Often helps, but not if the underlying images are too large. Optimize images first, then CDN.
-
-### How do I prioritize which pages to fix?
-
-Start with high-traffic pages. Then pages targeting competitive keywords. Then work through the rest.
-
-### Can I ignore CWV if my content is excellent?
-
-You can rank with mediocre CWV if content is great. But you're giving away advantage. Fix the easy stuff at minimum.
-
----
-
-## The Bottom Line
-
-For content-rich service websites:
-
-1. **Optimize images first** — biggest impact, usually straightforward
-2. **Set dimensions on all visual elements** — prevents CLS
-3. **Audit JavaScript** — especially third-party scripts
-4. **Test on mobile** — where problems are usually worse
-5. **Focus on "Good" status** — not perfect scores
-
-CWV are one piece of the user experience puzzle. Fast, stable pages build trust. Trust drives engagement. Engagement drives rankings. The metrics are means to that end.
-
----
-
-## Related Articles
-
-- [The 2026 Organic Search Playbook for Home Service Websites](/blog/2026-organic-search-playbook-home-service-websites)
-- [BLUF, SXO, and Zero-Click Search](/blog/bluf-sxo-zero-click-search-formatting)
-- [Schema, Entities, and Knowledge Graph Basics](/blog/schema-entities-knowledge-graph-local-home-service)
-    `.trim(),
-  },
-
-  // SUPPORTING ARTICLE 7
-  {
-    slug: "rag-home-service-knowledge-base",
-    title: "How RAG Can Support a Home Service Knowledge Base Without Creating Liability",
-    metaDescription: "Understanding Retrieval-Augmented Generation for home service sites. How to position your content for AI retrieval while managing responsibility and accuracy concerns.",
-    category: "ai-search-llm",
-    publishDate: "2026-03-08",
-    readingTime: 9,
-    excerpt: "RAG powers AI systems that cite external sources. Here's how home service sites can position for AI retrieval while maintaining accuracy and managing liability.",
-    content: `
-## The Short Answer
-
-Retrieval-Augmented Generation (RAG) is how AI systems incorporate external information into their responses. Instead of relying solely on training data, RAG systems retrieve relevant documents and use them to generate answers—often citing sources.
-
-For home service sites, this creates opportunity (your content can be cited) and responsibility (AI might quote your advice to people making real decisions). This guide covers how to position for RAG while maintaining accuracy and managing liability.
-
----
-
-## How RAG Works
-
-### The Basic Process
-
-1. **User asks a question** to an AI system
-2. **System retrieves relevant documents** from indexed sources
-3. **AI generates a response** using retrieved information
-4. **Response may cite sources** depending on the system
-
-### Where Documents Come From
-
-RAG systems retrieve from:
-
-- Web search results (current information)
-- Indexed document collections
-- Knowledge bases maintained by the AI provider
-- Sometimes, specific websites or databases
-
-### What Gets Retrieved
-
-RAG systems prioritize:
-
-- Authoritative sources (established, linked-to content)
-- Relevant content (closely matching the query)
-- Recent content (especially for time-sensitive topics)
-- Clearly structured information (easy to parse and quote)
-
----
-
-## Why RAG Matters for Home Service Sites
-
-### The Opportunity
-
-When someone asks ChatGPT "how do I know if my roof leak is serious," the AI might:
-
-- Retrieve your roof leak diagnosis guide
-- Quote your criteria for severity
-- Cite your site as the source
-
-This is visibility without the user actively searching. Your expertise reaches users through AI intermediaries.
-
-### The Reality Check
-
-RAG citation is still emerging. Most AI interactions don't cite sources. When they do, citations go to highly authoritative sources.
-
-The question isn't "will RAG make me famous?" It's "is my content good enough to be worth citing, and accurate enough to be cited responsibly?"
-
----
-
-## Positioning Content for RAG Retrieval
-
-### Be Authoritative
-
-RAG systems prioritize credible sources:
-
-**What helps:**
-- Quality backlinks from relevant sites
-- Consistent, accurate content over time
-- Being cited by others in your space
-- Clear expertise signals
-
-**What doesn't help:**
-- Thin content that exists only for keywords
-- Inaccurate information that gets flagged
-- Spam signals or manipulative tactics
-
-### Be Clear and Quotable
-
-RAG works by extracting relevant passages. Make extraction easy:
-
-**Write sentences that stand alone:**
-"Foundation cracks wider than 1/4 inch typically require professional evaluation."
-
-This can be quoted directly. Contrast with:
-
-"If you see them, you might want to think about calling someone."
-
-This is vague and not quote-worthy.
-
-**Use clear structure:**
-Headers that signal content. Paragraphs with clear topics. Lists where appropriate.
-
-**Define entities explicitly:**
-"A GFCI outlet (Ground Fault Circuit Interrupter) is a safety device that..."
-
-AI systems understand entity definitions and use them in responses.
-
-### Be Comprehensive
-
-Shallow content loses to comprehensive content:
-
-**Cover the full topic:**
-All aspects someone might ask about. Edge cases. Related questions.
-
-**Address follow-ups:**
-What would someone ask next? Answer that too.
-
-**Link to depth:**
-If you can't cover everything in one article, link to related content.
-
-### Be Current
-
-For evolving topics, freshness matters:
-
-**Update dates signal relevance:**
-A 2024 article competes poorly with a 2026 article on a topic that's changed.
-
-**Evergreen framing helps:**
-"Current building codes require..." is better than "2024 codes require..." if you update the content.
-
----
-
-## Managing Accuracy and Liability
-
-### The Problem
-
-If an AI cites your advice, and someone follows it incorrectly, what happens?
-
-Legally, this is uncharted territory. Practically, you want to:
-
-1. Ensure your advice is sound
-2. Include appropriate context and limitations
-3. Be clear about what you're not claiming
-
-### Accuracy Requirements
-
-**Verify claims:**
-Don't guess. Research. Cite sources where appropriate.
-
-**Acknowledge uncertainty:**
-"This typically works for standard installations. Unusual configurations may differ."
-
-**Update when things change:**
-Building codes, best practices, and product availability change. Review and update.
-
-### Appropriate Disclaimers
-
-**Don't overdo it:**
-Every sentence can't be a disclaimer. Content becomes unreadable.
-
-**Do include clear scope:**
-"This guide covers basic diagnostics. For complex repairs, consult a licensed professional."
-
-**Do acknowledge limits:**
-"We provide educational information. This isn't a substitute for on-site professional assessment."
-
-### Writing for Safe Quotability
-
-**Be specific about conditions:**
-"For most single-story homes with standard shingle roofs..." → Conditions are clear.
-
-**Avoid absolutes:**
-"Always" and "never" create problems when edge cases exist.
-
-**Include qualifiers:**
-"In most cases..." "Typically..." "Generally..." → Appropriate uncertainty.
-
-**Direct to professionals for safety issues:**
-"If you suspect structural damage, consult a licensed engineer before proceeding."
-
----
-
-## YMYL Considerations
-
-Home repair is "Your Money or Your Life" territory. Bad advice can cause:
-
-- Physical injury
-- Property damage
-- Expensive secondary problems
-
-### Safe YMYL Content
-
-**Conservative recommendations:**
-When in doubt, recommend professional help.
-
-**Clear safety warnings:**
-Electrical work, structural concerns, gas appliances—emphasize professional involvement.
-
-**No medical claims:**
-Mold concerns? "Consult your doctor if you experience symptoms." Don't diagnose.
-
-**No structural certainty:**
-"This crack pattern is sometimes associated with foundation issues. A structural engineer can assess your specific situation."
-
-### What to Avoid
-
-**Definitive safety claims:**
-"This is completely safe to do yourself." → Liability waiting to happen.
-
-**Downplaying risks:**
-"A little mold isn't a big deal." → Depends on the mold, the person, and the situation.
-
-**Guarantees:**
-"This will definitely fix the problem." → It might not.
-
----
-
-## Practical Content Strategies
-
-### Create Definitive Resources
-
-Be the best answer for specific questions:
-
-**"How to identify different types of ceiling stains"**
-Comprehensive guide with clear criteria, images if possible, and next steps for each type.
-
-**"When roof leaks require professional repair vs. DIY"**
-Clear criteria, honest about both options, no sales pressure.
-
-These become reference material AI systems retrieve.
-
-### Structure for Extraction
-
-**FAQ format:**
-Q: What causes a running toilet?
-A: Running toilets are typically caused by...
-
-Direct Q&A is easy to extract and quote.
-
-**Criteria lists:**
-Signs your foundation crack needs professional evaluation:
-- Width greater than 1/4 inch
-- Horizontal orientation
-- Accompanied by water intrusion
-- Showing progressive widening
-
-Lists are quotable and useful.
-
-**Decision frameworks:**
-If X, then Y. If not X, then Z.
-
-Clear logic is AI-friendly.
-
-### Update Signals
-
-**Show freshness:**
-"Last updated: March 2026" signals current information.
-
-**Note when content is reviewed:**
-"Content reviewed annually for accuracy."
-
-**Version history (optional):**
-For important guides, noting what changed and when builds trust.
-
----
-
-## What RAG Means for Traffic
-
-### The Concern
-
-If AI quotes your content, users might not visit your site. Zero-click search, AI edition.
-
-### The Reality
-
-Currently, AI responses that cite sources often drive traffic:
-- Users who want more detail click through
-- Users who want verification click through
-- Citation = awareness = future searches that find you
-
-### Long-Term Uncertainty
-
-We don't know how AI assistants will evolve. Positioning for citation is smart, but:
-
-- Don't rely on AI traffic as a strategy
-- Continue building direct traffic sources
-- Focus on value that requires site visits
-
----
-
-## Monitoring AI Visibility
-
-### What You Can Track
-
-- Direct traffic from AI platforms (when referrers are passed)
-- Brand searches following AI mentions
-- Citation appearances (manual searching in AI tools)
-
-### What's Difficult to Track
-
-- Times your content informs AI responses without citation
-- Impact on training data for future models
-- Competitor positioning in AI responses
-
-### Practical Approach
-
-Monitor what you can. Focus on creating content that deserves citation. The metrics will follow if the content is strong.
-
----
-
-## Frequently Asked Questions
-
-### Can I prevent AI from using my content?
-
-Technically, yes—robots.txt directives for AI crawlers are emerging. Practically, opting out means losing AI visibility entirely. Most sites benefit from inclusion.
-
-### How do I know if AI is citing my content?
-
-Search manually. Ask ChatGPT, Claude, etc. questions your content answers. See if you're cited. This is imperfect but gives directional insight.
-
-### Should I create content specifically for AI retrieval?
-
-Create content that's genuinely useful. AI retrieval follows quality. Don't create thin "FAQ pages" hoping for AI pickup—create comprehensive resources.
-
-### What if AI misquotes me?
-
-This happens. You can't fully control it. Focus on writing clearly enough that misquotation is less likely. If egregious misquotation occurs, reach out to the AI provider.
-
-### Is RAG a fad or the future?
-
-RAG is established technology. AI systems will continue retrieving external information. The specific mechanisms will evolve, but the principle—AI using current external sources—is here to stay.
-
----
-
-## The Bottom Line
-
-RAG positioning for home service sites comes down to:
-
-1. **Create authoritative, accurate content** that deserves citation
-2. **Structure clearly** for extraction and quotability
-3. **Include appropriate context** and limitations
-4. **Be conservative** on safety and YMYL topics
-5. **Monitor what you can** while focusing on quality
-
-The sites that benefit from RAG will be the ones that would benefit from any citation—authoritative, comprehensive, accurate resources that genuinely help people.
-
-Build that, and AI visibility follows.
-
----
-
-## Related Articles
-
-- [The 2026 Organic Search Playbook for Home Service Websites](/blog/2026-organic-search-playbook-home-service-websites)
-- [SEO vs AEO vs GEO vs LLMO](/blog/seo-vs-aeo-vs-geo-vs-llmo-home-service-sites)
-- [How to Build E-E-A-T for a Home Repair Website](/blog/build-eeat-home-repair-website)
-    `.trim(),
-  },
-
-  // SUPPORTING ARTICLE 8
-  {
-    slug: "video-search-optimization-home-repair-brands",
-    title: "Video Search Optimization for Home Repair Brands: When VSO Is Worth It",
-    metaDescription: "A practical guide to video search optimization for home repair websites. Learn when video content is worth the investment and how to optimize for discovery.",
-    category: "video-media",
-    publishDate: "2026-03-09",
+    slug: "what-brown-ceiling-stain-usually-means",
+    title: "What a Brown Ceiling Stain Usually Means — And What to Do About It",
+    metaDescription: "Brown or yellow stains on your ceiling usually mean water damage. Learn the most common causes, how to identify the source, and whether you need a repair professional.",
+    category: "water-damage-leaks",
+    publishDate: "2026-02-20",
     readingTime: 7,
-    excerpt: "Video can be powerful for home repair content, but it's not always worth the investment. Here's when VSO makes sense and how to optimize if you pursue it.",
+    excerpt: "That brownish ring on your ceiling isn't just cosmetic. It's almost always a sign that water reached the drywall from somewhere above. Here's how to figure out what's causing it and what to do next.",
     content: `
 ## The Short Answer
 
-Video search optimization (VSO) can work well for home repair content—but only if you can produce quality video efficiently. For most home service sites, text content offers better ROI than video. That said, certain topics (visual repairs, before/after transformations, tool demonstrations) genuinely benefit from video. This guide covers when video is worth it and how to optimize when it is.
+A brown or yellowish stain on your ceiling almost always means water has reached the drywall from above. The most common sources are roof leaks, plumbing leaks from an upstairs bathroom, HVAC condensation, or ice dam damage. The stain itself isn't dangerous, but the water causing it can lead to mold, structural damage, and more expensive repairs if ignored.
 
 ---
 
-## When Video Makes Sense for Home Repair
+## Why Ceiling Stains Are Worth Investigating
 
-### Topics That Work
+It's tempting to paint over a ceiling stain and move on. But the stain is a symptom, not the problem. Until you identify and fix the water source, the stain will come back — and the hidden damage behind it will keep getting worse.
 
-**Visual repairs:**
-"How to replace a toilet flapper" is clearer in video than text. Seeing the mechanism, the removal process, and the installation helps.
+Here's what can happen if you ignore a ceiling stain:
 
-**Before/after demonstrations:**
-Showing a damaged area, the repair process, and the result creates trust and context that photos alone don't capture.
-
-**Tool usage:**
-Demonstrating how to use a pipe wrench, plumber's tape application, or multimeter testing translates better to video.
-
-**Troubleshooting walkthroughs:**
-"What to check when your AC isn't cooling" benefits from seeing someone actually check components.
-
-### Topics Where Text Wins
-
-**Conceptual explanations:**
-"Understanding different types of foundation cracks" works fine as text with images. Video doesn't add much.
-
-**Lists and comparisons:**
-"Best waterproof sealants for bathroom tile" is easier to scan as text than watch as video.
-
-**Reference material:**
-Building code requirements, product specifications, maintenance schedules—users want to skim and reference, not watch.
-
-**Quick answers:**
-"What temperature should I set my water heater?" doesn't need video.
+- **Mold growth** — Damp drywall is an ideal environment for mold. It can start growing within 24-48 hours of getting wet and may spread behind the surface where you can't see it.
+- **Structural weakening** — Persistent moisture weakens drywall, and if it reaches the framing or joists above, it can compromise structural integrity over time.
+- **Pest attraction** — Damp wood attracts termites and carpenter ants, which compound the damage.
+- **Larger repair bills** — A $200 roof patch left unaddressed can become a $3,000 drywall-and-mold remediation job within a year.
 
 ---
 
-## The Investment Reality
+## Most Common Causes
 
-### Video Production Costs
+### Roof Leak
 
-Quality video requires:
+If the stain is on a top-floor ceiling, a roof leak is the most likely cause. Water enters through damaged shingles, deteriorated flashing around chimneys or vents, or gaps in the roof membrane. It often travels along rafters or sheathing before dripping down, so the stain on your ceiling may not be directly below the leak.
 
-- Equipment (camera, lighting, audio)
-- Production time (filming, editing)
-- Consistent output (one video won't build a channel)
-- Storage and hosting
-- Ongoing maintenance (updating outdated videos)
+**Clue:** The stain gets darker or larger after heavy rain.
 
-### Text Content Costs
+### Plumbing Leak From Above
 
-Well-researched text requires:
+If there's a bathroom, kitchen, or laundry room directly above the stain, a plumbing leak is a strong possibility. Common culprits include a failed wax ring under a toilet, a leaking supply line, a cracked drain pipe, or deteriorated caulking around a tub or shower.
 
-- Research time
-- Writing and editing
-- Images/diagrams where helpful
-- Updates as information changes
+**Clue:** The stain is located directly below a bathroom fixture or the stain appears regardless of weather.
 
-### The ROI Comparison
+### HVAC Condensation
 
-For most home service sites, text content:
+Air conditioning systems produce condensation, which is normally routed away through a drain line. If the drain line clogs, the condensation pan overflows, or ductwork in the attic sweats due to poor insulation, water can drip onto the ceiling below.
 
-- Is faster to produce
-- Is easier to update
-- Covers more topics
-- Has clearer SEO paths
+**Clue:** The stain appears or worsens during air conditioning season and is near or below HVAC equipment.
 
-Video wins when:
+### Ice Dam Damage
 
-- The topic genuinely benefits from visual demonstration
-- You can produce efficiently (experience, equipment, process)
-- You'll commit to consistent output
-- You have distribution (YouTube, social, site traffic)
+In cold climates, ice dams form when warm air from the house melts snow on the roof, which then refreezes at the eaves. The ice buildup forces water under the shingles, and it can seep through the roof deck into the ceiling below.
+
+**Clue:** The stain appears along an exterior wall or near the eaves after a freeze/thaw cycle.
+
+### Old or One-Time Leak
+
+Sometimes a stain is from a past event — a one-time overflow, a roof leak that was already repaired, or construction moisture that dried out. If the stain is stable (not growing), dry to the touch, and has been there since a known event, it may truly be cosmetic.
+
+**Clue:** The stain hasn't changed size or color in months, and the area feels completely dry.
 
 ---
 
-## Video SEO Fundamentals
+## How to Identify the Source
 
-If you do produce video, optimize for discovery:
+1. **Check the weather connection.** Does the stain grow or darken after rain? That points to a roof leak or exterior water entry.
 
-### YouTube Optimization
+2. **Check what's above it.** Is there a bathroom, kitchen, or laundry room? Run water in the fixtures above and watch for dripping.
 
-YouTube is the second-largest search engine. Basics:
+3. **Check your attic.** If you have attic access, look for signs of moisture — water stains on rafters, damp insulation, or daylight coming through the roof.
 
-**Titles:**
-Clear, keyword-relevant, not clickbait.
-"How to Replace a Toilet Fill Valve (Step-by-Step)" works.
-"You Won't BELIEVE This Toilet Hack!" doesn't.
+4. **Touch the stain.** Press gently on the stained area. If it feels soft or spongy, the drywall is saturated and the problem is active. If it's dry and firm, the leak may be resolved or intermittent.
 
-**Descriptions:**
-First 150 characters appear in search. Include keywords naturally. Add timestamps for longer videos. Include links to related content.
-
-**Tags:**
-Relevant keywords and phrases. Include variations. Don't spam.
-
-**Thumbnails:**
-Custom thumbnails with clear imagery outperform auto-generated ones. Text overlay should be readable at small sizes.
-
-**Chapters:**
-Timestamps in descriptions create chapters. Users can jump to relevant sections. YouTube may show chapter previews in search.
-
-### Video Schema Markup
-
-If embedding videos on your site, use VideoObject schema:
-
-\`\`\`json
-{
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "How to Replace a Toilet Fill Valve",
-  "description": "Step-by-step instructions for replacing...",
-  "thumbnailUrl": "https://example.com/thumbnail.jpg",
-  "uploadDate": "2026-03-01",
-  "duration": "PT8M30S",
-  "contentUrl": "https://example.com/video.mp4"
-}
-\`\`\`
-
-This helps video appear in Google's video search and video carousels.
-
-### Transcripts and Captions
-
-**Accessibility:** Captions serve deaf/hard-of-hearing viewers.
-
-**SEO:** Transcripts provide text content for search engines to index.
-
-**User experience:** Many watch video muted. Captions allow this.
-
-Auto-captions are a start; manual review improves accuracy.
+5. **Look for patterns.** A ring pattern with a dry center often indicates intermittent leaking. A continuously spreading stain suggests ongoing moisture.
 
 ---
 
-## Distribution Strategy
+## What to Do Next
 
-### YouTube as Home Base
+### If the Stain Is Active (Wet, Soft, or Growing)
 
-For most, YouTube hosting makes sense:
+- **Find and stop the water source.** If it's a plumbing leak, shut off the water supply to the affected fixture. If it's a roof leak during rain, contain the drip with a bucket and contact a roofer.
+- **Don't just paint over it.** The stain will bleed through, and the moisture will continue causing damage.
+- **Check for mold.** Look at the back side of the drywall if possible, and check the surrounding area for musty smells.
+- **Document the damage.** Take photos with dates. If you file an insurance claim later, documentation from the early stages is valuable.
 
-- Built-in discovery through search and recommendations
-- No hosting costs
-- Embeddable on your site
-- Established viewer behavior
+### If the Stain Is Old and Dry
 
-### Website Integration
-
-Embed relevant videos within related text content:
-
-- How-to article + embedded video demonstration
-- Product comparison + video walkthrough
-- FAQ page + video answers to common questions
-
-Video supplements text; text supplements video.
-
-### Social Distribution
-
-Short clips from longer videos work on:
-
-- Instagram Reels
-- TikTok
-- YouTube Shorts
-- Facebook
-
-Cut highlights or key steps into 30-60 second clips with calls to action to watch the full video.
+- **Confirm it's truly dry.** Press on it firmly. Use a moisture meter if you have one.
+- **Prime with a stain-blocking primer.** Regular paint won't cover a water stain — the tannins will bleed through. Use a shellac-based or oil-based stain-blocking primer first, then paint over it.
+- **Monitor it.** Check the area after the next heavy rain or after running the fixture above. If the stain returns, the problem isn't fully resolved.
 
 ---
 
-## Quality Thresholds
+## DIY vs Call a Pro
 
-### Minimum Acceptable Quality
+**You can usually handle it yourself if:**
+- The source is an obvious plumbing connection you can tighten or reseal
+- The stain is from a known one-time event and the area is dry
+- You're comfortable priming and repainting the ceiling
 
-Users tolerate:
+**Call a professional if:**
+- You can't identify the source of the water
+- The drywall feels soft, spongy, or is sagging
+- You see or smell mold
+- The stain is on a top-floor ceiling and you suspect a roof leak (roof work involves fall risk)
+- The stain is large (more than a few square feet) or keeps returning
 
-- Basic equipment (smartphone with good lighting)
-- Simple editing (cuts, titles, basic transitions)
-- Natural presentation (not polished voiceover)
-
-Users don't tolerate:
-
-- Poor audio (this matters more than video quality)
-- Unusable lighting (can't see what you're demonstrating)
-- Disorganized content (rambling without structure)
-- Wrong or dangerous information
-
-### The Quality-Consistency Tradeoff
-
-Perfectionism kills consistency. A regular schedule of good-enough videos outperforms occasional perfect videos.
-
-Set quality minimums:
-
-- Audio is clear
-- Visuals show what needs showing
-- Content is accurate and helpful
-- Structure is logical
-
-Then publish consistently.
-
----
-
-## Content Strategy for Video
-
-### Start with Proven Topics
-
-Create videos for topics you know perform well as text content. If "how to clear a clogged drain" is your top-performing article, a video version likely has audience.
-
-### Keyword Research for Video
-
-YouTube has its own search behavior. Use:
-
-- YouTube search suggestions (type topic, see autocomplete)
-- YouTube Studio analytics (what viewers search for)
-- Tool like TubeBuddy or VidIQ for search volume estimates
-
-Video keywords overlap with text keywords but aren't identical.
-
-### Series and Playlists
-
-Related videos in series:
-
-- "Complete Bathroom Plumbing" playlist
-- "Electrical Safety for Homeowners" series
-- "Seasonal Home Maintenance" quarterly videos
-
-Series encourage subscription and binge-watching.
-
----
-
-## Measuring Video Success
-
-### YouTube Metrics
-
-**Views:** Basic reach metric
-**Watch time:** How long viewers engage (more important than views)
-**Click-through rate:** Percentage who click when seeing your thumbnail
-**Subscriber growth:** Channel building
-**Traffic to website:** Via links in description or cards
-
-### Website Metrics
-
-**Embedded video engagement:** Play rate, watch duration
-**Page metrics with video vs. without:** Does video improve time on page? Conversions?
-**Search visibility:** Are video pages appearing in video carousels?
-
----
-
-## When to Skip Video
-
-### Limited Resources
-
-If you're choosing between:
-
-A) 10 well-researched text articles
-B) 2 videos
-
-Choose A for most topics. Text scales better with limited resources.
-
-### Topics Without Visual Need
-
-"Should I repair or replace my water heater?" is a decision framework. Text with comparison tables serves better than video.
-
-### Competitive Channels
-
-If established channels already cover your topic thoroughly, differentiation is hard. Consider whether text content offers better opportunity.
-
-### Maintenance Concerns
-
-Videos are hard to update. If topics change frequently (codes, products, best practices), text content that's easy to edit may be wiser.
+[Use our diagnosis tool to get a quick assessment](/diagnose) or [find a local contractor](/pros).
 
 ---
 
 ## Frequently Asked Questions
 
-### Do I need professional equipment for video?
+### Can I just paint over a ceiling stain?
 
-No. Modern smartphones with basic lighting produce acceptable quality. Audio matters most—consider a lapel mic or external microphone.
+Not with regular paint. Water stains contain tannins that bleed through standard latex paint. You need to use a stain-blocking primer (shellac-based works best) before repainting. But more importantly, only paint over a stain after you've confirmed the water source is fixed and the area is completely dry.
 
-### Should I show my face on camera?
+### How quickly does mold grow behind a ceiling stain?
 
-Optional. Many successful repair videos show only hands and work. Face adds personality and trust but isn't required.
+Mold can begin growing within 24 to 48 hours on damp drywall. If a ceiling stain has been wet for more than a day or two, there's a reasonable chance mold is starting to develop on the back side of the drywall, even if you can't see it from the room.
 
-### How long should videos be?
+### Does homeowner's insurance cover ceiling stains?
 
-As long as needed, no longer. Most how-to repairs work in 5-10 minutes. Quick tips might be 1-2 minutes. Comprehensive guides might be 15-20 minutes with chapters.
+Generally, insurance covers sudden and accidental water damage (like a burst pipe) but not gradual leaks or maintenance issues. If a pipe suddenly fails and damages your ceiling, the resulting drywall and mold remediation is often covered. A slow leak you've been ignoring for months is usually not. Document the damage with photos either way.
 
-### Should I host videos on my site or YouTube?
+### Should I cut open the ceiling to investigate?
 
-YouTube for discovery, embedded on your site for integration. Use YouTube hosting; embed where relevant in your content.
+If the drywall is soft or sagging, cutting it open may be necessary to assess the damage and let the area dry. If the stain is dry and stable, there's usually no need to open the ceiling. A moisture meter can help you decide without cutting.
 
-### How do I compete with established YouTube channels?
+For a detailed guide on this issue, visit our [brown water stain on ceiling](/issues/brown-water-stain-ceiling) page.
+`
+  },
 
-Niche down. Cover specific situations the big channels skip. Be more practical and less entertainment-focused. Build authority in a specific area.
+  {
+    slug: "dripping-under-sink-what-to-check-first",
+    title: "Dripping Under the Sink: What to Check First",
+    metaDescription: "Water dripping under your sink? Here's a step-by-step guide to finding the source, deciding if it's a DIY fix, and knowing when to call a plumber.",
+    category: "water-damage-leaks",
+    publishDate: "2026-02-22",
+    readingTime: 6,
+    excerpt: "Under-sink leaks are one of the most common — and most commonly overlooked — plumbing problems. Here's how to find the source and figure out your next step.",
+    content: `
+## The Short Answer
 
----
-
-## The Bottom Line
-
-Video search optimization for home repair brands works when:
-
-1. **Topics genuinely benefit** from visual demonstration
-2. **You can produce consistently** without excessive cost
-3. **Quality meets minimum thresholds** (especially audio)
-4. **You commit to long-term building** (video channels take time)
-
-For most home service sites, video should supplement text strategy, not replace it. Start with text content, add video for topics that clearly benefit, and scale video only if early efforts show results.
-
-The question isn't "should we do video?" It's "does video serve our audience better than text for this specific topic, and can we produce it efficiently?"
-
-Answer that honestly, and the strategy follows.
+Water under your sink usually comes from one of three places: the supply lines bringing water in, the drain connections carrying water out, or the faucet itself leaking down through the counter. You can usually narrow it down in five minutes with a flashlight and a paper towel.
 
 ---
 
-## Related Articles
+## Why Under-Sink Leaks Get Missed
 
-- [The 2026 Organic Search Playbook for Home Service Websites](/blog/2026-organic-search-playbook-home-service-websites)
-- [Core Web Vitals for Content-Rich Service Websites](/blog/core-web-vitals-service-websites)
-- [BLUF, SXO, and Zero-Click Search](/blog/bluf-sxo-zero-click-search-formatting)
-    `.trim(),
+Most people don't open their under-sink cabinets regularly. The leak stays hidden behind cleaning supplies and spare sponges until the cabinet floor starts to warp, or a musty smell develops. By then, you may already have mold growing.
+
+Make it a habit to open your under-sink cabinets once a month and look. It takes ten seconds and can save you hundreds of dollars.
+
+---
+
+## Step-by-Step: Finding the Source
+
+### Step 1: Clear Everything Out
+
+Remove everything from under the sink. You need to see the pipes, supply lines, and the underside of the sink basin clearly.
+
+### Step 2: Dry Everything
+
+Wipe down all pipes, connections, and the cabinet floor with a dry towel or paper towels. You need a dry starting point to see where new moisture appears.
+
+### Step 3: Check the Supply Lines (Water In)
+
+Supply lines are the smaller tubes or braided hoses connecting the shut-off valves (on the wall) to the faucet. They're under constant water pressure, so a leak here drips even when you're not using the sink.
+
+- Feel around each connection point — where the line meets the valve and where it meets the faucet.
+- Look for mineral deposits (white or greenish crust), which indicate a slow, long-term drip.
+- Check the valves themselves — the handle/knob part can leak at the stem.
+
+**If water appears here without running the faucet, it's a supply-side leak.**
+
+### Step 4: Check the Drain Connections (Water Out)
+
+Turn on the faucet and let water run for about 30 seconds. Watch the drain connections:
+
+- The tailpiece (the straight pipe coming down from the drain)
+- The P-trap (the curved section)
+- The connection to the wall drain pipe
+- If you have a garbage disposal, check the connections at the top and side
+
+**If water only appears when you're running the faucet, it's a drain-side leak.**
+
+### Step 5: Check the Faucet Base
+
+With the faucet running, look at the base of the faucet where it meets the countertop. Rock the faucet gently. If water seeps from under the base and drips down through the counter hole, the faucet seals are failing.
+
+---
+
+## Common Fixes
+
+### Loose Slip-Joint Nut (Drain Side)
+
+The nuts connecting P-trap sections are often hand-tightened during installation. They can loosen over time. Try snugging them with channel-lock pliers — a quarter turn is often all it takes. Don't overtighten, especially on plastic fittings.
+
+### Worn Supply Line Washer
+
+If a supply line connection is dripping, turn off the water supply to that line, disconnect it, and check the rubber washer inside. Replacement washers cost less than a dollar and are available at any hardware store.
+
+### Failed P-Trap Gasket
+
+If the P-trap connection is leaking, the gasket (rubber or nylon washer) between the sections may be worn. Replacement P-trap kits cost $8-15 and are a straightforward swap — just have a bucket ready for the water in the trap.
+
+### Faucet Base Leak
+
+Faucet base leaks usually require removing the faucet, replacing the O-rings or gaskets underneath, and reinstalling. This is more involved than a simple pipe connection fix, but still within DIY range for most homeowners.
+
+### Corroded or Cracked Pipe
+
+If a pipe itself (not a connection) is leaking — because it's corroded, cracked, or has a pinhole — replacement is the fix. PVC sections are easy to swap. Corroded metal pipes may need a plumber, especially in older homes with galvanized steel plumbing.
+
+---
+
+## DIY vs Call a Pro
+
+**DIY-friendly:**
+- Tightening loose slip-joint nuts
+- Replacing a supply line washer
+- Swapping a P-trap
+- Replacing a supply line hose
+
+**Call a plumber if:**
+- The shut-off valve itself is leaking and you can't stop it
+- The leak involves a garbage disposal or dishwasher connection you're not comfortable with
+- You see corroded metal pipes and aren't sure about replacement
+- There's mold growth on the cabinet walls or behind the cabinet
+- Water has damaged the subfloor beneath the cabinet
+
+---
+
+## Preventing Future Leaks
+
+- Replace braided supply lines every 8-10 years as preventive maintenance, even if they're not leaking
+- Avoid using the cabinet directly beneath the sink as a catch-all — keep it organized so you can spot problems early
+- Check connections periodically, especially after any plumbing work
+- If you have hard water, mineral buildup on connections can indicate slow seepage — clean and retighten
+
+For a more detailed reference, see our complete guide on [dripping under the sink](/issues/dripping-under-sink). If you're dealing with water damage beyond the cabinet, check our [water damage guide](/blog/is-this-water-damage-urgent).
+
+---
+
+## Frequently Asked Questions
+
+### Is a drip under the sink an emergency?
+
+Usually not, but don't ignore it for more than a few days. Even a slow drip can cause mold, rot the cabinet floor, and damage the subfloor. If it's a supply-side leak (dripping constantly), the water waste adds up on your bill, too.
+
+### Can I use plumber's tape to fix a leak?
+
+Plumber's tape (PTFE tape) works on threaded connections, like where a supply line screws into a valve. It doesn't work on slip-joint connections (the kind on P-traps), which use compression fittings and gaskets. Using the wrong fix on the wrong joint is a common DIY mistake.
+
+### How do I know if I need a new faucet vs just a repair?
+
+If the faucet is leaking from the base and is more than 10-15 years old, replacement is often more cost-effective than repair, especially if replacement parts are hard to find. For newer faucets, replacing O-rings and cartridges is usually worthwhile.
+`
+  },
+
+  {
+    slug: "musty-smell-bathroom-common-causes",
+    title: "Musty Smell in Your Bathroom: What's Causing It and How to Fix It",
+    metaDescription: "A musty smell in the bathroom usually means hidden moisture or mold. Learn the most common causes, where to look, and how to eliminate the smell for good.",
+    category: "mold-moisture",
+    publishDate: "2026-02-25",
+    readingTime: 7,
+    excerpt: "That persistent musty smell in your bathroom isn't something you should mask with air freshener. It almost always points to a moisture problem that needs attention. Here's where to look.",
+    content: `
+## The Short Answer
+
+A persistent musty smell in a bathroom almost always means mold or mildew is growing somewhere, fed by excess moisture. The most common hiding spots are behind the vanity, under the toilet base, inside walls near the shower, in the exhaust fan duct, or on the underside of the subfloor. Finding and fixing the moisture source is the only lasting solution — air fresheners and cleaning products just mask the symptom.
+
+---
+
+## Why Bathrooms Are Mold Magnets
+
+Bathrooms combine everything mold needs: regular moisture, warm temperatures, and organic material to feed on (drywall, wood, grout, caulk). Even well-ventilated bathrooms deal with high humidity cycles multiple times a day.
+
+The difference between a bathroom that smells fine and one that smells musty usually comes down to how well moisture is managed between uses.
+
+---
+
+## Where to Look
+
+### Behind and Under the Vanity
+
+Pull the vanity away from the wall slightly if possible, or use a flashlight to inspect behind it. Water splashing behind the vanity over months and years can create a damp zone where mold grows on drywall, baseboard, or the vanity back panel.
+
+Check under the sink inside the vanity as well — a slow drain leak or supply line drip may have been dampening the interior without your knowledge. [More on under-sink leaks](/blog/dripping-under-sink-what-to-check-first).
+
+### Around and Under the Toilet Base
+
+If the wax ring seal between the toilet and the floor drain has failed, water can seep under the toilet base with each flush. This water sits underneath, soaking into the subfloor and creating an ideal mold environment.
+
+**Signs:** The toilet rocks slightly. You notice discoloration around the base. The flooring near the toilet feels soft.
+
+### In the Shower/Tub Walls
+
+Grout and caulk around tubs and showers break down over time, allowing water to get behind the tile surface. If the wall behind your shower feels spongy, or if grout lines are crumbling, water is likely getting into the wall cavity.
+
+### The Exhaust Fan and Duct
+
+Bathroom exhaust fans are supposed to remove humid air, but if the fan is undersized, rarely used, or the duct doesn't actually vent to the outside (this is more common than you'd expect — some older installations vent into the attic), moisture builds up instead of leaving.
+
+Remove the exhaust fan cover and inspect for mold on the fan blades and inside the housing. Also verify the duct exits the building — venting into the attic just moves the moisture problem upstairs.
+
+### Under the Flooring
+
+In severe cases, moisture has been present long enough to reach the subfloor beneath the bathroom flooring. This is more common with vinyl or linoleum flooring, which can trap moisture underneath without showing visible signs on the surface.
+
+---
+
+## How to Fix It
+
+### Improve Ventilation
+
+- Run the exhaust fan during every shower or bath, and for at least 20-30 minutes afterward
+- Make sure the fan actually vents to the outside, not into the attic
+- If the fan is weak (you can test by holding a tissue near it — it should hold), replace it with a properly sized unit
+- Consider a humidity-sensing fan that runs automatically when moisture levels rise
+
+### Address the Moisture Source
+
+- Re-caulk around tubs, showers, and toilets with mold-resistant silicone caulk
+- Re-grout any crumbling or missing grout lines
+- Fix any plumbing leaks (supply lines, drain connections, toilet wax ring)
+- Repair or replace water-damaged drywall
+
+### Clean Existing Mold
+
+- For surface mold on hard surfaces (tile, grout, glass): Clean with a mold-killing bathroom cleaner or a solution of 1 part bleach to 10 parts water. Scrub, rinse, and dry thoroughly.
+- For mold on caulk: It's usually easier to remove the old caulk entirely and apply new mold-resistant caulk rather than trying to clean it.
+- For mold on drywall: If mold has penetrated the drywall surface (not just sitting on top), the affected section should be cut out and replaced. Mold doesn't just clean off drywall.
+
+### Manage Ongoing Humidity
+
+- Wipe down shower walls and glass after use to reduce standing moisture
+- Leave the bathroom door open after showers to help humidity disperse (or keep the fan running)
+- Consider a small dehumidifier for bathrooms with persistent humidity problems
+- Check that towels and bath mats dry completely between uses — soggy towels contribute to indoor humidity
+
+---
+
+## When to Call a Professional
+
+- Mold is growing on drywall or inside walls (not just on caulk or grout)
+- The musty smell persists after you've cleaned all visible mold and fixed ventilation
+- Flooring feels soft or spongy near the toilet or tub
+- You suspect the exhaust fan duct is venting into the attic
+- The mold-affected area is larger than about 10 square feet
+
+For more details, see our complete guide to [musty smells in the bathroom](/issues/musty-smell-bathroom) and our broader [mold and moisture resource](/issues/mold-moisture).
+
+---
+
+## Frequently Asked Questions
+
+### Is bathroom mold dangerous?
+
+Most bathroom mold (typically Cladosporium, Penicillium, or Aspergillus species) causes irritation rather than serious illness in healthy people. However, people with asthma, allergies, or compromised immune systems can have stronger reactions. Regardless of species, mold means there's a moisture problem worth fixing.
+
+### Will a dehumidifier solve a musty bathroom?
+
+A dehumidifier treats the symptom (high humidity) but not the cause. If the musty smell is from a leak, failed caulk, or poor ventilation, a dehumidifier alone won't fix it. Fix the source first, then use a dehumidifier as a supplement if the bathroom stays humid.
+
+### How do I know if mold is behind my bathroom wall?
+
+Common indicators: persistent musty smell despite cleaning all visible surfaces, paint that bubbles or peels near the shower, drywall that feels soft when pressed, and discoloration that appears on the wall surface from behind. A professional can test with a moisture meter or by cutting an inspection hole.
+`
+  },
+
+  {
+    slug: "when-wall-crack-is-minor-vs-serious",
+    title: "When a Wall Crack Is Minor vs Serious: A Homeowner's Guide",
+    metaDescription: "Not all wall cracks mean your house is falling apart. Learn which cracks are cosmetic, which ones signal settling, and which need professional evaluation.",
+    category: "cracks-walls-foundation",
+    publishDate: "2026-02-28",
+    readingTime: 8,
+    excerpt: "Wall cracks cause more homeowner anxiety than almost any other issue. Here's how to tell the difference between normal settling cracks and ones that actually need attention.",
+    content: `
+## The Short Answer
+
+Most wall cracks in residential homes are cosmetic — caused by normal settling, seasonal humidity changes, or minor thermal expansion. The cracks that matter are ones that are wider than 1/8 inch, growing over time, horizontal (in basement/foundation walls), stair-stepping along mortar joints, or accompanied by other symptoms like sticking doors or uneven floors.
+
+A crack alone doesn't tell you the whole story. Context matters: where it is, how wide, what direction it runs, and whether it's changing.
+
+---
+
+## Cracks That Are Usually Cosmetic
+
+### Hairline Cracks at Drywall Seams
+
+Thin cracks that appear at drywall joints — especially at ceiling-wall intersections and around door/window frames — are extremely common. They result from the natural movement of the house as temperatures and humidity change. These are the most common cracks homeowners find, and they're almost always cosmetic.
+
+**What to do:** Patch with joint compound, retape if needed, and repaint. Monitor for any changes.
+
+### Small Vertical Cracks in Concrete Foundation
+
+Vertical or slightly diagonal cracks in poured concrete foundations that are less than 1/16 inch wide are usually shrinkage cracks. Concrete shrinks slightly as it cures, and these cracks are a normal byproduct. [More about hairline foundation cracks](/issues/hairline-foundation-crack).
+
+**What to do:** Seal with a concrete crack filler to prevent water intrusion. Monitor for widening.
+
+### Cracks Above Door and Window Frames
+
+Diagonal cracks running from the corner of a door or window frame toward the ceiling are common settling cracks. The openings in a wall are natural stress points, and minor cracking here is expected as a house settles in its first few years. [Read about cracked drywall above doors](/issues/cracked-drywall-above-door).
+
+**What to do:** If the crack is narrow (less than 1/8 inch) and hasn't changed in months, patch and paint. If it's new in an older house, monitor it.
+
+### Cracks in Plaster Walls
+
+Older homes with plaster walls develop cracks more readily than drywall homes. Plaster is rigid, and any slight movement results in cracking. Map-like or spider-web crack patterns in plaster are common and usually cosmetic, though they can indicate the plaster is detaching from the lath beneath.
+
+**What to do:** Cosmetic plaster cracks can be filled and painted. If large sections of plaster feel hollow or loose when you tap on them, the plaster may need reattachment or replacement.
+
+---
+
+## Cracks That Deserve Attention
+
+### Horizontal Cracks in Basement or Foundation Walls
+
+Horizontal cracks in basement walls are among the most concerning. They often indicate lateral pressure from the soil outside pushing inward. This is especially common in homes with heavy clay soil or poor drainage around the foundation.
+
+**What to do:** Have a structural engineer evaluate. Horizontal foundation cracks can indicate a serious structural issue that may worsen over time.
+
+### Stair-Step Cracks in Brick or Block
+
+Cracks that follow the mortar joints in a stair-step pattern usually indicate foundation movement or settling. If these cracks are wide (more than 1/8 inch) or getting wider, the foundation may be shifting unevenly.
+
+**What to do:** Monitor with dated photos. If the crack is active (widening), consult a structural professional.
+
+### Cracks Wider Than 1/4 Inch
+
+Any crack that's more than 1/4 inch wide — regardless of location or direction — is worth professional evaluation. At that width, the movement causing the crack may be significant enough to affect the structure.
+
+### Cracks With Offset (One Side Higher Than the Other)
+
+If the wall surface on one side of a crack is offset — higher, lower, or pushed out — relative to the other side, it indicates structural movement beyond simple shrinkage. This is a meaningful sign.
+
+### New Cracks in an Older Home
+
+A home that's been stable for 20 years suddenly developing cracks is a different situation from a 2-year-old home showing settling cracks. New cracks in older homes can indicate changes in soil conditions, new water patterns (like altered drainage), foundation deterioration, or nearby construction affecting the ground.
+
+---
+
+## How to Monitor a Crack
+
+If you find a crack you're not sure about, monitoring it over time tells you more than any single inspection.
+
+1. **Take a dated photo** with a ruler or coin next to the crack for scale.
+2. **Mark the ends** with a pencil and write the date.
+3. **Measure the width** at the widest point and record it.
+4. **Check again in 3 months** and compare.
+
+A crack that hasn't changed in 6 months is almost certainly stable. A crack that's measurably wider or longer is active and worth professional evaluation.
+
+---
+
+## When to Call a Professional
+
+- Any horizontal crack in a foundation or basement wall
+- Cracks wider than 1/4 inch
+- Cracks that are measurably widening over time
+- Cracks accompanied by sticking doors/windows, uneven floors, or gaps between walls and ceilings
+- New cracks appearing in a house more than 10 years old
+- Cracks with visible offset (one side displaced relative to the other)
+
+For more about foundation concerns, visit our [foundation cracks guide](/issues/foundation-cracks). If you're not sure how serious a crack is, [upload a photo for a free assessment](/diagnose).
+
+---
+
+## Frequently Asked Questions
+
+### Can I just fill a wall crack and forget about it?
+
+For cosmetic cracks — hairline drywall cracks, small settling cracks, concrete shrinkage cracks — yes, fill, paint, and move on. But if the crack returns after patching, it means movement is ongoing, and the underlying cause should be investigated.
+
+### Do wall cracks affect home value?
+
+Minor cosmetic cracks typically don't affect home value if they're properly patched. Structural cracks (especially in the foundation) can significantly affect value and may need to be disclosed when selling. A structural engineer's report showing the issue has been addressed can help preserve value.
+
+### Should I worry about cracks in a new house?
+
+New houses go through a settling period in the first 2-5 years. Minor cracks at drywall seams and above doors/windows during this period are very common and expected. If the cracks are small, narrow, and not growing rapidly, they're part of normal settling. Most builders will address significant settling cracks under the new-home warranty.
+
+### What causes a wall crack to suddenly appear?
+
+Sudden cracks are often triggered by changes in moisture — heavy rains after drought, plumbing leaks saturating soil near the foundation, or major temperature swings. Nearby construction (excavation, heavy equipment) can also cause new cracks. Changes in drainage patterns around the house are another common trigger.
+`
+  },
+
+  {
+    slug: "signs-water-heater-may-be-leaking",
+    title: "Signs Your Water Heater May Be Leaking — And What to Do",
+    metaDescription: "Puddles, dampness, or rust near your water heater? Learn what causes water heater leaks, which are minor, and when you need to act quickly.",
+    category: "water-damage-leaks",
+    publishDate: "2026-03-01",
+    readingTime: 6,
+    excerpt: "Water near your water heater doesn't always mean the tank has failed. Sometimes it's a minor valve or connection issue. Here's how to tell the difference and what to do next.",
+    content: `
+## The Short Answer
+
+Water around your water heater can come from several sources: the pressure relief valve, inlet/outlet connections, the drain valve, condensation on the tank, or an actual tank leak. Identifying which one matters because some are easy fixes and others mean the water heater needs replacement.
+
+If the tank itself is leaking (water seeping from the body of the tank), replacement is the only option — tanks can't be repaired once they corrode through.
+
+---
+
+## Where to Look First
+
+### The Temperature and Pressure Relief (T&P) Valve
+
+This safety valve is usually located on the side or top of the tank, with a pipe running down toward the floor. It's designed to release water if pressure or temperature inside the tank gets too high.
+
+If water is dripping from the T&P valve discharge pipe, it could mean:
+- The valve is doing its job — pressure is too high (check your water pressure and thermostat setting)
+- The valve has failed and needs replacement
+
+**What to do:** If the T&P valve drips occasionally and your water pressure is normal (under 80 psi) and the thermostat is set to 120°F, the valve may need replacement. If it's releasing a lot of water, there may be a pressure issue in your system — call a plumber.
+
+### Inlet and Outlet Connections
+
+The pipes connecting to the top of the water heater can develop leaks at their fittings. Look for moisture or mineral deposits around the connections where the hot and cold water lines meet the tank.
+
+**What to do:** Tighten the connections if they're threaded fittings. If the connections use dielectric unions (common on steel tanks with copper pipes), the union may need replacement.
+
+### The Drain Valve
+
+The drain valve near the bottom of the tank can leak if it's not fully closed, if the washer is worn, or if the valve is corroded.
+
+**What to do:** Make sure the valve is fully closed. If it still drips, you can cap it with a brass cap or replace the valve.
+
+### Condensation
+
+In some conditions — especially when a cold water heater is first filled and heated, or during humid weather — condensation can form on the outside of the tank and drip to the floor. This is not a leak.
+
+**How to tell:** Condensation is temporary and the water appears as a light film over the entire tank surface, not dripping from a specific point. It usually resolves within a few hours as the tank reaches operating temperature.
+
+### The Tank Itself
+
+If water is seeping from the body of the tank — not from any fitting, valve, or connection — the tank has corroded from the inside. This is the one scenario that requires replacement, and it can't be patched or repaired.
+
+**Signs of tank failure:**
+- Water is seeping from a rusted area on the tank body
+- The tank is more than 8-12 years old
+- You've noticed rusty hot water from faucets
+- The anode rod was never replaced (most homeowners don't know about this maintenance step)
+
+---
+
+## What to Do If Your Tank Is Leaking
+
+### Minor Leak (Valve or Connection)
+
+1. Turn off the gas or electricity to the water heater (for safety during inspection)
+2. Identify the specific source
+3. Tighten connections, replace washers, or replace the valve as needed
+4. Turn the power back on and monitor
+
+### Major Leak (Tank Failure)
+
+1. Turn off the gas or electricity immediately
+2. Turn off the cold water supply to the tank
+3. Attach a garden hose to the drain valve and route it to a floor drain or outside
+4. Open the drain valve to empty the tank (this reduces the amount of water that can leak)
+5. Contact a plumber for replacement
+
+---
+
+## Extending Water Heater Life
+
+Most tank water heaters last 8-12 years. A few maintenance steps can push that toward the higher end:
+
+- **Replace the anode rod every 3-5 years.** The anode rod is a sacrificial metal rod inside the tank that corrodes instead of the tank lining. When it's used up, the tank starts corroding. Replacement rods cost $20-40 and the job takes about 20 minutes.
+- **Flush the tank annually.** Sediment builds up at the bottom of the tank, reducing efficiency and accelerating corrosion. Flushing takes about 15 minutes with a garden hose.
+- **Keep the thermostat at 120°F.** Higher temperatures accelerate corrosion and waste energy.
+- **Check the T&P valve annually.** Lift the lever briefly — water should flow and stop when you release it. If it doesn't, replace the valve.
+
+For more on this topic, visit our detailed guide on [water around the water heater](/issues/water-around-water-heater).
+
+---
+
+## Frequently Asked Questions
+
+### How long can I wait if my water heater is leaking from the tank?
+
+Not long. A corroded tank will not heal itself, and the leak will get worse. A slow seep today can become a full tank release (40-80 gallons of water on your floor) without much warning. Start planning replacement immediately and keep towels or a pan under the leak in the meantime.
+
+### Should I replace with the same type of water heater?
+
+Not necessarily. If your tank water heater has reached the end of its life, this is a natural time to consider alternatives. Tankless (on-demand) water heaters last longer and use less energy but cost more upfront. Heat pump water heaters are highly efficient in moderate climates. Your plumber can help you evaluate the options for your household's hot water usage.
+
+### Is a leaking water heater covered by insurance?
+
+Homeowner's insurance generally covers damage caused by a sudden water heater failure (flooding, drywall damage, etc.) but not the cost of replacing the water heater itself. Gradual leaks that were left unaddressed are typically not covered. Document any water damage with photos before cleanup.
+`
+  },
+
+  {
+    slug: "hvac-blowing-warm-air-first-steps",
+    title: "HVAC Blowing Warm Air? First Steps Before Calling for Service",
+    metaDescription: "When your AC blows warm air, don't panic. Check these common causes first — some are easy fixes you can handle yourself before scheduling a service call.",
+    category: "hvac-air",
+    publishDate: "2026-03-02",
+    readingTime: 6,
+    excerpt: "Your AC is running but the air coming out isn't cold. Before you call for an expensive service visit, there are several things worth checking first. Some of them take less than a minute.",
+    content: `
+## The Short Answer
+
+When your air conditioner is blowing warm or room-temperature air instead of cold air, the most common causes are a dirty air filter, a tripped breaker, incorrect thermostat settings, a frozen evaporator coil, or a refrigerant leak. The first three are things you can check and fix yourself in minutes. The last two need professional service.
+
+---
+
+## Check These First (Before Calling Anyone)
+
+### 1. Thermostat Settings
+
+This sounds obvious, but it's the most common "fix" HVAC technicians encounter. Check that your thermostat is:
+- Set to **COOL** (not HEAT or OFF)
+- Set to **AUTO** fan mode (not ON — when set to ON, the fan blows continuously even when the compressor isn't running, pushing warm air through the vents)
+- Set to a temperature **below** the current room temperature
+
+Also check that someone hasn't bumped the temperature setting or switched modes accidentally.
+
+### 2. Air Filter
+
+A clogged air filter is the single most common cause of HVAC problems. When the filter is blocked with dust, the system can't pull enough air across the evaporator coil. This causes the coil to freeze, which means no cooling.
+
+- Locate your filter (usually in a return air vent on a wall or ceiling, or at the air handler unit)
+- Pull it out and hold it up to a light
+- If you can't see light through it clearly, it needs to be replaced
+- Standard filters should be replaced every 1-3 months, depending on usage and household conditions (pets, dust)
+
+### 3. Breaker Panel
+
+Your HVAC system often uses two breakers — one for the indoor air handler and one for the outdoor condenser unit. If the outdoor unit's breaker has tripped, the fan will still blow (powered by the indoor breaker) but the compressor won't run, so you get warm air.
+
+- Check your electrical panel for tripped breakers
+- If you find a tripped breaker, reset it once
+- If it trips again immediately, do NOT keep resetting it — there's an electrical issue that needs professional attention
+
+### 4. Outdoor Unit
+
+Go outside and check the condenser unit (the big metal box with a fan):
+- Is it running? You should hear the compressor and see/hear the fan spinning.
+- Is it surrounded by debris, leaves, or vegetation? Clear at least 2 feet of space on all sides.
+- Is the fan spinning but the compressor (the lower humming sound) not running? This can indicate a capacitor or compressor issue.
+
+### 5. Vents and Registers
+
+Make sure all supply vents are open and unblocked. Closed or blocked vents in several rooms can cause pressure problems that reduce cooling efficiency.
+
+---
+
+## When the Problem Is More Serious
+
+If you've checked all of the above and the system is still blowing warm air, the issue is likely one of these:
+
+### Frozen Evaporator Coil
+
+When airflow is restricted (dirty filter, blocked vents, or a failing blower motor), the evaporator coil can freeze over. Ice on the coil blocks cooling entirely.
+
+**Signs:** The air coming from vents is barely moving. You see ice on the refrigerant lines near the indoor unit. The system runs continuously without cooling.
+
+**What to do:** Turn the system to FAN ONLY (no cooling) for 2-4 hours to let the ice melt. Replace the filter. If the coil freezes again after thawing, there's an underlying issue (low refrigerant, blower motor problem) that needs professional diagnosis.
+
+### Low Refrigerant
+
+Air conditioners don't "use up" refrigerant — if it's low, there's a leak somewhere in the system. Low refrigerant means the system can't absorb enough heat from the air, so it blows warm.
+
+**Signs:** The system runs constantly without reaching the set temperature. You hear a hissing or bubbling sound near the refrigerant lines. Ice forms on the outdoor unit's refrigerant lines.
+
+**What to do:** This requires a licensed HVAC technician. They'll find and repair the leak, then recharge the system. Refrigerant handling requires certification — it's not a DIY job.
+
+### Compressor Failure
+
+The compressor is the heart of the cooling system. When it fails, the system can't pump refrigerant and can't cool. Compressor replacement is expensive — often $1,500-3,000 for parts and labor.
+
+**Signs:** The outdoor unit fan runs but you don't hear the deeper compressor hum. The system blows air but it's not cool at all.
+
+**What to do:** Call a technician. If the system is more than 10-15 years old, a full system replacement may be more cost-effective than compressor replacement.
+
+---
+
+## Seasonal Considerations
+
+- **First use of the season:** It's normal for an AC to take 15-30 minutes to cool down after being off all winter/spring. If it's still not cooling after an hour, investigate.
+- **Extreme heat days:** When outdoor temperatures exceed 95-100°F, many residential AC units struggle to maintain a 20-degree temperature differential from outside. If it's 105°F outside and your house is 80°F, the system may be working normally even though it feels warm.
+- **After a storm:** Power surges during storms can trip breakers or damage capacitors. Always check the breaker panel after a storm.
+
+For more detailed troubleshooting, see our [HVAC blowing warm air guide](/issues/hvac-blowing-warm-air) and our broader [HVAC issues resource](/issues/hvac).
+
+---
+
+## Frequently Asked Questions
+
+### How long should I wait before calling a technician?
+
+If you've checked the thermostat, filter, breakers, and outdoor unit, and the system is still not cooling after 30-60 minutes, it's reasonable to call. During peak summer, technicians book up fast, so don't wait days hoping it fixes itself.
+
+### Should I run the AC while waiting for a repair?
+
+If the system is blowing warm air due to low refrigerant or a compressor issue, running it won't cause further damage — it just won't cool. However, if the evaporator coil is frozen, running the AC continuously can strain the compressor. Switch to FAN ONLY while waiting.
+
+### How much does a typical AC service call cost?
+
+A diagnostic visit typically runs $75-150, depending on your area. Repairs like capacitor replacement ($150-300) or refrigerant recharge ($200-500) are on top of that. Get a quote before authorizing any work.
+`
+  },
+
+  {
+    slug: "is-this-water-damage-urgent",
+    title: "Is This Water Damage Urgent? How to Assess Severity at Home",
+    metaDescription: "Not all water damage is an emergency. Learn how to assess severity, what makes water damage urgent, and what steps to take based on what you find.",
+    category: "water-damage-leaks",
+    publishDate: "2026-03-03",
+    readingTime: 7,
+    excerpt: "Water damage ranges from 'keep an eye on it' to 'act immediately.' Here's how to figure out where your situation falls — and what to do in each case.",
+    content: `
+## The Short Answer
+
+Water damage urgency depends on three factors: whether the water source is still active, how long the area has been wet, and what's getting wet. Active leaks, water near electrical systems, and moisture that's been present for more than 48 hours (mold risk) are urgent. A dry stain from a one-time event that's already been resolved is not.
+
+---
+
+## The Urgency Framework
+
+Think of water damage urgency in three tiers:
+
+### Tier 1 — Act Now (Same Day)
+
+- Water is actively flowing or spraying from a pipe, fixture, or appliance
+- Water is near or has reached electrical outlets, wiring, or the electrical panel
+- A ceiling is sagging or bulging from water weight above
+- Water is coming in during rain and more rain is forecast
+- Sewage backup (toilet or floor drain is pushing water back into the house)
+
+**What to do:** Shut off the water source if possible (the main shut-off valve if you can't isolate it). If water is near electrical systems, shut off the relevant breaker. Contain what you can with towels and buckets. Call for emergency service.
+
+### Tier 2 — Address This Week
+
+- A slow, steady drip from a pipe or fixture you can temporarily contain
+- A water stain that's growing but you've identified and stopped the source
+- Dampness or standing moisture that's been present for more than 24 hours
+- Musty smell developing in a previously dry area
+- Soft or spongy drywall or flooring
+
+**What to do:** Contain the leak if possible (bucket, towels, turning off the fixture). Start drying the affected area — fans, dehumidifier, opening cabinet doors. Schedule a repair within the week. Don't let it sit for days without airflow.
+
+### Tier 3 — Monitor and Schedule
+
+- An old, dry stain from a known past event
+- Minor condensation around windows or pipes
+- A one-time overflow that was cleaned up and dried within hours
+- A small spot of surface mold on bathroom grout or caulk
+
+**What to do:** Document with a photo and date. Check again after the next rain (if it could be weather-related) or after a week. Clean surface mold and address the ventilation issue. Schedule repairs at your convenience.
+
+---
+
+## Factors That Increase Urgency
+
+### The 48-Hour Rule
+
+Mold can begin growing on damp materials within 24-48 hours. This is the single most important timeline to be aware of. If a surface has been wet for more than two days without drying, assume mold is starting and act accordingly.
+
+### Category of Water
+
+Not all water damage is the same:
+
+- **Clean water** (from a supply line, faucet, or rainwater): Least contaminated, but still causes damage if left standing
+- **Gray water** (from a washing machine, dishwasher, or sink drain): May contain mild contaminants — cleanup should be more thorough
+- **Black water** (from sewage, toilet overflow with waste, or standing floodwater): Contains bacteria and pathogens — requires professional cleanup
+
+### What's Getting Wet
+
+- **Drywall:** Absorbs water quickly and is extremely difficult to dry completely once saturated. If drywall is soft or spongy, it usually needs to be replaced.
+- **Insulation:** Wet insulation loses its effectiveness and won't dry properly in place. It typically needs to be removed and replaced.
+- **Hardwood floors:** Can sometimes be dried and saved if addressed within 24-48 hours. After that, warping and buckling are often permanent.
+- **Carpet and pad:** The pad underneath carpet absorbs and holds water. In many cases, the carpet can be saved but the pad needs to be replaced.
+- **Electrical systems:** Water and electricity are a dangerous combination. If water has reached outlets, wiring, junction boxes, or the electrical panel, shut off power to the affected area and have an electrician inspect before restoring power.
+
+---
+
+## How to Document Water Damage
+
+Whether or not you end up filing an insurance claim, good documentation helps:
+
+1. **Take wide-angle photos** showing the affected area in context
+2. **Take close-up photos** with a ruler or coin for scale
+3. **Record the date and time** you first noticed the damage
+4. **Note the source** if you've identified it
+5. **Keep receipts** for any equipment you rent or purchase for cleanup (fans, dehumidifier, cleaning supplies)
+6. **Don't throw away damaged materials** until your insurance adjuster has seen them (if you plan to file a claim)
+
+---
+
+## Emergency Steps for Active Water Damage
+
+1. **Stop the water.** If it's a plumbing leak, shut off the supply valve for the fixture or the main water shut-off for the house.
+2. **Protect electrical safety.** If water is near outlets or wiring, shut off the breaker for that area. Don't walk through standing water if you're not sure the electricity is off.
+3. **Remove standing water.** Use towels, a wet-dry vacuum, or a pump depending on the amount.
+4. **Start drying.** Open windows. Set up fans. Point them at the wet area. Run a dehumidifier if you have one.
+5. **Remove wet materials.** Saturated carpet pads, soaked cardboard, and drenched soft furnishings should be removed to prevent mold.
+6. **Document everything.** Photos with dates before you start cleanup.
+
+---
+
+## When to Call a Professional
+
+- Standing water covers more than a small area (more than a bucket or two)
+- The water has been standing for more than 48 hours
+- The water is gray or black water (contaminated)
+- You see or smell mold
+- Drywall or structural elements are affected
+- The source of the water is not obvious
+- Water damage is in an area with electrical systems
+
+Use our [diagnosis tool to assess water damage severity](/diagnose) or [find a local water damage contractor](/pros).
+
+---
+
+## Frequently Asked Questions
+
+### How do I know if water damage is behind a wall?
+
+Look for indirect signs: paint bubbling or peeling, drywall that feels soft when pressed, baseboards pulling away from the wall, a musty smell, or discoloration that appears to come from behind the surface. A moisture meter ($20-40 at hardware stores) can detect moisture in walls without cutting them open.
+
+### Does water damage always lead to mold?
+
+Not always, but the risk increases significantly after 48 hours of sustained moisture. If you dry the area thoroughly within the first 24-48 hours, mold is unlikely to develop. After that window, the probability increases with each passing day.
+
+### Should I file an insurance claim for water damage?
+
+Consider the amount of damage relative to your deductible. If repairs will cost $500 and your deductible is $1,000, filing a claim doesn't make financial sense. For significant damage (thousands of dollars), filing is usually worthwhile. Remember that insurance typically covers sudden/accidental water damage but not gradual leaks or maintenance neglect.
+`
+  },
+
+  {
+    slug: "diy-or-call-a-pro-how-to-decide",
+    title: "DIY or Call a Pro? How to Decide for Home Repairs",
+    metaDescription: "Wondering if you should fix it yourself or hire a contractor? Here's a practical framework for deciding when DIY makes sense and when it doesn't.",
+    category: "diy-vs-pro",
+    publishDate: "2026-03-04",
+    readingTime: 8,
+    excerpt: "The line between a satisfying DIY fix and an expensive mistake is usually clear — if you know what questions to ask. Here's how to decide before you commit.",
+    content: `
+## The Short Answer
+
+The decision comes down to four factors: safety risk, skill match, cost comparison, and consequence of failure. If the job involves electrical wiring, gas lines, structural components, or working at heights, lean strongly toward hiring a professional. If the job involves replacing a fixture, patching a surface, or swapping a standard component, it's often a good DIY candidate.
+
+---
+
+## The Decision Framework
+
+Before starting any home repair, run through these four questions:
+
+### 1. Is There a Safety Risk?
+
+This is the most important filter. Some jobs carry genuine risk of injury, property damage, or long-term hazards.
+
+**Always hire a professional for:**
+- Electrical work beyond replacing outlets/switches on existing circuits
+- Gas line work (water heaters, furnaces, stoves)
+- Structural modifications (removing walls, foundation work)
+- Roof work on steep or multi-story homes
+- Asbestos or lead paint removal
+- Mold remediation affecting more than 10 square feet
+- Main sewer line work
+
+**Why it matters:** A bad DIY electrical job can cause a fire that doesn't start until months later. A roof fall can be life-altering. These aren't just "harder" tasks — they carry consequences that are disproportionate to the money saved.
+
+### 2. Do You Have the Right Skills?
+
+Be honest with yourself. Having watched a YouTube video is not the same as having done the work. Consider:
+
+- Have you done this type of repair before, or something similar?
+- Do you understand what you're looking at and why each step matters?
+- Can you troubleshoot if something goes wrong partway through?
+- Do you have the right tools, or will you need to buy/rent them?
+
+The sweet spot for DIY is when you understand the repair well enough to anticipate problems, not just follow steps.
+
+### 3. What's the True Cost Comparison?
+
+DIY isn't always cheaper when you account for everything:
+
+**DIY costs to factor in:**
+- Materials (often at retail prices — contractors get wholesale)
+- Tools you don't own (and may only use once)
+- Your time (a plumber finishes in 1 hour what might take you 4)
+- Cost of mistakes (buying the wrong part, damaging something, having to hire a pro to fix your fix)
+
+**Professional costs include:**
+- Their expertise and speed
+- Warranty on the work
+- Licensing and insurance (if they damage something, their insurance covers it)
+- Knowing it's done correctly the first time
+
+For many minor repairs, DIY genuinely saves money. For moderate to major repairs, the savings are often smaller than expected — and sometimes negative.
+
+### 4. What's the Consequence of Failure?
+
+Ask yourself: if I do this wrong, what happens?
+
+**Low consequence (good DIY candidates):**
+- Patching a drywall hole — worst case, it looks rough and you redo it
+- Replacing a faucet — worst case, a drip you need to retighten
+- Painting a room — worst case, it's uneven and you repaint
+
+**High consequence (lean toward a pro):**
+- Installing a water heater — worst case, a gas leak or flood
+- Repairing a roof leak — worst case, it still leaks and causes more damage
+- Foundation crack repair — worst case, you seal the surface but miss a structural issue
+
+---
+
+## Common Home Repairs: DIY or Pro?
+
+| Repair | DIY? | Pro? | Notes |
+|--------|------|------|-------|
+| Replace a toilet flapper | ✅ | | $5 part, 10 minutes, no tools needed |
+| Fix a running toilet | ✅ | | Fill valve or flapper replacement |
+| Unclog a drain | ✅ | | Plunger or snake; avoid chemical drain cleaners |
+| Replace a faucet | ✅ | | Moderate — allow 1-2 hours your first time |
+| Patch small drywall holes | ✅ | | Kits available; takes practice to look seamless |
+| Replace a light fixture | ✅ | | Turn off the breaker first; straightforward swap |
+| Re-caulk a tub or shower | ✅ | | Important maintenance; prevents water damage |
+| Replace a P-trap | ✅ | | Under-sink work; bucket and pliers needed |
+| Install a new outlet or circuit | | ✅ | Permit required in most areas; safety risk |
+| Replace a water heater | | ✅ | Gas and/or high-voltage connections |
+| Fix a roof leak | | ✅ | Fall risk + waterproofing skill |
+| Repair foundation cracks (structural) | | ✅ | Needs proper diagnosis first |
+| HVAC refrigerant recharge | | ✅ | Requires EPA certification to handle refrigerant |
+| Remove mold from inside walls | | ✅ | Health risk; proper containment needed |
+| Replace an electrical panel | | ✅ | High-voltage; permit and inspection required |
+
+---
+
+## The Middle Ground: DIY the Prep, Hire the Finish
+
+For some jobs, you can save money by doing the non-specialized parts yourself:
+
+- **Demo:** If a bathroom remodel needs old tile removed, you can do the demolition yourself and hire a contractor for the installation. Just be careful not to damage plumbing or wiring behind the surfaces.
+- **Cleanup:** After a professional mold remediation, you may be able to handle the cosmetic restoration (painting, reinstalling trim) yourself.
+- **Research and purchasing:** Selecting your own fixtures, materials, and finishes saves a contractor's markup and gives you more control over the outcome.
+- **Maintenance:** Many "failures" that need professional repair could have been prevented with basic maintenance you can do yourself (filter changes, caulk renewal, drain cleaning).
+
+---
+
+## How to Hire a Good Contractor
+
+If you decide to call a pro, here's how to avoid the bad ones:
+
+1. **Get at least three quotes.** Not just for price comparison — the process tells you how each contractor communicates, how quickly they respond, and how thorough their assessment is.
+2. **Verify licensing and insurance.** Ask for their license number and verify it with your state licensing board. Ask for a certificate of insurance. A legitimate contractor won't hesitate to provide both.
+3. **Check reviews, but read them critically.** A company with 200 reviews averaging 4.6 stars is more reliable than one with 10 reviews at 5.0. Read the negative reviews — they often reveal patterns.
+4. **Get a written scope of work.** Before any work begins, have a written agreement that specifies what's included, what's not, materials to be used, timeline, and total cost. "We'll figure it out as we go" is a red flag.
+5. **Never pay the full amount upfront.** A typical payment structure is 25-50% at signing, with the balance due upon completion. A contractor who demands full payment before starting may not finish the job.
+
+For help finding contractors in your area, [use our contractor matching tool](/pros).
+
+---
+
+## Frequently Asked Questions
+
+### I'm handy but have never done plumbing. Should I try?
+
+Minor plumbing — replacing a faucet, swapping a P-trap, fixing a running toilet — is a great entry point. These jobs have clear instructions, inexpensive parts, and low consequences for mistakes. Start there and build confidence before tackling anything involving supply line modifications or drain rerouting.
+
+### How do I know if a repair needs a permit?
+
+In most areas, you need a permit for: new electrical circuits, plumbing that changes pipe routing, structural changes, water heater replacement, and HVAC installation. Cosmetic work, fixture replacements, and repairs generally don't need permits. When in doubt, call your local building department — they'll tell you for free.
+
+### What if I start a DIY repair and realize it's over my head?
+
+Stop. There's no shame in calling a professional partway through. It's better (and usually cheaper) to hand off an incomplete project than to push through and create a bigger problem. Just be honest with the contractor about what you've already done — they need to know the starting point.
+
+### Can I watch a YouTube video and learn to do most repairs?
+
+YouTube is an excellent learning resource for understanding how repairs work. But watching is not the same as doing. For simple tasks (caulking, changing a filter, painting), a video is often all you need. For anything involving judgment calls — how tight to tighten, what looks right, when to stop — hands-on experience matters more than video instruction.
+`
+  },
+
+  {
+    slug: "early-warning-signs-roof-leaks",
+    title: "Early Warning Signs of Roof Leaks Every Homeowner Should Know",
+    metaDescription: "Roof leaks rarely start as obvious drips. Learn the early warning signs that your roof may be letting water in, and what to do before the damage spreads.",
+    category: "roof-ceiling",
+    publishDate: "2026-03-05",
+    readingTime: 7,
+    excerpt: "By the time you see a drip from the ceiling, a roof leak has often been working its way through insulation and framing for weeks. Here are the earlier signs most people miss.",
+    content: `
+## The Short Answer
+
+Roof leaks usually give warning signs long before water drips from the ceiling. The most common early indicators are: ceiling stains (even faint ones), granule buildup in gutters, damaged or missing shingles visible from the ground, damp or discolored spots in the attic, and a musty smell in upper floors. Catching these early can mean the difference between a $200 patch and a $5,000 repair.
+
+---
+
+## Why Roof Leaks Are Sneaky
+
+Water doesn't always drip straight down. When water gets through your roof, it often travels along rafters, sheathing, and insulation before it finds an opening to drip through. A leak entry point on the roof might be 10 feet away from where you see the stain on your ceiling.
+
+This means:
+- The stain on your ceiling isn't necessarily directly below the leak
+- Damage can be spreading through insulation and framing for weeks before you see any visible sign
+- By the time you notice, the actual repair may involve more than just the roof surface
+
+---
+
+## The Early Warning Signs
+
+### 1. Faint Ceiling Discoloration
+
+Before a full brown stain appears, you might notice subtle discoloration — a slightly different shade of white, a faint yellowish tint, or a ring that's barely visible in certain lighting. These early stains are easy to dismiss but worth investigating.
+
+**What to do:** Mark the edges of the discoloration with a light pencil. Check again after the next rain. If it's grown, you have an active leak. [Read more about ceiling stains](/blog/what-brown-ceiling-stain-usually-means).
+
+### 2. Granule Loss in Gutters
+
+Asphalt shingles are coated with granules that protect them from UV damage. As shingles age, they shed these granules. Finding a small amount in gutters is normal for aging shingles, but heavy accumulation — especially after storms — indicates the shingles are deteriorating and may not be waterproof much longer.
+
+**What to do:** Check your gutters and downspout exits when you clean them. If you see heavy dark granule buildup (looks like coarse sand), schedule a roof inspection.
+
+### 3. Visible Shingle Damage From the Ground
+
+You don't need to climb on the roof to spot many problems. Stand across the street and look:
+- Missing shingles (exposed dark patches)
+- Curling edges (shingles lifting at the corners or edges)
+- Cracked or buckled shingles
+- Moss or algae growth (indicates moisture retention)
+
+**What to do:** Use binoculars for a closer look. If you see obvious damage, schedule a professional roof inspection. One or two missing shingles after a storm can often be replaced individually.
+
+### 4. Attic Moisture Signs
+
+If you have attic access, check periodically for:
+- Water stains on the underside of the roof deck (the plywood or boards the shingles are nailed to)
+- Damp or compressed insulation
+- Daylight visible through the roof boards
+- A musty or moldy smell
+- Frost on the underside of the roof deck in winter (indicates moisture and ventilation problems)
+
+**What to do:** Any moisture in the attic deserves investigation. Even if it's just condensation from poor ventilation, it can damage the roof structure over time.
+
+### 5. Damaged or Separated Flashing
+
+Flashing is the metal material that seals transitions on your roof — around chimneys, vents, skylights, and where different roof planes meet. When flashing corrodes, lifts, or separates, water can get underneath.
+
+**What to do:** Look for lifted, bent, or rusted metal around roof penetrations. You can sometimes see flashing issues from the ground, especially around chimneys. Flashing repairs are best left to professionals because improper sealing makes the problem worse.
+
+### 6. Gutter and Drainage Problems
+
+When gutters are clogged, sagging, or pulling away from the fascia, water can back up under the roof edge. This is a major cause of roof leaks that homeowners often overlook.
+
+**What to do:** Clean gutters at least twice a year. Make sure they're securely attached and sloping toward downspouts. Extend downspouts at least 4-6 feet from the foundation.
+
+### 7. Ice Dams (Cold Climate)
+
+In winter, if you see a ridge of ice forming along the roof edge with icicles hanging from it, you likely have an ice dam. This happens when warm air from the house melts snow on the upper roof, the water runs down to the cold eaves, and refreezes. The ice backup can force water under the shingles.
+
+**What to do:** Ice dams are a ventilation and insulation problem. Long-term fixes include improving attic insulation and ventilation. In the short term, you can use a roof rake to remove snow from the first few feet of the roof edge. Do not chop ice off the roof — you'll damage the shingles.
+
+---
+
+## What to Do When You Suspect a Leak
+
+1. **Document what you see.** Photos with dates. Include the ceiling, the attic if accessible, and the exterior roof if you can safely photograph it.
+2. **Check during and after rain.** Active leaks are much easier to locate when it's raining. If it's safe, check the attic during rain with a flashlight.
+3. **Don't wait for it to get worse.** A small leak doesn't stay small. Water damage compounds — today's stain is next month's mold problem and next year's structural issue.
+4. **Get a professional inspection.** A qualified roofer can assess the roof surface, flashing, vents, and overall condition. Many offer free or low-cost inspections.
+
+For more detail, see our comprehensive [roofing issues guide](/issues/roofing). If you see a stain and want a quick assessment, try our [AI diagnosis tool](/diagnose).
+
+---
+
+## Roof Maintenance That Prevents Leaks
+
+- **Clean gutters** twice a year (spring and fall)
+- **Trim branches** that overhang the roof — they drop debris and scrape shingles
+- **Inspect after storms** — walk around the house and look up after any significant wind, hail, or heavy rain
+- **Check attic ventilation** — proper ventilation prevents moisture buildup and ice dams
+- **Schedule a professional inspection** every 3-5 years, or annually for roofs older than 15 years
+
+---
+
+## Frequently Asked Questions
+
+### How long does a typical roof last?
+
+Asphalt shingles (the most common residential roofing) last 20-30 years depending on quality, climate, and maintenance. Metal roofs can last 40-70 years. Tile and slate roofs can last 50-100+ years. The key variable is maintenance — a well-maintained roof lasts significantly longer.
+
+### Can I patch a roof leak myself?
+
+Small repairs — replacing a single shingle or applying roofing cement to a minor crack — are technically within DIY range if you're comfortable on a ladder and the roof is low-slope. However, roof work carries fall risk, and improper patches can make leaks worse by trapping water underneath. For anything beyond a simple shingle replacement, professional repair is recommended.
+
+### Does insurance cover roof leak damage?
+
+Generally, insurance covers sudden and accidental damage (a tree falling on your roof, storm damage) but not wear-and-tear or maintenance neglect. If a 25-year-old roof fails because the shingles are worn out, that's typically not covered. If a storm tears shingles off a 5-year-old roof and water damage results, that usually is covered. Document everything with photos.
+`
+  },
+
+  {
+    slug: "mold-vs-mildew-what-homeowners-should-know",
+    title: "Mold vs Mildew: What Homeowners Should Know",
+    metaDescription: "Mold and mildew are both fungi caused by moisture, but they differ in appearance, severity, and cleanup. Learn how to identify each and when to worry.",
+    category: "mold-moisture",
+    publishDate: "2026-03-06",
+    readingTime: 6,
+    excerpt: "People use 'mold' and 'mildew' interchangeably, but they're actually different — and the distinction matters when you're deciding how to handle the problem.",
+    content: `
+## The Short Answer
+
+Mildew is a surface fungus — flat, powdery or downy, usually white or gray, and grows on surfaces in damp areas. It's easy to clean and rarely causes structural damage. Mold is a broader term for fungi that penetrate surfaces — it can be black, green, brown, or other colors, often fuzzy or slimy, and can grow into drywall, wood, and other materials. Mold is harder to remove and can cause structural and health concerns.
+
+Both are caused by excess moisture. Fixing the moisture source is always step one.
+
+---
+
+## How to Tell Them Apart
+
+### Mildew
+
+- **Appearance:** Flat, powdery or downy texture. Usually white, gray, or yellowish.
+- **Where it grows:** On surfaces — shower tiles, bathroom grout, window sills, damp clothing, and leather.
+- **Smell:** Mild, stale, or musty.
+- **Damage:** Mostly cosmetic. It sits on surfaces rather than penetrating them.
+- **Cleanup:** Usually comes off with household cleaners, scrubbing, and improved ventilation.
+
+### Mold
+
+- **Appearance:** Fuzzy, slimy, or raised texture. Colors range from black and dark green to brown, orange, and white.
+- **Where it grows:** On and into surfaces — drywall, wood, carpet, insulation, behind walls, under flooring.
+- **Smell:** Stronger musty, earthy, or damp smell.
+- **Damage:** Penetrates and breaks down organic materials. Can cause structural damage over time.
+- **Cleanup:** Surface mold on hard, non-porous materials can be cleaned. Mold that has penetrated porous materials (drywall, carpet, wood) often requires removal and replacement of the affected material.
+
+### The Practical Difference
+
+If you can wipe it off a hard surface with a cleaning product and it doesn't come back (once you've addressed the moisture), you're probably dealing with mildew. If it's growing into the surface, keeps returning despite cleaning, or has spread to porous materials like drywall or wood, you're dealing with mold.
+
+---
+
+## Common Places to Find Each
+
+### Mildew Hotspots
+- Shower tile and grout
+- Window sills in humid rooms
+- Closet walls in poorly ventilated areas
+- Basement walls with condensation
+- Outdoor cushions and patio furniture
+
+### Mold Hotspots
+- Behind bathroom walls (especially near showers)
+- Under kitchen and bathroom sinks with slow leaks
+- In basements with water intrusion
+- On drywall near a roof leak
+- Inside HVAC ducts
+- Under carpet with a history of water damage
+- Behind refrigerators and washing machines
+
+For bathroom-specific guidance, see our guide on [musty smells in the bathroom](/blog/musty-smell-bathroom-common-causes).
+
+---
+
+## When to Worry
+
+### Mildew: Usually Not a Major Concern
+
+Mildew on bathroom surfaces is a housekeeping issue, not a health emergency. Regular cleaning and good ventilation keep it under control. It doesn't typically cause structural damage.
+
+However, widespread or persistent mildew may indicate a ventilation problem that could eventually lead to actual mold growth, so don't completely ignore it.
+
+### Mold: Take It Seriously
+
+Mold deserves attention for two reasons:
+
+**Structural concern:** Mold that has penetrated drywall, wood, or other building materials is actively breaking down those materials. Over time, this compromises the integrity of walls, subfloors, and structural elements.
+
+**Health concern:** While most household mold is more irritating than dangerous, some people — especially those with asthma, allergies, or weakened immune systems — can have significant reactions to mold exposure. Common symptoms include coughing, sneezing, eye irritation, and aggravated asthma.
+
+The CDC recommends that mold areas larger than about 10 square feet be handled by professionals. For smaller areas on hard, non-porous surfaces, homeowner cleanup is generally appropriate.
+
+---
+
+## How to Clean Mildew
+
+1. Spray the affected area with a commercial mold/mildew cleaner or a solution of 1 part bleach to 10 parts water
+2. Let it sit for 10-15 minutes
+3. Scrub with a stiff brush
+4. Rinse thoroughly and dry completely
+5. Address the moisture source — improve ventilation, fix leaks, or reduce humidity
+
+### How to Clean Small Mold Areas
+
+For mold on hard, non-porous surfaces covering less than 10 square feet:
+
+1. Wear gloves and a mask (N95 or better)
+2. Seal the area if possible — close doors, cover vents with plastic
+3. Apply a mold-killing product (commercial mold remover or bleach solution)
+4. Scrub and wipe clean
+5. Dry completely with fans and dehumidifier
+6. Fix the moisture source
+
+For mold on porous materials (drywall, carpet, insulation):
+- The affected material typically needs to be cut out and replaced
+- This is where professional remediation becomes important, especially for larger areas
+
+---
+
+## Prevention: The Only Real Solution
+
+Both mold and mildew are symptoms of excess moisture. No amount of cleaning eliminates the problem if the moisture source remains.
+
+**Key prevention steps:**
+- Use exhaust fans in bathrooms and kitchens (and make sure they vent to the outside)
+- Fix leaks promptly — even small drips create mold-friendly conditions
+- Keep indoor humidity below 50% (a hygrometer costs $10-15 and is worth having)
+- Ensure good airflow in closets, basements, and other enclosed spaces
+- Don't ignore condensation on windows or walls — it's telling you humidity is too high
+
+---
+
+## Frequently Asked Questions
+
+### Can mildew turn into mold?
+
+They're different organisms, so mildew doesn't "turn into" mold. However, the conditions that support mildew growth (warm, damp, poorly ventilated) are the same conditions that support mold growth. If you're seeing mildew, mold may not be far behind — especially in hidden areas where moisture has been sitting longer.
+
+### Do I need professional mold testing?
+
+For visible mold, testing is usually unnecessary — the recommendation is the same regardless of species: clean it up, fix the moisture source, and replace any damaged materials. Testing may be useful when you suspect hidden mold (musty smell but nothing visible) or in real estate transactions where documentation is needed.
+
+### Is black mold always dangerous?
+
+"Black mold" (Stachybotrys chartarum) has a reputation for being especially toxic, but the reality is more nuanced. All mold can cause irritation and allergic reactions. No mold should be left to grow in your home. The color alone doesn't tell you the species or the risk level. Treat all mold growth seriously, but don't panic because the mold happens to be dark-colored.
+
+For comprehensive mold and moisture guidance, visit our [mold and moisture resource center](/issues/mold-moisture).
+`
+  },
+
+  {
+    slug: "what-to-do-before-calling-a-contractor",
+    title: "What to Do Before Calling a Contractor: A Homeowner's Checklist",
+    metaDescription: "Calling a contractor? Prepare first. This checklist helps you document the problem, ask the right questions, and avoid common mistakes when hiring for home repairs.",
+    category: "diy-vs-pro",
+    publishDate: "2026-03-07",
+    readingTime: 7,
+    excerpt: "A little preparation before calling a contractor saves you money, gets better results, and helps you avoid the most common mistakes homeowners make when hiring for repairs.",
+    content: `
+## The Short Answer
+
+Before calling a contractor, document the problem clearly (photos, timeline, symptoms), understand what you're hiring for (diagnosis vs repair vs both), verify licensing and insurance, get multiple quotes with written scopes of work, and establish a payment schedule. Fifteen minutes of preparation can save you hundreds or thousands of dollars and significant frustration.
+
+---
+
+## Step 1: Document the Problem
+
+The better you can describe and show the problem, the more accurate your quotes will be and the less time (and money) the contractor spends on diagnosis.
+
+### What to Document
+
+- **Photos:** Take clear photos of the issue from multiple angles. Include a ruler or coin for scale when photographing cracks, stains, or damage areas.
+- **Timeline:** When did you first notice it? Has it changed? Is it seasonal? Getting worse?
+- **Related symptoms:** A ceiling stain might seem like one problem, but if you also mention the musty smell in the bathroom above, the contractor gets a fuller picture.
+- **What you've already tried:** If you've attempted any repairs, share that. It helps the contractor understand the starting point.
+- **Access information:** Where is the problem located? Can the contractor access it easily, or will they need to move furniture, enter the attic, or access a crawl space?
+
+### Why This Matters
+
+A contractor who arrives knowing what to expect can give a more accurate estimate, bring the right tools and materials, and spend less time on diagnostic work you're paying for. "There's water somewhere" is much less helpful than "There's a growing stain on the first-floor ceiling directly below the upstairs bathroom, and it gets worse after showers."
+
+You can also use our [AI diagnosis tool](/diagnose) to get a preliminary assessment before you call — it gives you vocabulary and context to communicate more effectively with contractors.
+
+---
+
+## Step 2: Understand What You're Hiring For
+
+There's an important distinction between hiring someone to diagnose a problem and hiring someone to fix it. Sometimes you need both, but being clear about which you're requesting helps.
+
+### Diagnosis Only
+
+When you don't know what's wrong — you just know something is — you're hiring someone to figure it out. A plumber investigating a mysterious leak, or a structural engineer evaluating foundation cracks, is providing a diagnostic service.
+
+**Typical cost:** $75-250 for a diagnostic visit, depending on the trade and your market.
+
+### Repair Only
+
+When you already know what's wrong — a specific pipe fitting is leaking, a particular shingle is damaged — you're hiring someone to fix a defined problem.
+
+**Typical cost:** Varies widely by repair type. Get quotes before authorizing.
+
+### Diagnosis + Repair
+
+Many contractors will waive or reduce the diagnostic fee if you hire them for the repair. Ask about this upfront.
+
+---
+
+## Step 3: Check Credentials
+
+### Licensing
+
+Every state has different licensing requirements, but for most trades (plumbing, electrical, HVAC, roofing, general contracting), there is a licensing board you can check online. Ask for the contractor's license number and verify it.
+
+What to check:
+- Is the license active and current?
+- Is it the right type of license for the work you need?
+- Are there any complaints or disciplinary actions on file?
+
+### Insurance
+
+Ask for proof of both:
+- **General liability insurance** — covers damage to your property during the work
+- **Workers' compensation** — covers injuries to the contractor's employees on your property
+
+If a contractor doesn't carry insurance and an accident happens on your property, you could be liable.
+
+### Reviews and References
+
+- Read online reviews, but look at patterns rather than individual reviews. A few bad reviews among hundreds of good ones is normal. A pattern of similar complaints (communication problems, surprise charges, unfinished work) is a warning sign.
+- Ask for references from recent similar projects. A good contractor is happy to provide them.
+
+---
+
+## Step 4: Get Multiple Quotes
+
+### How Many Quotes?
+
+Three is the standard recommendation. Fewer than three doesn't give you enough comparison data. More than five wastes everyone's time.
+
+### What a Good Quote Includes
+
+- Detailed scope of work (what exactly will be done)
+- Materials list with specifications (not just "new pipes" but "3/4-inch copper pipe" or equivalent)
+- Labor cost, either as a flat rate or estimated hours at a stated rate
+- Timeline for completion
+- What's NOT included (so there are no surprises)
+- Payment schedule
+- Warranty terms
+
+### Red Flags in Quotes
+
+- A verbal-only estimate with no written documentation
+- A price dramatically lower than the other quotes (they may be cutting corners, using inferior materials, or planning to add charges later)
+- "We'll see when we open it up" without any estimated range
+- Pressure to sign immediately or commit before you've gotten other quotes
+- Asking for full payment upfront
+
+---
+
+## Step 5: Establish Terms Before Work Begins
+
+### Payment Schedule
+
+A reasonable payment structure for most home repairs:
+- **Small jobs (under $1,000):** Payment on completion
+- **Medium jobs ($1,000-5,000):** 25-50% deposit, balance on completion
+- **Large jobs (over $5,000):** Payment in stages tied to completion milestones
+
+Never pay the full amount before the work is done.
+
+### Change Orders
+
+Work sometimes uncovers unexpected issues. Establish upfront that any changes to the scope or cost require your written approval before proceeding. This prevents "scope creep" where the final bill is far higher than the estimate.
+
+### Communication
+
+Agree on how and how often the contractor will update you. Who do you contact with questions? How much notice before they need access to your home?
+
+---
+
+## Step 6: During and After the Work
+
+### During
+
+- Don't hover, but do check in. A quick daily look at progress is reasonable.
+- If something doesn't look right, ask about it sooner rather than later. Changes are easier and cheaper early in the process.
+- Keep notes and photos of work in progress.
+
+### After
+
+- Do a thorough walkthrough before making the final payment.
+- Test everything — run faucets, flip switches, open and close doors.
+- Get documentation of what was done, including any warranties on parts or labor.
+- Keep the contractor's contact information for future needs.
+
+---
+
+## Common Mistakes to Avoid
+
+1. **Hiring the first person who answers the phone.** Speed is not the same as quality.
+2. **Choosing based solely on price.** The cheapest quote often leads to the most expensive outcome.
+3. **Not getting things in writing.** Verbal agreements lead to "I thought we discussed..." disputes.
+4. **Paying everything upfront.** You lose leverage to ensure the work is completed properly.
+5. **Ignoring licensing and insurance.** This feels bureaucratic until something goes wrong on your property.
+6. **Not being specific about the problem.** Vague descriptions lead to inaccurate quotes and wasted time.
+
+---
+
+## Frequently Asked Questions
+
+### How do I find a good contractor?
+
+Start with personal referrals from neighbors and friends. Check online review platforms, but look for consistency over individual ratings. Verify licensing through your state's licensing board. And always get multiple quotes. Our [contractor matching tool](/pros) can also help connect you with licensed professionals in your area.
+
+### What if I disagree with the contractor's diagnosis?
+
+Get a second opinion. If a contractor says you need a $5,000 repair and you're not sure, paying $100-200 for another professional's assessment is money well spent. Different professionals may also suggest different approaches at different price points.
+
+### Should I be home while work is being done?
+
+For short jobs (a few hours), you don't necessarily need to be there, but being available by phone is important. For multi-day projects, being home at the start and end of each day helps. For any work that involves decisions or approvals, your presence (or availability) speeds things up.
+
+### How do I handle a dispute about work quality or billing?
+
+Start with a direct conversation — many issues are misunderstandings that can be resolved. If that doesn't work, review your written agreement (this is why you need one). If necessary, contact your state's contractor licensing board, your local consumer protection office, or a mediation service. Written documentation and photos from throughout the project are your strongest tools.
+`
+  },
+
+  {
+    slug: "how-to-document-home-damage-clearly",
+    title: "How to Document Home Damage Clearly — For Insurance, Contractors, and Your Own Records",
+    metaDescription: "Good documentation of home damage can save you thousands. Learn exactly how to photograph, describe, and organize damage records for insurance claims and contractor quotes.",
+    category: "home-maintenance",
+    publishDate: "2026-03-08",
+    readingTime: 6,
+    excerpt: "Whether you're filing an insurance claim, getting contractor quotes, or just tracking a problem over time, how you document home damage makes a real difference. Here's how to do it right.",
+    content: `
+## The Short Answer
+
+Good damage documentation includes wide-angle context photos, close-up detail photos with a scale reference, dated notes describing what you see, and a timeline of when the damage appeared and how it's changed. This applies whether you're documenting for insurance claims, contractor quotes, or your own records. It takes 10-15 minutes to do well and can save you thousands.
+
+---
+
+## Why Documentation Matters
+
+### For Insurance Claims
+
+Insurance adjusters make coverage decisions based on what they can see and verify. The better your documentation, the stronger your claim. Photos taken before cleanup and repair are especially important — once the damage is cleaned up or repaired, you can't recreate the evidence.
+
+### For Contractor Quotes
+
+When you can show a contractor clear photos and describe the timeline, they can give you a more accurate quote without an in-person visit. This is especially useful for getting initial estimates to compare.
+
+### For Tracking Over Time
+
+Some problems — cracks, stains, slow leaks — are best monitored over weeks or months. Without dated documentation, you're relying on memory to judge whether something is getting worse. Memory is unreliable.
+
+---
+
+## How to Photograph Damage
+
+### Wide-Angle Context Shots
+
+Start with photos that show where the damage is located in context. Stand back far enough to include recognizable landmarks — a doorway, a window, a piece of furniture. The goal is that someone who has never been in your house can look at the photo and understand the location.
+
+### Close-Up Detail Shots
+
+Move in close to capture the damage in detail. Show textures, colors, and extent.
+
+**Always include a scale reference.** Place a ruler, a coin, a credit card, or your hand next to the damage. Without scale, a crack in a photo could be 1 inch or 1 foot wide — the photo doesn't tell you.
+
+### Specific Angles
+
+- **Ceiling stains:** Photograph from directly below and from an angle
+- **Cracks:** Photograph straight-on and from the side (to show any offset/displacement)
+- **Water damage:** Photograph the visible damage and any likely source area
+- **Roof issues:** Photograph from the ground (safely) showing the general area, and closer if accessible
+
+### Lighting
+
+Use good lighting. Flash can wash out water stains and make damage less visible. If possible, use natural light or a flashlight held at an angle to show texture and depth.
+
+---
+
+## How to Describe Damage
+
+Write a brief but specific description. Include:
+
+- **Location:** "First-floor kitchen ceiling, approximately 3 feet from the north wall, directly below the upstairs bathroom"
+- **Size:** "The stain is roughly 18 inches by 12 inches" (or use your scale reference photo)
+- **Appearance:** "Yellowish-brown ring with a lighter center. The drywall feels firm when pressed."
+- **Timeline:** "First noticed March 3, 2026. It has not visibly changed since then."
+- **Conditions:** "The stain appeared after three days of heavy rain" or "The stain is not weather-related — it appeared after a toilet overflow upstairs"
+
+### What Not to Include
+
+- Don't speculate about causes unless you're confident. "I think the contractor next door damaged our foundation" without evidence weakens your documentation.
+- Don't exaggerate. Describe what you see accurately. Exaggeration undermines credibility with adjusters and contractors.
+- Don't include emotional language. "This is destroying our home" is less useful than "The affected area has expanded from 12 inches to 24 inches over the past two weeks."
+
+---
+
+## Organizing Your Documentation
+
+### Create a Simple System
+
+You don't need special software. A folder on your phone or computer with subfolders by date and issue type works fine.
+
+Suggested structure:
+- Home Damage Records
+  - 2026-03 Kitchen Ceiling Stain
+    - Photos (dated)
+    - Notes
+    - Contractor quotes
+    - Insurance correspondence
+  - 2026-03 Basement Wall Crack
+    - Photos (dated)
+    - Measurements
+
+### Date Everything
+
+Every photo should include the date it was taken. Most phones embed this automatically in the file metadata, but adding the date in your notes ensures you can reference it even if files are moved or renamed.
+
+### Keep Everything
+
+Don't delete early documentation because you have newer, "better" photos. The progression over time is valuable information — both for insurance and for contractors assessing the issue.
+
+---
+
+## Documentation Checklist
+
+Before you call an insurance company or contractor, make sure you have:
+
+- [ ] Wide-angle photos showing location and context
+- [ ] Close-up photos with scale reference (ruler, coin, or card)
+- [ ] Written description of the damage with specific measurements
+- [ ] Date you first noticed the damage
+- [ ] Any changes over time, with dates
+- [ ] Known cause (if identified) or circumstances (weather, plumbing event, etc.)
+- [ ] Photos of any related evidence (e.g., the leaking pipe that caused the stain)
+- [ ] Receipts for any emergency supplies or temporary fixes
+- [ ] Names and dates of any professionals who have inspected the damage
+
+---
+
+## Using Documentation for Insurance Claims
+
+### Filing Tips
+
+- Report damage to your insurer promptly — most policies have time limits
+- Don't start permanent repairs until your adjuster has seen the damage (temporary fixes to prevent further damage are fine and expected)
+- Provide copies of photos and documentation, not originals
+- Keep a log of all communication with your insurance company, including names, dates, and what was discussed
+- If the claim is denied, ask for the specific policy language they're citing
+
+### What Insurance Typically Covers
+
+- Sudden and accidental water damage (burst pipe, storm damage)
+- Resulting damage from a covered event (mold from a burst pipe, floor damage from a roof leak)
+- Emergency mitigation costs (fans, dehumidifier rental, temporary tarp)
+
+### What Insurance Typically Does NOT Cover
+
+- Gradual damage from maintenance neglect
+- The cost of fixing the root cause (the leaking pipe itself, the worn roof)
+- Flood damage (requires separate flood insurance)
+- Damage you knew about and didn't address
+
+---
+
+## Frequently Asked Questions
+
+### How soon should I document damage?
+
+Immediately. The earlier you document, the more useful the evidence. For insurance purposes, photos taken before any cleanup or repair are the most valuable. For tracking purposes, early documentation gives you a baseline to compare against.
+
+### Should I video the damage or just take photos?
+
+Both can be useful. Video is especially good for showing water actively dripping, sounds (like a running furnace making unusual noise), and walking through the full extent of an affected area. Photos are better for detail, measurement, and stable reference points. Use both when practical.
+
+### What if the damage has already been repaired when I realize I need documentation?
+
+Document what you can — the repaired area, any remaining signs, invoices from the repair, and any photos you took casually during the process. It's not ideal, but partial documentation is always better than none.
+
+### Can I use HomeSnapFix's diagnosis tool as documentation?
+
+Our [AI diagnosis tool](/diagnose) can provide a preliminary assessment of damage from photos you upload. While it's not a substitute for professional evaluation, the assessment and photos can be a useful starting point for conversations with contractors and may help you describe the issue more precisely.
+`
   },
 ];
 
@@ -3294,25 +1910,22 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }
 
-export function getBlogPostsByCategory(category: BlogCategory): BlogPost[] {
-  return blogPosts.filter((post) => post.category === category);
+export function getRelatedPosts(currentSlug: string, limit: number = 3): BlogPost[] {
+  const currentPost = getBlogPostBySlug(currentSlug);
+  if (!currentPost) return [];
+
+  return blogPosts
+    .filter((post) => post.slug !== currentSlug)
+    .sort((a, b) => {
+      // Prioritize same category
+      const aMatch = a.category === currentPost.category ? 1 : 0;
+      const bMatch = b.category === currentPost.category ? 1 : 0;
+      if (aMatch !== bMatch) return bMatch - aMatch;
+      return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+    })
+    .slice(0, limit);
 }
 
 export function getFeaturedPost(): BlogPost | undefined {
   return blogPosts.find((post) => post.featured);
-}
-
-export function getLatestPosts(limit: number = 8): BlogPost[] {
-  return [...blogPosts]
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
-    .slice(0, limit);
-}
-
-export function getRelatedPosts(currentSlug: string, limit: number = 3): BlogPost[] {
-  const current = getBlogPostBySlug(currentSlug);
-  if (!current) return [];
-  
-  return blogPosts
-    .filter((post) => post.slug !== currentSlug && post.category === current.category)
-    .slice(0, limit);
 }

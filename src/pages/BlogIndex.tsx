@@ -49,7 +49,7 @@ export default function BlogIndex() {
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": "HomeSnapFix Blog",
-    "description": "Expert guidance on organic search, AI visibility, and content strategy for home service websites.",
+    "description": "Practical guidance for homeowners on spotting damage, understanding repairs, and making smart decisions about home maintenance.",
     "url": "https://homesnapfix.lovable.app/blog",
     "publisher": {
       "@type": "Organization",
@@ -69,8 +69,8 @@ export default function BlogIndex() {
   return (
     <Layout>
       <SEOHead
-        title="Blog - Organic Search & AI Visibility for Home Service Sites"
-        description="Expert guidance on SEO, AEO, GEO, E-E-A-T, schema markup, Core Web Vitals, and AI search optimization for home service websites."
+        title="Blog — Home Repair Guidance, Damage Signs & Maintenance Tips"
+        description="Practical articles for homeowners: how to spot water damage, when to call a pro, common repair mistakes, and seasonal maintenance advice from HomeSnapFix."
         canonical="https://homesnapfix.lovable.app/blog"
         ogType="website"
       />
@@ -88,13 +88,13 @@ export default function BlogIndex() {
           <div className="mb-12 text-center">
             <Badge variant="secondary" className="mb-4">
               <BookOpen className="mr-1 h-3 w-3" />
-              Educational Resources
+              Homeowner Resources
             </Badge>
             <h1 className="mb-4 font-serif text-4xl font-bold text-foreground md:text-5xl">
               HomeSnapFix Blog
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Practical guidance on organic search visibility, AI search optimization, and building trust for home service websites. No hype, no jargon—just actionable strategies that work.
+              Practical guidance on spotting home damage early, understanding what repairs really cost, and knowing when you can fix it yourself vs when to call a professional. Written for homeowners, not contractors.
             </p>
           </div>
 
@@ -106,10 +106,10 @@ export default function BlogIndex() {
                   <div className="mb-4 flex items-center gap-2">
                     <Badge className="bg-primary/90">
                       <Star className="mr-1 h-3 w-3" />
-                      Featured
+                      Featured Guide
                     </Badge>
                     {featuredPost.isPillar && (
-                      <Badge variant="outline">Pillar Article</Badge>
+                      <Badge variant="outline">Comprehensive Guide</Badge>
                     )}
                   </div>
                   <h2 className="mb-3 font-serif text-2xl font-bold text-foreground md:text-3xl">
@@ -133,16 +133,16 @@ export default function BlogIndex() {
                   </div>
                   <Button asChild>
                     <Link to={`/blog/${featuredPost.slug}`}>
-                      Read Full Article
+                      Read Full Guide
                       <ChevronRight className="ml-1 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
                 <div className="hidden items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5 p-8 md:flex">
                   <div className="text-center">
-                    <div className="mb-2 text-6xl font-bold text-primary/20">2026</div>
+                    <div className="mb-2 text-5xl font-bold text-primary/20">🏠</div>
                     <div className="text-lg font-medium text-muted-foreground">
-                      Organic Search Playbook
+                      Spot Damage Early, Save Thousands
                     </div>
                   </div>
                 </div>
@@ -195,7 +195,7 @@ export default function BlogIndex() {
                       </Badge>
                       {post.isPillar && (
                         <Badge variant="outline" className="text-xs">
-                          Pillar
+                          Guide
                         </Badge>
                       )}
                     </div>
@@ -246,7 +246,7 @@ export default function BlogIndex() {
               Explore HomeSnapFix
             </h2>
             <p className="mb-6 text-muted-foreground">
-              Our blog complements our core tools and guides. Check out these resources:
+              Our blog is just one part of the toolkit. Use these resources to diagnose issues, learn repairs, and find help:
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <Link
@@ -257,7 +257,7 @@ export default function BlogIndex() {
                   AI Diagnosis Tool
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Upload a photo for instant repair assessment
+                  Upload a photo for instant damage assessment
                 </p>
               </Link>
               <Link
@@ -290,7 +290,7 @@ export default function BlogIndex() {
                   Find a Pro
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Connect with licensed contractors
+                  Connect with licensed contractors near you
                 </p>
               </Link>
             </div>
