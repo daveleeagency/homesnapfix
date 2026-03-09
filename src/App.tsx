@@ -64,6 +64,16 @@ const App = () => (
           <Route path="/issues/mold-moisture" element={<MoldMoistureHub />} />
           <Route path="/issues/foundation-cracks" element={<FoundationCracksHub />} />
           <Route path="/issues/exterior-damage" element={<ExteriorDamageHub />} />
+          <Route path="/issues/brown-water-stain-ceiling" element={<BrownWaterStainCeiling />} />
+          <Route path="/issues/dripping-under-sink" element={<DrippingUnderSink />} />
+          <Route path="/issues/cracked-drywall-above-door" element={<CrackedDrywallAboveDoor />} />
+          <Route path="/issues/musty-smell-bathroom" element={<MustySmellBathroom />} />
+          <Route path="/issues/hvac-blowing-warm-air" element={<HvacBlowingWarmAir />} />
+          <Route path="/issues/outlet-feels-hot" element={<OutletFeelsHot />} />
+          <Route path="/issues/water-around-water-heater" element={<WaterAroundWaterHeater />} />
+          <Route path="/issues/soft-spot-ceiling" element={<SoftSpotCeiling />} />
+          <Route path="/issues/peeling-paint-moisture" element={<PeelingPaintMoisture />} />
+          <Route path="/issues/hairline-foundation-crack" element={<HairlineFoundationCrack />} />
           <Route path="/maintenance-calendar" element={<MaintenanceCalendar />} />
           <Route path="/newsletter" element={<NewsletterPage />} />
           <Route path="/about" element={<AboutPage />} />
