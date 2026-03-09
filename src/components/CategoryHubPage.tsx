@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { diyPosts } from "@/data/diyPosts";
 import {
   Camera,
@@ -30,6 +31,7 @@ export interface CategoryHubData {
   urgency: { text: string; items: string[] };
   diyVsPro: { diy: string[]; pro: string[] };
   safetyNote?: string;
+  faqs?: { q: string; a: string }[];
   relatedCategories: DIYCategory[];
 }
 
@@ -48,6 +50,16 @@ export function CategoryHubPage({ data }: { data: CategoryHubData }) {
     ],
   };
 
+  const faqSchema = data.faqs && data.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: data.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: { "@type": "Answer", text: faq.a },
+    })),
+  } : null;
+
   return (
     <Layout>
       <SEOHead
@@ -58,6 +70,12 @@ export function CategoryHubPage({ data }: { data: CategoryHubData }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <section className="py-12 md:py-20">
         <div className="container max-w-4xl">
@@ -171,6 +189,27 @@ export function CategoryHubPage({ data }: { data: CategoryHubData }) {
             <div className="mt-6 rounded-lg border bg-muted/30 p-4 text-xs text-muted-foreground italic">
               <strong className="not-italic text-foreground">Important:</strong> {data.safetyNote}
             </div>
+          )}
+
+          {/* FAQs */}
+          {data.faqs && data.faqs.length > 0 && (
+            <section className="mt-10">
+              <h2 className="font-serif text-xl font-bold text-foreground md:text-2xl">
+                Frequently Asked Questions
+              </h2>
+              <Accordion type="single" collapsible className="mt-4 w-full">
+                {data.faqs.map((faq, i) => (
+                  <AccordionItem key={i} value={`faq-${i}`}>
+                    <AccordionTrigger className="text-left text-sm font-medium text-foreground">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </section>
           )}
 
           {/* Related Guides */}
