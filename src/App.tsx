@@ -40,6 +40,8 @@ import PeelingPaintMoisture from "./pages/issues/PeelingPaintMoisture";
 import HairlineFoundationCrack from "./pages/issues/HairlineFoundationCrack";
 import BlogIndex from "./pages/BlogIndex";
 import BlogArticle from "./pages/BlogArticle";
+import AdminPage from "./pages/AdminPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
@@ -87,6 +89,8 @@ const App = () => (
           <Route path="/legal/terms" element={<TermsPage />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
