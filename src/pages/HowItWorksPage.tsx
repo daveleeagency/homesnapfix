@@ -16,7 +16,7 @@ const steps = [
 ];
 
 const faqs = [
-  { q: "Is HomeSnapFix free to use?", a: "Yes. The core diagnosis tool — uploading a photo and receiving an AI assessment — is free. You can also download your report and browse DIY guides at no cost." },
+  { q: "Is HomeSnapFix free to use?", a: "Yes. The core diagnosis tool — uploading a photo and receiving an AI assessment — is free. You can also download your report and browse repair guides at no cost." },
   { q: "How long does a diagnosis take?", a: "Most diagnoses are returned in under 30 seconds. Complex images or high server load may take slightly longer." },
   { q: "What kind of photos work best?", a: "Clear, well-lit photos taken from 1–3 feet away produce the best results. Include the full area of concern and, if possible, a reference point for scale (like a coin or ruler). Avoid blurry, dark, or heavily filtered images." },
   { q: "Can I upload multiple photos of the same issue?", a: "Currently, the tool analyzes one photo per diagnosis. For complex issues, try uploading the clearest photo first. You can run multiple diagnoses if needed." },

@@ -97,7 +97,7 @@ export default function ProsPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Button asChild variant="outline">
-                <Link to="/diy"><Wrench className="mr-2 h-4 w-4" /> Browse DIY Guides</Link>
+                <Link to="/diy"><Wrench className="mr-2 h-4 w-4" /> Browse Repair Guides</Link>
               </Button>
               <Button asChild>
                 <Link to="/diagnose"><Camera className="mr-2 h-4 w-4" /> New Diagnosis</Link>

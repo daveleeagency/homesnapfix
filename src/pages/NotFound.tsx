@@ -36,7 +36,7 @@ export default function NotFound() {
           <div className="mt-8 rounded-lg border bg-muted/30 p-4">
             <p className="text-sm font-medium text-foreground">Looking for something specific?</p>
             <div className="mt-3 flex flex-wrap justify-center gap-2 text-xs">
-              <Link to="/diy" className="text-primary hover:underline">DIY Guides</Link>
+              <Link to="/diy" className="text-primary hover:underline">Repair Guides</Link>
               <span className="text-muted-foreground">•</span>
               <Link to="/pros" className="text-primary hover:underline">Find a Pro</Link>
               <span className="text-muted-foreground">•</span>
