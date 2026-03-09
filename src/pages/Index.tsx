@@ -93,22 +93,21 @@ const Index = () => {
       <section className="py-20 md:py-28">
         <div className="container text-center">
           <h1 className="mx-auto max-w-3xl font-serif text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
-            Not sure how serious that home issue is?
+            See what's wrong with your home — before calling a contractor
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Upload a photo of a crack, leak, stain, or damage. Get an AI-powered repair assessment in
-            seconds — then decide whether to fix it yourself or call a pro.
+            Upload a photo. Get an AI repair assessment. Know whether it's a DIY fix or time to hire a pro.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg">
               <Link to="/diagnose">
-                <Camera className="mr-2 h-4 w-4" />
-                Start Free Diagnosis
+                <Camera className="mr-2 h-5 w-5" />
+                Upload Photo — It's Free
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link to="/how-it-works">
-                See How It Works
+                How It Works
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -121,8 +120,8 @@ const Index = () => {
         <div className="container">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {trustPoints.map((t) => (
-              <div key={t.label} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <t.icon className="h-4 w-4 text-primary" />
+              <div key={t.label} className="flex items-center gap-2 text-sm font-medium text-foreground/80">
+                <t.icon className="h-5 w-5 text-primary" />
                 <span>{t.label}</span>
               </div>
             ))}
@@ -137,13 +136,13 @@ const Index = () => {
             How It Works
           </h2>
           <p className="mx-auto mt-2 max-w-lg text-center text-muted-foreground">
-            Three steps from "what is that?" to a clear plan of action.
+            Get from problem to solution in under 5 minutes.
           </p>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {steps.map((s) => (
               <div key={s.num} className="text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
-                  <s.icon className="h-6 w-6 text-primary" />
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 ring-2 ring-primary/20">
+                  <s.icon className="h-7 w-7 text-primary" />
                 </div>
                 <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
@@ -151,10 +150,10 @@ const Index = () => {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="shadow-lg">
               <Link to="/diagnose">
-                <Camera className="mr-2 h-4 w-4" />
-                Try It Now — It's Free
+                <Camera className="mr-2 h-5 w-5" />
+                Start Your Free Assessment
               </Link>
             </Button>
           </div>
@@ -165,27 +164,30 @@ const Index = () => {
       <section className="border-t bg-accent/30 py-16">
         <div className="container max-w-3xl text-center">
           <h2 className="font-serif text-2xl font-bold text-foreground md:text-3xl">
-            Why Homeowners Use HomeSnapFix
+            The Problem HomeSnapFix Solves
           </h2>
-          <div className="mt-8 space-y-6 text-left">
+          <p className="mx-auto mt-2 max-w-xl text-muted-foreground">
+            Three common frustrations homeowners face — and how we help.
+          </p>
+          <div className="mt-8 space-y-4 text-left">
             {[
               {
-                q: "You notice a crack, stain, or leak — but you don't know how bad it is.",
-                a: "Our AI gives you a severity estimate so you know whether to act now or monitor it.",
+                q: "You don't know how serious the issue is",
+                a: "Get a severity estimate based on visual analysis — so you know whether to act now or monitor it over time.",
               },
               {
-                q: "You're not sure if it's a DIY fix or something that needs a licensed pro.",
-                a: "Every diagnosis includes a clear DIY-or-pro recommendation with reasoning.",
+                q: "You're not sure if it's DIY or pro-level",
+                a: "Every assessment includes a clear recommendation: handle it yourself, or call a licensed professional.",
               },
               {
-                q: "You want a faster first step before paying $150+ for a contractor visit.",
-                a: "Get an initial assessment in seconds — for free — so you can make an informed call.",
+                q: "You want guidance before paying for a contractor visit",
+                a: "Use our free assessment as a first step — then decide whether to DIY or request a pro quote.",
               },
             ].map((item) => (
               <Card key={item.q}>
                 <CardContent className="p-5">
-                  <p className="text-sm font-medium text-foreground">{item.q}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.a}</p>
+                  <p className="text-sm font-semibold text-foreground">{item.q}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
                 </CardContent>
               </Card>
             ))}
@@ -228,17 +230,16 @@ const Index = () => {
       <section className="border-t bg-secondary/30 py-16">
         <div className="container text-center">
           <h2 className="font-serif text-2xl font-bold text-foreground md:text-3xl">
-            Ready to find out what's going on?
+            Ready to assess your home issue?
           </h2>
           <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-            Upload a photo and get your AI repair assessment — free, fast, and no contractor required
-            to start.
+            Upload a photo, get an AI assessment, and know your next step — all free.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="shadow-lg">
               <Link to="/diagnose">
-                <Camera className="mr-2 h-4 w-4" />
-                Start Free Diagnosis
+                <Camera className="mr-2 h-5 w-5" />
+                Upload Photo — Free Assessment
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
