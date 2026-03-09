@@ -4,6 +4,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Helmet } from "react-helmet-async";
 import {
   Camera,
   Search,
@@ -11,14 +12,12 @@ import {
   ArrowRight,
   ShieldCheck,
   FileText,
-  History,
   HelpCircle,
   Droplets,
   Home,
   Zap,
   Wind,
   Layers,
-  Bug,
   Thermometer,
   AlertTriangle,
   CheckCircle,
@@ -161,6 +160,9 @@ const Index = () => {
         title="AI Home Repair Assessment — Upload a Photo, Know Your Next Step"
         description="Upload a photo of a home issue and get a free AI-assisted repair assessment. Understand severity, get DIY guidance, and know when to hire a pro — before calling a contractor."
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(homepageFaqSchema)}</script>
+      </Helmet>
 
       {/* ── AEO: Answer-first summary (visible, concise, machine-readable) ── */}
       <section className="border-b bg-muted/40 py-4">
@@ -302,6 +304,23 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ── FAQ Section ── */}
+      <section className="border-t py-16">
+        <div className="container max-w-2xl">
+          <h2 className="text-center font-serif text-2xl font-bold text-foreground md:text-3xl">
+            Frequently Asked Questions
+          </h2>
+          <Accordion type="single" collapsible className="mt-8">
+            {homepageFaqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`}>
+                <AccordionTrigger className="text-left text-foreground">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
       {/* ── Bottom CTA ── */}
       <section className="border-t bg-secondary/30 py-16">
         <div className="container text-center">
@@ -312,20 +331,20 @@ const Index = () => {
             Upload a picture of the issue, get a free AI-assisted assessment, and find out whether it's a simple fix or time to call a professional. No account needed.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="shadow-lg">
+            <Button asChild size="lg" className="shadow-lg w-full sm:w-auto">
               <Link to="/diagnose">
                 <Camera className="mr-2 h-5 w-5" />
                 Upload Photo — Free Assessment
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
               <Link to="/pros">
                 Find a Local Pro
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">
+          <p className="mt-6 text-xs text-muted-foreground max-w-lg mx-auto">
             HomeSnapFix provides AI-assisted educational guidance only. It is not a substitute for a licensed home inspection. For structural, electrical, gas, or safety concerns, always consult a licensed professional.
           </p>
         </div>

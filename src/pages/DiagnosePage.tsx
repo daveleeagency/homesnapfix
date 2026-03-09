@@ -204,7 +204,7 @@ export default function DiagnosePage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-yellow-600" />
+              <AlertTriangle className="h-5 w-5 text-destructive" />
               Photo Mismatch Detected
             </DialogTitle>
             <DialogDescription className="pt-2 text-sm leading-relaxed">
@@ -362,9 +362,16 @@ export default function DiagnosePage() {
               </div>
 
               <div className="mt-4 space-y-3">
-                <Input placeholder="ZIP code (optional — for regional guidance)" value={zip} onChange={(e) => setZip(e.target.value)} />
+                <Input
+                  placeholder="ZIP code (optional — for regional guidance)"
+                  aria-label="ZIP code"
+                  value={zip}
+                  onChange={(e) => setZip(e.target.value)}
+                  maxLength={5}
+                />
                 <Textarea
                   placeholder="Describe what you're seeing (optional — helps AI accuracy)"
+                  aria-label="Issue description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={2}
