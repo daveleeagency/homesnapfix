@@ -16,6 +16,13 @@ const footerLinks = {
     { label: "Foundation Cracks", to: "/issues/foundation-cracks" },
     { label: "Exterior Damage", to: "/issues/exterior-damage" },
   ],
+  "Common Issues": [
+    { label: "Brown Ceiling Stain", to: "/issues/brown-water-stain-ceiling" },
+    { label: "Dripping Under Sink", to: "/issues/dripping-under-sink" },
+    { label: "Hot Outlet", to: "/issues/outlet-feels-hot" },
+    { label: "AC Not Cooling", to: "/issues/hvac-blowing-warm-air" },
+    { label: "Musty Bathroom Smell", to: "/issues/musty-smell-bathroom" },
+  ],
   Company: [
     { label: "About", to: "/about" },
     { label: "How It Works", to: "/how-it-works" },
@@ -33,7 +40,7 @@ export function Footer() {
   return (
     <footer className="border-t bg-secondary/50">
       <div className="container py-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-1">
             <h3 className="font-serif text-lg font-bold text-foreground">HomeSnapFix</h3>
             <p className="mt-2 text-sm text-muted-foreground">
