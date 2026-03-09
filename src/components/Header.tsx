@@ -29,7 +29,7 @@ export function Header() {
             <Link
               key={link.to}
               to={link.to}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>
