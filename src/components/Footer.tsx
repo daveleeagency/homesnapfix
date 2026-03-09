@@ -26,6 +26,7 @@ const footerLinks = {
   Company: [
     { label: "About", to: "/about" },
     { label: "How It Works", to: "/how-it-works" },
+    { label: "Blog", to: "/blog" },
     { label: "Contact", to: "/contact" },
     { label: "Newsletter", to: "/newsletter" },
   ],
