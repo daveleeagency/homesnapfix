@@ -37,8 +37,8 @@ export default function DIYHub() {
   return (
     <Layout>
       <SEOHead
-        title="DIY Home Repair Guides - Step-by-Step Fix Instructions"
-        description="Free DIY home repair guides for common issues: drywall cracks, water stains, roof leaks, HVAC problems. Know when to fix it yourself and when to call a pro."
+        title="DIY Home Repair Guides & Issue Category Hubs"
+        description="Free DIY home repair guides and category hubs for common issues: roofing, plumbing, HVAC, electrical, mold, foundation cracks, and exterior damage."
       />
       <section className="py-12 md:py-20">
         <div className="container">
@@ -46,16 +46,39 @@ export default function DIYHub() {
           <div className="mx-auto mb-8 max-w-2xl rounded-lg border border-primary/20 bg-primary/5 p-5">
             <h2 className="mb-2 text-lg font-semibold text-foreground">What You'll Find Here</h2>
             <p className="text-sm text-muted-foreground">
-              Step-by-step repair guides for the most common home issues. Each guide includes symptoms, likely causes, DIY instructions, tools needed, safety warnings, and clear thresholds for when to call a licensed professional.
+              Step-by-step repair guides and category overviews for the most common home issues. Each guide includes symptoms, likely causes, DIY instructions, safety notes, and clear guidance on when to call a licensed professional.
             </p>
           </div>
 
           <h1 className="text-center font-serif text-3xl font-bold text-foreground md:text-4xl">
-            DIY Repair Guides
+            Home Repair Guides
           </h1>
           <p className="mx-auto mt-2 max-w-lg text-center text-muted-foreground">
-            Step-by-step guides for the most common home repairs. Know when to fix it yourself and when to call a pro.
+            Browse by category or search specific issues. Know when to fix it yourself and when to call a pro.
           </p>
+
+          {/* Category Hub Links */}
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {categoryHubs.map((hub) => (
+              <Link key={hub.to} to={hub.to}>
+                <Card className="group h-full transition-shadow hover:shadow-md cursor-pointer">
+                  <CardContent className="flex items-center gap-3 p-4">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <hub.icon className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{hub.label}</span>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-10 border-t pt-10">
+            <h2 className="text-center font-serif text-xl font-bold text-foreground md:text-2xl">Step-by-Step Repair Guides</h2>
+            <p className="mx-auto mt-2 max-w-lg text-center text-muted-foreground">
+              Detailed instructions for specific issues, including tools, safety notes, and pro thresholds.
+            </p>
+          </div>
 
           {/* Search + Filters */}
           <div className="mx-auto mt-8 max-w-xl">
