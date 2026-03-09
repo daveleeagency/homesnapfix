@@ -16,15 +16,15 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-1.5 font-serif text-lg font-bold text-foreground">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary">
-            <Camera className="h-3.5 w-3.5 text-primary-foreground" />
+      <div className="container flex h-16 items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 font-serif text-xl font-bold text-foreground">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+            <Camera className="h-4 w-4 text-primary-foreground" />
           </div>
           HomeSnapFix
         </Link>
 
-        <nav className="hidden items-center gap-4 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -37,9 +37,9 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button asChild size="sm">
+          <Button asChild>
             <Link to="/diagnose">
-              <Camera className="mr-1.5 h-3.5 w-3.5" />
+              <Camera className="mr-2 h-4 w-4" />
               Snap &amp; Diagnose
             </Link>
           </Button>
