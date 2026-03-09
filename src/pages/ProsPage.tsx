@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -80,6 +81,11 @@ export default function ProsPage() {
   if (submitted) {
     return (
       <Layout>
+        <SEOHead
+          title="Request Received - Professional Match Pending"
+          description="Your home repair request has been received. We're matching you with qualified local professionals."
+          noindex={true}
+        />
         <section className="py-20">
           <div className="container max-w-lg text-center">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
@@ -107,6 +113,10 @@ export default function ProsPage() {
 
   return (
     <Layout>
+      <SEOHead
+        title="Find a Local Home Repair Professional - Get Matched"
+        description="Get matched with vetted local contractors for plumbing, electrical, HVAC, roofing, and more. Free professional matching service."
+      />
       <section className="py-12 md:py-20">
         <div className="container max-w-3xl">
           <h1 className="text-center font-serif text-3xl font-bold text-foreground md:text-4xl">

@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
 import { Mail, Bell, TrendingDown, Shield } from "lucide-react";
 
@@ -11,6 +12,10 @@ const benefits = [
 export default function NewsletterPage() {
   return (
     <Layout>
+      <SEOHead
+        title="Monthly Home Maintenance Newsletter - Free Alerts"
+        description="Join thousands of homeowners who stay ahead of repairs with our free monthly newsletter. Get seasonal alerts, cost-saving tips, and hidden repair warnings."
+      />
       <section className="py-16 md:py-24">
         <div className="container max-w-2xl text-center">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">

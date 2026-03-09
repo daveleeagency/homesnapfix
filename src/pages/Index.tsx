@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -89,6 +90,10 @@ const useCases = [
 const Index = () => {
   return (
     <Layout>
+      <SEOHead
+        title="AI Home Repair Diagnosis - Upload Photo, Get Fix Guidance"
+        description="Upload a photo of a home issue and get instant AI-powered repair assessment. Know severity, DIY steps, and when to hire a pro—before calling a contractor."
+      />
       {/* Hero */}
       <section className="py-20 md:py-28">
         <div className="container text-center">

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -43,6 +44,11 @@ export default function ContactPage() {
   if (submitted) {
     return (
       <Layout>
+        <SEOHead
+          title="Message Sent - We'll Be In Touch"
+          description="Your message has been received. We'll respond as soon as possible."
+          noindex={true}
+        />
         <section className="py-20 text-center">
           <div className="container max-w-lg">
             <CheckCircle className="mx-auto h-12 w-12 text-primary" />
@@ -56,6 +62,10 @@ export default function ContactPage() {
 
   return (
     <Layout>
+      <SEOHead
+        title="Contact HomeSnapFix - Questions & Feedback"
+        description="Have questions about HomeSnapFix? Contact us for support, feedback, or general inquiries."
+      />
       <section className="py-12 md:py-20">
         <div className="container max-w-lg">
           <h1 className="text-center font-serif text-3xl font-bold text-foreground md:text-4xl">Contact Us</h1>
