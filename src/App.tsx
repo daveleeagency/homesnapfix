@@ -38,8 +38,9 @@ import WaterAroundWaterHeater from "./pages/issues/WaterAroundWaterHeater";
 import SoftSpotCeiling from "./pages/issues/SoftSpotCeiling";
 import PeelingPaintMoisture from "./pages/issues/PeelingPaintMoisture";
 import HairlineFoundationCrack from "./pages/issues/HairlineFoundationCrack";
+import BlogIndex from "./pages/BlogIndex";
+import BlogArticle from "./pages/BlogArticle";
 import NotFound from "./pages/NotFound";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -84,6 +85,8 @@ const App = () => (
           <Route path="/legal/disclaimer" element={<DisclaimerPage />} />
           <Route path="/legal/privacy" element={<PrivacyPage />} />
           <Route path="/legal/terms" element={<TermsPage />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

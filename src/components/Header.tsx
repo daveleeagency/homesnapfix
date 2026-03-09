@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "Diagnose", to: "/diagnose" },
   { label: "Repair Guides", to: "/diy" },
+  { label: "Blog", to: "/blog" },
   { label: "Find a Pro", to: "/pros" },
 ];
 
