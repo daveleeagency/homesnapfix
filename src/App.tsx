@@ -21,6 +21,13 @@ import DashboardPage from "./pages/DashboardPage";
 import DisclaimerPage from "./pages/legal/DisclaimerPage";
 import PrivacyPage from "./pages/legal/PrivacyPage";
 import TermsPage from "./pages/legal/TermsPage";
+import RoofingHub from "./pages/issues/RoofingHub";
+import PlumbingHub from "./pages/issues/PlumbingHub";
+import HVACHub from "./pages/issues/HVACHub";
+import ElectricalHub from "./pages/issues/ElectricalHub";
+import MoldMoistureHub from "./pages/issues/MoldMoistureHub";
+import FoundationCracksHub from "./pages/issues/FoundationCracksHub";
+import ExteriorDamageHub from "./pages/issues/ExteriorDamageHub";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +47,13 @@ const App = () => (
           <Route path="/report/:analysisId" element={<ReportPage />} />
           <Route path="/diy" element={<DIYHub />} />
           <Route path="/diy/:slug" element={<DIYArticle />} />
+          <Route path="/issues/roofing" element={<RoofingHub />} />
+          <Route path="/issues/plumbing" element={<PlumbingHub />} />
+          <Route path="/issues/hvac" element={<HVACHub />} />
+          <Route path="/issues/electrical" element={<ElectricalHub />} />
+          <Route path="/issues/mold-moisture" element={<MoldMoistureHub />} />
+          <Route path="/issues/foundation-cracks" element={<FoundationCracksHub />} />
+          <Route path="/issues/exterior-damage" element={<ExteriorDamageHub />} />
           <Route path="/maintenance-calendar" element={<MaintenanceCalendar />} />
           <Route path="/newsletter" element={<NewsletterPage />} />
           <Route path="/about" element={<AboutPage />} />

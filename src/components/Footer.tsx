@@ -7,6 +7,15 @@ const footerLinks = {
     { label: "Find a Pro", to: "/pros" },
     { label: "Maintenance Calendar", to: "/maintenance-calendar" },
   ],
+  "Issue Guides": [
+    { label: "Roofing Issues", to: "/issues/roofing" },
+    { label: "Plumbing Leaks", to: "/issues/plumbing" },
+    { label: "HVAC Problems", to: "/issues/hvac" },
+    { label: "Electrical Warnings", to: "/issues/electrical" },
+    { label: "Mold & Moisture", to: "/issues/mold-moisture" },
+    { label: "Foundation Cracks", to: "/issues/foundation-cracks" },
+    { label: "Exterior Damage", to: "/issues/exterior-damage" },
+  ],
   Company: [
     { label: "About", to: "/about" },
     { label: "How It Works", to: "/how-it-works" },
@@ -24,11 +33,11 @@ export function Footer() {
   return (
     <footer className="border-t bg-secondary/50">
       <div className="container py-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="lg:col-span-1">
             <h3 className="font-serif text-lg font-bold text-foreground">HomeSnapFix</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              AI-powered home maintenance intelligence for confident homeowners.
+              AI-assisted home repair assessment for confident homeowners. Educational guidance only — not a licensed inspection.
             </p>
           </div>
 
