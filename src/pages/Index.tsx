@@ -4,6 +4,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Helmet } from "react-helmet-async";
 import {
   Camera,
   Search,
@@ -11,14 +12,12 @@ import {
   ArrowRight,
   ShieldCheck,
   FileText,
-  History,
   HelpCircle,
   Droplets,
   Home,
   Zap,
   Wind,
   Layers,
-  Bug,
   Thermometer,
   AlertTriangle,
   CheckCircle,
@@ -161,6 +160,9 @@ const Index = () => {
         title="AI Home Repair Assessment — Upload a Photo, Know Your Next Step"
         description="Upload a photo of a home issue and get a free AI-assisted repair assessment. Understand severity, get DIY guidance, and know when to hire a pro — before calling a contractor."
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(homepageFaqSchema)}</script>
+      </Helmet>
 
       {/* ── AEO: Answer-first summary (visible, concise, machine-readable) ── */}
       <section className="border-b bg-muted/40 py-4">
