@@ -7,10 +7,20 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { diyPosts } from "@/data/diyPosts";
-import { Search, Clock, BarChart3, Camera } from "lucide-react";
+import { Search, Clock, BarChart3, Camera, Home, Droplets, Wind, Zap, Layers, Shield } from "lucide-react";
 import type { DIYCategory } from "@/types";
 
 const categories: DIYCategory[] = ["Interior", "Exterior", "Plumbing", "Electrical", "HVAC", "Roofing", "Deck/Patio"];
+
+const categoryHubs = [
+  { label: "Roofing Issues", to: "/issues/roofing", icon: Home },
+  { label: "Plumbing Leaks", to: "/issues/plumbing", icon: Droplets },
+  { label: "HVAC Problems", to: "/issues/hvac", icon: Wind },
+  { label: "Electrical Warnings", to: "/issues/electrical", icon: Zap },
+  { label: "Mold & Moisture", to: "/issues/mold-moisture", icon: Shield },
+  { label: "Foundation Cracks", to: "/issues/foundation-cracks", icon: Layers },
+  { label: "Exterior Damage", to: "/issues/exterior-damage", icon: Home },
+];
 
 export default function DIYHub() {
   const [search, setSearch] = useState("");
