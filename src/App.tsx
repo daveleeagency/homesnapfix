@@ -28,6 +28,16 @@ import ElectricalHub from "./pages/issues/ElectricalHub";
 import MoldMoistureHub from "./pages/issues/MoldMoistureHub";
 import FoundationCracksHub from "./pages/issues/FoundationCracksHub";
 import ExteriorDamageHub from "./pages/issues/ExteriorDamageHub";
+import BrownWaterStainCeiling from "./pages/issues/BrownWaterStainCeiling";
+import DrippingUnderSink from "./pages/issues/DrippingUnderSink";
+import CrackedDrywallAboveDoor from "./pages/issues/CrackedDrywallAboveDoor";
+import MustySmellBathroom from "./pages/issues/MustySmellBathroom";
+import HvacBlowingWarmAir from "./pages/issues/HvacBlowingWarmAir";
+import OutletFeelsHot from "./pages/issues/OutletFeelsHot";
+import WaterAroundWaterHeater from "./pages/issues/WaterAroundWaterHeater";
+import SoftSpotCeiling from "./pages/issues/SoftSpotCeiling";
+import PeelingPaintMoisture from "./pages/issues/PeelingPaintMoisture";
+import HairlineFoundationCrack from "./pages/issues/HairlineFoundationCrack";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
