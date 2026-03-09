@@ -252,18 +252,18 @@ export default function ProsPage() {
                           </div>
                           <div className="flex flex-wrap gap-2 text-xs">
                             <span className="flex items-center gap-1 text-muted-foreground">
-                              <Star className="h-3 w-3 text-yellow-500" /> {pro.rating}
+                              <Star className="h-3 w-3 text-primary" /> {pro.rating}
                             </span>
                             <span className="flex items-center gap-1 text-muted-foreground">
                               <Clock className="h-3 w-3" /> {pro.response_speed_hours}h response
                             </span>
                             {pro.license_verified && (
-                              <span className="flex items-center gap-1 text-green-600">
+                              <span className="flex items-center gap-1 text-primary">
                                 <ShieldCheck className="h-3 w-3" /> Licensed
                               </span>
                             )}
                             {pro.insured && (
-                              <span className="flex items-center gap-1 text-green-600">
+                              <span className="flex items-center gap-1 text-primary">
                                 <ShieldCheck className="h-3 w-3" /> Insured
                               </span>
                             )}
