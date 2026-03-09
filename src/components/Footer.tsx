@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const footerLinks = {
   Product: [
     { label: "AI Diagnosis", to: "/diagnose" },
-    { label: "DIY Guides", to: "/diy" },
+    { label: "Repair Guides", to: "/diy" },
     { label: "Find a Pro", to: "/pros" },
     { label: "Maintenance Calendar", to: "/maintenance-calendar" },
   ],

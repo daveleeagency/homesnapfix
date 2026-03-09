@@ -45,7 +45,7 @@ export function CategoryHubPage({ data }: { data: CategoryHubData }) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://homesnapfix.lovable.app/" },
-      { "@type": "ListItem", position: 2, name: "DIY Guides", item: "https://homesnapfix.lovable.app/diy" },
+      { "@type": "ListItem", position: 2, name: "Repair Guides", item: "https://homesnapfix.lovable.app/diy" },
       { "@type": "ListItem", position: 3, name: data.heading, item: `https://homesnapfix.lovable.app/issues/${data.slug}` },
     ],
   };
@@ -81,7 +81,7 @@ export function CategoryHubPage({ data }: { data: CategoryHubData }) {
         <div className="container max-w-4xl">
           <Breadcrumbs
             items={[
-              { label: "DIY Guides", href: "/diy" },
+              { label: "Repair Guides", href: "/diy" },
               { label: data.heading },
             ]}
           />

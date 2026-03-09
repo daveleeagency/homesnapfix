@@ -299,7 +299,7 @@ export default function ReportPage() {
             </Button>
             <Button asChild variant="outline" className="flex-1">
               <Link to="/diy">
-                <BookOpen className="mr-2 h-4 w-4" /> Browse DIY Guides
+                <BookOpen className="mr-2 h-4 w-4" /> Browse Repair Guides
               </Link>
             </Button>
             <Button asChild className="flex-1">

@@ -37,8 +37,8 @@ export default function DIYHub() {
   return (
     <Layout>
       <SEOHead
-        title="DIY Home Repair Guides & Issue Category Hubs"
-        description="Free DIY home repair guides and category hubs for common issues: roofing, plumbing, HVAC, electrical, mold, foundation cracks, and exterior damage."
+        title="Home Repair Guides & Issue Category Hubs"
+        description="Free home repair guides and category hubs for common issues: roofing, plumbing, HVAC, electrical, mold, foundation cracks, and exterior damage."
       />
       <section className="py-12 md:py-20">
         <div className="container">

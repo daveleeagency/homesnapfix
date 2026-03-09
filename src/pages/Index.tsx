@@ -84,7 +84,7 @@ const steps = [
   {
     num: "3",
     title: "Decide Your Next Step",
-    desc: "Follow a DIY repair guide if the fix is manageable, or request a match with a local professional if it's beyond DIY.",
+    desc: "Follow a repair guide if the fix is manageable, or request a match with a local professional if it's beyond a DIY fix.",
     icon: Wrench,
   },
 ];
@@ -158,7 +158,7 @@ const Index = () => {
     <Layout>
       <SEOHead
         title="AI Home Repair Assessment — Upload a Photo, Know Your Next Step"
-        description="Upload a photo of a home issue and get a free AI-assisted repair assessment. Understand severity, get DIY guidance, and know when to hire a pro — before calling a contractor."
+        description="Upload a photo of a home issue and get a free AI-assisted repair assessment. Understand severity, get repair guidance, and know when to hire a pro — before calling a contractor."
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(homepageFaqSchema)}</script>

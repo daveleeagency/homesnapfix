@@ -53,7 +53,7 @@ export default function DIYArticle() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://homesnapfix.lovable.app/" },
-      { "@type": "ListItem", position: 2, name: "DIY Guides", item: "https://homesnapfix.lovable.app/diy" },
+      { "@type": "ListItem", position: 2, name: "Repair Guides", item: "https://homesnapfix.lovable.app/diy" },
       { "@type": "ListItem", position: 3, name: post.title, item: `https://homesnapfix.lovable.app/diy/${post.slug}` },
     ],
   };
@@ -77,7 +77,7 @@ export default function DIYArticle() {
       ))}
       <article className="py-12 md:py-20">
         <div className="container max-w-3xl">
-          <Breadcrumbs items={[{ label: "DIY Guides", href: "/diy" }, { label: post.title }]} />
+          <Breadcrumbs items={[{ label: "Repair Guides", href: "/diy" }, { label: post.title }]} />
 
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="secondary">{post.category}</Badge>

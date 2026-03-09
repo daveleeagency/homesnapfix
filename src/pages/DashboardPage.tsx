@@ -35,7 +35,7 @@ function getNextAction(riskLevel: string, damageType?: string): { label: string;
   if (damageType === "electrical" || damageType === "structural") {
     return { label: "Find a Pro", to: "/pros", variant: "default" };
   }
-  return { label: "View DIY Guides", to: "/diy", variant: "outline" };
+  return { label: "View Repair Guides", to: "/diy", variant: "outline" };
 }
 
 function formatDate(dateStr: string): string {
@@ -143,7 +143,7 @@ export default function DashboardPage() {
               {[
                 { icon: Camera, label: "New Diagnosis", sub: "Upload a photo", to: "/diagnose", accent: true },
                 { icon: ShieldCheck, label: "Find a Pro", sub: "Get matched locally", to: "/pros", accent: false },
-                { icon: BookOpen, label: "DIY Guides", sub: "Step-by-step help", to: "/diy", accent: false },
+                { icon: BookOpen, label: "Repair Guides", sub: "Step-by-step help", to: "/diy", accent: false },
               ].map((action) => (
                 <Card
                   key={action.label}
