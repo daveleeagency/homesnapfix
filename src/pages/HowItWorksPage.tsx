@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Camera, Search, Wrench, FileDown, Users, ArrowRight } from "lucide-react";
@@ -15,8 +16,20 @@ const steps = [
 export default function HowItWorksPage() {
   return (
     <Layout>
+      <SEOHead
+        title="How HomeSnapFix Works - AI Home Diagnosis in 5 Steps"
+        description="Upload a photo, get AI diagnosis, follow DIY steps or find a pro. Learn how HomeSnapFix helps homeowners assess home repair issues in minutes."
+      />
       <section className="py-16 md:py-24">
         <div className="container max-w-3xl">
+          {/* BLUF Section */}
+          <div className="mb-8 rounded-lg border border-primary/20 bg-primary/5 p-6">
+            <h2 className="mb-2 text-lg font-semibold text-foreground">Quick Answer: How It Works</h2>
+            <p className="text-muted-foreground">
+              Upload a photo of a home issue → AI analyzes it and estimates severity → Get DIY repair steps or find a local professional. The entire process takes under 5 minutes and is free.
+            </p>
+          </div>
+
           <h1 className="text-center font-serif text-3xl font-bold text-foreground md:text-4xl">How It Works</h1>
           <p className="mx-auto mt-3 max-w-xl text-center text-lg text-muted-foreground">
             From photo to fix in minutes. Here's how HomeSnapFix helps you take control of home repairs.

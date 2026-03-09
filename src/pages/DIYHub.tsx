@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -25,8 +26,20 @@ export default function DIYHub() {
 
   return (
     <Layout>
+      <SEOHead
+        title="DIY Home Repair Guides - Step-by-Step Fix Instructions"
+        description="Free DIY home repair guides for common issues: drywall cracks, water stains, roof leaks, HVAC problems. Know when to fix it yourself and when to call a pro."
+      />
       <section className="py-12 md:py-20">
         <div className="container">
+          {/* BLUF Section */}
+          <div className="mx-auto mb-8 max-w-2xl rounded-lg border border-primary/20 bg-primary/5 p-5">
+            <h2 className="mb-2 text-lg font-semibold text-foreground">What You'll Find Here</h2>
+            <p className="text-sm text-muted-foreground">
+              Step-by-step repair guides for the most common home issues. Each guide includes symptoms, likely causes, DIY instructions, tools needed, safety warnings, and clear thresholds for when to call a licensed professional.
+            </p>
+          </div>
+
           <h1 className="text-center font-serif text-3xl font-bold text-foreground md:text-4xl">
             DIY Repair Guides
           </h1>
