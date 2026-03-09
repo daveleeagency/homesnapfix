@@ -12,6 +12,7 @@ export interface DIYPost {
   likelyCauses: string[];
   diySteps: { step: number; title: string; description: string }[];
   toolsNeeded: { name: string; affiliateLink: string; price: string }[];
+  mistakesToAvoid: string[];
   safetyNotes: string[];
   whenToCallAPro: string[];
   faqs: { q: string; a: string }[];
