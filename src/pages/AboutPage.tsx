@@ -1,16 +1,78 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { Card, CardContent } from "@/components/ui/card";
-import { Camera, Heart, Shield } from "lucide-react";
+import { Camera, Heart, Shield, CheckCircle } from "lucide-react";
 
 export default function AboutPage() {
   return (
     <Layout>
+      <SEOHead
+        title="About HomeSnapFix - AI Home Maintenance Intelligence Platform"
+        description="HomeSnapFix helps homeowners identify home repair issues through AI photo analysis. Learn how we provide educational guidance for confident repair decisions."
+      />
       <section className="py-16 md:py-24">
         <div className="container max-w-3xl">
+          {/* BLUF Section - Answer-First for AEO */}
+          <div className="mb-8 rounded-lg border border-primary/20 bg-primary/5 p-6">
+            <h2 className="mb-3 text-lg font-semibold text-foreground">What HomeSnapFix Does</h2>
+            <p className="mb-2 text-muted-foreground">
+              HomeSnapFix is an AI-powered home maintenance intelligence platform that helps homeowners identify repair issues through photo analysis. We provide:
+            </p>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>Visual severity assessments for common home issues</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>DIY repair guidance with step-by-step instructions</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>Clear thresholds for when to call a licensed professional</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>Educational information only—not a substitute for licensed inspections</span>
+              </li>
+            </ul>
+          </div>
+
           <h1 className="font-serif text-3xl font-bold text-foreground md:text-4xl">About HomeSnapFix</h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            HomeSnapFix is an AI-powered home maintenance intelligence platform built for everyday homeowners. We believe no one should panic over a crack in the wall or a stain on the ceiling — and no one should overpay for repairs they could learn to handle themselves.
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            HomeSnapFix is an AI-powered home maintenance intelligence platform built for everyday homeowners. We help you understand what's wrong with your home—and decide what to do about it—before spending money on contractor visits or panic-buying unnecessary repairs.
           </p>
+          
+          {/* E-E-A-T: Clear Positioning */}
+          <div className="mt-8 rounded-lg border bg-muted/20 p-5">
+            <h2 className="mb-2 font-serif text-xl font-semibold text-foreground">Our Approach</h2>
+            <p className="text-muted-foreground">
+              We combine computer vision AI with practical home repair knowledge to provide first-pass visual assessments. Our goal is to help you ask better questions, understand urgency levels, and make informed decisions about DIY vs. professional help. We are transparent about what we are—and what we are not.
+            </p>
+          </div>
+
+          {/* What We Are NOT */}
+          <div className="mt-6 rounded-lg border border-destructive/20 bg-destructive/5 p-5">
+            <h2 className="mb-2 font-serif text-xl font-semibold text-foreground">What We Are NOT</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="text-destructive">✗</span>
+                <span><strong>Not a licensed inspector.</strong> We do not replace professional engineering, structural, electrical, or plumbing inspections.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-destructive">✗</span>
+                <span><strong>Not definitive.</strong> AI assessments are approximations based on visual analysis. Always verify with a pro for safety-critical issues.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-destructive">✗</span>
+                <span><strong>Not a contractor service.</strong> We may refer you to pros, but we do not employ or guarantee their work.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-destructive">✗</span>
+                <span><strong>Not insurance or legal advice.</strong> Insurance insights are general information only.</span>
+              </li>
+            </ul>
+          </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {[
