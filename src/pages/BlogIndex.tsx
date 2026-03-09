@@ -101,41 +101,43 @@ export default function BlogIndex() {
           {/* Featured Article */}
           {featuredPost && selectedCategory === "all" && searchQuery === "" && (
             <Card className="mb-12 overflow-hidden border-primary/20 bg-gradient-to-br from-primary/5 to-background">
-              <div className="p-6 md:p-8 lg:p-10">
-                  <div className="mb-4 flex items-center gap-2">
-                    <Badge className="bg-primary/90">
-                      <Star className="mr-1 h-3 w-3" />
-                      Featured Guide
-                    </Badge>
-                    {featuredPost.isPillar && (
-                      <Badge variant="outline">Comprehensive Guide</Badge>
-                    )}
-                  </div>
-                  <h2 className="mb-3 font-serif text-2xl font-bold text-foreground md:text-3xl">
-                    <Link to={`/blog/${featuredPost.slug}`} className="hover:text-primary transition-colors">
-                      {featuredPost.title}
-                    </Link>
-                  </h2>
-                  <p className="mb-4 max-w-2xl text-muted-foreground">{featuredPost.excerpt}</p>
-                  <div className="mb-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      {formatDate(featuredPost.publishDate)}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {featuredPost.readingTime} min read
-                    </span>
-                    <Badge variant="secondary">
-                      {blogCategories[featuredPost.category].label}
-                    </Badge>
-                  </div>
-                  <Button asChild>
-                    <Link to={`/blog/${featuredPost.slug}`}>
-                      Read Full Guide
-                      <ChevronRight className="ml-1 h-4 w-4" />
-                    </Link>
-                  </Button>
+              <div className="mx-auto max-w-3xl px-5 py-8 sm:px-8 md:py-10 lg:px-10 lg:py-12">
+                <div className="mb-4 flex flex-wrap items-center gap-2">
+                  <Badge className="bg-primary/90">
+                    <Star className="mr-1 h-3 w-3" />
+                    Featured Guide
+                  </Badge>
+                  {featuredPost.isPillar && (
+                    <Badge variant="outline">Comprehensive Guide</Badge>
+                  )}
+                </div>
+                <h2 className="mb-4 font-serif text-xl font-bold leading-snug text-foreground sm:text-2xl md:text-3xl">
+                  <Link to={`/blog/${featuredPost.slug}`} className="hover:text-primary transition-colors">
+                    {featuredPost.title}
+                  </Link>
+                </h2>
+                <p className="mb-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  {featuredPost.excerpt}
+                </p>
+                <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="h-4 w-4" />
+                    {formatDate(featuredPost.publishDate)}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-4 w-4" />
+                    {featuredPost.readingTime} min read
+                  </span>
+                  <Badge variant="secondary">
+                    {blogCategories[featuredPost.category].label}
+                  </Badge>
+                </div>
+                <Button asChild size="lg">
+                  <Link to={`/blog/${featuredPost.slug}`}>
+                    Read Full Guide
+                    <ChevronRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </Button>
               </div>
             </Card>
           )}
