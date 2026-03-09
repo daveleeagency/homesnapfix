@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
@@ -62,6 +63,10 @@ const seasons = [
 export default function MaintenanceCalendar() {
   return (
     <Layout>
+      <SEOHead
+        title="Home Maintenance Calendar - Seasonal Task Checklist"
+        description="Stay ahead of costly repairs with seasonal home maintenance tasks. Free checklist for spring, summer, fall, and winter preventative care."
+      />
       <section className="py-12 md:py-20">
         <div className="container">
           <h1 className="text-center font-serif text-3xl font-bold text-foreground md:text-4xl">
