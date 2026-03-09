@@ -80,9 +80,25 @@ export function NewsletterCapture({ variant = "inline", sourcePage = "unknown" }
             Seasonal tips, hidden repair warnings, and cost-saving advice delivered to your inbox.
           </p>
           <form onSubmit={handleSubmit} className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row">
-            <Input type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} required className="flex-1" />
-            <Input type="text" placeholder="ZIP code" value={zip} onChange={(e) => setZip(e.target.value)} className="w-full sm:w-28" />
-            <Button type="submit" disabled={loading}>
+            <Input
+              type="email"
+              placeholder="Your email"
+              aria-label="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="flex-1"
+            />
+            <Input
+              type="text"
+              placeholder="ZIP code"
+              aria-label="ZIP code"
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+              className="w-full sm:w-28"
+              maxLength={5}
+            />
+            <Button type="submit" disabled={loading} className="w-full sm:w-auto">
               {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Joining...</> : "Subscribe"}
             </Button>
           </form>
@@ -93,9 +109,25 @@ export function NewsletterCapture({ variant = "inline", sourcePage = "unknown" }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
-      <Input type="email" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} required className="flex-1" />
-      <Input type="text" placeholder="ZIP" value={zip} onChange={(e) => setZip(e.target.value)} className="w-full sm:w-24" />
-      <Button type="submit" disabled={loading} size="sm">
+      <Input
+        type="email"
+        placeholder="Your email"
+        aria-label="Email address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="flex-1"
+      />
+      <Input
+        type="text"
+        placeholder="ZIP"
+        aria-label="ZIP code"
+        value={zip}
+        onChange={(e) => setZip(e.target.value)}
+        className="w-full sm:w-24"
+        maxLength={5}
+      />
+      <Button type="submit" disabled={loading} size="sm" className="w-full sm:w-auto">
         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Subscribe"}
       </Button>
     </form>
