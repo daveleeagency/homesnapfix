@@ -175,6 +175,22 @@ export default function DIYArticle() {
             </CardContent>
           </Card>
 
+          {/* Mistakes to Avoid */}
+          {post.mistakesToAvoid && post.mistakesToAvoid.length > 0 && (
+            <Card className="mt-4 border-destructive/20 bg-destructive/5">
+              <CardHeader><CardTitle className="flex items-center gap-2 text-lg"><AlertTriangle className="h-5 w-5 text-destructive" /> Common Mistakes to Avoid</CardTitle></CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {post.mistakesToAvoid.map((m, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <span className="mt-1 block h-1.5 w-1.5 shrink-0 rounded-full bg-destructive" />{m}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          )}
+
           {/* When to Call a Pro */}
           <Card className="mt-4">
             <CardHeader><CardTitle className="flex items-center gap-2 text-lg"><AlertTriangle className="h-5 w-5 text-destructive" /> When to Call a Pro</CardTitle></CardHeader>
