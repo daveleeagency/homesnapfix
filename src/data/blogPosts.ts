@@ -1904,6 +1904,203 @@ Document what you can — the repaired area, any remaining signs, invoices from 
 Our [AI diagnosis tool](/diagnose) can provide a preliminary assessment of damage from photos you upload. While it's not a substitute for professional evaluation, the assessment and photos can be a useful starting point for conversations with contractors and may help you describe the issue more precisely.
 `
   },
+
+  // --- NEW POST 14 ---
+  {
+    slug: "small-leak-big-damage-water-behind-walls",
+    title: "Small Leak, Big Damage: How Water Spreads Behind Walls",
+    metaDescription: "A minor leak can cause major hidden damage. Learn how water travels behind walls, what signs to watch for, and why small leaks need fast attention.",
+    category: "water-damage-leaks",
+    publishDate: "2026-03-02",
+    readingTime: 7,
+    featured: false,
+    isPillar: false,
+    excerpt: "A pinhole leak or slow drip may seem harmless, but water travels fast behind drywall. Here's how hidden moisture spreads and what to watch for before the damage gets expensive.",
+    content: `
+## The Short Answer
+
+A small, slow leak behind a wall can cause thousands of dollars in damage before you ever see a visible sign. Water wicks through drywall, insulation, and wood framing — spreading far beyond the original leak point. Understanding how this happens helps you catch problems earlier.
+
+---
+
+## How Water Travels Behind Walls
+
+Water doesn't just drip straight down. Inside a wall cavity, it follows the path of least resistance:
+
+- **Gravity pulls it downward**, but it often hits horizontal framing members (like sole plates) and pools.
+- **Capillary action wicks moisture** through drywall and insulation, sometimes moving sideways or even upward.
+- **Wood framing absorbs water** slowly, swelling and eventually warping or rotting.
+
+A leak at a second-floor bathroom connection can show up as damage on a first-floor ceiling 10 feet away from the actual source. This is why finding the origin of water damage is often harder than fixing it.
+
+---
+
+## Signs of Hidden Water Behind Walls
+
+Most homeowners don't notice hidden leaks until secondary symptoms appear:
+
+- **Paint bubbling or peeling** on an interior wall, especially if it's not in a wet area
+- **Baseboards pulling away** from the wall or showing warping
+- **A musty smell** that you can't locate — often strongest near the affected wall
+- **Soft or spongy drywall** when you press on it
+- **Discoloration** — faint yellow or brown patches that weren't there before
+- **Higher water bills** without a change in usage
+
+If you notice any combination of these, there's a good chance moisture is present inside the wall.
+
+---
+
+## Common Sources of Hidden Wall Leaks
+
+The most frequent culprits are:
+
+1. **Supply line connections** — especially at shutoff valves, toilet supply lines, and washing machine hoses
+2. **Drain pipe joints** — older homes with cast iron or galvanized drain pipes develop pinhole leaks at joints
+3. **Shower and tub surrounds** — failed caulk or grout lets water seep behind tiles and into the wall cavity
+4. **Ice maker lines** — the small copper or braided lines running to refrigerators are notorious for slow leaks
+5. **Condensation from HVAC** — poorly insulated ducts in walls can produce enough condensation to cause damage over time
+
+---
+
+## Why Speed Matters
+
+The timeline from leak to serious damage is shorter than most people expect:
+
+- **Within 24–48 hours**: Drywall begins absorbing moisture and weakening
+- **Within 1–2 weeks**: Mold can begin growing on damp organic materials
+- **Within 1–3 months**: Wood framing can start to rot, and insulation loses effectiveness
+- **Beyond 3 months**: Structural damage becomes likely, and remediation costs multiply
+
+A $150 plumbing repair can become a $5,000+ remediation project if the leak runs unchecked for a few months.
+
+---
+
+## What to Do If You Suspect a Hidden Leak
+
+1. **Check your water meter** — turn off all fixtures and appliances, then watch the meter. If it's still moving, you have an active leak somewhere.
+2. **Use a moisture meter** — inexpensive pin-type meters (under $30) can detect elevated moisture in drywall without cutting into the wall.
+3. **Look in adjacent spaces** — check the ceiling below, closets on the other side of the wall, and any accessible crawlspace or basement areas.
+4. **Don't ignore musty smells** — your nose is surprisingly good at detecting hidden moisture. If a wall smells damp, take it seriously.
+5. **Call a plumber or leak detection specialist** if you can't find the source — they have tools (thermal cameras, acoustic sensors) that can locate leaks without tearing into walls.
+
+---
+
+## Frequently Asked Questions
+
+### Can a small leak really cause mold?
+
+Yes. Mold needs three things: moisture, warmth, and organic material. The inside of a wall cavity — with damp drywall and wood framing — provides all three. Mold can begin colonizing within 24–48 hours of sustained moisture.
+
+### How do I know if the leak is active or old?
+
+Touch the area. If it feels damp or cool, the leak is likely active. If the stain is dry and the drywall is firm, the leak may have stopped. Monitor it for a week — if the stain doesn't grow, the source may be resolved. But investigate anyway to be sure.
+
+### Should I cut into the wall to check?
+
+Only if you're comfortable with basic drywall repair. A small exploratory hole (4–6 inches) in an inconspicuous spot can reveal a lot. If you find active water or mold, stop and call a professional.
+`
+  },
+
+  // --- NEW POST 15 ---
+  {
+    slug: "bathroom-fan-not-preventing-moisture",
+    title: "Why Your Bathroom Fan Isn't Preventing Moisture Problems",
+    metaDescription: "Your bathroom exhaust fan may not be doing its job. Learn the common reasons bathroom fans fail to control moisture and what to do about it.",
+    category: "mold-moisture",
+    publishDate: "2026-02-28",
+    readingTime: 6,
+    featured: false,
+    isPillar: false,
+    excerpt: "Running the bathroom fan during showers isn't always enough. Undersized fans, blocked ducts, and short run times are common reasons moisture still builds up.",
+    content: `
+## The Short Answer
+
+Many bathroom exhaust fans are undersized, improperly installed, or not run long enough to actually control moisture. If you're still seeing foggy mirrors, damp walls, or mildew growth despite using your fan, the fan setup — not your habits — is likely the problem.
+
+---
+
+## How Bathroom Exhaust Fans Are Supposed to Work
+
+A properly functioning bathroom exhaust fan should:
+
+- Remove moist air from the bathroom during and after showers or baths
+- Vent that air **outside** the home through a duct that exits at the roof or exterior wall
+- Exchange the air in the bathroom roughly 8 times per hour (the standard ventilation rate)
+
+When any part of this system fails — the fan, the duct, or the runtime — moisture stays in the room and eventually causes problems.
+
+---
+
+## Common Reasons Your Fan Isn't Working Well
+
+### 1. The Fan Is Too Small for the Room
+
+Exhaust fans are rated in CFM (cubic feet per minute). The general rule is **1 CFM per square foot** of bathroom floor area, with a minimum of 50 CFM. Many builder-grade fans are installed at the bare minimum — or even undersized — especially in bathrooms with high ceilings or large shower enclosures.
+
+**How to check**: Look at the label on your fan (usually visible when you remove the cover). If your bathroom is 80 square feet and the fan is rated at 50 CFM, it's undersized.
+
+### 2. The Duct Is Blocked, Kinked, or Too Long
+
+Even a properly sized fan can't move air if the ductwork is obstructed. Common issues include:
+
+- Flexible duct that's kinked or sagging, creating low points where condensation collects
+- Duct runs that are too long or have too many bends, reducing airflow
+- Exterior vent flaps stuck shut by paint, debris, or wasp nests
+- Ducts that terminate in the attic instead of outside — this dumps warm, moist air into the attic space, causing mold and wood rot
+
+### 3. You're Not Running It Long Enough
+
+Most people turn the fan off when they leave the bathroom. But the moisture doesn't disappear that fast. **Run the fan for at least 20 minutes after your shower ends.** A timer switch (around $20–30 at any hardware store) makes this easy and automatic.
+
+### 4. The Fan Motor Is Worn Out
+
+Exhaust fan motors typically last 8–15 years. As they age, they slow down and move less air, even though they still make noise. If your fan sounds like it's running but the bathroom stays steamy, the motor may need replacement.
+
+### 5. The Fan Was Never Ducted Outside
+
+In some older homes or poorly done renovations, the exhaust fan duct vents into the attic, a crawlspace, or even just into the space between floors. This doesn't remove moisture from the home — it just moves it somewhere you can't see it, where it causes hidden damage.
+
+---
+
+## Signs Your Fan Isn't Controlling Moisture
+
+- Mirror stays fogged for more than 5 minutes after you stop showering with the fan running
+- Walls or ceiling feel damp to the touch after showers
+- Mildew keeps coming back on grout, caulk, or ceiling paint
+- Paint is peeling on the bathroom ceiling
+- Musty smell that won't go away despite cleaning
+
+---
+
+## How to Fix It
+
+**Quick fixes:**
+- Install a timer switch so the fan runs 20+ minutes after each shower
+- Clean the fan cover and blades (dust buildup reduces airflow significantly)
+- Check the exterior vent flap — make sure it opens freely
+
+**Bigger fixes:**
+- Replace an undersized fan with one properly rated for your bathroom size
+- Have the ductwork inspected and corrected if it's kinked, sagging, or venting into the attic
+- Add a humidity-sensing fan that turns on automatically when moisture levels rise
+
+---
+
+## Frequently Asked Questions
+
+### Is it bad to not have a bathroom fan at all?
+
+It's not ideal. Without mechanical ventilation, moisture from showers has nowhere to go except into walls, ceilings, and adjacent rooms. If your bathroom has a window, opening it during and after showers helps — but it's not as effective as a proper exhaust fan, especially in humid climates.
+
+### Can I install a bathroom fan myself?
+
+Replacing an existing fan with a same-size unit is a moderate DIY project. Installing a new fan where there wasn't one before involves cutting into the ceiling, running ductwork, and wiring — which is usually better left to a professional.
+
+### How do I know if my duct goes outside?
+
+Go outside and look for the vent cap on your roof or exterior wall. If you can't find one, the duct may terminate in the attic. You can also turn the fan on and have someone check the exterior vent to see if air is flowing out.
+`
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
